@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,12 +5,17 @@ using UnityEngine.UI;
 
 public class IntroScene3 : MonoBehaviour
 {
+    const int MAX_INPUT_FIELDS = 8;
+    const int INITIAL_INPUT_FIELDS = 3;
     [SerializeField] private Button addNameInputFieldButton;
     [SerializeField] private Button nextButton;
     [SerializeField] private List<TMP_InputField> nameInputFields = new();
     [SerializeField] private Transform inputFieldsLayout;
     [SerializeField] private GameObject inputFieldPrefab;
-    // Start is called before the first frame update
+    [SerializeField] private string[] names = new string[MAX_INPUT_FIELDS];
+    private int inputFieldsCount = INITIAL_INPUT_FIELDS;
+    [SerializeField] private TMP_InputField instructorNameInputField;
+    [SerializeField] private string instructorName;
     void Start()
     {
         addNameInputFieldButton.onClick.AddListener(AddNameInputField);
@@ -23,15 +27,27 @@ public class IntroScene3 : MonoBehaviour
         GameObject inputFieldGameObject = Instantiate(inputFieldPrefab, inputFieldsLayout);
         nameInputFields.Add(inputFieldGameObject.GetComponent<TMP_InputField>());
         LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
-        if (nameInputFields.Count == 8)
+        inputFieldsCount++;
+        if (inputFieldsCount == MAX_INPUT_FIELDS)
         {
             addNameInputFieldButton.gameObject.SetActive(false);
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        UpdateNames();
+    }
+
+    private void UpdateNames()
+    {
+        for (int i = 0; i < nameInputFields.Count; i++)
+        {
+            if (nameInputFields[i] != null)
+            {
+                names[i] = nameInputFields[i].text;
+            }
+        }
+        instructorName = instructorNameInputField.text;
     }
 }
