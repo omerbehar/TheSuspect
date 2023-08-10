@@ -120,8 +120,20 @@ namespace DefaultNamespace
 
         private void DisplayImage(Texture2D capturedImage)
         {
-            rawImageDisplay.texture = ResizeTexture(capturedImage, (int)imageBounds.width, (int)imageBounds.height);
-            rawImageDisplay.rectTransform.sizeDelta = new Vector2(imageBounds.width, imageBounds.height);
+            rawImageDisplay.texture = capturedImage;
+    
+            // Calculate aspect ratio
+            float w = capturedImage.width;
+            float h = capturedImage.height;
+            float aspect = w / h;
+
+            // Use RectTransform to set the size:
+            float imageWidth = System.Math.Min(imageBounds.width, imageBounds.height * aspect);
+            float imageHeight = System.Math.Min(imageBounds.height, imageBounds.width / aspect);
+
+            rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, imageWidth);
+            rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, imageHeight);
+
             rawImageDisplay.color = new Color(1, 1, 1, 1);
         }
         public Texture2D ResizeTexture(Texture2D source, int targetWidth, int targetHeight)
