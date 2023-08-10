@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80a687588d54992ae944b65364c5313, type: 3}
+  m_Name: level1
+  m_EditorClassIdentifier: 
+  suspectImage: {fileID: 923159721430201236, guid: 63ed9be0963c4554fb88dab9d19fe182, type: 3}
+  suspectText: "\u05D1\u05D5\u05D0\u05D5 \u05E0\u05E8\u05D0\u05D4 \u05D0\u05DD \u05D0\u05EA\u05DD
+    \u05D1\u05D0\u05DE\u05EA \u05DE-ICL. \u05DE\u05E9\u05D4\u05D5 \u05E7\u05DC \u05E9\u05D0\u05E0\u05E9\u05D9\u05DD
+    \u05DE-ICL \u05D9\u05D3\u05E2\u05D5... \u05D4\u05DE\u05DE... \u05DE\u05EA\u05D9
+    \u05E0\u05D5\u05E1\u05D3\u05D4 ICL? "
+  answers:
+  - 8691
+  - 8491
+  - 2791
+  correctAnswer: 0
+  wrongAnswerLevel: {fileID: 11400000, guid: 84cf47c6f0693af448be89cdfa224405, type: 2}
+  rightAnswerLevel: {fileID: 11400000, guid: fecc3c41912ecb84eb744eacd7d79344, type: 2}
