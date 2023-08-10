@@ -782,7 +782,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: TMPRO_EXISTS;JSON_NET_EXISTS
+    Standalone: TMPRO_EXISTS;JSON_NET_EXISTS;PLAYTEST
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
