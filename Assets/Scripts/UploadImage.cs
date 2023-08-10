@@ -8,6 +8,7 @@ namespace DefaultNamespace
     public class UploadImage : MonoBehaviour
     {
         public RawImage rawImageDisplay;
+        public RawImage imageBorderDisplay;
         public Rect imageBounds = new Rect(0, 0, 1024, 1024); // Define the position and size of image bounds.
         public bool isPlayTest = true;
 
@@ -134,6 +135,11 @@ namespace DefaultNamespace
             rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, imageWidth);
             rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, imageHeight);
 
+            // Adjust border size
+            float borderThickness = 10f;  // Adjust this to set your border's thickness.
+            imageBorderDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, imageWidth + borderThickness);
+            imageBorderDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, imageHeight + borderThickness);
+            imageBorderDisplay.color = new Color(1, 1, 1, 1);
             rawImageDisplay.color = new Color(1, 1, 1, 1);
         }
         public Texture2D ResizeTexture(Texture2D source, int targetWidth, int targetHeight)
