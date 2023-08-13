@@ -2754,7 +2754,7 @@ GameObject:
   - component: {fileID: 1021882305}
   - component: {fileID: 1021882304}
   m_Layer: 0
-  m_Name: "\u05DE\u05D7\u05E7 \u05EA\u05DE\u05D5\u05E0\u05D4"
+  m_Name: deletpicture text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3852,7 +3852,7 @@ GameObject:
   - component: {fileID: 1462844855}
   - component: {fileID: 1462844856}
   m_Layer: 0
-  m_Name: "\u05DE\u05D7\u05E7 \u05EA\u05DE\u05D5\u05E0\u05D4"
+  m_Name: DeletPicture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
