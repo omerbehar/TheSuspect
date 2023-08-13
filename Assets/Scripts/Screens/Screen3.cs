@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DataLayer;
 using DefaultNamespace;
+using Screens.Bases;
 using Screens.Interfaces;
 using TMPro;
 using UnityEngine;
@@ -8,7 +9,7 @@ using UnityEngine.UI;
 
 namespace Screens
 {
-    public class Screen3 : Screen, ISaveData, ILoadData
+    public class Screen3 : ScreenBase, ISaveData, ILoadData
     {
         const int MAX_PLAYERS = 8;
         const int INITIAL_INPUT_FIELDS = 3;
