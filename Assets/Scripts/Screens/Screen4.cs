@@ -1,12 +1,13 @@
 using DataLayer;
 using DefaultNamespace;
+using Screens.Bases;
 using Screens.Interfaces;
 using TMPro;
 using UnityEngine;
 
 namespace Screens
 {
-    public class Screen4 : Screen, ILoadData, ISaveData
+    public class Screen4 : ScreenBase, ILoadData, ISaveData
     {
         [SerializeField] private TMP_InputField teamNameInputField;
         [SerializeField] private string teamName;

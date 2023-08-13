@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Screens
+namespace Screens.Bases
 {
-    public class Screen : MonoBehaviour, IBackButton, INextButton
+    public class ScreenBase : MonoBehaviour, IBackButton, INextButton
     {
         
         [field: SerializeField] public Button BackButton { get; set; }
