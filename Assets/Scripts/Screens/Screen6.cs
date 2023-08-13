@@ -11,12 +11,12 @@ namespace Screens
 
         void OnEnable()
         {
-            EventManager.OnAssignmentCompleted.AddListener(OnAssigmentCompleted);
+            EventManager.AssignmentCompleted.AddListener(OnAssigmentCompleted);
         }
 
         void OnDisable()
         {
-            EventManager.OnAssignmentCompleted.RemoveListener(OnAssigmentCompleted);
+            EventManager.AssignmentCompleted.RemoveListener(OnAssigmentCompleted);
         }
 
         void OnAssigmentCompleted()
