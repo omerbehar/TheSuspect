@@ -154,7 +154,7 @@ namespace DefaultNamespace
                 tex.LoadImage(imgData);
 
                 DisplayImage(tex);
-                EventManager.OnAssignmentCompleted?.Invoke();
+                EventManager.AssignmentCompleted?.Invoke();
             }
         }
     }

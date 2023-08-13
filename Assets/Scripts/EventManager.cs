@@ -6,7 +6,7 @@ namespace DefaultNamespace
     public class EventManager : MonoBehaviour
     {
         // Create a static UnityEvent
-        public static UnityEvent OnAssignmentCompleted = new UnityEvent();
+        public static UnityEvent AssignmentCompleted = new UnityEvent();
         
     }
 }
