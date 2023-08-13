@@ -2,19 +2,23 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using SFB;
+using UnityEngine.Serialization;
 
 namespace DefaultNamespace
 {
     public class UploadImage : MonoBehaviour
     {
-        public RawImage rawImageDisplay;
-        public RawImage imageBorderDisplay;
-        public Rect imageBounds = new Rect(0, 0, 1024, 1024); // Define the position and size of image bounds.
-        public bool isPlayTest = true;
+        [SerializeField] RawImage rawImageDisplay;
+        [SerializeField] RawImage imageBorderDisplay;
+        [SerializeField] Rect imageBounds = new Rect(0, 0, 1024, 1024); // Define the position and size of image bounds.
+        [SerializeField] bool isPlayTest = true;
+        [SerializeField] private GameObject whenUploadIcons;
+        [SerializeField] private GameObject whenNoUploadIcons;
 
         void Start()
         {
             rawImageDisplay.color = new Color(1, 1, 1, 0); // Start with a transparent image.
+            
 
 #if PLAYTEST
             if(isPlayTest)
@@ -122,25 +126,63 @@ namespace DefaultNamespace
         private void DisplayImage(Texture2D capturedImage)
         {
             rawImageDisplay.texture = capturedImage;
-    
-            // Calculate aspect ratio
-            float w = capturedImage.width;
-            float h = capturedImage.height;
-            float aspect = w / h;
 
-            // Use RectTransform to set the size:
-            float imageWidth = System.Math.Min(imageBounds.width, imageBounds.height * aspect);
-            float imageHeight = System.Math.Min(imageBounds.height, imageBounds.width / aspect);
+            // Calculate aspect ratio and set new dimensions
+            float imageAspect = (float)capturedImage.width / capturedImage.height;
+            float areaAspect = imageBounds.width / imageBounds.height;
 
-            rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, imageWidth);
-            rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, imageHeight);
+            float scaleFactor;
+            if (imageAspect < areaAspect)
+            {
+                scaleFactor = imageBounds.height / capturedImage.height;
+            }
+            else
+            {
+                scaleFactor = imageBounds.width / capturedImage.width;
+            }
 
-            // Adjust border size
-            float borderThickness = 10f;  // Adjust this to set your border's thickness.
-            imageBorderDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, imageWidth + borderThickness);
-            imageBorderDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, imageHeight + borderThickness);
+            int width = Mathf.RoundToInt(capturedImage.width * scaleFactor);
+            int height = Mathf.RoundToInt(capturedImage.height * scaleFactor);
+
+            // Set the size:
+            rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+            rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+
+            float borderThickness = 10f;  // Set your border's thickness.
+
+            // Adjust the border size
+            imageBorderDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width + borderThickness);
+            imageBorderDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height + borderThickness);
+
+            // Centering the image
+            rawImageDisplay.rectTransform.anchoredPosition = Vector2.zero;
+            imageBorderDisplay.rectTransform.anchoredPosition = Vector2.zero;
+
             imageBorderDisplay.color = new Color(1, 1, 1, 1);
             rawImageDisplay.color = new Color(1, 1, 1, 1);
+
+            whenNoUploadIcons.SetActive(true);
+            whenUploadIcons.SetActive(false);
+        }
+        private Texture2D CropTexture(Texture2D source, int xOffset, int yOffset, int width, int height)
+        {
+            // Check if the cropping area exceeds the source texture's dimensions
+            if (xOffset + width > source.width)
+            {
+                width = source.width - xOffset;
+            }
+
+            if (yOffset + height > source.height)
+            {
+                height = source.height - yOffset;
+            }
+
+            Color[] c = source.GetPixels(xOffset, yOffset, width, height);
+            Texture2D result = new Texture2D(width, height);
+            result.SetPixels(c);
+            result.Apply();
+    
+            return result;
         }
         public Texture2D ResizeTexture(Texture2D source, int targetWidth, int targetHeight)
         {
