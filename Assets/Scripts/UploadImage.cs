@@ -10,6 +10,10 @@ namespace DefaultNamespace
     {
         [SerializeField] RawImage rawImageDisplay;
         [SerializeField] RawImage imageBorderDisplay;
+        [SerializeField] private int horizontalWidth = 1024; // Your desired width for horizontal images
+        [SerializeField] private int horizontalHeight = 512; // Your desired height for horizontal images
+        [SerializeField] private int verticalWidth = 512; // Your desired width for vertical images
+        [SerializeField] private int verticalHeight = 1024; // Your desired height for vertical images
         [SerializeField] Rect imageBounds = new Rect(0, 0, 1024, 1024); // Define the position and size of image bounds.
         [SerializeField] bool isPlayTest = true;
         [SerializeField] private GameObject whenUploadIcons;
@@ -157,13 +161,89 @@ namespace DefaultNamespace
             // Centering the image
             rawImageDisplay.rectTransform.anchoredPosition = Vector2.zero;
             imageBorderDisplay.rectTransform.anchoredPosition = Vector2.zero;
-
+            
+          
             imageBorderDisplay.color = new Color(1, 1, 1, 1);
             rawImageDisplay.color = new Color(1, 1, 1, 1);
+            ResizeAndDisplayImage(capturedImage);
 
             whenNoUploadIcons.SetActive(true);
             whenUploadIcons.SetActive(false);
         }
+        
+       private void ResizeAndDisplayImage(Texture2D capturedImage)
+{
+    
+    // get the image's original dimensions
+    float originalWidth = capturedImage.width;
+    float originalHeight = capturedImage.height;
+
+    // calculate the aspect ratio
+    float originalAspectRatio = originalWidth / originalHeight;
+
+    float newWidth = 0, newHeight = 0;
+
+    // if the image is horizontal
+    if (originalWidth > originalHeight)
+    {
+        // if the original width is greater than max horizontal width
+        // set newWidth to max width and scale height accordingly
+        if (originalWidth > horizontalWidth)
+        {
+            newWidth = horizontalWidth;
+            newHeight = (int)(newWidth / originalAspectRatio);
+        }
+        else
+        {
+            newWidth = (int)originalWidth;
+            newHeight = (int)originalHeight;
+        }
+
+        // Reset the position for horizontal image
+        rawImageDisplay.rectTransform.anchoredPosition = new Vector2(rawImageDisplay.rectTransform.anchoredPosition.x, 0);
+    }
+    // else if the image is vertical
+    else if (originalWidth < originalHeight)
+    {
+        // if the original height is greater than max vertical height
+        // set newHeight to max height and scale width accordingly
+        if (originalHeight > verticalHeight)
+        {
+            newHeight = verticalHeight;
+            newWidth = (int)(newHeight * originalAspectRatio);
+        }
+        else
+        {
+            newWidth = (int)originalWidth;
+            newHeight = (int)originalHeight;
+        }
+
+        // Adjust the position for vertical image
+        rawImageDisplay.rectTransform.anchoredPosition = new Vector2(rawImageDisplay.rectTransform.anchoredPosition.x, -60);
+    }
+
+    // Set the new dimensions:
+    rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
+    rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
+
+    // Display the image after resizing
+    rawImageDisplay.texture = capturedImage;
+}
+        private void ResizeImage(Texture2D source, int targetWidth, int targetHeight)
+        {
+            RenderTexture rt = new RenderTexture(targetWidth, targetHeight, 24);
+            RenderTexture.active = rt;
+
+            Graphics.Blit(source, rt);
+
+            Texture2D result = new Texture2D(targetWidth, targetHeight);
+            result.ReadPixels(new Rect(0, 0, targetWidth, targetHeight), 0, 0);
+            result.Apply();
+
+            RenderTexture.active = null;
+            rawImageDisplay.texture = result;
+        }
+
         private Texture2D CropTexture(Texture2D source, int xOffset, int yOffset, int width, int height)
         {
             // Check if the cropping area exceeds the source texture's dimensions

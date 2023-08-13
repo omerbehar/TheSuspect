@@ -684,6 +684,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rawImageDisplay: {fileID: 200836298}
   imageBorderDisplay: {fileID: 525770016}
+  horizontalWidth: 327
+  horizontalHeight: 168
+  verticalWidth: 168
+  verticalHeight: 327
   imageBounds:
     serializedVersion: 2
     x: 0
