@@ -18,13 +18,13 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroScene2.unity
     guid: 4aeafde51f9082949aff8c8fab948fd7
   - enabled: 1
-    path: Assets/Scenes/IntroScene3.unity
+    path: Assets/Scenes/Screen3.unity
     guid: d2643d8ca33743e4984fe1fa607924a8
   - enabled: 1
-    path: Assets/Scenes/IntroScene4.unity
+    path: Assets/Scenes/Screen4.unity
     guid: 414d33eb175af034694f28415de22bd0
-  - enabled: 0
-    path: Assets/Scenes/questionsScene.unity
-    guid: 3fc8acdd13e6c734bafef6554d6fdbcd
+  - enabled: 1
+    path: Assets/Scenes/Screen7.unity
+    guid: 4bc0458140fbdea498815a0c834fe35f
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: f5e939291adbcf249a56f250fcdd5c77, type: 2}

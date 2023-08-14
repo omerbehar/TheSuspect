@@ -1,3 +1,5 @@
+using System;
+using DataLayer;
 using DefaultNamespace;
 using Screens.Interfaces;
 using UnityEngine;
@@ -11,8 +13,15 @@ namespace Screens.Bases
         
         [field: SerializeField] public Button BackButton { get; set; }
         [field: SerializeField] public Button NextButton { get; set; }
+        protected int answersCount;
 
-        protected void Start()
+        private void Awake()
+        { 
+            if (!Data.SelectedAnswersData.ContainsKey(SceneManager.GetActiveScene().name))
+                Data.SelectedAnswersData.Add(SceneManager.GetActiveScene().name, new bool[answersCount]);
+        }
+
+        protected virtual void Start()
         {
             InitListeners();
         }
@@ -33,6 +42,7 @@ namespace Screens.Bases
             }
         }
 
+
         private void OnAssigmentCompleted()
         {
             NextButton.interactable = true;
@@ -43,7 +53,7 @@ namespace Screens.Bases
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
 
-        public void OnNextButtonClicked()
+        public virtual void OnNextButtonClicked()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
