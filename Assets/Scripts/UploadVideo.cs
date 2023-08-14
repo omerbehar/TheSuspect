@@ -23,6 +23,12 @@ public class UploadVideo : MonoBehaviour
         deleteButton.onClick.AddListener(OnDeleteButtonClick); // add this line
         deleteButton.gameObject.SetActive(false); // Initially the delete button is hidden
     }
+    private IEnumerator Start()
+    {
+        deleteButton.interactable = false;
+        yield return StartCoroutine(StopAndClearVideo());
+        deleteButton.interactable = true;
+    }
     
     // Handles the delete button click
     private void OnDeleteButtonClick()
