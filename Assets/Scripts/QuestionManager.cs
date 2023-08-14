@@ -9,7 +9,7 @@ public class QuestionManager : MonoBehaviour
     public GameObject fillInTheBlankInputField;
     public GameObject clueButton;
 
-    // We're now using an array of ScriptableObjects
+    // Using an array of Question ScriptableObjects
     public Question[] questions;
     private int currentQuestionIndex = 0;
 
@@ -22,14 +22,13 @@ public class QuestionManager : MonoBehaviour
     {
         questionText.text = question.questionText;
 
-        foreach(var button in answerButtons)
+        foreach (var button in answerButtons)
         {
             button.SetActive(false);
         }
-
         fillInTheBlankInputField.SetActive(false);
-        
-        switch(question.type)
+
+        switch (question.type)
         {
             case QuestionType.MultipleChoice:
                 for (int i = 0; i < question.answers.Length; i++)
@@ -42,20 +41,42 @@ public class QuestionManager : MonoBehaviour
                 fillInTheBlankInputField.SetActive(true);
                 break;
             case QuestionType.Sentence:
-                // Handle Sentence Type Question
+                // Handle Sentance Type Question
                 break;
         }
     }
 
-    public void OnContinueButtonPressed() 
+    public void CheckAnswer(int answerIndex)
     {
-        // Go to the next question if available
+        Question currentQuestion = questions[currentQuestionIndex];
+
+        if (answerIndex == currentQuestion.correctAnswerIndex)
+        {
+            Debug.Log("Correct answer!");
+        }
+        else
+        {
+            Debug.Log("Incorrect answer.");
+        }
+
+        currentQuestionIndex++;
+
+        if (currentQuestionIndex < questions.Length)
+        {
+            DisplayQuestion(questions[currentQuestionIndex]);
+        }
+        else
+        {
+            Debug.Log("Quiz completed!");
+        }
+    }
+
+    public void OnContinueButtonPressed()
+    {
         if (currentQuestionIndex < questions.Length - 1)
         {
             currentQuestionIndex += 1;
             DisplayQuestion(questions[currentQuestionIndex]);
         }
     }
-
-    // Add logic to handle user answers and checking against correct answers
 }
