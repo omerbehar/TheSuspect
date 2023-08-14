@@ -14,7 +14,7 @@ namespace Screens
         [field: SerializeField] public Button HintButton { get; set; }
         [field: SerializeField] public GameObject HintPopup { get; set; }
         [field: SerializeField] public Button HintPopupCloseButton { get; set; }
-        public GameObject CorrectAnswer { get; set; }
+        [field: SerializeField] public GameObject CorrectAnswer { get; set; }
         public int PotentialScore { get; set; }
         private Toggle[] toggles;
 

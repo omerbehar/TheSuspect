@@ -1,7 +1,10 @@
 using System;
 using Screens.Bases;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using ColorUtility = UnityEngine.ColorUtility;
 
 namespace Screens
 {
@@ -10,6 +13,8 @@ namespace Screens
         private TMP_InputField[] inputFields = new TMP_InputField[3];
         [SerializeField] private int keycode;
         private int[] keycodes = new int[3];
+        [SerializeField] private GameObject failedGO;
+
         protected override void Start()
         {
             Init();
@@ -27,38 +32,74 @@ namespace Screens
             {
                 inputFields[i].characterLimit = 1;
                 int i1 = i;
-                inputFields[i].onValueChanged.AddListener(delegate { MoveToNextField(i1); });
+                inputFields[i].onValueChanged.AddListener(delegate(string text) { OnFieldValueChanged(i1, text); });
+                inputFields[i].onEndEdit.AddListener(delegate(string text) { OnFieldValueChanged(i1, text); });
+
             }
         }
 
-        private void MoveToNextField(int i)
+        private void OnFieldValueChanged(int i, string text)
         {
-            if (i < inputFields.Length - 1)
+            if(string.IsNullOrEmpty(text) && i > 0)
+            {
+                inputFields[i - 1].Select();
+            }
+            else if (i < inputFields.Length - 1 && text != "")
             {
                 inputFields[i + 1].Select();
             }
-            
         }
+        
 
         private void Update()
         {
-            GetKeycode();
+            IsCodeCorrect();
         }
 
-        private void GetKeycode()
+        private void IsCodeCorrect()
         {
-            //if return is pressed in an empty field move to previous field
-            for (int i = inputFields.Length - 1; i >= 0; i--)
+            //check if all fields are filled
+            foreach (TMP_InputField inputField in inputFields)
             {
-                if (inputFields[i].isFocused && inputFields[i].text == "" && Input.GetKeyDown(KeyCode.Backspace))
+                if (inputField.text == "")
                 {
-                    if (i > 0)
-                    {
-                        inputFields[i - 1].Select();
-                        inputFields[i - 1].text = "";
-                    }
-                    break;
+                    DeactivateFailedMessage();
+                    return;
                 }
+            }
+
+            bool isCodeCorrect = true;
+            for (int i = 0; i < inputFields.Length; i++)
+            {
+                if (inputFields[i].text != keycodes[i].ToString())
+                {
+                    isCodeCorrect = false;
+                }
+            }
+            if (isCodeCorrect)
+                EventManager.AssignmentCompleted.Invoke();
+            else
+                ActivateFailedMessage();
+        }
+
+        private void DeactivateFailedMessage()
+        {
+            failedGO.SetActive(false);
+            //change color of input fields
+            foreach (TMP_InputField inputField in inputFields)
+            {
+                inputField.image.color = Color.white;
+            }}
+
+        private void ActivateFailedMessage()
+        {
+            failedGO.SetActive(true);
+            //change color of input fields
+            foreach (TMP_InputField inputField in inputFields)
+            {
+                bool parseSuccess = ColorUtility.TryParseHtmlString("#FF4050", out Color newCol);
+                Debug.Log(parseSuccess + " " + newCol);
+                inputField.image.color = newCol;
             }
         }
     }
