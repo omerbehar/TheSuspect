@@ -1061,8 +1061,7 @@ GameObject:
   - component: {fileID: 284062684}
   - component: {fileID: 284062685}
   m_Layer: 0
-  m_Name: "\u05D6\u05DE\u05DF \u05E0\u05D5\u05EA\u05E8 \u05DC\u05E0\u05E7\u05D5\u05D3
-    \u05DE\u05D9\u05E8\u05D1\u05D9 02-00"
+  m_Name: timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1222,7 +1221,7 @@ GameObject:
   - component: {fileID: 346045983}
   - component: {fileID: 346045984}
   m_Layer: 0
-  m_Name: "\u05D9\u05E6\u05D9\u05D0\u05D4"
+  m_Name: exit button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1284,10 +1283,7 @@ GameObject:
   - component: {fileID: 353556452}
   - component: {fileID: 353556451}
   m_Layer: 0
-  m_Name: "\u05D4\u05D3\u05D9\u05D5\u05E7 \u05D1\u05E1\u05E8\u05D8\u05D5\u05DF \u05E9\u05EA\u05E2\u05DC\u05D5
-    \u05D9\u05EA\u05DF \u05DC\u05E0\u05D5 \u05DE\u05D9\u05D3\u05E2 \u05DB\u05DE\u05D4
-    \u05DE\u05D4\u05E8 \u05D0\u05EA\u05DD \u05E7\u05D5\u05DC\u05D8\u05D9\u05DD \u05D3\u05D1\u05E8\u05D9\u05DD
-    \u05D7\u05D3\u05E9\u05D9\u05DD."
+  m_Name: Explanation text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1618,7 +1614,7 @@ GameObject:
   - component: {fileID: 517850195}
   - component: {fileID: 517850194}
   m_Layer: 0
-  m_Name: "\u05DE\u05D7\u05E7 \u05E1\u05E8\u05D8\u05D5\u05DF"
+  m_Name: delet text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2862,7 +2858,7 @@ GameObject:
   - component: {fileID: 853971033}
   - component: {fileID: 853971032}
   m_Layer: 0
-  m_Name: "\u05D7\u05D7\u05D2\u05D9\u05D1\u05D2\u05DA"
+  m_Name: continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3039,7 +3035,7 @@ GameObject:
   - component: {fileID: 883530954}
   - component: {fileID: 883530953}
   m_Layer: 0
-  m_Name: "\u05E0\u05D9\u05E7\u05D5\u05D3 \u05DE\u05D9\u05E8\u05D1\u05D9 - 5 \u05E0\u05E7\u2019"
+  m_Name: points text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3292,7 +3288,7 @@ GameObject:
   - component: {fileID: 943112994}
   - component: {fileID: 943112995}
   m_Layer: 0
-  m_Name: "\u05DE\u05D7\u05E7 \u05EA\u05DE\u05D5\u05E0\u05D4"
+  m_Name: Delet button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3354,8 +3350,7 @@ GameObject:
   - component: {fileID: 944943187}
   - component: {fileID: 944943186}
   m_Layer: 0
-  m_Name: "\u05D6\u05DE\u05DF \u05E0\u05D5\u05EA\u05E8 \u05DC\u05E0\u05E7\u05D5\u05D3
-    \u05DE\u05D9\u05E8\u05D1\u05D9 03-00"
+  m_Name: timer text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3934,7 +3929,7 @@ GameObject:
   - component: {fileID: 1361039665}
   - component: {fileID: 1361039664}
   m_Layer: 0
-  m_Name: "\u05EA\u05DE\u05D5\u05E0\u05D4 \u05E1\u05D5\u05DB\u05E0\u05EA"
+  m_Name: angent image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4364,7 +4359,7 @@ GameObject:
   - component: {fileID: 1587588371}
   - component: {fileID: 1587588372}
   m_Layer: 0
-  m_Name: "\u05E0\u05D9\u05E7\u05D5\u05D3"
+  m_Name: Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4902,7 +4897,7 @@ GameObject:
   - component: {fileID: 1792068950}
   - component: {fileID: 1792068951}
   m_Layer: 0
-  m_Name: "\u05D7\u05D6\u05E8\u05D4 \u05D5\u05E0\u05D9\u05E7\u05D5\u05D3"
+  m_Name: back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4988,8 +4983,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.5, y: 0.5}
-  m_SizeDelta: {x: 35, y: 11}
+  m_AnchoredPosition: {x: -19.3182, y: 0.5}
+  m_SizeDelta: {x: 40.6364, y: 11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1821886705
 MonoBehaviour:
@@ -5012,7 +5007,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\u05D7\u05D6\u05E8\u05D4"
-  m_isRightToLeft: 0
+  m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: a3c111fd2a66c4a41803eafabe978884, type: 2}
   m_sharedMaterial: {fileID: 3928367029427521708, guid: a3c111fd2a66c4a41803eafabe978884, type: 2}
   m_fontSharedMaterials: []

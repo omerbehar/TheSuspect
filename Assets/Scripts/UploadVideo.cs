@@ -11,6 +11,7 @@ public class UploadVideo : MonoBehaviour
     [SerializeField] private bool isPlayTest = true;
     [SerializeField] private string storedVideoName = "myVideo.mp4";
     [SerializeField] private Button uploadButton;
+    [SerializeField] private Button deleteButton; // add this line
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private RawImage rawImageDisplay;
 
@@ -18,6 +19,14 @@ public class UploadVideo : MonoBehaviour
     {
         rawImageDisplay.gameObject.SetActive(false); // Make the RawImage not visible at the start
         uploadButton.onClick.AddListener(OnButtonClick);
+        
+        deleteButton.onClick.AddListener(OnDeleteButtonClick); // add this line
+        deleteButton.gameObject.SetActive(false); // Initially the delete button is hidden
+    }
+    
+    private void OnDeleteButtonClick()
+    {
+        CleanUpVideo();
     }
 
     public void OnButtonClick()
@@ -91,7 +100,8 @@ public class UploadVideo : MonoBehaviour
         videoPlayer.url = videoUrl;
         videoPlayer.Play();
 
-        rawImageDisplay.gameObject.SetActive(true); // Make the RawImage visible when video is ready to play
+        rawImageDisplay.gameObject.SetActive(true);
+        deleteButton.gameObject.SetActive(true); // set delete button active when video is loaded// Make the RawImage visible when video is ready to play
     }
 
     public void CleanUpVideo()
@@ -116,7 +126,8 @@ public class UploadVideo : MonoBehaviour
        
         videoPlayer.clip = null;
 
-        rawImageDisplay.gameObject.SetActive(false); // Make the RawImage not visible when older video is removed
+        rawImageDisplay.gameObject.SetActive(false); 
+        deleteButton.gameObject.SetActive(false); // set delete button inactive after cleaning up// Make the RawImage not visible when older video is removed
     }
     
     private void RemoveVideo()
