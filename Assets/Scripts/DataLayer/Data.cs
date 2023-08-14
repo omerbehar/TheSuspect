@@ -1,17 +1,22 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DataLayer
 {
     [Serializable]
     public static class Data
     {
-        private const int MAX_PLAYERS = 8;
+        public const int MAX_PLAYERS = 5;
         public static string TeamName { get; set; }
         public static string InstructorName { get; set; }
         public static string[] PlayerNames { get; set; }
         public static Texture2D TeamPhoto { get; set; } = new(1, 1, TextureFormat.ARGB32, false);
-        
+        public static Dictionary<string, bool[]> SelectedAnswersData { get; set; } = new();
+        public static int Score { get; set; }
+
         public static void ResetData()
         {
             TeamName = "";
@@ -26,6 +31,11 @@ namespace DataLayer
             PlayerPrefs.SetString("InstructorName", InstructorName);
             PlayerPrefs.SetString("PlayerNames", string.Join(",", PlayerNames));
             PlayerPrefs.SetString("TeamPhoto", Convert.ToBase64String(TeamPhoto.EncodeToPNG()));
+            foreach (string key in SelectedAnswersData.Keys)
+            {
+                PlayerPrefs.SetString(key, string.Join(",", SelectedAnswersData[key]));
+            }
+            PlayerPrefs.SetInt("Score", Score);
         }
         //load data from player prefs
         public static void LoadData()
@@ -34,6 +44,26 @@ namespace DataLayer
             InstructorName = PlayerPrefs.GetString("InstructorName");
             PlayerNames = PlayerPrefs.GetString("PlayerNames").Split(',');
             TeamPhoto.LoadImage(LoadImage());
+            foreach (string key in SelectedAnswersData.Keys.ToList())
+            {
+                if (SelectedAnswersData[key].Length != 0 && PlayerPrefs.GetString(key).Split(',').Length != 0)
+                {
+                    if (PlayerPrefs.GetString(key).Split(',')[0] != "")
+                    {
+                        //test if parsable
+                        try
+                        {
+                            SelectedAnswersData[key] = Array.ConvertAll(PlayerPrefs.GetString(key).Split(','), bool.Parse);
+                        }
+                        catch (Exception exception)
+                        {
+                            Debug.LogWarning("Could not parse bool array from PlayerPrefs: " +  exception.Message);
+                        }
+                        return;
+                    }
+                }
+            }
+            Score = PlayerPrefs.GetInt("Score");
         }
 
         private static byte[] LoadImage()
