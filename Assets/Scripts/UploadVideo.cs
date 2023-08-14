@@ -24,39 +24,57 @@ public class UploadVideo : MonoBehaviour
         deleteButton.gameObject.SetActive(false); // Initially the delete button is hidden
     }
     
+    // Handles the delete button click
     private void OnDeleteButtonClick()
     {
-        CleanUpVideo();
+        StartCoroutine(OnDeleteButtonClickRoutine());
     }
+    private IEnumerator OnDeleteButtonClickRoutine()
+    {
+        yield return StartCoroutine(StopAndClearVideo());
+        OnButtonClick();
+    }
+
+    // Cleans up the video, and deactivates the deletion button
 
     public void OnButtonClick()
     {
-        if(isPlayTest)
+        StartCoroutine(OnClickRoutine());
+    }
+
+    private IEnumerator OnClickRoutine()
+    {
+        yield return StartCoroutine(StopAndClearVideo());
+
+        if (isPlayTest)
         {
-            StopAndClearVideo();
             PickVideoDesktop();
         }
         else
         {
-            StopAndClearVideo();
             PickVideoMobile();
         }
     }
 
-    private void StopAndClearVideo()
+    private IEnumerator StopAndClearVideo()
     {
         if(videoPlayer.isPlaying)
         {
             videoPlayer.Stop();
         }
-
+    
+        videoPlayer.clip = null;
+    
         string oldVideoPath = Path.Combine(Application.persistentDataPath, storedVideoName);
-        if(File.Exists(oldVideoPath))
+        if (File.Exists(oldVideoPath))
         {
             File.Delete(oldVideoPath);
+            while (File.Exists(oldVideoPath))
+            {
+                // the deletion hasn't hit the disk yet, retry next frame
+                yield return null;
+            }
         }
-
-        videoPlayer.clip = null;
     }
 
     public void PickVideoDesktop()
@@ -106,16 +124,9 @@ public class UploadVideo : MonoBehaviour
 
     public void CleanUpVideo()
     {
-        if(videoPlayer.isPlaying)
-        {
-            videoPlayer.Stop();
-        }
+        deleteButton.interactable = false; // Disable delete button during cleanup
 
-        string oldVideoPath = Path.Combine(Application.persistentDataPath, storedVideoName);
-        if (File.Exists(oldVideoPath))
-        {
-            File.Delete(oldVideoPath);
-        }
+        StartCoroutine(StopAndClearVideo());
 
         if (PlayerPrefs.HasKey("capturedVideo"))
         {
@@ -123,11 +134,9 @@ public class UploadVideo : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-       
-        videoPlayer.clip = null;
+        rawImageDisplay.gameObject.SetActive(false); // Make the RawImage not visible when older video is removed
 
-        rawImageDisplay.gameObject.SetActive(false); 
-        deleteButton.gameObject.SetActive(false); // set delete button inactive after cleaning up// Make the RawImage not visible when older video is removed
+        deleteButton.interactable = true;  // Re-enable delete button after cleanup
     }
     
     private void RemoveVideo()
@@ -145,14 +154,18 @@ public class UploadVideo : MonoBehaviour
 
     private void LoadVideo()
     {
-        string fileName = PlayerPrefs.GetString("capturedVideo");
+        string fileName = Path.Combine(Application.persistentDataPath, PlayerPrefs.GetString("capturedVideo"));
         if (File.Exists(fileName))
         {
             PlayVideo("file://" + fileName);
         }
-        else
+    }
+    
+    private IEnumerator WaitForFileToDisappear(string path)
+    {
+        while (File.Exists(path))
         {
-            rawImageDisplay.gameObject.SetActive(false); // Make the RawImage not visible if fileName does not exist
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }
