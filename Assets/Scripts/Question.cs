@@ -8,7 +8,7 @@ public class Question : ScriptableObject, IQuestion
 {
     public string questionText;
     public string[] answers;
-    public int correctAnswerIndex;
+    public int[] correctAnswerIndices;    // changed this from 'correctAnswerIndex' to 'correctAnswerIndices'
     public string clue;
     public QuestionType type;
 
@@ -22,6 +22,11 @@ public class Question : ScriptableObject, IQuestion
     }
 
     public bool CheckAnswer(int answerIndex)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public bool CheckAnswer(int[] answerIndices)    // changed this to accept an array of answer indices
     {
         throw new System.NotImplementedException();
     }

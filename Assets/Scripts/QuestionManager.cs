@@ -1,4 +1,5 @@
-﻿using DefaultNamespace;
+﻿using System.Linq;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,6 +38,13 @@ public class QuestionManager : MonoBehaviour
                     answerButtons[i].GetComponentInChildren<Text>().text = question.answers[i];
                 }
                 break;
+            
+            case QuestionType.SingleChoice:
+                // Assuming here that the first button is used for single choice answer
+                answerButtons[0].SetActive(true);
+                answerButtons[0].GetComponentInChildren<Text>().text = question.answers[0];
+                break;
+            
             case QuestionType.FillInTheBlank:
                 fillInTheBlankInputField.SetActive(true);
                 break;
@@ -50,7 +58,7 @@ public class QuestionManager : MonoBehaviour
     {
         Question currentQuestion = questions[currentQuestionIndex];
 
-        if (answerIndex == currentQuestion.correctAnswerIndex)
+        if (currentQuestion.correctAnswerIndices.Contains(answerIndex))
         {
             Debug.Log("Correct answer!");
         }
@@ -70,7 +78,6 @@ public class QuestionManager : MonoBehaviour
             Debug.Log("Quiz completed!");
         }
     }
-
     public void OnContinueButtonPressed()
     {
         if (currentQuestionIndex < questions.Length - 1)
