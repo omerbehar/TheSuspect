@@ -1,5 +1,4 @@
 using System;
-using DefaultNamespace;
 using Screens.Interfaces;
 using TMPro;
 using UnityEngine;
@@ -14,14 +13,30 @@ namespace Screens.Bases
         [field: SerializeField] public float TimerDuration { get; set; }
         public float ScreenTime { get; set; }
         public bool IsTimerRunning { get; set; }
+        public bool[] SelectedAnswers {get; set;}
+        private bool scoreReduction;
+        public bool AnswerLocked { get; set; }    
 
-        private void Start()
+        protected override void Start()
         {
+            Init();
+        }
+
+        private void Init()
+        {
+            base.Start();
             InitTimer();
+            InitAnswerData();
+        }
+
+        private void InitAnswerData()
+        {
+            SelectedAnswers = new bool[answersCount];
         }
 
         private void InitTimer()
         {
+            EventManager.TimerFinished.AddListener(OnTimerFinished);
             if (TimerSlider == null)
                 Debug.LogWarning("TimerSlider is null");
             if (TimeText == null)
@@ -34,7 +49,7 @@ namespace Screens.Bases
             StartTimer();
         }
 
-        private void Update()
+        public void Update()
         {
             UpdateTimer();
         }
@@ -45,12 +60,12 @@ namespace Screens.Bases
             {
                 if (ScreenTime >= TimerDuration)
                 {
-                    OnTimerFinished();
+                    EventManager.TimerFinished.Invoke();
                 }
                 else
                 {
                     ScreenTime += Time.deltaTime;
-                    TimerSlider.value = ScreenTime;
+                    TimerSlider.value = TimerDuration - ScreenTime;
                     TimeText.text = TimeSpan.FromSeconds(TimerDuration - ScreenTime).ToString(@"mm\:ss");
                 }
             }
@@ -73,7 +88,9 @@ namespace Screens.Bases
 
         public void OnTimerFinished()
         {
-            EventManager.TimerFinished.Invoke();
+            NextButton.interactable = true;
+            scoreReduction = true;
         }
+
     }
 }

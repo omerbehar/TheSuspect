@@ -11,14 +11,14 @@ namespace Screens
 {
     public class Screen3 : ScreenBase, ISaveData, ILoadData
     {
-        const int MAX_PLAYERS = 8;
         const int INITIAL_INPUT_FIELDS = 3;
         private const int MINIMUM_NAMES_ALLOWED = 2;
+        [SerializeField] private GameObject addInputFieldGO;
         [SerializeField] private Button addNameInputFieldButton;
         [SerializeField] private List<TMP_InputField> nameInputFields = new();
         [SerializeField] private Transform inputFieldsLayout;
         [SerializeField] private GameObject inputFieldPrefab;
-        [SerializeField] private string[] names = new string[MAX_PLAYERS];
+        [SerializeField] private string[] names = new string[Data.MAX_PLAYERS];
         private int inputFieldsCount = INITIAL_INPUT_FIELDS;
         [SerializeField] private TMP_InputField instructorNameInputField;
         [SerializeField] private string instructorName;
@@ -39,9 +39,9 @@ namespace Screens
             nameInputFields.Add(inputFieldGameObject.GetComponent<TMP_InputField>());
             LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
             inputFieldsCount++;
-            if (inputFieldsCount == MAX_PLAYERS)
+            if (inputFieldsCount == Data.MAX_PLAYERS)
             {
-                addNameInputFieldButton.gameObject.SetActive(false);
+                addInputFieldGO.SetActive(false);
             }
         }
 
