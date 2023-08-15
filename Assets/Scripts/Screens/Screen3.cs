@@ -18,7 +18,7 @@ namespace Screens
         [SerializeField] private List<TMP_InputField> nameInputFields = new();
         [SerializeField] private Transform inputFieldsLayout;
         [SerializeField] private GameObject inputFieldPrefab;
-        [SerializeField] private string[] names = new string[Data.MAX_PLAYERS];
+        [SerializeField] private string[] names;
         private int inputFieldsCount = INITIAL_INPUT_FIELDS;
         [SerializeField] private TMP_InputField instructorNameInputField;
         [SerializeField] private string instructorName;
@@ -29,6 +29,7 @@ namespace Screens
         {
             base.Start();
             LoadData();
+            names = new string[Data.MAX_PLAYERS];
             addNameInputFieldButton.onClick.AddListener(AddNameInputField);
             LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
         }
@@ -55,6 +56,7 @@ namespace Screens
             namesAddedCount = 0;
             for (int i = 0; i < nameInputFields.Count; i++)
             {
+                Debug.Log($"names count {names.Length} input fields count {nameInputFields.Count}");
                 if (nameInputFields[i] != null)
                 {
                     names[i] = nameInputFields[i].text;
