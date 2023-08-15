@@ -26,7 +26,8 @@ namespace DefaultNamespace
 
 #if PLAYTEST
             if(isPlayTest)
-                 PickImageAndDisplayFromExplorer();
+                Debug.Log("Playtest mode is on.");
+                 //PickImageAndDisplayFromExplorer();
             else
                  LoadImage();
 #else

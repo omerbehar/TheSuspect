@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using SFB;
 using UnityEngine.Video;
-using NativeGalleryNamespace;
 
 public class UploadVideo : MonoBehaviour
 {
