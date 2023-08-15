@@ -1,0 +1,30 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="Conteiner" style="flex-grow: 1; background-color: rgba(8, 46, 74, 0); justify-content: space-around; align-items: center; align-self: center; position: relative; height: 812px; flex-wrap: wrap; top: 1px; left: -2px; width: 378px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;">
+        <ui:VisualElement name="Top" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: 36px; align-self: center; flex-direction: column; justify-content: space-around; width: 327px; margin-top: 11px; align-items: center; flex-wrap: wrap; max-height: 50px; margin-bottom: 12px;">
+            <ui:VisualElement name="Progressbar" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Sprites/Screen%2005/progress%20bar%201020294821.png?fileID=2800000&amp;guid=bc3ed622fdbbb0e49ace8dee0510735e&amp;type=3#progress bar 1020294821&apos;); -unity-background-scale-mode: scale-to-fit; position: relative; height: 17px; width: 327px; left: auto; justify-content: flex-start; align-items: stretch; right: auto; align-self: auto; margin-top: 9px; max-height: 5px; flex-wrap: wrap;" />
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row-reverse; justify-content: center; width: 327px; height: 1px; max-height: 15px; margin-top: 12px;">
+                <ui:VisualElement name="Back" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row-reverse; justify-content: flex-start; align-self: flex-start; align-items: center; flex-wrap: wrap;">
+                    <ui:Button display-tooltip-when-elided="true" name="BackButton" style="background-image: url(&apos;project://database/Assets/Sprites/Screen%2005/Icons%20-%2024px%20-%20arrow-right%201%201638174534.png?fileID=2800000&amp;guid=b47fbe4690d48c448951431dec8805e1&amp;type=3#Icons - 24px - arrow-right 1 1638174534&apos;); background-color: rgba(255, 255, 255, 0); width: 16px; height: 16px; -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="BackText" style="color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Points" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row-reverse; width: 0; height: 26.3px; justify-content: space-around; align-items: center; align-self: flex-start; flex-wrap: wrap;">
+                    <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="PointsText" style="color: rgb(255, 255, 255); flex-wrap: wrap;" />
+                    <ui:VisualElement name="PoointsImage" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Sprites/Screen%2005/Group%2021%20-1584051990.png?fileID=2800000&amp;guid=52efb30574548234e935b3971303e626&amp;type=3#Group 21 -1584051990&apos;); -unity-background-scale-mode: scale-to-fit; width: 28px; height: 26.3px; transform-origin: center; translate: -18px 0; flex-wrap: wrap;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Title" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row-reverse; justify-content: flex-start; align-self: flex-start; right: auto; margin-top: 36px; align-items: center; height: 1px; width: 354px; -unity-text-align: upper-left; transform-origin: center; translate: 0 0; max-height: 5%; flex-wrap: wrap;">
+            <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="AgentImage" style="color: rgb(255, 255, 255); background-image: url(&apos;project://database/Assets/Sprites/4/%D7%AA%D7%9E%D7%95%D7%A0%D7%94%20%D7%A1%D7%95%D7%9B%D7%A0%D7%AA%20-513653089.png?fileID=2800000&amp;guid=ee3bcf67f2c6b424bb22d77f18dedca8&amp;type=3#תמונה סוכנת -513653089&apos;); -unity-background-scale-mode: stretch-to-fill; width: 60px; height: 60px;" />
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" style="color: rgb(255, 255, 255); height: 31px; width: 39px; align-self: auto; align-items: center; justify-content: space-between;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Main" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around;">
+            <ui:ScrollView />
+        </ui:VisualElement>
+        <ui:VisualElement name="Buttom" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; width: 327px; padding-bottom: 25px; flex-direction: column-reverse; max-height: 20%;">
+            <ui:Button display-tooltip-when-elided="true" name="ContinueButton" style="background-color: rgba(255, 255, 255, 0); background-image: url(&apos;project://database/Assets/Sprites/Screen%2005/Rectangle%203463290%20-2065965159.png?fileID=2800000&amp;guid=a0815fbefbf5e1e4d91d011652d72a27&amp;type=3#Rectangle 3463290 -2065965159&apos;); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); -unity-background-image-tint-color: rgb(0, 181, 211); color: rgb(255, 255, 255); width: auto; -unity-text-align: middle-right; flex-direction: row-reverse; translate: 0 0; flex-shrink: 1;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" />
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Sprites/Onboarding/Icons%20-%2016px%20-%20arrow-left%201%202021681830.png?fileID=2800000&amp;guid=3336bfc09d83f5441ae5e86df87e646a&amp;type=3#Icons - 16px - arrow-left 1 2021681830&apos;); width: 30px; height: 30px; align-self: center; -unity-background-scale-mode: scale-to-fit;" />
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
