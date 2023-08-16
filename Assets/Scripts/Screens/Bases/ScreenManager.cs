@@ -5,220 +5,87 @@ using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Screens.Bases
+public class ScreenManager : MonoBehaviour
 {
-    public class ScreenManager : MonoBehaviour
+    [SerializeField]
+    private List<Question> questions = new List<Question>();
+    private int currentQuestionIndex = 0;
+
+    private ListView answerListView;
+
+    private void Start()
     {
-        public Question[] questions;
-        private int currentQuestionIndex = 0;
+        InitializeListView();
+        DisplayCurrentQuestion();
+    }
 
-        private Label questionText;
-        private VisualElement answersContainer;
-        private TextField fillInTheBlankInputField;
-        private Button continueButton;
-
-        private void Awake()
+    private void Update()
+    {
+        // If some condition met (e.g., user has selected an answer), move to next question
+        if(CurrentQuestionIsAnswered())
         {
-            var root = FindObjectOfType<UIDocument>().rootVisualElement;
-
-            questionText = root.Q<Label>("questionText");
-            answersContainer = root.Q<VisualElement>("answersContainer");
-            fillInTheBlankInputField = root.Q<TextField>("fillInTheBlankInputField");
-            continueButton = root.Q<Button>("continueButton");
-
-            continueButton.clicked += OnContinueButtonPressed;
-
-            DisplayQuestion(questions[currentQuestionIndex]);
+            currentQuestionIndex++;
+            if(currentQuestionIndex >= questions.Count)
+                currentQuestionIndex = 0; // Loop back to the first question
+                
+            DisplayCurrentQuestion();
         }
+    }
 
-        public void DisplayQuestion(Question question)
+    private void InitializeListView()
+    {
+        var root = FindObjectOfType<UIDocument>().rootVisualElement;
+        
+        answerListView = new ListView();
+        answerListView.style.flexGrow = 1;
+        
+        root.Q<VisualElement>("Main").Add(answerListView);
+    }
+
+    private void DisplayCurrentQuestion()
+    {
+        var root = FindObjectOfType<UIDocument>().rootVisualElement;
+        var questionLabel = root.Q<Label>("QuestionLabel");
+        questionLabel.text = questions[currentQuestionIndex].QuestionText;
+
+        answerListView.itemsSource = questions[currentQuestionIndex].GetAnswerOptions();
+        answerListView.makeItem = () => new Label();
+        answerListView.bindItem = (e, i) => ((Label) e).text = questions[currentQuestionIndex].GetAnswerOptions()[i];
+    }
+
+    private bool CurrentQuestionIsAnswered()
+    {
+        Question currentQuestion = questions[currentQuestionIndex];
+
+        switch (currentQuestion.Type)
         {
-            questionText.text = question.questionText;
+            case QuestionType.SingleChoice:
+                RadioButton radioButton = answerListView.Q<RadioButton>();
+                // If RadioButton exists and is selected
+                if (radioButton != null && radioButton.value) 
+                {
+                    return true;
+                }
+                break;
 
-            // Clear previous answers
-            answersContainer.Clear();
-
-            switch (question.type)
-            {
-                case QuestionType.MultipleChoice:
-                    for (int i = 0; i < question.answers.Length; i++)
+            case QuestionType.MultipleChoice:
+                foreach (Toggle checkbox in answerListView.Children().OfType<Toggle>())
+                {
+                    // If any Checkbox (Toggle) is checked
+                    if (checkbox.value) 
                     {
-                        var answerToggle = new Toggle { text = question.answers[i] };
-                        answersContainer.Add(answerToggle);
+                        return true;
                     }
-                    break;
-            
-                case QuestionType.SingleChoice:
-                    for (int i = 0; i < question.answers.Length; i++)
-                    {
-                        var radioButton = new RadioButton { text = question.answers[i] };
-                        answersContainer.Add(radioButton);
-                    }
-                    break;
-            
-                case QuestionType.FillInTheBlank:
-                    fillInTheBlankInputField.visible = true;
-                    break;
-            
-                case QuestionType.Sentence:
-                    // Handle Sentance Type Question
-                    break;
-                default:
-                    throw new System.NotSupportedException($"QuestionType {question.type} is not supported.");
-            }
-        }
-        public void CheckAnswer()
-        {
-            Question currentQuestion = questions[currentQuestionIndex];
-            bool isCorrect = false;
+                }
+                break;
 
-            switch (currentQuestion.Type)
-            {
-                case QuestionType.MultipleChoice:
-                    int[] selectedAnswerIndices = GetSelectedAnswerIndices();
-                    isCorrect = IsAnswerCorrect(selectedAnswerIndices, currentQuestion.correctAnswerIndices);
-                    break;
+            // Handle other question types as necessary
 
-                case QuestionType.SingleChoice:
-                    int singleSelectedIndex = GetSelectedAnswerIndex(); // Assuming GetSelectedAnswerIndex is designed for SingleChoice questions
-                    isCorrect = IsAnswerCorrect(new int[] { singleSelectedIndex }, currentQuestion.correctAnswerIndices);
-                    break;
-
-                case QuestionType.FillInTheBlank:
-                    string selectedAnswerText = GetSelectedAnswerText();
-                    isCorrect = selectedAnswerText.Equals(currentQuestion.answers[0]);
-                    break;
-            
-                case QuestionType.Sentence:
-                    // Handle Sentance Type Question
-                    break;
-
-                default:
-                    throw new System.NotImplementedException($"Question type {currentQuestion.type} not supported.");
-            }
-
-            if (isCorrect)
-            {
-                Debug.Log("Correct answer!");
-            }
-            else
-            {
-                Debug.Log("Wrong answer. Try again.");
-            }
-
-            // If there are more questions, then show the next question
-            if (currentQuestionIndex < questions.Length - 1)
-            {
-                currentQuestionIndex++;
-                DisplayQuestion(questions[currentQuestionIndex]);
-            }
-            else
-            {
-                Debug.Log("Quiz completed!");
-            }
+            default:
+                throw new NotImplementedException($"No answer check implemented for question type {currentQuestion.Type}");
         }
 
-        private static bool IsAnswerCorrect(int[] selectedAnswerIndices, int[] correctAnswerIndices)
-        {
-            return selectedAnswerIndices.Length == correctAnswerIndices.Length &&
-                   selectedAnswerIndices.OrderBy(i => i).SequenceEqual(correctAnswerIndices.OrderBy(i => i));
-        }
-        private int[] GetSelectedAnswerIndices()
-        {
-            var indices = new List<int>();
-
-            switch (questions[currentQuestionIndex].type)
-            {
-                case QuestionType.MultipleChoice:
-                    int i = 0;
-                    foreach (VisualElement child in answersContainer.Children())
-                    {
-                        if (child is Toggle toggle && toggle.value)
-                        {
-                            indices.Add(i);
-                        }
-                        i++;
-                    }
-                    break;
-
-                case QuestionType.SingleChoice:
-                    int j = 0;
-                    foreach (VisualElement child in answersContainer.Children())
-                    {
-                        if (child is Toggle toggle && toggle.value)
-                        {
-                            indices.Add(j);
-                            break;
-                        }
-                        j++;
-                    }
-                    break;
-
-                case QuestionType.FillInTheBlank:
-                    /* For fill in the blank questions, we might not be dealing with indices, but with
-                the actual content of an input field. This means we might need a separate method to
-                get the input field content and a different approach in the CheckAnswer method. */
-                    break;
-
-                case QuestionType.Sentence:
-                    // Similar situation as FillInTheBlank
-                    break;
-
-                default:
-                    throw new System.NotImplementedException($"Question type {questions[currentQuestionIndex].type} not supported.");
-            }
-
-            return indices.ToArray();
-        }
-        private int GetSelectedAnswerIndex()
-        {
-            switch (questions[currentQuestionIndex].type)
-            {
-                case QuestionType.MultipleChoice:
-                    var toggles = answersContainer.Children().OfType<Toggle>();
-                    // Correction starts here
-                    return toggles.Select((toggle, index) => new { Index = index, Toggle = toggle })
-                        .FirstOrDefault(pair => pair.Toggle.value)
-                        ?.Index ?? -1;
-                // Correction ends here
-
-                case QuestionType.SingleChoice:
-                    var radioButtons = answersContainer.Children().OfType<RadioButton>();
-                    // Correction starts here
-                    return radioButtons.Select((radioButton, index) => new { Index = index, Radio = radioButton })
-                        .FirstOrDefault(pair => pair.Radio.value)
-                        ?.Index ?? -1;
-                // Correction ends here
-
-                case QuestionType.FillInTheBlank:
-                    // For fill in the blank questions, you might need a different way to check answers
-                    // For example, you could use string comparison instead of indices
-                    break;
-
-                case QuestionType.Sentence:
-                    // Handle Sentance Type Question
-                    break;
-            }
-
-            return -1;
-        }
-    
-        private string GetSelectedAnswerText()
-        {
-            if (questions[currentQuestionIndex].type == QuestionType.FillInTheBlank)
-            {
-                // Assuming fillInTheBlankInputField is a TextField element in UI Toolkit
-                return fillInTheBlankInputField.value.Trim(); 
-            }
-            return string.Empty;
-        }
-        public void OnContinueButtonPressed()
-        {
-            if (currentQuestionIndex < questions.Length - 1)
-            {
-                currentQuestionIndex++;
-                DisplayQuestion(questions[currentQuestionIndex]);
-            }
-        }
+        // If no answer is selected
+        return false;
     }
 }

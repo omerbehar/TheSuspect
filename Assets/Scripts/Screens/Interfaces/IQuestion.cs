@@ -1,13 +1,18 @@
-﻿using DefaultNamespace;
+﻿using System.Collections.Generic;
+using DefaultNamespace;
+using UnityEngine.UIElements;
 
 namespace Screens.Interfaces
 {
-    public interface IQuestion
+    namespace Screens.Interfaces
     {
-        string QuestionText { get; set; }
-        QuestionType Type { get; set; }
-
-        void Display();
-        bool CheckAnswer(int answerIndex);
+        public interface IQuestion
+        {
+            string QuestionText { get; }
+            QuestionType Type { get; }
+            VisualTreeAsset GetLayoutAsset();
+            List<string> GetAnswerOptions();
+            bool CheckAnswer(int[] selectedAnswers);
+        }
     }
 }

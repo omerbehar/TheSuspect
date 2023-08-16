@@ -6,8 +6,6 @@ namespace DefaultNamespace
     {
         SingleChoice,
         MultipleChoice,
-        FillInTheBlank,
-        Sentence
-        // Add other types as necessary
+        // ... other types as necessary
     }
 }

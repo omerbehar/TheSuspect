@@ -1,32 +1,40 @@
-﻿using DefaultNamespace;
+﻿using System.Collections.Generic;
+using DefaultNamespace;
 using Screens.Interfaces;
+using Screens.Interfaces.Screens.Interfaces;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 // This attribute makes the Question appear in the Create Asset menu
 [CreateAssetMenu(fileName = "New Question", menuName = "Quiz/Question")]
-public class Question : ScriptableObject, IQuestion
+public abstract class Question : ScriptableObject, IQuestion
 {
-    public string questionText;
-    public string[] answers;
-    public int[] correctAnswerIndices;    // changed this from 'correctAnswerIndex' to 'correctAnswerIndices'
-    public string clue;
-    public QuestionType type;
+    [SerializeField] protected string questionText;
+    [SerializeField] protected VisualTreeAsset layoutAsset;
+    [SerializeField] protected List<string> answers = new List<string>(); 
+    [SerializeField] protected List<int> correctAnswerIndices = new List<int>(); // Made up correct answer indices 
+    
+    public string QuestionText { get => questionText; }
+    public QuestionType Type { get => QuestionType.MultipleChoice; } // Made up QuestionType
 
-    public string QuestionText { get => questionText; set => questionText = value; }
-    public QuestionType Type { get => type; set => type = value; }
-
-    // You will implement these methods according to the type of question.
-    public void Display()
+    public abstract VisualElement DisplayQuestionUI();
+    public List<string> GetAnswerOptions()
     {
-        throw new System.NotImplementedException();
+        return answers;
+    }
+    public VisualTreeAsset RadioButtonTemplate
+    {
+        get { return layoutAsset; }
     }
 
-    public bool CheckAnswer(int answerIndex)
+    public abstract bool CheckAnswer(int[] selectedAnswers);
+    public VisualTreeAsset GetLayoutAsset() 
     {
-        throw new System.NotImplementedException();
+        return layoutAsset;
     }
 
-    public bool CheckAnswer(int[] answerIndices)    // changed this to accept an array of answer indices
+
+    public string GetQuestionText()
     {
         throw new System.NotImplementedException();
     }
