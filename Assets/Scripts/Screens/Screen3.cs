@@ -31,12 +31,31 @@ namespace Screens
             names = new string[Data.MAX_PLAYERS];
             addNameInputFieldButton.onClick.AddListener(AddNameInputField);
             LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
+            foreach (TMP_InputField nameInputField in nameInputFields)
+            {
+                nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(); });
+            }
         }
-        
+
+        private void OnInputFieldSelected()
+        {
+            if (TouchScreenKeyboard.isSupported)
+            {
+                TouchScreenKeyboard touchScreenKeyboard;
+                touchScreenKeyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false, "");
+            }
+            else
+            {
+                Debug.Log("TouchScreenKeyboard not supported");
+            }
+        }
+
         private void AddNameInputField()
         {
             GameObject inputFieldGameObject = Instantiate(inputFieldPrefab, inputFieldsLayout);
-            nameInputFields.Add(inputFieldGameObject.GetComponent<TMP_InputField>());
+            TMP_InputField nameInputField = inputFieldGameObject.GetComponent<TMP_InputField>();
+            nameInputFields.Add(nameInputField);
+            nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(); });
             LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
             inputFieldsCount++;
             if (inputFieldsCount == Data.MAX_PLAYERS)
