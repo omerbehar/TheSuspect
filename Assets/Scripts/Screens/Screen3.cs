@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using DataLayer;
-using DefaultNamespace;
 using Screens.Bases;
 using Screens.Interfaces;
 using TMPro;
@@ -56,7 +55,6 @@ namespace Screens
             namesAddedCount = 0;
             for (int i = 0; i < nameInputFields.Count; i++)
             {
-                Debug.Log($"names count {names.Length} input fields count {nameInputFields.Count}");
                 if (nameInputFields[i] != null)
                 {
                     names[i] = nameInputFields[i].text;
