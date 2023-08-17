@@ -1,5 +1,3 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: 34px;">
-        <ui:RadioButton label="Radio Button" style="background-image: url(&apos;project://database/Assets/Sprites/11/AnswerBoxImage.png?fileID=2800000&amp;guid=66465380a09e46c4298552c0bb8230c5&amp;type=3#AnswerBoxImage&apos;);" />
-    </ui:VisualElement>
+    <ui:RadioButton label="Radio Button" style="background-image: url(&apos;project://database/Assets/Sprites/11/AnswerBoxImage.png?fileID=2800000&amp;guid=66465380a09e46c4298552c0bb8230c5&amp;type=3#AnswerBoxImage&apos;); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; width: auto; height: auto; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
 </ui:UXML>
