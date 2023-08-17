@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
+using Screens;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Screens.Bases;
@@ -44,6 +45,8 @@ public class ScreenManager : MonoBehaviour
 
     public void DisplayCurrentQuestion()
     {
+        correctCounter = 0; // Reset the counter
+        selectedIndices.Clear();  // Clear the selected indices
         var root = FindObjectOfType<UIDocument>().rootVisualElement;
         var questionLabel = root.Q<Label>("QuestionLabel");
         questionLabel.text = questions[currentQuestionIndex].QuestionText;
@@ -205,18 +208,60 @@ public class ScreenManager : MonoBehaviour
     
     private List<int> selectedIndices = new List<int>();
 
-    public void HandleAnswerMultipleChoiceClicked(int answerIndex)
+    // ScreenManager class
+
+    private int correctCounter; // To keep track of the number of correct answers chosen by the user
+
+    public void HandleAnswerMultipleChoiceClicked(int answerIndex) 
     {
-        if (selectedIndices.Contains(answerIndex))
+        var currentQuestion = questions[currentQuestionIndex] as MultipleChoiceQuestion;
+          
+        if (selectedIndices.Contains(answerIndex)) 
         {
             selectedIndices.Remove(answerIndex);
-            Debug.Log($"De-selected multi-choice answer option, its index is: {answerIndex}");
-        }
-        else
+            Debug.Log($"Deselected multi-choice answer option, its index is: { answerIndex }");
+
+            if (currentQuestion.correctAnswerIndices.Contains(answerIndex)) 
+            {
+                correctCounter--;
+            }
+        } 
+        else 
         {
             selectedIndices.Add(answerIndex);
-            Debug.Log($"Selected multi-choice answer option, its index is: {answerIndex}");
+            Debug.Log($"Selected multi-choice answer option, its index is: { answerIndex }");
+
+            if (currentQuestion.correctAnswerIndices.Contains(answerIndex)) 
+            {
+                correctCounter++;
+                Debug.Log("Correct Answer! Selected index is: " + answerIndex);  // Log when answer is correct
+            }
+            else
+            {
+                Debug.Log("Incorrect Answer! Selected index is: " + answerIndex);  // Log when answer is incorrect
+            }
+
+            // Check if all correct answers have been selected
+            if (AllCorrectAnswersSelected(currentQuestion))
+            {
+                Debug.Log("All correct answers have been selected");
+            }
         }
+    }
+
+    private bool AllCorrectAnswersSelected(MultipleChoiceQuestion question)
+    {
+        foreach (var correctIndex in question.correctAnswerIndices)
+        {
+            if (!selectedIndices.Contains(correctIndex))
+            {
+                // If even one correct index has not been selected, return false
+                return false;
+            }
+        }
+
+        // If every correct index is found in the selected indices, then return true
+        return true;
     }
 
     public void ConfirmButtonClicked()
@@ -225,8 +270,12 @@ public class ScreenManager : MonoBehaviour
         {
             Question currentQuestion = questions[currentQuestionIndex];
 
+            // Sort the indices before checking the answers, as the order of selection doesn't matter in multiple choice.
+            selectedIndices.Sort();
+
             var isCorrectAnswer = currentQuestion.CheckAnswer(selectedIndices.ToArray());
-            if (isCorrectAnswer)
+           
+            if (selectedIndices.Count == questions[currentQuestionIndex].GetCorrectAnswerCount())
             {
                 Debug.Log("Correct Answer! The selected indices are: " + string.Join(", ", selectedIndices));
                 // Handle correct answer here
@@ -236,6 +285,7 @@ public class ScreenManager : MonoBehaviour
                 Debug.Log("Incorrect Answer! The selected indices are: " + string.Join(", ", selectedIndices));
                 // Handle incorrect answer here
             }
+
             // Reset the selections after processing
             selectedIndices.Clear();
         }
