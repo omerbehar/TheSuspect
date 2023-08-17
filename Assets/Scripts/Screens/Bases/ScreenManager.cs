@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
+using Screens.Bases;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -42,15 +43,27 @@ public class ScreenManager : MonoBehaviour
         root.Q<VisualElement>("Main").Add(answerListView);
     }
 
-    private void DisplayCurrentQuestion()
+    public void DisplayCurrentQuestion()
     {
         var root = FindObjectOfType<UIDocument>().rootVisualElement;
         var questionLabel = root.Q<Label>("QuestionLabel");
         questionLabel.text = questions[currentQuestionIndex].QuestionText;
 
         answerListView.itemsSource = questions[currentQuestionIndex].GetAnswerOptions();
-        answerListView.makeItem = () => new Label();
-        answerListView.bindItem = (e, i) => ((Label) e).text = questions[currentQuestionIndex].GetAnswerOptions()[i];
+        answerListView.makeItem = MakeSingleChoiceAnswerVO; // Note this change here
+        answerListView.bindItem = BindItemToSingleChoiceAnswerVO; // And here
+    }
+
+    private VisualElement MakeSingleChoiceAnswerVO()
+    {
+        return new SingleChoiceAnswerVO();
+    }
+
+    private void BindItemToSingleChoiceAnswerVO(VisualElement element, int index)
+    {
+        var singleChoiceAnswerVO = (SingleChoiceAnswerVO) element;
+        singleChoiceAnswerVO.answerLabel.text = questions[currentQuestionIndex].GetAnswerOptions()[index];
+        // Bind your RadioButton too if needed
     }
 
     private bool CurrentQuestionIsAnswered()
