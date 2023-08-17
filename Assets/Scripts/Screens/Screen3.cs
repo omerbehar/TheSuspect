@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using DataLayer;
 using Screens.Bases;
 using Screens.Interfaces;
@@ -24,19 +25,38 @@ namespace Screens
         
         private int namesAddedCount;
 
-        private void Start()
+        protected override async void Start()
         {
             base.Start();
-            LoadData();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
+            await LoadData();
             names = new string[Data.MAX_PLAYERS];
             addNameInputFieldButton.onClick.AddListener(AddNameInputField);
-            LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
+            foreach (TMP_InputField nameInputField in nameInputFields)
+            {
+                nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(); });
+            }
         }
-        
+
+        private void OnInputFieldSelected()
+        {
+            if (TouchScreenKeyboard.isSupported)
+            {
+                TouchScreenKeyboard touchScreenKeyboard;
+                touchScreenKeyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false, "");
+            }
+            else
+            {
+                Debug.Log("TouchScreenKeyboard not supported");
+            }
+        }
+
         private void AddNameInputField()
         {
             GameObject inputFieldGameObject = Instantiate(inputFieldPrefab, inputFieldsLayout);
-            nameInputFields.Add(inputFieldGameObject.GetComponent<TMP_InputField>());
+            TMP_InputField nameInputField = inputFieldGameObject.GetComponent<TMP_InputField>();
+            nameInputFields.Add(nameInputField);
+            nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(); });
             LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
             inputFieldsCount++;
             if (inputFieldsCount == Data.MAX_PLAYERS)
@@ -79,9 +99,10 @@ namespace Screens
             Data.SaveData();
         }
 
-        public void LoadData()
+        public async Task LoadData()
         {
             Data.LoadData();
+            await Database.SaveDataToDatabase();
             instructorName = Data.InstructorName;
             names = Data.PlayerNames;
             instructorNameInputField.text = instructorName;

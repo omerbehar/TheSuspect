@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using DataLayer;
 using DefaultNamespace;
 using Screens.Bases;
@@ -12,10 +13,10 @@ namespace Screens
         [SerializeField] private TMP_InputField teamNameInputField;
         [SerializeField] private string teamName;
 
-        private void Start()
+        private async void Start()
         {
             base.Start();
-            LoadData();
+            await LoadData();
         }
         private void Update()
         {
@@ -33,11 +34,12 @@ namespace Screens
             SaveData();
         }
 
-        public void LoadData()
+        public Task LoadData()
         {
             Data.LoadData();
             teamNameInputField.text = Data.TeamName;
             teamName = Data.TeamName;
+            return Task.CompletedTask;
         }
 
         public void SaveData()

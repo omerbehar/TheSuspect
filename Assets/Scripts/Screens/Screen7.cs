@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using DataLayer;
 using Screens.Bases;
 using Screens.Interfaces;
@@ -24,15 +25,15 @@ namespace Screens
             Init();
         }
 
-        private void Init()
+        private async void Init()
         {
             InitToggles();
             base.Start();
-            LoadData();
+            await LoadData();
             HintButton.onClick.AddListener(OnHintButtonClicked);
         }
 
-        public void LoadData()
+        public async Task LoadData()
         {
             if (Data.SelectedAnswersData[SceneManager.GetActiveScene().name].Length != answersCount)
                 Data.SelectedAnswersData[SceneManager.GetActiveScene().name] = new bool[answersCount];

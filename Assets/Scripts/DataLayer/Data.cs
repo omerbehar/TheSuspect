@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace DataLayer
 {
@@ -10,6 +9,7 @@ namespace DataLayer
     public static class Data
     {
         public const int MAX_PLAYERS = 5;
+        public static string guid;
         public static string TeamName { get; set; }
         public static string InstructorName { get; set; }
         public static string[] PlayerNames { get; set; }
@@ -19,10 +19,12 @@ namespace DataLayer
 
         public static void ResetData()
         {
-            TeamName = "";
+            TeamName = "testteamname";
             InstructorName = "";
+            Score = 0;
             PlayerNames = new string[MAX_PLAYERS];
             TeamPhoto = null;
+            guid = Guid.NewGuid().ToString();
         }
         //save data to player prefs
         public static void SaveData()
@@ -30,7 +32,9 @@ namespace DataLayer
             PlayerPrefs.SetString("TeamName", TeamName);
             PlayerPrefs.SetString("InstructorName", InstructorName);
             PlayerPrefs.SetString("PlayerNames", string.Join(",", PlayerNames));
-            PlayerPrefs.SetString("TeamPhoto", Convert.ToBase64String(TeamPhoto.EncodeToPNG()));
+            byte[] bytes = TeamPhoto == null ? null : TeamPhoto.EncodeToPNG();
+            if (bytes != null) PlayerPrefs.SetString("TeamPhoto", Convert.ToBase64String(bytes));
+
             foreach (string key in SelectedAnswersData.Keys)
             {
                 PlayerPrefs.SetString(key, string.Join(",", SelectedAnswersData[key]));
@@ -40,30 +44,44 @@ namespace DataLayer
         //load data from player prefs
         public static void LoadData()
         {
-            TeamName = PlayerPrefs.GetString("TeamName");
-            InstructorName = PlayerPrefs.GetString("InstructorName");
-            PlayerNames = PlayerPrefs.GetString("PlayerNames").Split(',');
-            TeamPhoto.LoadImage(LoadImage());
-            foreach (string key in SelectedAnswersData.Keys.ToList())
+            //if no guid in playerpref, create one and reset data
+            if (!PlayerPrefs.HasKey("guid"))
             {
-                if (SelectedAnswersData[key].Length != 0 && PlayerPrefs.GetString(key).Split(',').Length != 0)
+                Debug.Log("No guid found, creating new one");
+                ResetData();
+                PlayerPrefs.SetString("guid", guid);
+            }
+            else
+            {
+                Debug.Log("Guid found, loading data");
+                guid = PlayerPrefs.GetString("guid");
+                TeamName = PlayerPrefs.GetString("TeamName");
+                InstructorName = PlayerPrefs.GetString("InstructorName");
+                PlayerNames = PlayerPrefs.GetString("PlayerNames").Split(',');
+                byte[] bytes = LoadImage();
+                TeamPhoto = new Texture2D(1, 1, TextureFormat.ARGB32, false);
+                if (bytes != null) TeamPhoto.LoadImage(bytes);
+                foreach (string key in SelectedAnswersData.Keys.ToList())
                 {
-                    if (PlayerPrefs.GetString(key).Split(',')[0] != "")
+                    if (SelectedAnswersData[key].Length != 0 && PlayerPrefs.GetString(key).Split(',').Length != 0)
                     {
-                        //test if parsable
-                        try
+                        if (PlayerPrefs.GetString(key).Split(',')[0] != "")
                         {
-                            SelectedAnswersData[key] = Array.ConvertAll(PlayerPrefs.GetString(key).Split(','), bool.Parse);
+                            //test if parsable
+                            try
+                            {
+                                SelectedAnswersData[key] = Array.ConvertAll(PlayerPrefs.GetString(key).Split(','), bool.Parse);
+                            }
+                            catch (Exception exception)
+                            {
+                                Debug.LogWarning("Could not parse bool array from PlayerPrefs: " +  exception.Message);
+                            }
+                            return;
                         }
-                        catch (Exception exception)
-                        {
-                            Debug.LogWarning("Could not parse bool array from PlayerPrefs: " +  exception.Message);
-                        }
-                        return;
                     }
                 }
+                Score = PlayerPrefs.GetInt("Score");
             }
-            Score = PlayerPrefs.GetInt("Score");
         }
 
         private static byte[] LoadImage()
