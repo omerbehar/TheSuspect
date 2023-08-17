@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
-using Screens.Bases;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Screens.Bases;
 
 public class ScreenManager : MonoBehaviour
 {
@@ -36,10 +36,8 @@ public class ScreenManager : MonoBehaviour
     private void InitializeListView()
     {
         var root = FindObjectOfType<UIDocument>().rootVisualElement;
-        
         answerListView = new ListView();
         answerListView.style.flexGrow = 1;
-        
         root.Q<VisualElement>("Main").Add(answerListView);
     }
 
@@ -50,22 +48,25 @@ public class ScreenManager : MonoBehaviour
         questionLabel.text = questions[currentQuestionIndex].QuestionText;
 
         answerListView.itemsSource = questions[currentQuestionIndex].GetAnswerOptions();
-        answerListView.makeItem = MakeSingleChoiceAnswerVO; // Note this change here
-        answerListView.bindItem = BindItemToSingleChoiceAnswerVO; // And here
+        answerListView.makeItem = MakeSingleChoiceAnswerVO;
+        answerListView.bindItem = BindItemToSingleChoiceAnswerVO;
+        
+        answerListView.Rebuild();
     }
 
     private VisualElement MakeSingleChoiceAnswerVO()
     {
-        return new SingleChoiceAnswerVO();
+        var singleChoiceAnswerVO = new SingleChoiceAnswerVO();
+        singleChoiceAnswerVO.onAnswerClicked = HandleAnswerClicked;
+        return singleChoiceAnswerVO;
     }
 
     private void BindItemToSingleChoiceAnswerVO(VisualElement element, int index)
     {
         var singleChoiceAnswerVO = (SingleChoiceAnswerVO) element;
         singleChoiceAnswerVO.answerLabel.text = questions[currentQuestionIndex].GetAnswerOptions()[index];
-        // Bind your RadioButton too if needed
+        singleChoiceAnswerVO.OptionIndex = index; // Set the index
     }
-
     private bool CurrentQuestionIsAnswered()
     {
         Question currentQuestion = questions[currentQuestionIndex];
@@ -100,5 +101,22 @@ public class ScreenManager : MonoBehaviour
 
         // If no answer is selected
         return false;
+    }
+    
+    public void HandleAnswerClicked(int answerIndex)
+    {
+        Question currentQuestion = questions[currentQuestionIndex];
+        var isCorrectAnswer = currentQuestion.CheckAnswer(new int[] { answerIndex });
+        if (isCorrectAnswer)
+        {
+            Debug.Log("Correct Answer! The selected index is: " + answerIndex);
+            // Handle correct answer here
+        }
+        else
+        {
+            Debug.Log("Incorrect Answer! The selected index is: " + answerIndex);
+            // Handle incorrect answer here
+        }
+        // Whatever other action you wish to perform when an answer is clicked
     }
 }
