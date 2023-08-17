@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using DataLayer;
 using Screens.Bases;
 using Screens.Interfaces;
@@ -24,13 +25,13 @@ namespace Screens
         
         private int namesAddedCount;
 
-        private void Start()
+        protected override async void Start()
         {
             base.Start();
-            LoadData();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
+            await LoadData();
             names = new string[Data.MAX_PLAYERS];
             addNameInputFieldButton.onClick.AddListener(AddNameInputField);
-            LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
             foreach (TMP_InputField nameInputField in nameInputFields)
             {
                 nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(); });
@@ -98,9 +99,10 @@ namespace Screens
             Data.SaveData();
         }
 
-        public void LoadData()
+        public async Task LoadData()
         {
             Data.LoadData();
+            await Database.SaveDataToDatabase();
             instructorName = Data.InstructorName;
             names = Data.PlayerNames;
             instructorNameInputField.text = instructorName;

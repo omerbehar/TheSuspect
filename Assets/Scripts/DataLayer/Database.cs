@@ -1,42 +1,62 @@
 using System;
-using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
+
 namespace DataLayer
 {
-    public class Database : MonoBehaviour
+    public static class Database
     {
-
-        public void Start()
-        {
-            Data.LoadData();
-            StartCoroutine(SaveData());
-        }
-        private IEnumerator SaveData()
+        public static async Task SaveDataToDatabase()
         {
             WWWForm form = new WWWForm();
             form.AddField("guid", Data.guid);
-            form.AddField("name", Data.TeamName);
+            form.AddField("teamName", Data.TeamName);
             form.AddField("score", Data.Score);
-            Uri uri = new Uri("http://localhost/sqlconnect/savedata.php");
-            UnityWebRequest www = UnityWebRequest.Post(uri, form);
-            www.SendWebRequest();
-            yield return www;
-            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+            form.AddField("instructorName", Data.InstructorName);
+            form.AddField("playerNames", string.Join(",", Data.PlayerNames));
+            Uri uri = new Uri("http://localhost:81/sqlconnect/savedata.php");
+            try
             {
-                Debug.Log("Error saving data: " + www.error);
+                using UnityWebRequest request = UnityWebRequest.Post(uri, form);
+                await request.SendWebRequestAsync();
+                Debug.Log(request.downloadHandler.text);
             }
-            else
+            catch (UnityWebRequestException ex)
             {
-                Debug.Log("Data saved successfully");
+                Debug.LogError(ex.Message);
             }
         }
 
-        public void VerifyInput()
+        private static async Task SendWebRequestAsync(this UnityWebRequest request)
         {
-            
+            TaskCompletionSource<UnityWebRequest> tcs = new ();
+            UnityWebRequestAsyncOperation asyncOp = request.SendWebRequest();
+
+
+            asyncOp.completed += _ =>
+            {
+                if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    tcs.SetException(new UnityWebRequestException(request));
+                }
+                else
+                {
+                    tcs.SetResult(request);
+                }
+            };
+
+            await tcs.Task;
         }
-        
+
+        private class UnityWebRequestException : Exception
+        {
+            public UnityWebRequestException(UnityWebRequest request)
+                : base($"Error: {request.error}, URL: {request.url}")
+            {
+            }
+        }
+
     }
 }

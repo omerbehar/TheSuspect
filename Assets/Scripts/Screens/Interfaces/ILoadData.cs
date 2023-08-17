@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace Screens.Interfaces
 {
     public interface ILoadData
     {
-        void LoadData();
+        Task LoadData();
     }
 }
