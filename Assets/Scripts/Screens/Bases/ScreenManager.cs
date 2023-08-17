@@ -11,8 +11,12 @@ public class ScreenManager : MonoBehaviour
     [SerializeField]
     private List<Question> questions = new List<Question>();
     private int currentQuestionIndex = 0;
-
     private ListView answerListView;
+    [SerializeField] private float intemHight = 60f; 
+    [SerializeField] private float SPACING = 10f; // Define spacing between items
+
+    // Variable to control the spacing between items
+    [SerializeField] private float itemSpacing = 10f;
 
     private void Start()
     {
@@ -20,26 +24,24 @@ public class ScreenManager : MonoBehaviour
         DisplayCurrentQuestion();
     }
 
-    private void Update()
-    {
-        // If some condition met (e.g., user has selected an answer), move to next question
-        if(CurrentQuestionIsAnswered())
-        {
-            currentQuestionIndex++;
-            if(currentQuestionIndex >= questions.Count)
-                currentQuestionIndex = 0; // Loop back to the first question
-                
-            DisplayCurrentQuestion();
-        }
-    }
-
+   
     private void InitializeListView()
     {
         var root = FindObjectOfType<UIDocument>().rootVisualElement;
-        answerListView = new ListView();
-        answerListView.style.flexGrow = 1;
+    
+        answerListView = new ListView(questions, intemHight + SPACING, MakeSingleChoiceAnswerVO, BindItemToSingleChoiceAnswerVO);
+        
+        //make listview not show scrollbar
+        var scrollView = answerListView.Q<ScrollView>();
+        scrollView.verticalScrollerVisibility = ScrollerVisibility.Hidden;
+        var b = scrollView.touchScrollBehavior == ScrollView.TouchScrollBehavior.Clamped;
+      
+        answerListView.selectionType = SelectionType.None;
+        
+
         root.Q<VisualElement>("Main").Add(answerListView);
     }
+
 
     public void DisplayCurrentQuestion()
     {
@@ -58,14 +60,26 @@ public class ScreenManager : MonoBehaviour
     {
         var singleChoiceAnswerVO = new SingleChoiceAnswerVO();
         singleChoiceAnswerVO.onAnswerClicked = HandleAnswerClicked;
-        return singleChoiceAnswerVO;
+
+        // Define the main box (container) to hold your VO and a spacer
+        var container = new VisualElement();
+        container.Add(singleChoiceAnswerVO);
+
+        // Define an additional VisualElement to act as a spacer between the items
+        var spacer = new VisualElement();
+        spacer.style.height = itemSpacing;  // Set the spacer's height as the desired spacing
+        spacer.style.backgroundColor = Color.clear; // Set it transparent
+
+        container.Add(spacer); // Add the spacer to the container
+        return container;  // Return the main box with the VO and spacer
     }
 
     private void BindItemToSingleChoiceAnswerVO(VisualElement element, int index)
     {
-        var singleChoiceAnswerVO = (SingleChoiceAnswerVO) element;
+        // Adjust this to work with your new container layout
+        var singleChoiceAnswerVO = (SingleChoiceAnswerVO)element[0];
         singleChoiceAnswerVO.answerLabel.text = questions[currentQuestionIndex].GetAnswerOptions()[index];
-        singleChoiceAnswerVO.OptionIndex = index; // Set the index
+        singleChoiceAnswerVO.OptionIndex = index;
     }
     private bool CurrentQuestionIsAnswered()
     {
