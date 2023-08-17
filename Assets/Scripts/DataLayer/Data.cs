@@ -19,8 +19,9 @@ namespace DataLayer
 
         public static void ResetData()
         {
-            TeamName = "";
+            TeamName = "testteamname";
             InstructorName = "";
+            Score = 0;
             PlayerNames = new string[MAX_PLAYERS];
             TeamPhoto = null;
             guid = Guid.NewGuid().ToString();
@@ -46,15 +47,19 @@ namespace DataLayer
             //if no guid in playerpref, create one and reset data
             if (!PlayerPrefs.HasKey("guid"))
             {
+                Debug.Log("No guid found, creating new one");
                 ResetData();
                 PlayerPrefs.SetString("guid", guid);
             }
             else
             {
+                Debug.Log("Guid found, loading data");
+                guid = PlayerPrefs.GetString("guid");
                 TeamName = PlayerPrefs.GetString("TeamName");
                 InstructorName = PlayerPrefs.GetString("InstructorName");
                 PlayerNames = PlayerPrefs.GetString("PlayerNames").Split(',');
                 byte[] bytes = LoadImage();
+                TeamPhoto = new Texture2D(1, 1, TextureFormat.ARGB32, false);
                 if (bytes != null) TeamPhoto.LoadImage(bytes);
                 foreach (string key in SelectedAnswersData.Keys.ToList())
                 {
