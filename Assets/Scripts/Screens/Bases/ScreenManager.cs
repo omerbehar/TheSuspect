@@ -23,9 +23,31 @@ public class ScreenManager : MonoBehaviour
     {
         InitializeListView();
         DisplayCurrentQuestion();
-    }
 
-   
+        // Find the root visual element
+        var root = FindObjectOfType<UIDocument>().rootVisualElement;
+    
+        // Find the continue button in root and assign the click event
+        var continueButton = root.Q<Button>("ContinueButton"); // Replace "ContinueButton" with the name of your continue button
+    
+        if (continueButton != null)
+        {
+            continueButton.clicked += ContinueButtonClicked;
+        }
+    }
+    public void ContinueButtonClicked()
+    {
+        // Checking if there are any more questions
+        if(currentQuestionIndex + 1 < questions.Count) 
+        {
+            currentQuestionIndex++;
+            DisplayCurrentQuestion();
+        }
+        else
+        {
+            Debug.Log("No more questions");
+        }
+    }
     private void InitializeListView()
     {
         var root = FindObjectOfType<UIDocument>().rootVisualElement;
@@ -43,16 +65,17 @@ public class ScreenManager : MonoBehaviour
     }
 
 
+    // An update to your DisplayCurrentQuestion method
     public void DisplayCurrentQuestion()
     {
-        correctCounter = 0; // Reset the counter
-        selectedIndices.Clear();  // Clear the selected indices
         var root = FindObjectOfType<UIDocument>().rootVisualElement;
         var questionLabel = root.Q<Label>("QuestionLabel");
         questionLabel.text = questions[currentQuestionIndex].QuestionText;
 
+        ResetListView();
+
         answerListView.itemsSource = questions[currentQuestionIndex].GetAnswerOptions();
-    
+
         if (questions[currentQuestionIndex].Type == QuestionType.SingleChoice)
         {
             answerListView.makeItem = MakeSingleChoiceAnswerVO;
@@ -65,12 +88,29 @@ public class ScreenManager : MonoBehaviour
         }
         else
         {
-            throw new System.NotImplementedException($"Display for question type {questions[currentQuestionIndex].Type} is not implemented");
+            throw new NotImplementedException($"Display for question type {questions[currentQuestionIndex].Type} is not implemented");
         }
-    
-        answerListView.Rebuild();
+
+        answerListView.Rebuild(); // Refresh ListView to ensure correct options are displayed
     }
     
+    public void ResetListView()
+{
+    var root = FindObjectOfType<UIDocument>().rootVisualElement;
+    var mainVisualElement = root.Q<VisualElement>("Main");
+  
+    // Check if ListView already exists and remove it
+    if (answerListView != null) mainVisualElement.Remove(answerListView);
+
+    // Now create a new ListView
+    answerListView = new ListView(questions, intemHight + SPACING, null, null);
+    // Make listview not show scrollbar
+    var scrollView = answerListView.Q<ScrollView>();
+    scrollView.verticalScrollerVisibility = ScrollerVisibility.Hidden;
+    scrollView.touchScrollBehavior = ScrollView.TouchScrollBehavior.Clamped;
+    answerListView.selectionType = SelectionType.None;
+    mainVisualElement.Add(answerListView);
+}
     private VisualElement MakeItem()
     {
         if (questions[currentQuestionIndex].Type == QuestionType.SingleChoice)
@@ -123,9 +163,16 @@ public class ScreenManager : MonoBehaviour
     
     private void BindItemToMultiChoiceAnswerVO(VisualElement element, int index)
     {
-        var multiChoiceAnswerVO = (MultiChoiceAnswerVO)element[0];
-        multiChoiceAnswerVO.answerLabel.text = questions[currentQuestionIndex].GetAnswerOptions()[index];
-        multiChoiceAnswerVO.OptionIndex = index;
+        var container = (VisualElement)element;
+        if (container[0] is MultiChoiceAnswerVO multiChoiceAnswerVO)
+        {
+            multiChoiceAnswerVO.answerLabel.text = questions[currentQuestionIndex].GetAnswerOptions()[index];
+            multiChoiceAnswerVO.OptionIndex = index;
+        }
+        else
+        {
+            throw new Exception("Element is not of type MultiChoiceAnswerVO");
+        }
     }
 
     private VisualElement MakeSingleChoiceAnswerVO()
@@ -148,11 +195,18 @@ public class ScreenManager : MonoBehaviour
 
     private void BindItemToSingleChoiceAnswerVO(VisualElement element, int index)
     {
-        // Adjust this to work with your new container layout
-        var singleChoiceAnswerVO = (SingleChoiceAnswerVO)element[0];
-        singleChoiceAnswerVO.answerLabel.text = questions[currentQuestionIndex].GetAnswerOptions()[index];
-        singleChoiceAnswerVO.OptionIndex = index;
+        var container = (VisualElement)element;
+        if (container[0] is SingleChoiceAnswerVO singleChoiceAnswerVO)
+        {
+            singleChoiceAnswerVO.answerLabel.text = questions[currentQuestionIndex].GetAnswerOptions()[index];
+            singleChoiceAnswerVO.OptionIndex = index;
+        }
+        else
+        {
+            throw new Exception("Element is not of type SingleChoiceAnswerVO");
+        }        
     }
+
     private bool CurrentQuestionIsAnswered()
     {
         Question currentQuestion = questions[currentQuestionIndex];
