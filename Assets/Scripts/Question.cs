@@ -15,7 +15,10 @@ public abstract class Question : ScriptableObject, IQuestion
     [SerializeField] protected List<int> correctAnswerIndices = new List<int>(); // Made up correct answer indices 
     
     public string QuestionText { get => questionText; }
-    public QuestionType Type { get => QuestionType.MultipleChoice; } // Made up QuestionType
+    [SerializeField]
+    private QuestionType _type;
+
+    public QuestionType Type { get { return _type; } }
 
     public abstract VisualElement DisplayQuestionUI();
     public List<string> GetAnswerOptions()

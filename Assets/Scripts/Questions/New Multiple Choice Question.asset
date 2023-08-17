@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: New Multiple Choice Question
   m_EditorClassIdentifier: 
   questionText: hello?
-  layoutAsset: {fileID: 0}
-  answers: []
-  correctAnswerIndices: 
+  layoutAsset: {fileID: 9197481963319205126, guid: 319915c435d600841845662f1f2583bb, type: 3}
+  answers:
+  - aaaa
+  - bbbbb
+  - dsdsdsd
+  - fdsdfdgf
+  correctAnswerIndices: 000000000100000002000000
