@@ -116,6 +116,11 @@ namespace Screens.Bases
                 answerListView.makeItem = MakeMultiChoiceAnswerVO;
                 answerListView.bindItem = BindItemToMultiChoiceAnswerVO;
             }
+            else if (questions[currentQuestionIndex].Type == QuestionType.OpenEnded)
+            {
+                answerListView.makeItem = MakeOpenEndedAnswerVO;
+                answerListView.bindItem = BindItemToOpenEndedAnswerVO;
+            }
             else
             {
                 throw new NotImplementedException($"Display for question type {questions[currentQuestionIndex].Type} is not implemented");
@@ -176,6 +181,50 @@ namespace Screens.Bases
             {
                 throw new NotImplementedException($"List item binding not implemented for question type {questions[currentQuestionIndex].Type}");
             }
+        }
+        
+        private VisualElement MakeOpenEndedAnswerVO()
+        {
+            var openEndedAnswerVO = new OpenEndedAnswerVO { onSubmit = HandleOpenEndedAnswerSubmit };
+            return CreateContainerWithSpacer(openEndedAnswerVO);
+        }
+
+        private void HandleOpenEndedAnswerSubmit(string userAnswer)
+        {
+            Question currentQuestion = questions[currentQuestionIndex];
+            // Suppose the CheckAnswer method for open-ended question checks if userAnswer is equal to the correct answer
+            bool isCorrectAnswer = currentQuestion.CheckAnswer(userAnswer);
+
+            if (isCorrectAnswer)
+            {
+                Debug.Log("Open-ended answer is correct!");
+                // Perform actions related to correct answer...
+            }
+            else
+            {
+                Debug.Log("Open-ended answer is incorrect.");
+                // Perform actions related to incorrect answer...
+            }
+        }
+
+        private void BindItemToOpenEndedAnswerVO(VisualElement element, int index)
+        {
+            var container = element as VisualElement;
+            if (container[0] is OpenEndedAnswerVO openEndedAnswerVO)
+            {
+                openEndedAnswerVO.answerInputField.value = "";
+            }
+            else
+            {
+                throw new Exception("Element is not of type OpenEndedAnswerVO");
+            }
+        }
+
+        public void HandleOpenEndedAnswerSubmit(int[] answerText)
+        {
+            Question currentQuestion = questions[currentQuestionIndex];
+            bool isCorrectAnswer = currentQuestion.CheckAnswer(answerText);
+            Debug.Log(isCorrectAnswer ? "Correct Answer!" : "Incorrect Answer!");
         }
     
         // Method to create a single choice answer Visual Object for ListView item

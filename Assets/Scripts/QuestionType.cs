@@ -6,6 +6,7 @@ namespace DefaultNamespace
     {
         SingleChoice,
         MultipleChoice,
+        OpenEnded,
         // ... other types as necessary
     }
 }
