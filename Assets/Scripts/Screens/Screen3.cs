@@ -61,19 +61,21 @@ namespace Screens
             addNameInputFieldButton.onClick.AddListener(AddNameInputField);
             foreach (TMP_InputField nameInputField in nameInputFields)
             {
-                nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(); });
+                nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(nameInputField); });
                 nameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
             }
 
-            instructorNameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(); });
+            instructorNameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(instructorNameInputField); });
             instructorNameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
         }
 
-        private void OnInputFieldSelected()
+        private void OnInputFieldSelected(TMP_InputField inputField)
         {
             if (TouchScreenKeyboard.isSupported)
             {
                 TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false, "");
+                inputField.Select();
+                
             }
             else
             {
@@ -86,7 +88,7 @@ namespace Screens
             GameObject inputFieldGameObject = Instantiate(inputFieldPrefab, inputFieldsLayout);
             TMP_InputField nameInputField = inputFieldGameObject.GetComponent<TMP_InputField>();
             nameInputFields.Add(nameInputField);
-            nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(); });
+            nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(nameInputField); });
             nameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
             LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
             inputFieldsCount++;
