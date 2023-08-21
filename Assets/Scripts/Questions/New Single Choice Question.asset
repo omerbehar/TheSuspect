@@ -12,9 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0941c71a3be4c58ad0890436be5e49d, type: 3}
   m_Name: New Single Choice Question
   m_EditorClassIdentifier: 
-  questionText: Test
+  questionText: "\u05DE\u05D4 \u05D4\u05DE\u05E6\u05D1?"
   layoutAsset: {fileID: 9197481963319205126, guid: 7db013822fb6ff94c9d61e6112d839ac, type: 3}
   answers:
   - hello
   - world
-  correctAnswerIndices: 00000000
+  - world
+  - world
+  - world
+  - world
+  - world
+  - world
+  - world
+  - world
+  - world
+  correctAnswerIndices: 04000000

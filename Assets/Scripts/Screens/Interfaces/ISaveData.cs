@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace Screens.Interfaces
 {
     public interface ISaveData
     {
-        void SaveData();
+        Task SaveData();
     }
 }

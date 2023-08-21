@@ -15,6 +15,7 @@ namespace DataLayer
             form.AddField("teamName", Data.TeamName);
             form.AddField("score", Data.Score);
             form.AddField("instructorName", Data.InstructorName);
+            Debug.Log(string.Join(",", Data.PlayerNames));
             form.AddField("playerNames", string.Join(",", Data.PlayerNames));
             Uri uri = new Uri("http://localhost:81/sqlconnect/savedata.php");
             try
@@ -27,6 +28,30 @@ namespace DataLayer
             {
                 Debug.LogError(ex.Message);
             }
+        }
+
+        public static async Task LoadDataFromDatabase()
+        {
+            Uri uri = new Uri("http://localhost:81/sqlconnect/savedata.php");
+            string fullUrl = $"{uri}?guid={Data.guid}";
+
+            try
+            {
+                using UnityWebRequest request = UnityWebRequest.Get(fullUrl);
+                await request.SendWebRequestAsync();
+                Debug.Log(request.downloadHandler.text);
+                var jsonData = JsonUtility.FromJson<ServerData>(request.downloadHandler.text);
+                // Data.guid = jsonData.guid;
+                // Data.TeamName = jsonData.teamName;
+                // Data.Score = jsonData.score;
+                // Data.InstructorName = jsonData.instructorName;
+                // Data.PlayerNames = jsonData.playerNames.Split(',');
+            }
+            catch (UnityWebRequestException ex)
+            {
+                Debug.LogError(ex.Message);
+            }
+            
         }
 
         private static async Task SendWebRequestAsync(this UnityWebRequest request)
@@ -57,6 +82,16 @@ namespace DataLayer
             {
             }
         }
-
+        [Serializable]
+        private class ServerData
+        {
+            //public string id;
+            public string guid;
+            public string teamName;
+            public int score;
+            public string instructorName;
+            public string playerNames;
+            //public DateTime date;
+        }
     }
 }

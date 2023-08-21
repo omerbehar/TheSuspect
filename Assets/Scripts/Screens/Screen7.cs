@@ -3,7 +3,6 @@ using DataLayer;
 using Screens.Bases;
 using Screens.Interfaces;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -44,7 +43,7 @@ namespace Screens
                 toggles[i].isOn = SelectedAnswers[i];
             }
         }
-        public void SaveData()
+        public async Task SaveData()
         {
             for (int i = 0; i < toggles.Length; i++)
             {
@@ -52,6 +51,7 @@ namespace Screens
             }
             Data.SelectedAnswersData[SceneManager.GetActiveScene().name] = SelectedAnswers;
             Data.SaveData();
+            await Database.SaveDataToDatabase();
         }
         private void InitToggles()
         {

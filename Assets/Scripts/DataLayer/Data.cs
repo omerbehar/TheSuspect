@@ -29,6 +29,7 @@ namespace DataLayer
         //save data to player prefs
         public static void SaveData()
         {
+            Debug.Log("Saving data");
             PlayerPrefs.SetString("TeamName", TeamName);
             PlayerPrefs.SetString("InstructorName", InstructorName);
             PlayerPrefs.SetString("PlayerNames", string.Join(",", PlayerNames));

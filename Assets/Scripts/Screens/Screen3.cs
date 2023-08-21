@@ -27,23 +27,53 @@ namespace Screens
 
         protected override async void Start()
         {
+            await Initialize();
+        }
+
+        private async Task Initialize()
+        {
             base.Start();
             LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
             await LoadData();
             names = new string[Data.MAX_PLAYERS];
+            IsAssignmentCompleted();
+            AddListeners();
+        }
+
+        private void IsAssignmentCompleted()
+        {
+            namesAddedCount = 0;
+            foreach (TMP_InputField nameInputField in nameInputFields)
+            {
+                if (nameInputField.text != "")
+                {
+                    namesAddedCount++;
+                }
+            }
+            if (namesAddedCount >= MINIMUM_NAMES_ALLOWED && instructorName != "")
+            {
+                EventManager.AssignmentCompleted.Invoke();
+            }
+        }
+
+        private void AddListeners()
+        {
             addNameInputFieldButton.onClick.AddListener(AddNameInputField);
             foreach (TMP_InputField nameInputField in nameInputFields)
             {
                 nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(); });
+                nameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
             }
+
+            instructorNameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(); });
+            instructorNameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
         }
 
         private void OnInputFieldSelected()
         {
             if (TouchScreenKeyboard.isSupported)
             {
-                TouchScreenKeyboard touchScreenKeyboard;
-                touchScreenKeyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false, "");
+                TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false, "");
             }
             else
             {
@@ -57,6 +87,7 @@ namespace Screens
             TMP_InputField nameInputField = inputFieldGameObject.GetComponent<TMP_InputField>();
             nameInputFields.Add(nameInputField);
             nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(); });
+            nameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
             LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
             inputFieldsCount++;
             if (inputFieldsCount == Data.MAX_PLAYERS)
@@ -65,44 +96,32 @@ namespace Screens
             }
         }
 
-        void Update()
+        private async Task UpdateNames()
         {
-            UpdateNames();
-        }
-
-        private void UpdateNames()
-        {
-            namesAddedCount = 0;
             for (int i = 0; i < nameInputFields.Count; i++)
             {
                 if (nameInputFields[i] != null)
                 {
                     names[i] = nameInputFields[i].text;
-                    if (names[i] != "")
-                    {
-                        namesAddedCount++;
-                    }
                 }
             }
             instructorName = instructorNameInputField.text;
-            SaveData();
-            if (namesAddedCount >= MINIMUM_NAMES_ALLOWED && instructorName != "")
-            {
-                EventManager.AssignmentCompleted.Invoke();
-            }
+            await SaveData();
+            IsAssignmentCompleted();
         }
 
-        public void SaveData()
+        public async Task SaveData()
         {
             Data.InstructorName = instructorName;
             Data.PlayerNames = names;
             Data.SaveData();
+            await Database.SaveDataToDatabase();
         }
 
         public async Task LoadData()
         {
             Data.LoadData();
-            await Database.SaveDataToDatabase();
+            await Database.LoadDataFromDatabase();
             instructorName = Data.InstructorName;
             names = Data.PlayerNames;
             instructorNameInputField.text = instructorName;
