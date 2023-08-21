@@ -71,17 +71,17 @@ namespace Screens
 
         private void OnInputFieldSelected(TMP_InputField inputField)
         {
-            if (TouchScreenKeyboard.isSupported)
-            {
-                TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false, "");
-                inputField.ActivateInputField();
-                inputField.Select();
-            }
-            else
-            {
-                Debug.Log("TouchScreenKeyboard not supported");
-                inputField.Select();
-            }
+            // if (TouchScreenKeyboard.isSupported)
+            // {
+            //     TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false, "");
+            //     inputField.ActivateInputField();
+            //     inputField.Select();
+            // }
+            // else
+            // {
+            //     Debug.Log("TouchScreenKeyboard not supported");
+            //     inputField.Select();
+            // }
         }
 
         private void AddNameInputField()

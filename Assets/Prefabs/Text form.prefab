@@ -462,6 +462,7 @@ GameObject:
   - component: {fileID: 4597463445222448464}
   - component: {fileID: 7016671043661365254}
   - component: {fileID: 7781063622628218918}
+  - component: {fileID: 5979683308871389992}
   m_Layer: 0
   m_Name: Text form
   m_TagString: Untagged
@@ -609,3 +610,15 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
+--- !u!114 &5979683308871389992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9191048232483218577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1273193b9c0c4dffb421b6012fbfee27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
