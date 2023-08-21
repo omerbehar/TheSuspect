@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager1 : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager1 instance;
 
     [SerializeField] public List<LevelDesign> levelDesigns;
     public LevelDesign currentLevel;

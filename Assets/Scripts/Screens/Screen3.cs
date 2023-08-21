@@ -74,12 +74,13 @@ namespace Screens
             if (TouchScreenKeyboard.isSupported)
             {
                 TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false, "");
+                inputField.ActivateInputField();
                 inputField.Select();
-                
             }
             else
             {
                 Debug.Log("TouchScreenKeyboard not supported");
+                inputField.Select();
             }
         }
 
