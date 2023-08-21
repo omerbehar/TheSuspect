@@ -38,3 +38,14 @@
     </script>
   </body>
 </html>
+<script>
+  function hideAddressBar() {
+    setTimeout(function() {
+      window.scrollTo(0, 1);
+    }, 0);
+  }
+document.addEventListener("DOMContentLoaded", function(event) {
+  hideAddressBar();
+});
+
+</script>
