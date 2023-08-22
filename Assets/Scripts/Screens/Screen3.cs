@@ -28,6 +28,10 @@ namespace Screens
         protected override async void Start()
         {
             await Initialize();
+            #if !UNITY_EDITOR && UNITY_WEBGL 
+                // disable WebGLInput.mobileKeyboardSupport so the built-in mobile keyboard support is disabled.
+                WebGLInput.mobileKeyboardSupport = true;
+            #endif
         }
 
         private async Task Initialize()
