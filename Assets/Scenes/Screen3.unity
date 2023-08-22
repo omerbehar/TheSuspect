@@ -2580,7 +2580,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 71ed8231b9ac8374bab16123eaf94d01, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 0
@@ -3172,6 +3172,7 @@ GameObject:
   - component: {fileID: 1267683786}
   - component: {fileID: 1267683785}
   - component: {fileID: 1267683784}
+  - component: {fileID: 1267683787}
   m_Layer: 0
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -3307,6 +3308,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267683782}
   m_CullTransparentMesh: 1
+--- !u!114 &1267683787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267683782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddab108e5a5c1204482154d610fe4fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputField: {fileID: 1267683784}
 --- !u!1 &1294499080
 GameObject:
   m_ObjectHideFlags: 0
