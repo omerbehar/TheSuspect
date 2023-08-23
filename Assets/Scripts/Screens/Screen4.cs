@@ -4,12 +4,13 @@ using Screens.Bases;
 using Screens.Interfaces;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Screens
 {
     public class Screen4 : ScreenBase, ILoadData, ISaveData
     {
-        [SerializeField] private TMP_InputField teamNameInputField;
+        [SerializeField] private InputField teamNameInputField;
         [SerializeField] private string teamName;
 
         private async void Start()

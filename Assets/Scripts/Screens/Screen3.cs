@@ -15,12 +15,12 @@ namespace Screens
         private const int MINIMUM_NAMES_ALLOWED = 2;
         [SerializeField] private GameObject addInputFieldGO;
         [SerializeField] private Button addNameInputFieldButton;
-        [SerializeField] private List<TMP_InputField> nameInputFields = new();
+        [SerializeField] private List<InputField> nameInputFields = new();
         [SerializeField] private Transform inputFieldsLayout;
         [SerializeField] private GameObject inputFieldPrefab;
         [SerializeField] private string[] names;
         private int inputFieldsCount = INITIAL_INPUT_FIELDS;
-        [SerializeField] private TMP_InputField instructorNameInputField;
+        [SerializeField] private InputField instructorNameInputField;
         [SerializeField] private string instructorName;
         
         private int namesAddedCount;
@@ -47,7 +47,7 @@ namespace Screens
         private void IsAssignmentCompleted()
         {
             namesAddedCount = 0;
-            foreach (TMP_InputField nameInputField in nameInputFields)
+            foreach (InputField nameInputField in nameInputFields)
             {
                 if (nameInputField.text != "")
                 {
@@ -63,13 +63,13 @@ namespace Screens
         private void AddListeners()
         {
             addNameInputFieldButton.onClick.AddListener(AddNameInputField);
-            foreach (TMP_InputField nameInputField in nameInputFields)
+            foreach (InputField nameInputField in nameInputFields)
             {
-                nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(nameInputField); });
+                //nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(nameInputField); });
                 nameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
             }
 
-            instructorNameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(instructorNameInputField); });
+            //instructorNameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(instructorNameInputField); });
             instructorNameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
         }
 
@@ -91,9 +91,9 @@ namespace Screens
         private void AddNameInputField()
         {
             GameObject inputFieldGameObject = Instantiate(inputFieldPrefab, inputFieldsLayout);
-            TMP_InputField nameInputField = inputFieldGameObject.GetComponent<TMP_InputField>();
+            InputField nameInputField = inputFieldGameObject.GetComponent<InputField>();
             nameInputFields.Add(nameInputField);
-            nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(nameInputField); });
+            //nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(nameInputField); });
             nameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
             LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
             inputFieldsCount++;
