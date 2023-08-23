@@ -1,13 +1,16 @@
+using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using SFB;
+using TMPro;
 using UnityEngine.Serialization;
 
 namespace DefaultNamespace
 {
     public class UploadImage : MonoBehaviour
     {
+        [SerializeField] private TMP_Text debugText;
         [SerializeField] RawImage rawImageDisplay;
         [SerializeField] RawImage imageBorderDisplay;
         [SerializeField] private int horizontalWidth = 1024; // Your desired width for horizontal images
@@ -18,11 +21,34 @@ namespace DefaultNamespace
         [SerializeField] bool isPlayTest = true;
         [SerializeField] private GameObject whenUploadIcons;
         [SerializeField] private GameObject whenNoUploadIcons;
-
-        void Start()
+        private WebCamDevice[] devices;
+       
+        IEnumerator Start()
         {
-            rawImageDisplay.color = new Color(1, 1, 1, 0); // Start with a transparent image.
             
+            rawImageDisplay.color = new Color(1, 1, 1, 0); // Start with a transparent image.
+            yield return Application.RequestUserAuthorization(UserAuthorization.WebCam);
+            if (Application.HasUserAuthorization(UserAuthorization.WebCam))
+            {
+                Debug.Log("webcam found");
+                    debugText.text = "webcam found";
+                devices = WebCamTexture.devices;
+                for (int cameraIndex = 0; cameraIndex < devices.Length; ++cameraIndex)
+                {
+                    Debug.Log("devices[cameraIndex].name: ");
+                    Debug.Log(devices[cameraIndex].name);
+                    Debug.Log("devices[cameraIndex].isFrontFacing");
+                    Debug.Log(devices[cameraIndex].isFrontFacing);
+                }
+            }
+            else
+            {
+                Debug.Log("no webcams found");
+                debugText.text = "no webcams found";
+            }
+#if UNITY_WEBGL
+            isPlayTest = false;
+#endif
 
 #if PLAYTEST
             if(isPlayTest)
@@ -88,6 +114,7 @@ namespace DefaultNamespace
             NativeCamera.Permission permission = NativeCamera.TakePicture((path) =>
             {
                 Debug.Log("Image path: " + path);
+                debugText.text = "Image path: " + path;
                 if (path != null)
                 {
                     // Create a Texture2D from the captured image
@@ -118,6 +145,7 @@ namespace DefaultNamespace
             }, maxSize);
 
             Debug.Log("Permission result: " + permission);
+            debugText.text = "Permission result: " + permission;
         }
 
         public void RemoveImage()
