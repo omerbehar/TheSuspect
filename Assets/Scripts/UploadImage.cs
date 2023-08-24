@@ -1,13 +1,13 @@
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
-using SFB;
-using UnityEngine.Serialization;
+using TMPro;
 
 namespace DefaultNamespace
 {
     public class UploadImage : MonoBehaviour
     {
+        [SerializeField] private TMP_Text debugText;
         [SerializeField] RawImage rawImageDisplay;
         [SerializeField] RawImage imageBorderDisplay;
         [SerializeField] private int horizontalWidth = 1024; // Your desired width for horizontal images
@@ -18,107 +18,121 @@ namespace DefaultNamespace
         [SerializeField] bool isPlayTest = true;
         [SerializeField] private GameObject whenUploadIcons;
         [SerializeField] private GameObject whenNoUploadIcons;
+        private WebCamDevice[] devices;
+        private static Texture2D tex;
 
         void Start()
         {
             rawImageDisplay.color = new Color(1, 1, 1, 0); // Start with a transparent image.
-            
-
-#if PLAYTEST
-            if(isPlayTest)
-                Debug.Log("Playtest mode is on.");
-                 //PickImageAndDisplayFromExplorer();
-            else
-                 LoadImage();
-#else
             LoadImage();
-#endif
         }
 
-        public void PickImageAndDisplayFromExplorer()
-        {
-#if PLAYTEST
-            string[] paths = StandaloneFileBrowser.OpenFilePanel("Open Image File", "", "jpg,png,bmp", false); 
-            if (paths.Length > 0)
-            {
-                // Create a Texture2D from the selected image
-                Texture2D texture = LoadTexture(paths[0]);
-                if (texture == null)
-                {
-                    Debug.Log("Couldn't load texture from " + paths[0]);
-                    return;
-                }
+        // private void OnTextureReceived()
+        // {
+        //     DisplayImage(tex);
+        // }
 
-                // Create a new readable texture as a copy of the original
-                Texture2D readableTexture = new Texture2D(texture.width, texture.height, texture.format, texture.mipmapCount > 1);
-                if (readableTexture.mipmapCount > 1)
-                    Graphics.CopyTexture(texture, readableTexture);
-                else
-                    Graphics.CopyTexture(texture, 0, 0, readableTexture, 0, 0);
-
-                // Save image to a file
-                byte[] imgData = readableTexture.EncodeToPNG();
-                string fileName = "myImage.png";
-                File.WriteAllBytes(Path.Combine(Application.persistentDataPath, fileName), imgData);
-                PlayerPrefs.SetString("capturedImage", fileName);
-
-                // Display the image
-                DisplayImage(readableTexture);
-            }
-#endif
+        // public void ReceiveImage(string base64Image) {
+        //     debugText.text = "ReceiveImage";
+        //     Texture2D texture = new Texture2D(2, 2);
+        //     byte[] byteArr = System.Convert.FromBase64String(base64Image.Split(',')[1]);
+        //     texture.LoadImage(byteArr);
+        //
+        //     // Now you can use this texture as needed in Unity
+        //     // For instance, apply the texture to a RawImage on the canvas
+        //     DisplayImage(texture);
+        // }
+//         public void PickImageAndDisplayFromExplorer()
+//         {
+// #if PLAYTEST
+//             string[] paths = StandaloneFileBrowser.OpenFilePanel("Open Image File", "", "jpg,png,bmp", false); 
+//             if (paths.Length > 0)
+//             {
+//                 // Create a Texture2D from the selected image
+//                 Texture2D texture = LoadTexture(paths[0]);
+//                 if (texture == null)
+//                 {
+//                     Debug.Log("Couldn't load texture from " + paths[0]);
+//                     return;
+//                 }
+//
+//                 // Create a new readable texture as a copy of the original
+//                 Texture2D readableTexture = new Texture2D(texture.width, texture.height, texture.format, texture.mipmapCount > 1);
+//                 if (readableTexture.mipmapCount > 1)
+//                     Graphics.CopyTexture(texture, readableTexture);
+//                 else
+//                     Graphics.CopyTexture(texture, 0, 0, readableTexture, 0, 0);
+//
+//                 // Save image to a file
+//                 byte[] imgData = readableTexture.EncodeToPNG();
+//                 string fileName = "myImage.png";
+//                 File.WriteAllBytes(Path.Combine(Application.persistentDataPath, fileName), imgData);
+//                 PlayerPrefs.SetString("capturedImage", fileName);
+//
+//                 // Display the image
+//                 DisplayImage(readableTexture);
+//             }
+// #endif
         
-        }
+        // }
 
-        private Texture2D LoadTexture(string filePath)
-        {
-            Texture2D tex = null;
-            byte[] fileData;
+        // private Texture2D LoadTexture(string filePath)
+        // {
+        //     Texture2D tex = null;
+        //     byte[] fileData;
+        //
+        //     if (File.Exists(filePath))
+        //     {
+        //         fileData = File.ReadAllBytes(filePath);
+        //         tex = new Texture2D(2, 2);
+        //         tex.LoadImage(fileData); 
+        //     }
+        //     return tex;
+        // }  
 
-            if (File.Exists(filePath))
-            {
-                fileData = File.ReadAllBytes(filePath);
-                tex = new Texture2D(2, 2);
-                tex.LoadImage(fileData); 
-            }
-            return tex;
-        }  
-
-        public void PickImageAndDisplay(int maxSize)
-        {
-            NativeCamera.Permission permission = NativeCamera.TakePicture((path) =>
-            {
-                Debug.Log("Image path: " + path);
-                if (path != null)
-                {
-                    // Create a Texture2D from the captured image
-                    Texture2D texture = NativeCamera.LoadImageAtPath(path, maxSize);
-                    if (texture != null)
-                    {
-                        // Create a new readable texture as a copy of the original
-                        Texture2D readableTexture = new Texture2D(texture.width, texture.height, texture.format, texture.mipmapCount > 1);
-                        if (readableTexture.mipmapCount > 1)
-                            Graphics.CopyTexture(texture, readableTexture);
-                        else
-                            Graphics.CopyTexture(texture, 0, 0, readableTexture, 0, 0);
-
-                        // Save image to a file
-                        byte[] imgData = readableTexture.EncodeToPNG();
-                        string fileName = "myImage.png";
-                        File.WriteAllBytes(Path.Combine(Application.persistentDataPath, fileName), imgData);
-                        PlayerPrefs.SetString("capturedImage", fileName);
-
-                        // Display the image
-                        DisplayImage(readableTexture);
-                    }
-                    else
-                    {
-                        Debug.Log("Couldn't load texture from " + path);
-                    }
-                }
-            }, maxSize);
-
-            Debug.Log("Permission result: " + permission);
-        }
+//         public void PickImageAndDisplay(int maxSize)
+//         {
+// // #if UNITY_WEBGL && !UNITY_EDITOR
+// //             CaptureImageFromCamera();
+// //             var texture = new Texture2D(0, 0, TextureFormat.ARGB32, false);
+// //             BindWebGLTexture(texture.GetNativeTexturePtr());
+// // #endif
+//             NativeCamera.Permission permission = NativeCamera.TakePicture((path) =>
+//             {
+//                 Debug.Log("Image path: " + path);
+//                 debugText.text = "Image path: " + path;
+//                 if (path != null)
+//                 {
+//                     // Create a Texture2D from the captured image
+//                     Texture2D texture = NativeCamera.LoadImageAtPath(path, maxSize);
+//                     if (texture != null)
+//                     {
+//                         // Create a new readable texture as a copy of the original
+//                         Texture2D readableTexture = new Texture2D(texture.width, texture.height, texture.format, texture.mipmapCount > 1);
+//                         if (readableTexture.mipmapCount > 1)
+//                             Graphics.CopyTexture(texture, readableTexture);
+//                         else
+//                             Graphics.CopyTexture(texture, 0, 0, readableTexture, 0, 0);
+//
+//                         // Save image to a file
+//                         byte[] imgData = readableTexture.EncodeToPNG();
+//                         string fileName = "myImage.png";
+//                         File.WriteAllBytes(Path.Combine(Application.persistentDataPath, fileName), imgData);
+//                         PlayerPrefs.SetString("capturedImage", fileName);
+//
+//                         // Display the image
+//                         DisplayImage(readableTexture);
+//                     }
+//                     else
+//                     {
+//                         Debug.Log("Couldn't load texture from " + path);
+//                     }
+//                 }
+//             }, maxSize);
+//
+//             Debug.Log("Permission result: " + permission);
+//             debugText.text = "Permission result: " + permission;
+//         }
 
         public void RemoveImage()
         {
@@ -128,14 +142,13 @@ namespace DefaultNamespace
             PlayerPrefs.DeleteKey("capturedImage");
         }
 
-        private void DisplayImage(Texture2D capturedImage)
+        public void DisplayImage(Texture2D capturedImage)
         {
             rawImageDisplay.texture = capturedImage;
 
             // Calculate aspect ratio and set new dimensions
             float imageAspect = (float)capturedImage.width / capturedImage.height;
             float areaAspect = imageBounds.width / imageBounds.height;
-
             float scaleFactor;
             if (imageAspect < areaAspect)
             {
@@ -145,10 +158,9 @@ namespace DefaultNamespace
             {
                 scaleFactor = imageBounds.width / capturedImage.width;
             }
-
             int width = Mathf.RoundToInt(capturedImage.width * scaleFactor);
             int height = Mathf.RoundToInt(capturedImage.height * scaleFactor);
-
+            
             // Set the size:
             rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
             rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);

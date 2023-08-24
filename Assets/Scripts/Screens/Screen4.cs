@@ -1,37 +1,44 @@
 using System.Threading.Tasks;
 using DataLayer;
-using DefaultNamespace;
 using Screens.Bases;
 using Screens.Interfaces;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Screens
 {
     public class Screen4 : ScreenBase, ILoadData, ISaveData
     {
-        [SerializeField] private TMP_InputField teamNameInputField;
+        [SerializeField] private InputField teamNameInputField;
         [SerializeField] private string teamName;
 
         private async void Start()
         {
             base.Start();
             await LoadData();
-        }
-        private void Update()
-        {
-            UpdateTeamName();
+            AddListeners();
+            IsAssignmentCompleted();
         }
 
-        private void UpdateTeamName()
+        private void AddListeners()
+        {
+            teamNameInputField.onValueChanged.AddListener(delegate { UpdateTeamName(); });
+        }
+        
+        private async void UpdateTeamName()
         {
             teamName = teamNameInputField.text;
+            IsAssignmentCompleted();
+            await SaveData();
+        }
+
+        private void IsAssignmentCompleted()
+        {
             if (teamName != "")
             {
                 EventManager.AssignmentCompleted.Invoke();
             }
-
-            SaveData();
         }
 
         public Task LoadData()
@@ -42,10 +49,11 @@ namespace Screens
             return Task.CompletedTask;
         }
 
-        public void SaveData()
+        public async Task SaveData()
         {
             Data.TeamName = teamName;
             Data.SaveData();
+            await Database.SaveDataToDatabase();
         }
     }
 }
