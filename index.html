@@ -24,7 +24,7 @@
         document.body.style.textAlign = "left";
       }
 
-      createUnityInstance(document.querySelector("#unity-canvas"), {
+      var unityInstance = createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/Builds.data.unityweb",
         frameworkUrl: "Build/Builds.framework.js.unityweb",
         codeUrl: "Build/Builds.wasm.unityweb",

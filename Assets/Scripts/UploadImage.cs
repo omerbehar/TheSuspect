@@ -1,10 +1,10 @@
-using System.Collections;
+using System;
 using System.IO;
+using System.Runtime.InteropServices;
+using AOT;
 using UnityEngine;
 using UnityEngine.UI;
-using SFB;
 using TMPro;
-using UnityEngine.Serialization;
 
 namespace DefaultNamespace
 {
@@ -22,30 +22,32 @@ namespace DefaultNamespace
         [SerializeField] private GameObject whenUploadIcons;
         [SerializeField] private GameObject whenNoUploadIcons;
         private WebCamDevice[] devices;
-       
-        IEnumerator Start()
+        private static Texture2D tex;
+
+        void Start()
         {
-            
+            EventManager.TextureRecieved.AddListener(OnTextureReceived);
             rawImageDisplay.color = new Color(1, 1, 1, 0); // Start with a transparent image.
-            yield return Application.RequestUserAuthorization(UserAuthorization.WebCam);
-            if (Application.HasUserAuthorization(UserAuthorization.WebCam))
-            {
-                Debug.Log("webcam found");
-                    debugText.text = "webcam found";
-                devices = WebCamTexture.devices;
-                for (int cameraIndex = 0; cameraIndex < devices.Length; ++cameraIndex)
-                {
-                    Debug.Log("devices[cameraIndex].name: ");
-                    Debug.Log(devices[cameraIndex].name);
-                    Debug.Log("devices[cameraIndex].isFrontFacing");
-                    Debug.Log(devices[cameraIndex].isFrontFacing);
-                }
-            }
-            else
-            {
-                Debug.Log("no webcams found");
-                debugText.text = "no webcams found";
-            }
+            CallShowAlert();
+            // yield return Application.RequestUserAuthorization(UserAuthorization.WebCam);
+            // if (Application.HasUserAuthorization(UserAuthorization.WebCam))
+            // {
+            //     Debug.Log("webcam found");
+            //         debugText.text = "webcam found";
+            //     devices = WebCamTexture.devices;
+            //     for (int cameraIndex = 0; cameraIndex < devices.Length; ++cameraIndex)
+            //     {
+            //         Debug.Log("devices[cameraIndex].name: ");
+            //         Debug.Log(devices[cameraIndex].name);
+            //         Debug.Log("devices[cameraIndex].isFrontFacing");
+            //         Debug.Log(devices[cameraIndex].isFrontFacing);
+            //     }
+            // }
+            // else
+            // {
+            //     Debug.Log("no webcams found");
+            //     debugText.text = "no webcams found";
+            // }
 #if UNITY_WEBGL
             isPlayTest = false;
 #endif
@@ -61,6 +63,59 @@ namespace DefaultNamespace
 #endif
         }
 
+        private void OnTextureReceived()
+        {
+            DisplayImage(tex);
+        }
+// #if UNITY_WEBGL && !UNITY_EDITOR
+//         [DllImport("__Internal")]
+//         private static extern void showAlert(string message);
+//         [DllImport("__Internal")]
+//         private static extern void CaptureImageFromCamera();
+//         [DllImport("__Internal")]
+//         private static extern void ReceiveImageFromJS(int stringPointer);
+//         [DllImport("__Internal")]
+//         private static extern void BindWebGLTexture(int texture);
+//
+//
+// #endif
+        public void CallShowAlert() {
+// #if UNITY_WEBGL && !UNITY_EDITOR
+//             showAlert("Hello from Unity!");
+// #endif
+        }
+        //
+        // [DllImport("__Internal")]
+        // private static extern void OpenNativeCamera();
+        
+        [MonoPInvokeCallback(typeof(Action<string>))]
+        public static void ReceiveImageFromJS(string base64Image)
+        {
+            // Convert the base64Image to a Texture2D, etc.
+            // You can use this method: ConvertFromBase64ToTexture2D(base64Image);
+            tex = ConvertFromBase64ToTexture2D(base64Image);
+            //trigger event to display image
+            EventManager.TextureRecieved.Invoke();
+        }
+
+        static Texture2D ConvertFromBase64ToTexture2D(string base64)
+        {
+            //debugText.text = "ReceiveImage";
+            Texture2D tex = new Texture2D(2, 2);
+            byte[] imageBytes = Convert.FromBase64String(base64);
+            tex.LoadImage(imageBytes);
+            return tex;
+        }
+        public void ReceiveImage(string base64Image) {
+            debugText.text = "ReceiveImage";
+            Texture2D texture = new Texture2D(2, 2);
+            byte[] byteArr = System.Convert.FromBase64String(base64Image.Split(',')[1]);
+            texture.LoadImage(byteArr);
+        
+            // Now you can use this texture as needed in Unity
+            // For instance, apply the texture to a RawImage on the canvas
+            DisplayImage(texture);
+        }
         public void PickImageAndDisplayFromExplorer()
         {
 #if PLAYTEST
@@ -111,6 +166,11 @@ namespace DefaultNamespace
 
         public void PickImageAndDisplay(int maxSize)
         {
+// #if UNITY_WEBGL && !UNITY_EDITOR
+//             CaptureImageFromCamera();
+//             var texture = new Texture2D(0, 0, TextureFormat.ARGB32, false);
+//             BindWebGLTexture(texture.GetNativeTexturePtr());
+// #endif
             NativeCamera.Permission permission = NativeCamera.TakePicture((path) =>
             {
                 Debug.Log("Image path: " + path);
@@ -156,14 +216,14 @@ namespace DefaultNamespace
             PlayerPrefs.DeleteKey("capturedImage");
         }
 
-        private void DisplayImage(Texture2D capturedImage)
+        public void DisplayImage(Texture2D capturedImage)
         {
             rawImageDisplay.texture = capturedImage;
 
             // Calculate aspect ratio and set new dimensions
             float imageAspect = (float)capturedImage.width / capturedImage.height;
             float areaAspect = imageBounds.width / imageBounds.height;
-
+            Debug.Log($"imageAspect: {imageAspect}, areaAspect: {areaAspect}");
             float scaleFactor;
             if (imageAspect < areaAspect)
             {
@@ -173,10 +233,10 @@ namespace DefaultNamespace
             {
                 scaleFactor = imageBounds.width / capturedImage.width;
             }
-
+            Debug.Log($"scaleFactor: {scaleFactor}");
             int width = Mathf.RoundToInt(capturedImage.width * scaleFactor);
             int height = Mathf.RoundToInt(capturedImage.height * scaleFactor);
-
+            
             // Set the size:
             rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
             rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);

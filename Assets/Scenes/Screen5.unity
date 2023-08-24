@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 48891749}
   - component: {fileID: 48891754}
   - component: {fileID: 48891755}
+  - component: {fileID: 48891756}
   m_Layer: 0
   m_Name: Canvas 6
   m_TagString: Untagged
@@ -278,9 +279,24 @@ MonoBehaviour:
     - Id: 117:2532
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 01
       Selected: 1
-    - Id: 143:1538
+    - Id: 161:2552
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 12
+      Selected: 1
+    - Id: 230:1219
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 35
+      Selected: 1
+    - Id: 205:2278
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 34
+      Selected: 1
+    - Id: 143:1599
       ParentId: 1:6_UI design
       ParentName: UI design
       Name: Onboarding
@@ -288,89 +304,199 @@ MonoBehaviour:
     - Id: 143:1501
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 03
+      Selected: 1
+    - Id: 205:2113
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 33
+      Selected: 1
+    - Id: 177:4197
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 23
+      Selected: 1
+    - Id: 161:2314
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 04
+      Selected: 1
+    - Id: 205:1407
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 28
       Selected: 1
     - Id: 117:2549
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 05
       Selected: 1
-    - Id: 119:1093
+    - Id: 177:2886
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 14
       Selected: 1
-    - Id: 119:1228
+    - Id: 205:1735
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 30
       Selected: 1
-    - Id: 117:2699
+    - Id: 205:1002
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 24
       Selected: 1
-    - Id: 119:1564
+    - Id: 205:2020
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 32
+      Selected: 1
+    - Id: 205:1634
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 29
+      Selected: 1
+    - Id: 205:1915
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 31
+      Selected: 1
+    - Id: 205:1100
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 25
+      Selected: 1
+    - Id: 205:1203
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 26
+      Selected: 1
+    - Id: 205:1301
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 27
+      Selected: 1
+    - Id: 177:3153
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 15
+      Selected: 1
+    - Id: 161:2713
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 06
+      Selected: 1
+    - Id: 161:2614
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 07
+      Selected: 1
+    - Id: 177:3257
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 16
+      Selected: 1
+    - Id: 177:3549
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 18
+      Selected: 1
+    - Id: 177:3661
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 19
+      Selected: 1
+    - Id: 177:4077
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 22
+      Selected: 1
+    - Id: 177:3770
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 20
+      Selected: 1
+    - Id: 177:3956
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 21
       Selected: 1
     - Id: 104:292
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: splash screen
       Selected: 1
     - Id: 104:360
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 01
       Selected: 1
     - Id: 106:454
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 02
       Selected: 1
     - Id: 106:523
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Intro3
+      Name: Screen 03
       Selected: 1
     - Id: 110:348
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 04
       Selected: 1
     - Id: 110:428
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 05
       Selected: 1
     - Id: 110:520
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 06
       Selected: 1
     - Id: 110:597
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 07
       Selected: 1
     - Id: 110:680
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 08
       Selected: 1
     - Id: 110:922
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 10
       Selected: 1
     - Id: 110:1015
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 11
       Selected: 1
     - Id: 143:1353
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Onboarding
+      Selected: 1
+    - Id: 177:4246
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Onboarding
+      Selected: 1
+    - Id: 205:2169
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Onboarding
+      Selected: 1
+    - Id: 177:4349
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Onboarding
+      Selected: 1
+    - Id: 177:4566
       ParentId: 1:6_UI design
       ParentName: UI design
       Name: Onboarding
@@ -378,7 +504,7 @@ MonoBehaviour:
     - Id: 110:783
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
+      Name: Screen 09
       Selected: 1
     - Id: 117:1531
       ParentId: 117:1502_Draft
@@ -466,6 +592,31 @@ MonoBehaviour:
       Name: Onboarding
       Selected: 1
     - Id: 143:1084
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
+    - Id: 161:1690
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
+    - Id: 161:1775
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
+    - Id: 161:1860
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
+    - Id: 161:1971
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
+    - Id: 161:2035
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
@@ -677,7 +828,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48891748}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 065ab9c5e870462cb04da14085119127, type: 3}
   m_Name: 
@@ -712,6 +863,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 166068117}
   continueButton: {fileID: 166068120}
+--- !u!114 &48891756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48891748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1378ed5a400160c4a81d88f64b1162bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &98586059
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,10 +981,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 48891754}
-        m_TargetAssemblyTypeName: DefaultNamespace.UploadImage, Assembly-CSharp
-        m_MethodName: PickImageAndDisplay
-        m_Mode: 3
+      - m_Target: {fileID: 48891756}
+        m_TargetAssemblyTypeName: MobileCameraBridge, Assembly-CSharp
+        m_MethodName: RequestImage
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1300,7 +1463,7 @@ GameObject:
   - component: {fileID: 200836298}
   m_Layer: 0
   m_Name: ImageContent
-  m_TagString: Untagged
+  m_TagString: ImageObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
