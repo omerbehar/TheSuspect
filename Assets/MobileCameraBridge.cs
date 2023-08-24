@@ -1,47 +1,83 @@
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using DefaultNamespace;
+using SFB;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MobileCameraBridge : MonoBehaviour
 {
-    //private UploadImage uploadImage;
+#if UNITY_WEBGL && !UNITY_EDITOR
     [DllImport("__Internal")]
     private static extern void OpenCamera(MobileCameraCallback callback);
 
     delegate void MobileCameraCallback(string imageData);
-
-    // private void Start()
-    // {
-    //     uploadImage = FindObjectOfType<UploadImage>(); //fix this
-    // }
-
-    public void RequestImage()
-    {
-        OpenCamera(OnImageReceived);
-    }
-
     [AOT.MonoPInvokeCallback(typeof(MobileCameraCallback))]
+
     private static void OnImageReceived(string imageData)
     {
-        // Here you can convert the image data (base64) into a texture and use it in Unity.
-        byte[] bytes = System.Convert.FromBase64String(imageData);
-        Debug.Log("Received image data: " + bytes.Length);
+        byte[] bytes = Convert.FromBase64String(imageData);
         Texture2D texture = new Texture2D(2, 2);
         texture.LoadImage(bytes);
-        Debug.Log("Texture size: " + texture.width + "x" + texture.height);
-        // For demonstration purposes, we're setting the texture to the main material
-        // You should process this texture as needed in your game.
-        // For example, you can set the texture to a RawImage component.
-        //GameObject imageObject = GameObject.FindGameObjectWithTag("ImageObject");
         UploadImage uploadImage = FindObjectOfType<UploadImage>();
         uploadImage.DisplayImage(texture);
-        // Debug.Log("Image object: " + imageObject);
-        // if (imageObject != null)
-        // {
-        //     imageObject.GetComponent<RawImage>().texture = texture;
-        //     Debug.Log("Image object texture: " + imageObject.GetComponent<RawImage>().texture);
-        // }
+    }
+#endif
+    public void RequestImage()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        OpenCamera(OnImageReceived);
+#else
+        PickImageAndDisplayFromExplorer();
+#endif
+    }
+
+    private void PickImageAndDisplayFromExplorer()
+    {
+        string[] paths = StandaloneFileBrowser.OpenFilePanel("Open Image File", "", "jpg,png,bmp", false);
+        if (paths.Length > 0)
+        {
+            // Create a Texture2D from the selected image
+            Texture2D texture = LoadTexture(paths[0]);
+            if (texture == null)
+            {
+                Debug.Log("Couldn't load texture from " + paths[0]);
+                return;
+            }
+
+            // Create a new readable texture as a copy of the original
+            Texture2D readableTexture =
+                new Texture2D(texture.width, texture.height, texture.format, texture.mipmapCount > 1);
+            if (readableTexture.mipmapCount > 1)
+                Graphics.CopyTexture(texture, readableTexture);
+            else
+                Graphics.CopyTexture(texture, 0, 0, readableTexture, 0, 0);
+
+            // Save image to a file
+            byte[] imgData = readableTexture.EncodeToPNG();
+            string fileName = "myImage.png";
+            File.WriteAllBytes(Path.Combine(Application.persistentDataPath, fileName), imgData);
+            PlayerPrefs.SetString("capturedImage", fileName);
+
+            // Display the image
+            UploadImage uploadImage = FindObjectOfType<UploadImage>();
+            uploadImage.DisplayImage(readableTexture);
+        }
+    }
+
+
+    private Texture2D LoadTexture(string filePath)
+    {
+        Texture2D tex = null;
+        byte[] fileData;
+
+        if (File.Exists(filePath))
+        {
+            fileData = File.ReadAllBytes(filePath);
+            tex = new Texture2D(2, 2);
+            tex.LoadImage(fileData);
+        }
+
+        return tex;
     }
 }

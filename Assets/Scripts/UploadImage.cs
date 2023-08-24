@@ -1,7 +1,4 @@
-using System;
 using System.IO;
-using System.Runtime.InteropServices;
-using AOT;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -26,187 +23,116 @@ namespace DefaultNamespace
 
         void Start()
         {
-            EventManager.TextureRecieved.AddListener(OnTextureReceived);
             rawImageDisplay.color = new Color(1, 1, 1, 0); // Start with a transparent image.
-            CallShowAlert();
-            // yield return Application.RequestUserAuthorization(UserAuthorization.WebCam);
-            // if (Application.HasUserAuthorization(UserAuthorization.WebCam))
-            // {
-            //     Debug.Log("webcam found");
-            //         debugText.text = "webcam found";
-            //     devices = WebCamTexture.devices;
-            //     for (int cameraIndex = 0; cameraIndex < devices.Length; ++cameraIndex)
-            //     {
-            //         Debug.Log("devices[cameraIndex].name: ");
-            //         Debug.Log(devices[cameraIndex].name);
-            //         Debug.Log("devices[cameraIndex].isFrontFacing");
-            //         Debug.Log(devices[cameraIndex].isFrontFacing);
-            //     }
-            // }
-            // else
-            // {
-            //     Debug.Log("no webcams found");
-            //     debugText.text = "no webcams found";
-            // }
-#if UNITY_WEBGL
-            isPlayTest = false;
-#endif
-
-#if PLAYTEST
-            if(isPlayTest)
-                Debug.Log("Playtest mode is on.");
-                 //PickImageAndDisplayFromExplorer();
-            else
-                 LoadImage();
-#else
             LoadImage();
-#endif
         }
 
-        private void OnTextureReceived()
-        {
-            DisplayImage(tex);
-        }
-// #if UNITY_WEBGL && !UNITY_EDITOR
-//         [DllImport("__Internal")]
-//         private static extern void showAlert(string message);
-//         [DllImport("__Internal")]
-//         private static extern void CaptureImageFromCamera();
-//         [DllImport("__Internal")]
-//         private static extern void ReceiveImageFromJS(int stringPointer);
-//         [DllImport("__Internal")]
-//         private static extern void BindWebGLTexture(int texture);
-//
-//
-// #endif
-        public void CallShowAlert() {
-// #if UNITY_WEBGL && !UNITY_EDITOR
-//             showAlert("Hello from Unity!");
-// #endif
-        }
+        // private void OnTextureReceived()
+        // {
+        //     DisplayImage(tex);
+        // }
+
+        // public void ReceiveImage(string base64Image) {
+        //     debugText.text = "ReceiveImage";
+        //     Texture2D texture = new Texture2D(2, 2);
+        //     byte[] byteArr = System.Convert.FromBase64String(base64Image.Split(',')[1]);
+        //     texture.LoadImage(byteArr);
         //
-        // [DllImport("__Internal")]
-        // private static extern void OpenNativeCamera();
-        
-        [MonoPInvokeCallback(typeof(Action<string>))]
-        public static void ReceiveImageFromJS(string base64Image)
-        {
-            // Convert the base64Image to a Texture2D, etc.
-            // You can use this method: ConvertFromBase64ToTexture2D(base64Image);
-            tex = ConvertFromBase64ToTexture2D(base64Image);
-            //trigger event to display image
-            EventManager.TextureRecieved.Invoke();
-        }
-
-        static Texture2D ConvertFromBase64ToTexture2D(string base64)
-        {
-            //debugText.text = "ReceiveImage";
-            Texture2D tex = new Texture2D(2, 2);
-            byte[] imageBytes = Convert.FromBase64String(base64);
-            tex.LoadImage(imageBytes);
-            return tex;
-        }
-        public void ReceiveImage(string base64Image) {
-            debugText.text = "ReceiveImage";
-            Texture2D texture = new Texture2D(2, 2);
-            byte[] byteArr = System.Convert.FromBase64String(base64Image.Split(',')[1]);
-            texture.LoadImage(byteArr);
-        
-            // Now you can use this texture as needed in Unity
-            // For instance, apply the texture to a RawImage on the canvas
-            DisplayImage(texture);
-        }
-        public void PickImageAndDisplayFromExplorer()
-        {
-#if PLAYTEST
-            string[] paths = StandaloneFileBrowser.OpenFilePanel("Open Image File", "", "jpg,png,bmp", false); 
-            if (paths.Length > 0)
-            {
-                // Create a Texture2D from the selected image
-                Texture2D texture = LoadTexture(paths[0]);
-                if (texture == null)
-                {
-                    Debug.Log("Couldn't load texture from " + paths[0]);
-                    return;
-                }
-
-                // Create a new readable texture as a copy of the original
-                Texture2D readableTexture = new Texture2D(texture.width, texture.height, texture.format, texture.mipmapCount > 1);
-                if (readableTexture.mipmapCount > 1)
-                    Graphics.CopyTexture(texture, readableTexture);
-                else
-                    Graphics.CopyTexture(texture, 0, 0, readableTexture, 0, 0);
-
-                // Save image to a file
-                byte[] imgData = readableTexture.EncodeToPNG();
-                string fileName = "myImage.png";
-                File.WriteAllBytes(Path.Combine(Application.persistentDataPath, fileName), imgData);
-                PlayerPrefs.SetString("capturedImage", fileName);
-
-                // Display the image
-                DisplayImage(readableTexture);
-            }
-#endif
-        
-        }
-
-        private Texture2D LoadTexture(string filePath)
-        {
-            Texture2D tex = null;
-            byte[] fileData;
-
-            if (File.Exists(filePath))
-            {
-                fileData = File.ReadAllBytes(filePath);
-                tex = new Texture2D(2, 2);
-                tex.LoadImage(fileData); 
-            }
-            return tex;
-        }  
-
-        public void PickImageAndDisplay(int maxSize)
-        {
-// #if UNITY_WEBGL && !UNITY_EDITOR
-//             CaptureImageFromCamera();
-//             var texture = new Texture2D(0, 0, TextureFormat.ARGB32, false);
-//             BindWebGLTexture(texture.GetNativeTexturePtr());
+        //     // Now you can use this texture as needed in Unity
+        //     // For instance, apply the texture to a RawImage on the canvas
+        //     DisplayImage(texture);
+        // }
+//         public void PickImageAndDisplayFromExplorer()
+//         {
+// #if PLAYTEST
+//             string[] paths = StandaloneFileBrowser.OpenFilePanel("Open Image File", "", "jpg,png,bmp", false); 
+//             if (paths.Length > 0)
+//             {
+//                 // Create a Texture2D from the selected image
+//                 Texture2D texture = LoadTexture(paths[0]);
+//                 if (texture == null)
+//                 {
+//                     Debug.Log("Couldn't load texture from " + paths[0]);
+//                     return;
+//                 }
+//
+//                 // Create a new readable texture as a copy of the original
+//                 Texture2D readableTexture = new Texture2D(texture.width, texture.height, texture.format, texture.mipmapCount > 1);
+//                 if (readableTexture.mipmapCount > 1)
+//                     Graphics.CopyTexture(texture, readableTexture);
+//                 else
+//                     Graphics.CopyTexture(texture, 0, 0, readableTexture, 0, 0);
+//
+//                 // Save image to a file
+//                 byte[] imgData = readableTexture.EncodeToPNG();
+//                 string fileName = "myImage.png";
+//                 File.WriteAllBytes(Path.Combine(Application.persistentDataPath, fileName), imgData);
+//                 PlayerPrefs.SetString("capturedImage", fileName);
+//
+//                 // Display the image
+//                 DisplayImage(readableTexture);
+//             }
 // #endif
-            NativeCamera.Permission permission = NativeCamera.TakePicture((path) =>
-            {
-                Debug.Log("Image path: " + path);
-                debugText.text = "Image path: " + path;
-                if (path != null)
-                {
-                    // Create a Texture2D from the captured image
-                    Texture2D texture = NativeCamera.LoadImageAtPath(path, maxSize);
-                    if (texture != null)
-                    {
-                        // Create a new readable texture as a copy of the original
-                        Texture2D readableTexture = new Texture2D(texture.width, texture.height, texture.format, texture.mipmapCount > 1);
-                        if (readableTexture.mipmapCount > 1)
-                            Graphics.CopyTexture(texture, readableTexture);
-                        else
-                            Graphics.CopyTexture(texture, 0, 0, readableTexture, 0, 0);
+        
+        // }
 
-                        // Save image to a file
-                        byte[] imgData = readableTexture.EncodeToPNG();
-                        string fileName = "myImage.png";
-                        File.WriteAllBytes(Path.Combine(Application.persistentDataPath, fileName), imgData);
-                        PlayerPrefs.SetString("capturedImage", fileName);
+        // private Texture2D LoadTexture(string filePath)
+        // {
+        //     Texture2D tex = null;
+        //     byte[] fileData;
+        //
+        //     if (File.Exists(filePath))
+        //     {
+        //         fileData = File.ReadAllBytes(filePath);
+        //         tex = new Texture2D(2, 2);
+        //         tex.LoadImage(fileData); 
+        //     }
+        //     return tex;
+        // }  
 
-                        // Display the image
-                        DisplayImage(readableTexture);
-                    }
-                    else
-                    {
-                        Debug.Log("Couldn't load texture from " + path);
-                    }
-                }
-            }, maxSize);
-
-            Debug.Log("Permission result: " + permission);
-            debugText.text = "Permission result: " + permission;
-        }
+//         public void PickImageAndDisplay(int maxSize)
+//         {
+// // #if UNITY_WEBGL && !UNITY_EDITOR
+// //             CaptureImageFromCamera();
+// //             var texture = new Texture2D(0, 0, TextureFormat.ARGB32, false);
+// //             BindWebGLTexture(texture.GetNativeTexturePtr());
+// // #endif
+//             NativeCamera.Permission permission = NativeCamera.TakePicture((path) =>
+//             {
+//                 Debug.Log("Image path: " + path);
+//                 debugText.text = "Image path: " + path;
+//                 if (path != null)
+//                 {
+//                     // Create a Texture2D from the captured image
+//                     Texture2D texture = NativeCamera.LoadImageAtPath(path, maxSize);
+//                     if (texture != null)
+//                     {
+//                         // Create a new readable texture as a copy of the original
+//                         Texture2D readableTexture = new Texture2D(texture.width, texture.height, texture.format, texture.mipmapCount > 1);
+//                         if (readableTexture.mipmapCount > 1)
+//                             Graphics.CopyTexture(texture, readableTexture);
+//                         else
+//                             Graphics.CopyTexture(texture, 0, 0, readableTexture, 0, 0);
+//
+//                         // Save image to a file
+//                         byte[] imgData = readableTexture.EncodeToPNG();
+//                         string fileName = "myImage.png";
+//                         File.WriteAllBytes(Path.Combine(Application.persistentDataPath, fileName), imgData);
+//                         PlayerPrefs.SetString("capturedImage", fileName);
+//
+//                         // Display the image
+//                         DisplayImage(readableTexture);
+//                     }
+//                     else
+//                     {
+//                         Debug.Log("Couldn't load texture from " + path);
+//                     }
+//                 }
+//             }, maxSize);
+//
+//             Debug.Log("Permission result: " + permission);
+//             debugText.text = "Permission result: " + permission;
+//         }
 
         public void RemoveImage()
         {
@@ -223,7 +149,6 @@ namespace DefaultNamespace
             // Calculate aspect ratio and set new dimensions
             float imageAspect = (float)capturedImage.width / capturedImage.height;
             float areaAspect = imageBounds.width / imageBounds.height;
-            Debug.Log($"imageAspect: {imageAspect}, areaAspect: {areaAspect}");
             float scaleFactor;
             if (imageAspect < areaAspect)
             {
@@ -233,7 +158,6 @@ namespace DefaultNamespace
             {
                 scaleFactor = imageBounds.width / capturedImage.width;
             }
-            Debug.Log($"scaleFactor: {scaleFactor}");
             int width = Mathf.RoundToInt(capturedImage.width * scaleFactor);
             int height = Mathf.RoundToInt(capturedImage.height * scaleFactor);
             
