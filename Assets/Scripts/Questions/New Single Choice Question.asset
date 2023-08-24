@@ -26,4 +26,6 @@ MonoBehaviour:
   - world
   - world
   - world
-  correctAnswerIndices: 04000000
+  - world
+  - world
+  correctAnswerIndices: 00000000

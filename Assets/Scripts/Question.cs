@@ -12,10 +12,13 @@ public abstract class Question : ScriptableObject, IQuestion
     [SerializeField] protected string questionText;
     [SerializeField] protected VisualTreeAsset layoutAsset;
     [SerializeField] protected List<string> answers = new List<string>(); 
-    [SerializeField] protected List<int> correctAnswerIndices = new List<int>(); // Made up correct answer indices 
+    [SerializeField] public List<int> correctAnswerIndices = new List<int>(); // Made up correct answer indices 
     
     public string QuestionText { get => questionText; }
-    public QuestionType Type { get => QuestionType.MultipleChoice; } // Made up QuestionType
+    [SerializeField]
+    private QuestionType _type;
+
+    public QuestionType Type { get { return _type; } }
 
     public abstract VisualElement DisplayQuestionUI();
     public List<string> GetAnswerOptions()
@@ -27,6 +30,8 @@ public abstract class Question : ScriptableObject, IQuestion
         get { return layoutAsset; }
     }
 
+    public int TotalCorrectAnswers { get; set; }
+
     public abstract bool CheckAnswer(int[] selectedAnswers);
     public VisualTreeAsset GetLayoutAsset() 
     {
@@ -34,8 +39,8 @@ public abstract class Question : ScriptableObject, IQuestion
     }
 
 
-    public string GetQuestionText()
+    public int GetCorrectAnswerCount()
     {
-        throw new System.NotImplementedException();
+        return answers.Count;
     }
 }

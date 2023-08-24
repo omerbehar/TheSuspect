@@ -29,5 +29,10 @@ namespace Screens
 
             return selectedAnswerSet.SetEquals(correctAnswerSet);
         }
+        
+        public int GetCorrectAnswerCount()
+        {
+            return correctAnswerIndices.Count;
+        }
     }
 }
