@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 48891751}
   - component: {fileID: 48891750}
   - component: {fileID: 48891749}
-  - component: {fileID: 48891754}
   m_Layer: 0
   m_Name: Canvas 4
   m_TagString: Untagged
@@ -293,392 +292,352 @@ MonoBehaviour:
       ParentId: 0:1_Cover
       ParentName: Cover
       Name: Frame 1
-      Selected: 0
+      Selected: 1
     - Id: 117:2532
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 01
-      Selected: 0
+      Selected: 1
     - Id: 161:2552
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 12
-      Selected: 0
+      Selected: 1
     - Id: 230:1219
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 35
-      Selected: 0
+      Selected: 1
     - Id: 205:2278
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 34
       Selected: 1
     - Id: 143:1599
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:1501
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 03
-      Selected: 0
+      Selected: 1
     - Id: 205:2113
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 33
-      Selected: 0
+      Selected: 1
     - Id: 177:4197
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 23
-      Selected: 0
+      Selected: 1
     - Id: 161:2314
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 04
-      Selected: 0
+      Selected: 1
     - Id: 205:1407
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 28
-      Selected: 0
+      Selected: 1
     - Id: 117:2549
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 05
-      Selected: 0
+      Selected: 1
     - Id: 177:2886
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 14
-      Selected: 0
+      Selected: 1
     - Id: 205:1735
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 30
-      Selected: 0
+      Selected: 1
     - Id: 205:1002
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 24
-      Selected: 0
+      Selected: 1
     - Id: 205:2020
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 32
-      Selected: 0
+      Selected: 1
     - Id: 205:1634
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 29
-      Selected: 0
+      Selected: 1
     - Id: 205:1915
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 31
-      Selected: 0
+      Selected: 1
     - Id: 205:1100
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 25
-      Selected: 0
+      Selected: 1
     - Id: 205:1203
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 26
-      Selected: 0
+      Selected: 1
     - Id: 205:1301
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 27
-      Selected: 0
+      Selected: 1
     - Id: 177:3153
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 15
-      Selected: 0
+      Selected: 1
     - Id: 161:2713
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 06
-      Selected: 0
+      Selected: 1
     - Id: 161:2614
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 07
-      Selected: 0
+      Selected: 1
     - Id: 177:3257
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 16
-      Selected: 0
+      Selected: 1
     - Id: 177:3549
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 18
-      Selected: 0
+      Selected: 1
     - Id: 177:3661
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 19
-      Selected: 0
+      Selected: 1
     - Id: 177:4077
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 22
-      Selected: 0
+      Selected: 1
     - Id: 177:3770
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 20
-      Selected: 0
+      Selected: 1
     - Id: 177:3956
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 21
-      Selected: 0
+      Selected: 1
     - Id: 104:292
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: splash screen
-      Selected: 0
+      Selected: 1
     - Id: 104:360
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 01
-      Selected: 0
+      Selected: 1
     - Id: 106:454
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 02
-      Selected: 0
+      Selected: 1
     - Id: 106:523
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 03
-      Selected: 0
+      Selected: 1
     - Id: 110:348
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 04
-      Selected: 0
+      Selected: 1
     - Id: 110:428
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 05
-      Selected: 0
+      Selected: 1
     - Id: 110:520
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 06
-      Selected: 0
+      Selected: 1
     - Id: 110:597
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 07
-      Selected: 0
+      Selected: 1
     - Id: 110:680
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 08
-      Selected: 0
+      Selected: 1
     - Id: 110:922
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 10
-      Selected: 0
+      Selected: 1
     - Id: 110:1015
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 11
-      Selected: 0
+      Selected: 1
     - Id: 143:1353
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 177:4246
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 205:2169
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 177:4349
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 177:4566
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 110:783
-      ParentId: 1:6_UI design / Mobile
-      ParentName: UI design / Mobile
+      ParentId: 1:6_UI design
+      ParentName: UI design
       Name: Screen 09
-      Selected: 0
-    - Id: 337:1490
-      ParentId: 337:1429_UI design / Desktop
-      ParentName: UI design / Desktop
-      Name: Login screen
-      Selected: 0
-    - Id: 337:1527
-      ParentId: 337:1429_UI design / Desktop
-      ParentName: UI design / Desktop
-      Name: Login screen
-      Selected: 0
-    - Id: 337:1585
-      ParentId: 337:1429_UI design / Desktop
-      ParentName: UI design / Desktop
-      Name: Login screen
-      Selected: 0
-    - Id: 337:1620
-      ParentId: 337:1429_UI design / Desktop
-      ParentName: UI design / Desktop
-      Name: Login screen
-      Selected: 0
-    - Id: 337:1556
-      ParentId: 337:1429_UI design / Desktop
-      ParentName: UI design / Desktop
-      Name: Admin panel
-      Selected: 0
-    - Id: 345:3973
-      ParentId: 337:1429_UI design / Desktop
-      ParentName: UI design / Desktop
-      Name: Admin panel
-      Selected: 0
-    - Id: 345:1909
-      ParentId: 337:1429_UI design / Desktop
-      ParentName: UI design / Desktop
-      Name: Admin panel
-      Selected: 0
-    - Id: 345:3334
-      ParentId: 337:1429_UI design / Desktop
-      ParentName: UI design / Desktop
-      Name: Admin panel
-      Selected: 0
+      Selected: 1
     - Id: 117:1531
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: 1
-      Selected: 0
+      Selected: 1
     - Id: 117:1593
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1613
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1637
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1688
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1738
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1788
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1822
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1857
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1896
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1939
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1984
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:2037
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:2094
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:2138
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:958
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:1021
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:1084
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 161:1690
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 161:1775
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 161:1860
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 161:1971
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 161:2035
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     textMeshSettings:
       controller: {fileID: 48891752}
       autoSize: 0
@@ -749,8 +708,8 @@ MonoBehaviour:
           FCU supports,\nyou need to activate them in this section.
     - Id: FRAMES_KEY
       State: 1
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: FRAMES TO DOWNLOAD (40/40)
         m_Image: {fileID: 0}
@@ -765,24 +724,24 @@ MonoBehaviour:
         m_Tooltip: 
     - Id: 0:1_Cover
       State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: Cover (1/1)
         m_Image: {fileID: 0}
         m_Tooltip: 
     - Id: 1:6_UI design
       State: 1
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: UI design (21/21)
         m_Image: {fileID: 0}
         m_Tooltip: 
     - Id: 117:1502_Draft
       State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: Draft (18/18)
         m_Image: {fileID: 0}
@@ -874,6 +833,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 961929608}
+  - {fileID: 1199137222}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -882,22 +842,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &48891754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48891748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cd654ec655944569a07f9c6d8c5a00a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <BackButton>k__BackingField: {fileID: 0}
-  <NextButton>k__BackingField: {fileID: 0}
-  keycode: 112
-  failedGO: {fileID: 0}
 --- !u!1 &487951510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180, y: -656.99994}
+  m_AnchoredPosition: {x: 180, y: -607}
   m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &771694896
@@ -1232,6 +1176,139 @@ MonoBehaviour:
   tags: 0c000000
   rootFrame: {fileID: 961929607}
   fcuInstance: {fileID: 48891752}
+  isDownloadable: 1
+  text: {fileID: 0}
+  buttonComponent: 0
+  figmaAligment: 
+--- !u!1 &777280663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 777280664}
+  - component: {fileID: 777280669}
+  - component: {fileID: 777280668}
+  - component: {fileID: 777280667}
+  - component: {fileID: 777280666}
+  - component: {fileID: 777280665}
+  m_Layer: 0
+  m_Name: Icons - 16px - arrow-left 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &777280664
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777280663}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1199137222}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 16, y: 16}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &777280665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777280663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
+--- !u!114 &777280666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777280663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 4b03ce092aa83d64c8c0f26585037ea5, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &777280667
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777280663}
+  m_CullTransparentMesh: 1
+--- !u!114 &777280668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777280663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: 16
+  m_MinHeight: 16
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
+--- !u!114 &777280669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777280663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: I117:2548;4:1917
+  fixedName: Icons - 16px - arrow-left 1
+  tags: 13000000020000000c000000
+  rootFrame: {fileID: 0}
+  fcuInstance: {fileID: 0}
   isDownloadable: 1
   text: {fileID: 0}
   buttonComponent: 0
@@ -1512,6 +1589,192 @@ MonoBehaviour:
   text: {fileID: 0}
   buttonComponent: 0
   figmaAligment: 
+--- !u!1 &1199137221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1199137222}
+  - component: {fileID: 1199137228}
+  - component: {fileID: 1199137227}
+  - component: {fileID: 1199137225}
+  - component: {fileID: 1199137224}
+  - component: {fileID: 1199137223}
+  - component: {fileID: 1199137229}
+  m_Layer: 0
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1199137222
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199137221}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 777280664}
+  - {fileID: 2122481128}
+  m_Father: {fileID: 48891753}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 187.5, y: -718}
+  m_SizeDelta: {x: 327, y: 48}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1199137223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199137221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
+--- !u!114 &1199137224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199137221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.70980394, b: 0.827451, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: b1a651bd0682e3743a4acc2ae6926138, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1199137225
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199137221}
+  m_CullTransparentMesh: 1
+--- !u!114 &1199137227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199137221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 24
+    m_Right: 24
+    m_Top: 12
+    m_Bottom: 12
+  m_ChildAlignment: 4
+  m_Spacing: -170
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
+  m_ReverseArrangement: 0
+--- !u!114 &1199137228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199137221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 117:2548
+  fixedName: Button
+  tags: 05000000020000000c0000001500000001000000
+  rootFrame: {fileID: 0}
+  fcuInstance: {fileID: 0}
+  isDownloadable: 0
+  text: {fileID: 0}
+  buttonComponent: 0
+  figmaAligment: NULL NULL FIXED CENTER CENTER
+--- !u!114 &1199137229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199137221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 1199137224}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1201305221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,7 +1968,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 186.5, y: -466.49997}
+  m_AnchoredPosition: {x: 186.5, y: -443.00006}
   m_SizeDelta: {x: 253, y: 133}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1645769412
@@ -1729,7 +1992,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\u05D8\u05D9\u05E4 \u05E7\u05D8\u05DF \u05DE\u05DE\u05E0\u05D9:\n\u05D4\u05D0\u05EA\u05E8
-    \u05E9\u05DC ICL \u05DE\u05DC\u05D0 \u05D0\u05D9\u05E0\u05E4\u05D5\u05E8\u05DE\u05E6\u05D9\u05D4
+    \u05E9\u05DC LCI \u05DE\u05DC\u05D0 \u05D0\u05D9\u05E0\u05E4\u05D5\u05E8\u05DE\u05E6\u05D9\u05D4
     \u05E9\u05D9\u05DB\u05D5\u05DC\u05D4 \u05DC\u05E2\u05D6\u05D5\u05E8 \u05DC\u05DB\u05DD.
     \u05D0\u05DC \u05EA\u05D4\u05E1\u05E1\u05D5 \u05DC\u05D4\u05E9\u05EA\u05DE\u05E9!\n\n\u05D4\u05E9\u05EA\u05DE\u05E9\u05D5
     \u05D1\u05D8\u05DC\u05E4\u05D5\u05DF \u05E0\u05D5\u05E1\u05E3 \u05DC\u05E1\u05E8\u05D9\u05E7\u05EA
@@ -1867,7 +2130,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 179.5, y: -652.99994}
+  m_AnchoredPosition: {x: 179.5, y: -603}
   m_SizeDelta: {x: 123, y: 123}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1725291738
@@ -1963,10 +2226,10 @@ RectTransform:
   m_Father: {fileID: 961929608}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.5, y: -56.608437}
-  m_SizeDelta: {x: -102, y: -639.783}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 184.99998, y: -439.10852}
+  m_SizeDelta: {x: 273, y: 172.21698}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1780483753
 MonoBehaviour:
@@ -2063,7 +2326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 187.5, y: -324.49994}
+  m_AnchoredPosition: {x: 187.5, y: -301}
   m_SizeDelta: {x: 327, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1874109059
@@ -2254,3 +2517,226 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2122481127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2122481128}
+  - component: {fileID: 2122481132}
+  - component: {fileID: 2122481131}
+  - component: {fileID: 2122481130}
+  - component: {fileID: 2122481129}
+  - component: {fileID: 2122481133}
+  m_Layer: 0
+  m_Name: NextButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2122481128
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122481127}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1199137222}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 75, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2122481129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122481127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "\u05D1\u05D5\u05D0\u05D5 \u05E0\u05DE\u05E9\u05D9\u05DA"
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: 4371cd29174de8945a34e3d0c7939111, type: 2}
+  m_sharedMaterial: {fileID: -4882662183521603227, guid: 4371cd29174de8945a34e3d0c7939111, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 16
+  m_fontSizeBase: 16
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &2122481130
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122481127}
+  m_CullTransparentMesh: 1
+--- !u!114 &2122481131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122481127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: 75
+  m_MinHeight: 11
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
+--- !u!114 &2122481132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122481127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: I117:2548;4:1918
+  fixedName: "\u05D7\u05D7\u05D2\u05D9\u05D1\u05D2\u05DA"
+  tags: 130000000a000000
+  rootFrame: {fileID: 0}
+  fcuInstance: {fileID: 0}
+  isDownloadable: 0
+  text: {fileID: 0}
+  buttonComponent: 0
+  figmaAligment: 
+--- !u!114 &2122481133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122481127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2122481129}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []

@@ -4,13 +4,14 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using ColorUtility = UnityEngine.ColorUtility;
 
 namespace Screens
 {
     public class Screen8 : ScreenBase
     {
-        private TMP_InputField[] inputFields = new TMP_InputField[3];
+        private InputField[] inputFields = new InputField[3];
         [SerializeField] private int keycode;
         private int[] keycodes = new int[3];
         [SerializeField] private GameObject failedGO;
@@ -23,7 +24,7 @@ namespace Screens
         private void Init()
         {
             base.Start();
-            inputFields = GetComponentsInChildren<TMP_InputField>();
+            inputFields = GetComponentsInChildren<InputField>();
             keycodes[0] = keycode / 100;
             keycodes[1] = keycode / 10 % 10;
             keycodes[2] = keycode % 10;
@@ -59,7 +60,7 @@ namespace Screens
         private void IsCodeCorrect()
         {
             //check if all fields are filled
-            foreach (TMP_InputField inputField in inputFields)
+            foreach (InputField inputField in inputFields)
             {
                 if (inputField.text == "")
                 {
@@ -86,7 +87,7 @@ namespace Screens
         {
             failedGO.SetActive(false);
             //change color of input fields
-            foreach (TMP_InputField inputField in inputFields)
+            foreach (InputField inputField in inputFields)
             {
                 inputField.image.color = Color.white;
             }}
@@ -95,7 +96,7 @@ namespace Screens
         {
             failedGO.SetActive(true);
             //change color of input fields
-            foreach (TMP_InputField inputField in inputFields)
+            foreach (InputField inputField in inputFields)
             {
                 bool parseSuccess = ColorUtility.TryParseHtmlString("#FF4050", out Color newCol);
                 Debug.Log(parseSuccess + " " + newCol);
