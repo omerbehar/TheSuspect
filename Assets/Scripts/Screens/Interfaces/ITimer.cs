@@ -13,7 +13,6 @@ namespace Screens.Interfaces
         void StartTimer();
         void StopTimer();
         void ResetTimer();
-        void OnTimerFinished();
         void UpdateTimer();
     }
 }

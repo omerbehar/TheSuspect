@@ -196,7 +196,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 1
+  m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -273,202 +273,352 @@ MonoBehaviour:
       ParentId: 0:1_Cover
       ParentName: Cover
       Name: Frame 1
-      Selected: 0
+      Selected: 1
     - Id: 117:2532
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 143:1538
+      Name: Screen 01
+      Selected: 1
+    - Id: 161:2552
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 143:1501
+      Name: Screen 12
+      Selected: 1
+    - Id: 230:1219
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 117:2549
+      Name: Screen 35
+      Selected: 1
+    - Id: 205:2278
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 119:1093
-      ParentId: 1:6_UI design
-      ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 119:1228
-      ParentId: 1:6_UI design
-      ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 117:2699
-      ParentId: 1:6_UI design
-      ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 119:1564
-      ParentId: 1:6_UI design
-      ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 104:292
-      ParentId: 1:6_UI design
-      ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 104:360
-      ParentId: 1:6_UI design
-      ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 106:454
-      ParentId: 1:6_UI design
-      ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 106:523
-      ParentId: 1:6_UI design
-      ParentName: UI design
-      Name: Intro3
-      Selected: 0
-    - Id: 110:348
-      ParentId: 1:6_UI design
-      ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 110:428
+      Name: Screen 34
+      Selected: 1
+    - Id: 143:1599
       ParentId: 1:6_UI design
       ParentName: UI design
       Name: Onboarding
       Selected: 1
+    - Id: 143:1501
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 03
+      Selected: 1
+    - Id: 205:2113
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 33
+      Selected: 1
+    - Id: 177:4197
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 23
+      Selected: 1
+    - Id: 161:2314
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 04
+      Selected: 1
+    - Id: 205:1407
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 28
+      Selected: 1
+    - Id: 117:2549
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 05
+      Selected: 1
+    - Id: 177:2886
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 14
+      Selected: 1
+    - Id: 205:1735
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 30
+      Selected: 1
+    - Id: 205:1002
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 24
+      Selected: 1
+    - Id: 205:2020
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 32
+      Selected: 1
+    - Id: 205:1634
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 29
+      Selected: 1
+    - Id: 205:1915
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 31
+      Selected: 1
+    - Id: 205:1100
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 25
+      Selected: 1
+    - Id: 205:1203
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 26
+      Selected: 1
+    - Id: 205:1301
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 27
+      Selected: 1
+    - Id: 177:3153
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 15
+      Selected: 1
+    - Id: 161:2713
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 06
+      Selected: 1
+    - Id: 161:2614
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 07
+      Selected: 1
+    - Id: 177:3257
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 16
+      Selected: 1
+    - Id: 177:3549
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 18
+      Selected: 1
+    - Id: 177:3661
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 19
+      Selected: 1
+    - Id: 177:4077
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 22
+      Selected: 1
+    - Id: 177:3770
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 20
+      Selected: 1
+    - Id: 177:3956
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 21
+      Selected: 1
+    - Id: 104:292
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: splash screen
+      Selected: 1
+    - Id: 104:360
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 01
+      Selected: 1
+    - Id: 106:454
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 02
+      Selected: 1
+    - Id: 106:523
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 03
+      Selected: 1
+    - Id: 110:348
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 04
+      Selected: 1
+    - Id: 110:428
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 05
+      Selected: 1
     - Id: 110:520
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
+      Name: Screen 06
+      Selected: 1
     - Id: 110:597
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
+      Name: Screen 07
+      Selected: 1
     - Id: 110:680
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
+      Name: Screen 08
+      Selected: 1
     - Id: 110:922
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
+      Name: Screen 10
+      Selected: 1
     - Id: 110:1015
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
+      Name: Screen 11
+      Selected: 1
     - Id: 143:1353
       ParentId: 1:6_UI design
       ParentName: UI design
       Name: Onboarding
-      Selected: 0
-    - Id: 110:783
+      Selected: 1
+    - Id: 177:4246
       ParentId: 1:6_UI design
       ParentName: UI design
       Name: Onboarding
-      Selected: 0
+      Selected: 1
+    - Id: 205:2169
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Onboarding
+      Selected: 1
+    - Id: 177:4349
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Onboarding
+      Selected: 1
+    - Id: 177:4566
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Onboarding
+      Selected: 1
+    - Id: 110:783
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 09
+      Selected: 1
     - Id: 117:1531
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: 1
-      Selected: 0
+      Selected: 1
     - Id: 117:1593
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1613
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1637
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1688
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1738
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1788
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1822
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1857
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1896
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1939
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1984
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:2037
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:2094
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:2138
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:958
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:1021
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:1084
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
+    - Id: 161:1690
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
+    - Id: 161:1775
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
+    - Id: 161:1860
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
+    - Id: 161:1971
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
+    - Id: 161:2035
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
     textMeshSettings:
       controller: {fileID: 48891752}
       autoSize: 0
@@ -1290,7 +1440,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.15686275, g: 0.16078432, b: 0.16862746, a: 1}
+  m_BackGroundColor: {r: 0, g: 0.15686275, b: 0.27450982, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
