@@ -2,296 +2,408 @@
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
-using Screens;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Screens.Bases;
 
-public class ScreenManager : MonoBehaviour
+namespace Screens.Bases
 {
-    [SerializeField]
-    private List<Question> questions = new List<Question>();
-    private int currentQuestionIndex = 0;
-    private ListView answerListView;
-    [SerializeField] private float intemHight = 60f; 
-    [SerializeField] private float SPACING = 10f; // Define spacing between items
-
-    // Variable to control the spacing between items
-    [SerializeField] private float itemSpacing = 10f;
-
-    private void Start()
+    public class ScreenManager : MonoBehaviour
     {
-        InitializeListView();
-        DisplayCurrentQuestion();
-    }
+        #region Fields
 
-   
-    private void InitializeListView()
-    {
-        var root = FindObjectOfType<UIDocument>().rootVisualElement;
+        [SerializeField]
+        private List<Question> questions = new List<Question>();
 
-        answerListView = new ListView(questions, intemHight + SPACING, MakeItem, BindItem);
+        private int currentQuestionIndex = 0;
+        private ListView answerListView;
 
-        // Make listview not show scrollbar
-        var scrollView = answerListView.Q<ScrollView>();
-        scrollView.verticalScrollerVisibility = ScrollerVisibility.Hidden;
-        scrollView.touchScrollBehavior = ScrollView.TouchScrollBehavior.Clamped;
+        [SerializeField] private float itemHeight = 60f;
+        [SerializeField] private float SPACING = 10f; 
+        [SerializeField] private float itemSpacing = 10f;
 
-        answerListView.selectionType = SelectionType.None;
+        private int correctCounter;
+        private List<int> selectedIndices = new List<int>();
 
-        root.Q<VisualElement>("Main").Add(answerListView);
-    }
-
-
-    public void DisplayCurrentQuestion()
-    {
-        correctCounter = 0; // Reset the counter
-        selectedIndices.Clear();  // Clear the selected indices
-        var root = FindObjectOfType<UIDocument>().rootVisualElement;
-        var questionLabel = root.Q<Label>("QuestionLabel");
-        questionLabel.text = questions[currentQuestionIndex].QuestionText;
-
-        answerListView.itemsSource = questions[currentQuestionIndex].GetAnswerOptions();
+        #endregion
     
-        if (questions[currentQuestionIndex].Type == QuestionType.SingleChoice)
+
+        #region UI Setup
+        // Retrieves the root visual element from the UI Document
+        private VisualElement GetRootVisualElement()
         {
-            answerListView.makeItem = MakeSingleChoiceAnswerVO;
-            answerListView.bindItem = BindItemToSingleChoiceAnswerVO;
+            return FindObjectOfType<UIDocument>().rootVisualElement;
         }
-        else if (questions[currentQuestionIndex].Type == QuestionType.MultipleChoice)
+
+        // Setup the ListView for displaying answers
+        private void SetUpListView()
         {
-            answerListView.makeItem = MakeMultiChoiceAnswerVO;
-            answerListView.bindItem = BindItemToMultiChoiceAnswerVO;
+            answerListView = new ListView(questions, itemHeight + SPACING, MakeItem, BindItem);
+
+            var scrollView = answerListView.Q<ScrollView>();
+            scrollView.verticalScrollerVisibility = ScrollerVisibility.Hidden;
+            scrollView.touchScrollBehavior = ScrollView.TouchScrollBehavior.Clamped;
+
+            answerListView.selectionType = SelectionType.None;
         }
-        else
+        public void AdjustListViewHeight()
         {
-            throw new System.NotImplementedException($"Display for question type {questions[currentQuestionIndex].Type} is not implemented");
-        }
+            var totalItemHeight = itemHeight * questions[currentQuestionIndex].GetAnswerOptions().Count;
+            var totalSpacing = SPACING * (questions[currentQuestionIndex].GetAnswerOptions().Count - 1);
+            var totalHeight = totalItemHeight + totalSpacing;
     
-        answerListView.Rebuild();
-    }
-    
-    private VisualElement MakeItem()
-    {
-        if (questions[currentQuestionIndex].Type == QuestionType.SingleChoice)
-        {
-            return MakeSingleChoiceAnswerVO();
-        }
-        else if (questions[currentQuestionIndex].Type == QuestionType.MultipleChoice)
-        {
-            return MakeMultiChoiceAnswerVO();
-        }
-        else
-        {
-            throw new NotImplementedException($"List item creation not implemented for question type {questions[currentQuestionIndex].Type.ToString()}");
-        }
-    }
-
-    private void BindItem(VisualElement element, int index)
-    {
-        if (questions[currentQuestionIndex].Type == QuestionType.SingleChoice)
-        {
-            BindItemToSingleChoiceAnswerVO(element, index);
-        }
-        else if (questions[currentQuestionIndex].Type == QuestionType.MultipleChoice)
-        {
-            BindItemToMultiChoiceAnswerVO(element, index);
-        }
-        else
-        {
-            throw new NotImplementedException($"List item binding not implemented for question type {questions[currentQuestionIndex].Type.ToString()}");
-        }
-    }
-    
-    private VisualElement MakeMultiChoiceAnswerVO()
-    {
-        var multiChoiceAnswerVO = new MultiChoiceAnswerVO();
-        multiChoiceAnswerVO.onAnswerMultipleChoiceSelected = HandleAnswerMultipleChoiceClicked;
-
-        // Define the main container to hold your VO and a spacer
-        var container = new VisualElement();
-        container.Add(multiChoiceAnswerVO);
-
-        // Define an additional VisualElement to act as a spacer between the items
-        var spacer = new VisualElement();
-        spacer.style.height = itemSpacing;  // Set the spacer's height as the desired spacing
-        spacer.style.backgroundColor = Color.clear; // Set it transparent
-
-        container.Add(spacer); // Add the spacer to the container
-        return container;  // Return the main container with the VO and spacer
-    }
-    
-    private void BindItemToMultiChoiceAnswerVO(VisualElement element, int index)
-    {
-        var multiChoiceAnswerVO = (MultiChoiceAnswerVO)element[0];
-        multiChoiceAnswerVO.answerLabel.text = questions[currentQuestionIndex].GetAnswerOptions()[index];
-        multiChoiceAnswerVO.OptionIndex = index;
-    }
-
-    private VisualElement MakeSingleChoiceAnswerVO()
-    {
-        var singleChoiceAnswerVO = new SingleChoiceAnswerVO();
-        singleChoiceAnswerVO.onAnswerClicked = HandleAnswerClicked;
-
-        // Define the main box (container) to hold your VO and a spacer
-        var container = new VisualElement();
-        container.Add(singleChoiceAnswerVO);
-
-        // Define an additional VisualElement to act as a spacer between the items
-        var spacer = new VisualElement();
-        spacer.style.height = itemSpacing;  // Set the spacer's height as the desired spacing
-        spacer.style.backgroundColor = Color.clear; // Set it transparent
-
-        container.Add(spacer); // Add the spacer to the container
-        return container;  // Return the main box with the VO and spacer
-    }
-
-    private void BindItemToSingleChoiceAnswerVO(VisualElement element, int index)
-    {
-        // Adjust this to work with your new container layout
-        var singleChoiceAnswerVO = (SingleChoiceAnswerVO)element[0];
-        singleChoiceAnswerVO.answerLabel.text = questions[currentQuestionIndex].GetAnswerOptions()[index];
-        singleChoiceAnswerVO.OptionIndex = index;
-    }
-    private bool CurrentQuestionIsAnswered()
-    {
-        Question currentQuestion = questions[currentQuestionIndex];
-
-        switch (currentQuestion.Type)
-        {
-            case QuestionType.SingleChoice:
-                RadioButton radioButton = answerListView.Q<RadioButton>();
-                // If RadioButton exists and is selected
-                if (radioButton != null && radioButton.value) 
-                {
-                    return true;
-                }
-                break;
-
-            case QuestionType.MultipleChoice:
-                foreach (Toggle checkbox in answerListView.Children().OfType<Toggle>())
-                {
-                    // If any Checkbox (Toggle) is checked
-                    if (checkbox.value) 
-                    {
-                        return true;
-                    }
-                }
-                break;
-
-            // Handle other question types as necessary
-
-            default:
-                throw new NotImplementedException($"No answer check implemented for question type {currentQuestion.Type}");
+            answerListView.style.height = totalHeight;
         }
 
-        // If no answer is selected
-        return false;
-    }
-    
-    public void HandleAnswerClicked(int answerIndex)
-    {
-        Question currentQuestion = questions[currentQuestionIndex];
-        var isCorrectAnswer = currentQuestion.CheckAnswer(new int[] { answerIndex });
-        if (isCorrectAnswer)
+        // Create a visual element with spacer for UI
+        private VisualElement CreateContainerWithSpacer(VisualElement vo)
         {
-            Debug.Log("Correct Answer! The selected index is: " + answerIndex);
-            // Handle correct answer here
-        }
-        else
-        {
-            Debug.Log("Incorrect Answer! The selected index is: " + answerIndex);
-            // Handle incorrect answer here
-        }
-        // Whatever other action you wish to perform when an answer is clicked
-    }
-    
-    private List<int> selectedIndices = new List<int>();
+            var container = new VisualElement();
+            container.Add(vo);
 
-    // ScreenManager class
-
-    private int correctCounter; // To keep track of the number of correct answers chosen by the user
-
-    public void HandleAnswerMultipleChoiceClicked(int answerIndex) 
-    {
-        var currentQuestion = questions[currentQuestionIndex] as MultipleChoiceQuestion;
-          
-        if (selectedIndices.Contains(answerIndex)) 
-        {
-            selectedIndices.Remove(answerIndex);
-            Debug.Log($"Deselected multi-choice answer option, its index is: { answerIndex }");
-
-            if (currentQuestion.correctAnswerIndices.Contains(answerIndex)) 
+            var spacer = new VisualElement
             {
-                correctCounter--;
+                style = {height = itemSpacing, backgroundColor = Color.clear}
+            };
+
+            container.Add(spacer);
+            return container;
+        }
+
+        #endregion
+    
+    
+        #region game management 
+
+        // Initialization of UI event handlers
+        private void Start()
+        {
+            InitializeListView();
+            DisplayCurrentQuestion();
+
+            var root = GetRootVisualElement();
+
+            var continueButton = root.Q<Button>("ContinueButton");
+
+            if (continueButton != null)
+            {
+                continueButton.clicked += ContinueButtonClicked;
             }
-        } 
-        else 
-        {
-            selectedIndices.Add(answerIndex);
-            Debug.Log($"Selected multi-choice answer option, its index is: { answerIndex }");
+        }
 
-            if (currentQuestion.correctAnswerIndices.Contains(answerIndex)) 
+        // Handle the event of Continue button being clicked
+        public void ContinueButtonClicked()
+        {
+            if (currentQuestionIndex + 1 < questions.Count)
             {
-                correctCounter++;
-                Debug.Log("Correct Answer! Selected index is: " + answerIndex);  // Log when answer is correct
+                currentQuestionIndex++;
+                DisplayCurrentQuestion();
             }
             else
             {
-                Debug.Log("Incorrect Answer! Selected index is: " + answerIndex);  // Log when answer is incorrect
-            }
-
-            // Check if all correct answers have been selected
-            if (AllCorrectAnswersSelected(currentQuestion))
-            {
-                Debug.Log("All correct answers have been selected");
+                Debug.Log("No more questions");
             }
         }
-    }
-
-    private bool AllCorrectAnswersSelected(MultipleChoiceQuestion question)
-    {
-        foreach (var correctIndex in question.correctAnswerIndices)
+        // Display the current question on the UI
+        public void DisplayCurrentQuestion()
         {
-            if (!selectedIndices.Contains(correctIndex))
+            // No more questions to display
+            if (currentQuestionIndex >= questions.Count)
             {
-                // If even one correct index has not been selected, return false
-                return false;
+                Debug.Log("No more questions");
+                return;
+            }
+
+            // Get current question
+            var currentQuestion = questions[currentQuestionIndex];
+
+            // Fetch needed UI Elements
+            var root = GetRootVisualElement();
+            var questionLabel = root.Q<Label>("QuestionLabel");
+
+            // Set question text
+            questionLabel.text = currentQuestion.QuestionText;
+
+            // Reset ListView
+            ResetListView();
+
+            // Supply ListView with new data source
+            answerListView.itemsSource = currentQuestion.GetAnswerOptions();
+
+            if (currentQuestion.Type == QuestionType.SingleChoice)
+            {
+                answerListView.makeItem = MakeSingleChoiceAnswerVO;
+                answerListView.bindItem = BindItemToSingleChoiceAnswerVO;
+            }
+            else if (currentQuestion.Type == QuestionType.MultipleChoice)
+            {
+                answerListView.makeItem = MakeMultiChoiceAnswerVO;
+                answerListView.bindItem = BindItemToMultiChoiceAnswerVO;
+            }
+            else if (currentQuestion.Type == QuestionType.OpenEnded)
+            {
+                answerListView.Clear(); // Clear the old elements
+                answerListView.makeItem = MakeOpenEndedAnswerVO;
+                answerListView.bindItem = BindItemToOpenEndedAnswerVO;
+                answerListView.itemsSource = currentQuestion.GetAnswerOptions();
+               
+            }
+            else
+            {
+                throw new NotImplementedException($"Display for question type {currentQuestion.Type} is not implemented");
+            }
+    
+            // Refresh the ListView
+            answerListView.Rebuild();
+        }
+
+        // Initializes the ListView by locating it in the UI and setting it up
+        private void InitializeListView()
+        {
+            var root = GetRootVisualElement();
+
+            SetUpListView();
+
+            var scrollView = answerListView.Q<ScrollView>();
+            scrollView.verticalScrollerVisibility = ScrollerVisibility.Hidden;
+            scrollView.touchScrollBehavior = ScrollView.TouchScrollBehavior.Clamped;
+
+            answerListView.selectionType = SelectionType.None;
+
+            root.Q<VisualElement>("Main").Add(answerListView);
+        }
+    
+// Reset the ListView by removing the old one and setting up a new one
+        public void ResetListView()
+        {
+            var root = GetRootVisualElement();
+            var mainVisualElement = root.Q<VisualElement>("Main");
+
+            if (answerListView != null) mainVisualElement.Remove(answerListView);
+
+            SetUpListView();
+
+            mainVisualElement.Add(answerListView);
+        }
+        #endregion
+
+    
+        #region item management
+    
+        // Checking if the current question is answered
+        private VisualElement MakeItem()
+        {
+            return Enum.IsDefined(typeof(QuestionType), questions[currentQuestionIndex].Type)
+                ? MakeSingleChoiceAnswerVO()
+                : throw new NotImplementedException($"List item creation not implemented for question type {questions[currentQuestionIndex].Type}");
+        }
+    
+        // Bind a data item to the visual element for the ListView
+        private void BindItem(VisualElement element, int index)
+        {
+            if (Enum.IsDefined(typeof(QuestionType), questions[currentQuestionIndex].Type))
+            {
+                BindItemToSingleChoiceAnswerVO(element, index);
+            }
+            else
+            {
+                throw new NotImplementedException($"List item binding not implemented for question type {questions[currentQuestionIndex].Type}");
+            }
+        }
+        
+        private VisualElement MakeOpenEndedAnswerVO()
+        {
+            var openEndedAnswerVO = new OpenEndedAnswerVO { onSubmit = HandleOpenEndedAnswerSubmit };
+            return CreateContainerWithSpacer(openEndedAnswerVO);
+        }
+
+        private void HandleOpenEndedAnswerSubmit(string userAnswer)
+        {
+            Question currentQuestion = questions[currentQuestionIndex];
+            // Suppose the CheckAnswer method for open-ended question checks if userAnswer is equal to the correct answer
+            bool isCorrectAnswer = currentQuestion.CheckAnswer(userAnswer);
+
+            if (isCorrectAnswer)
+            {
+                Debug.Log("Open-ended answer is correct!");
+                // Perform actions related to correct answer...
+            }
+            else
+            {
+                Debug.Log("Open-ended answer is incorrect.");
+                // Perform actions related to incorrect answer...
             }
         }
 
-        // If every correct index is found in the selected indices, then return true
-        return true;
-    }
+        private void BindItemToOpenEndedAnswerVO(VisualElement element, int index)
+        {
+            var container = element as VisualElement;
+            if (container[0] is OpenEndedAnswerVO openEndedAnswerVO)
+            {
+                openEndedAnswerVO.answerInputField.value = "";
+            }
+            else
+            {
+                throw new Exception("Element is not of type OpenEndedAnswerVO");
+            }
+        }
 
-    public void ConfirmButtonClicked()
-    {
-        if (selectedIndices.Count > 0)
+        public void HandleOpenEndedAnswerSubmit(int[] answerText)
+        {
+            Question currentQuestion = questions[currentQuestionIndex];
+            bool isCorrectAnswer = currentQuestion.CheckAnswer(answerText);
+            Debug.Log(isCorrectAnswer ? "Correct Answer!" : "Incorrect Answer!");
+        }
+    
+        // Method to create a single choice answer Visual Object for ListView item
+        private VisualElement MakeSingleChoiceAnswerVO()
+        {
+            var singleChoiceAnswerVO = new SingleChoiceAnswerVO {onAnswerClicked = HandleAnswerClicked};
+            return CreateContainerWithSpacer(singleChoiceAnswerVO);
+        }
+
+        // Method to bind a single choice answer to a Visual Object in ListView
+        private void BindItemToSingleChoiceAnswerVO(VisualElement element, int index)
+        {
+            var container = (VisualElement)element;
+            if (container[0] is SingleChoiceAnswerVO singleChoiceAnswerVO)
+            {
+                singleChoiceAnswerVO.answerLabel.text = questions[currentQuestionIndex].GetAnswerOptions()[index];
+                singleChoiceAnswerVO.OptionIndex = index;
+            }
+            else
+            {
+                throw new Exception("Element is not of type SingleChoiceAnswerVO");
+            }
+        }
+
+    
+        // Method to create a multi choice answer Visual Object for ListView item
+        private VisualElement MakeMultiChoiceAnswerVO()
+        {
+            var multiChoiceAnswerVO = new MultiChoiceAnswerVO {onAnswerMultipleChoiceSelected = HandleAnswerMultipleChoiceClicked};
+            return CreateContainerWithSpacer(multiChoiceAnswerVO);
+        }
+
+    
+        // Method to bind a multi choice answer to a Visual Object in ListView
+        private void BindItemToMultiChoiceAnswerVO(VisualElement element, int index)
+        {
+            var container = (VisualElement)element;
+            if (container[0] is MultiChoiceAnswerVO multiChoiceAnswerVO)
+            {
+                multiChoiceAnswerVO.answerLabel.text = questions[currentQuestionIndex].GetAnswerOptions()[index];
+                multiChoiceAnswerVO.OptionIndex = index;
+            }
+            else
+            {
+                throw new Exception("Element is not of type MultiChoiceAnswerVO");
+            }
+        }
+        #endregion
+    
+    
+        #region answer management 
+        // Handling single choice answers
+        public void HandleAnswerClicked(int answerIndex)
+        {
+            Question currentQuestion = questions[currentQuestionIndex];
+            var isCorrectAnswer = currentQuestion.CheckAnswer(new[] { answerIndex });
+            if (isCorrectAnswer)
+            {
+                Debug.Log("Correct Answer! The selected index is: " + answerIndex);
+            }
+            else
+            {
+                Debug.Log("Incorrect Answer! The selected index is: " + answerIndex);
+            }
+        }
+
+        // Checking all correct answers selected or not for the given question
+        private bool AllCorrectAnswersSelected(MultipleChoiceQuestion question)
+        {
+            foreach (var correctIndex in question.correctAnswerIndices)
+            {
+                if (!selectedIndices.Contains(correctIndex))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Handling the multiple choice answers
+        public void HandleAnswerMultipleChoiceClicked(int answerIndex)
+        {
+            var currentQuestion = questions[currentQuestionIndex] as MultipleChoiceQuestion;
+
+            if (selectedIndices.Contains(answerIndex))
+            {
+                selectedIndices.Remove(answerIndex);
+                Debug.Log($"Deselected multi-choice answer option, its index is: { answerIndex }");
+
+                if (currentQuestion.correctAnswerIndices.Contains(answerIndex))
+                {
+                    correctCounter--;
+                }
+            }
+            else
+            {
+                selectedIndices.Add(answerIndex);
+                Debug.Log($"Selected multi-choice answer option, its index is: { answerIndex }");
+
+                if (currentQuestion.correctAnswerIndices.Contains(answerIndex))
+                {
+                    correctCounter++;
+                    Debug.Log("Correct Answer! Selected index is: " + answerIndex);
+                }
+                else
+                {
+                    Debug.Log("Incorrect Answer! Selected index is: " + answerIndex);
+                }
+
+                if (AllCorrectAnswersSelected(currentQuestion))
+                {
+                    Debug.Log("All correct answers have been selected");
+                }
+            }
+        }
+  
+
+   
+
+        private bool CurrentQuestionIsAnswered()
         {
             Question currentQuestion = questions[currentQuestionIndex];
 
-            // Sort the indices before checking the answers, as the order of selection doesn't matter in multiple choice.
-            selectedIndices.Sort();
-
-            var isCorrectAnswer = currentQuestion.CheckAnswer(selectedIndices.ToArray());
-           
-            if (selectedIndices.Count == questions[currentQuestionIndex].GetCorrectAnswerCount())
+            switch (currentQuestion.Type)
             {
-                Debug.Log("Correct Answer! The selected indices are: " + string.Join(", ", selectedIndices));
-                // Handle correct answer here
-            }
-            else
-            {
-                Debug.Log("Incorrect Answer! The selected indices are: " + string.Join(", ", selectedIndices));
-                // Handle incorrect answer here
+                case QuestionType.SingleChoice:
+                    RadioButton radioButton = answerListView.Q<RadioButton>();
+                    // If RadioButton exists and is selected
+                    if (radioButton != null && radioButton.value)
+                    {
+                        return true;
+                    }
+                    break;
+
+                case QuestionType.MultipleChoice:
+                    foreach (Toggle checkbox in answerListView.Children().OfType<Toggle>())
+                    {
+                        // If any Checkbox (Toggle) is checked
+                        if (checkbox.value)
+                        {
+                            return true;
+                        }
+                    }
+                    break;
+
+                default:
+                    throw new NotImplementedException($"No answer check implemented for question type {currentQuestion.Type}");
             }
 
-            // Reset the selections after processing
-            selectedIndices.Clear();
+            return false;
         }
-        else
-        {
-            Debug.Log("No answer option is selected");
-        }
+        #endregion
     }
 }

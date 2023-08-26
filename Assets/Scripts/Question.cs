@@ -43,4 +43,9 @@ public abstract class Question : ScriptableObject, IQuestion
     {
         return answers.Count;
     }
+
+    public bool CheckAnswer(string selectedAnswers)
+    {
+        throw new System.NotImplementedException();
+    }
 }
