@@ -433,202 +433,352 @@ MonoBehaviour:
       ParentId: 0:1_Cover
       ParentName: Cover
       Name: Frame 1
-      Selected: 0
+      Selected: 1
     - Id: 117:2532
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 143:1538
+      Name: Screen 01
+      Selected: 1
+    - Id: 161:2552
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 12
+      Selected: 1
+    - Id: 230:1219
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 35
+      Selected: 1
+    - Id: 205:2278
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 34
+      Selected: 1
+    - Id: 143:1599
       ParentId: 1:6_UI design
       ParentName: UI design
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:1501
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
+      Name: Screen 03
+      Selected: 1
+    - Id: 205:2113
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 33
+      Selected: 1
+    - Id: 177:4197
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 23
+      Selected: 1
+    - Id: 161:2314
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 04
+      Selected: 1
+    - Id: 205:1407
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 28
+      Selected: 1
     - Id: 117:2549
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 119:1093
+      Name: Screen 05
+      Selected: 1
+    - Id: 177:2886
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 119:1228
+      Name: Screen 14
+      Selected: 1
+    - Id: 205:1735
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 117:2699
+      Name: Screen 30
+      Selected: 1
+    - Id: 205:1002
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
-    - Id: 119:1564
+      Name: Screen 24
+      Selected: 1
+    - Id: 205:2020
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Onboarding
-      Selected: 0
+      Name: Screen 32
+      Selected: 1
+    - Id: 205:1634
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 29
+      Selected: 1
+    - Id: 205:1915
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 31
+      Selected: 1
+    - Id: 205:1100
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 25
+      Selected: 1
+    - Id: 205:1203
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 26
+      Selected: 1
+    - Id: 205:1301
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 27
+      Selected: 1
+    - Id: 177:3153
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 15
+      Selected: 1
+    - Id: 161:2713
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 06
+      Selected: 1
+    - Id: 161:2614
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 07
+      Selected: 1
+    - Id: 177:3257
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 16
+      Selected: 1
+    - Id: 177:3549
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 18
+      Selected: 1
+    - Id: 177:3661
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 19
+      Selected: 1
+    - Id: 177:4077
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 22
+      Selected: 1
+    - Id: 177:3770
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 20
+      Selected: 1
+    - Id: 177:3956
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Screen 21
+      Selected: 1
     - Id: 104:292
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: 0
-      Selected: 0
+      Name: splash screen
+      Selected: 1
     - Id: 104:360
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: 1
-      Selected: 0
+      Name: Screen 01
+      Selected: 1
     - Id: 106:454
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: 2
-      Selected: 0
+      Name: Screen 02
+      Selected: 1
     - Id: 106:523
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: 3
-      Selected: 0
+      Name: Screen 03
+      Selected: 1
     - Id: 110:348
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: 4
-      Selected: 0
+      Name: Screen 04
+      Selected: 1
     - Id: 110:428
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: 5
-      Selected: 0
+      Name: Screen 05
+      Selected: 1
     - Id: 110:520
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: 6
-      Selected: 0
+      Name: Screen 06
+      Selected: 1
     - Id: 110:597
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: 7
-      Selected: 0
+      Name: Screen 07
+      Selected: 1
     - Id: 110:680
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: 8
+      Name: Screen 08
       Selected: 1
     - Id: 110:922
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: 10
-      Selected: 0
+      Name: Screen 10
+      Selected: 1
     - Id: 110:1015
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: 11
-      Selected: 0
+      Name: Screen 11
+      Selected: 1
     - Id: 143:1353
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: 12
-      Selected: 0
+      Name: Onboarding
+      Selected: 1
+    - Id: 177:4246
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Onboarding
+      Selected: 1
+    - Id: 205:2169
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Onboarding
+      Selected: 1
+    - Id: 177:4349
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Onboarding
+      Selected: 1
+    - Id: 177:4566
+      ParentId: 1:6_UI design
+      ParentName: UI design
+      Name: Onboarding
+      Selected: 1
     - Id: 110:783
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: 9
-      Selected: 0
+      Name: Screen 09
+      Selected: 1
     - Id: 117:1531
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: 1
-      Selected: 0
+      Selected: 1
     - Id: 117:1593
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1613
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1637
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1688
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1738
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1788
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1822
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1857
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1896
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1939
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1984
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:2037
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:2094
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:2138
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:958
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:1021
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:1084
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
+    - Id: 161:1690
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
+    - Id: 161:1775
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
+    - Id: 161:1860
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
+    - Id: 161:1971
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
+    - Id: 161:2035
+      ParentId: 117:1502_Draft
+      ParentName: Draft
+      Name: Onboarding
+      Selected: 1
     textMeshSettings:
       controller: {fileID: 48891752}
       autoSize: 0
@@ -696,8 +846,8 @@ MonoBehaviour:
           FCU supports,\nyou need to activate them in this section.
     - Id: FRAMES_KEY
       State: 1
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: FRAMES TO DOWNLOAD (40/40)
         m_Image: {fileID: 0}
@@ -712,24 +862,24 @@ MonoBehaviour:
         m_Tooltip: 
     - Id: 0:1_Cover
       State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: Cover (1/1)
         m_Image: {fileID: 0}
         m_Tooltip: 
     - Id: 1:6_UI design
       State: 1
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: UI design (21/21)
         m_Image: {fileID: 0}
         m_Tooltip: 
     - Id: 117:1502_Draft
       State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: Draft (18/18)
         m_Image: {fileID: 0}
@@ -845,6 +995,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea319bcb56f94994aca1f429232c338e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <BackButton>k__BackingField: {fileID: 0}
+  <NextButton>k__BackingField: {fileID: 1891068788}
   isPlayTest: 1
   storedVideoName: myVideo.mp4
   uploadButton: {fileID: 853468614}
@@ -5208,6 +5360,7 @@ GameObject:
   - component: {fileID: 1891068784}
   - component: {fileID: 1891068783}
   - component: {fileID: 1891068782}
+  - component: {fileID: 1891068788}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -5348,6 +5501,50 @@ MonoBehaviour:
   text: {fileID: 0}
   buttonComponent: 0
   figmaAligment: NULL NULL FIXED CENTER CENTER
+--- !u!114 &1891068788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891068780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1891068783}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1899560867
 GameObject:
   m_ObjectHideFlags: 0

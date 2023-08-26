@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.IO;
+using Screens.Bases;
 using UnityEngine;
 using UnityEngine.UI;
 using SFB;
 using UnityEngine.Video;
 
-public class UploadVideo : MonoBehaviour
+public class UploadVideo : ScreenBase
 {
     [SerializeField] private bool isPlayTest = true;
     [SerializeField] private string storedVideoName = "myVideo.mp4";

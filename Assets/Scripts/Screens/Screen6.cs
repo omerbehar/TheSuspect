@@ -1,10 +1,11 @@
 using DefaultNamespace;
+using Screens.Bases;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Screens
 {
-    public class Screen6 : MonoBehaviour
+    public class Screen6 : ScreenBase 
     {
         [SerializeField] CanvasGroup canvasGroup;
         [SerializeField] private Button continueButton;

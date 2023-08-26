@@ -861,6 +861,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e42c98fd51f4a7d8c87f6bb21327666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <BackButton>k__BackingField: {fileID: 0}
+  <NextButton>k__BackingField: {fileID: 166068120}
   canvasGroup: {fileID: 166068117}
   continueButton: {fileID: 166068120}
 --- !u!114 &48891756
@@ -1125,7 +1127,7 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
+  m_ChildScaleWidth: 0
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
 --- !u!114 &166068119

@@ -25,6 +25,7 @@ namespace Screens.Bases
         protected virtual void Start()
         {
             InitListeners();
+            NextButton.interactable = true; //remove later
         }
 
         private void InitListeners()
