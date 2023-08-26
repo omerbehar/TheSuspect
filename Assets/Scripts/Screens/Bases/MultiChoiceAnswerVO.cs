@@ -24,6 +24,7 @@ namespace Screens.Bases
             });
 
             answerLabel = this.Q<Label>();
+            checkbox.style.flexDirection = FlexDirection.RowReverse;
         }
     }
 }

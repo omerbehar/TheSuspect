@@ -126,6 +126,11 @@ namespace Screens.Bases
             questionLabel.text = ReverseHebrewText(hebrewQuestionText);
             questionLabel.style.unityTextAlign = UnityEngine.TextAnchor.MiddleRight;
 
+            // Adjust questionLabel's style to fill its parent
+            questionLabel.style.height = Length.Percent(31);
+           
+            questionLabel.style.whiteSpace = WhiteSpace.Normal;
+
 
             // Reset ListView
             ResetListView();
