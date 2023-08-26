@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using SFB;
 using UnityEngine.Video;
 
-public class UploadVideo : ScreenBase
+public class UploadVideo : ScreenBaseWithTimer
 {
     [SerializeField] private bool isPlayTest = true;
     [SerializeField] private string storedVideoName = "myVideo.mp4";
@@ -25,6 +25,7 @@ public class UploadVideo : ScreenBase
     }
     private IEnumerator Start()
     {
+        base.Start();
         deleteButton.interactable = false;
         yield return StartCoroutine(StopAndClearVideo());
         deleteButton.interactable = true;
