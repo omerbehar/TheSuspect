@@ -106,6 +106,7 @@ namespace Screens.Bases
         // Display the current question on the UI
         public void DisplayCurrentQuestion()
         {
+         
             // No more questions to display
             if (currentQuestionIndex >= questions.Count)
             {
@@ -121,7 +122,10 @@ namespace Screens.Bases
             var questionLabel = root.Q<Label>("QuestionLabel");
 
             // Set question text
-            questionLabel.text = currentQuestion.QuestionText;
+            string hebrewQuestionText = currentQuestion.QuestionText;
+            questionLabel.text = ReverseHebrewText(hebrewQuestionText);
+            questionLabel.style.unityTextAlign = UnityEngine.TextAnchor.MiddleRight;
+
 
             // Reset ListView
             ResetListView();
@@ -154,6 +158,13 @@ namespace Screens.Bases
     
             // Refresh the ListView
             answerListView.Rebuild();
+        }
+        
+        private string ReverseHebrewText(string text)
+        {
+            var reversedTextArray = text.ToCharArray();
+            Array.Reverse(reversedTextArray);
+            return new string(reversedTextArray);
         }
 
         // Initializes the ListView by locating it in the UI and setting it up

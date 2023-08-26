@@ -15,11 +15,27 @@ namespace Screens.Bases
             Add(original.Instantiate());
             answerInputField = this.Q<TextField>();
 
+            // Reverse the string for Hebrew or other RTL languages
+            string hebrewText = "נסיון טקסט"; // Replace with your text
+            string reversedText = ReverseHebrewText(hebrewText);
+
+            answerInputField.label = reversedText;
+            answerInputField.style.unityTextAlign = UnityEngine.TextAnchor.MiddleRight;
+
             answerInputField.RegisterValueChangedCallback(evt => 
             {
-                onSubmit?.Invoke(evt.newValue);
-                Debug.Log("Open-ended answer received: " + evt.newValue);
+                var originalText = ReverseHebrewText(evt.newValue);
+                onSubmit?.Invoke(originalText);
+                Debug.Log("Open-ended answer received: " + originalText);
             });
+        }
+
+        private string ReverseHebrewText(string text)
+        {
+            // Text reversal logic for Hebrew or RTL languages
+            var reversedTextArray = text.ToCharArray();
+            Array.Reverse(reversedTextArray);
+            return new string(reversedTextArray);
         }
     }
 }
