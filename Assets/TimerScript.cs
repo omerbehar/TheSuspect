@@ -1,77 +1,71 @@
+using UnityEngine;
+using UnityEngine.UIElements;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Screens.Interfaces;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
 
-public class TimerScript : MonoBehaviour, ITimer
+public class TimerScript : MonoBehaviour
 {
-        [field: SerializeField] public Slider TimerSlider { get; set; }
-        [field: SerializeField] public TMP_Text TimeText { get; set; }
-        [field: SerializeField] public float TimerDuration { get; set; }
-        public float ScreenTime { get; set; }
-        public bool IsTimerRunning { get; set; }
-        private bool scoreReduction;
+    [field: SerializeField] public UIDocument UIDocument { get; set; }
+    [field: SerializeField] public Label TimeText { get; set; }  
+    [field: SerializeField] public float TimerDuration { get; set; } 
+    public float ScreenTime { get; set; }
+    public bool IsTimerRunning { get; set; }
+    private Slider TimerSlider;
+    private VisualElement TrackerFill;
 
-        protected void Start()
-        {
-            Init();
-        }
+    private void Start()
+    {
+        PrepareUI();
+        StartCoroutine(UpdateSliderCoroutine());
+    }
+    
+    private void PrepareUI()
+    {
+        var rootVisualElement = UIDocument.rootVisualElement;
+        TimerSlider = rootVisualElement.Q<Slider>("TimerSlider"); 
+        TimeText = rootVisualElement.Q<Label>("TimeTextLabel");
 
-        private void Init()
+        if (TimerSlider != null) 
         {
-            InitTimer();
-        }
-        
-        private void InitTimer()
-        {
-            if (TimerSlider == null)
-                Debug.LogWarning("TimerSlider is null");
-            if (TimeText == null)
-                Debug.LogWarning("TimeText is null");
-            if (TimerDuration <= 0)
-                Debug.LogWarning("TimerDuration is 0 or less");
-            TimerSlider.maxValue = TimerDuration;
-            TimerSlider.value = 0;
-            TimeText.text = TimerDuration.ToString("F2");
-            StartTimer();
-        }
-
-        public void Update()
-        {
-            UpdateTimer();
-        }
-
-        public void UpdateTimer()
-        {
-            if (IsTimerRunning)
+            TrackerFill = TimerSlider.Q<VisualElement>("unity-tracker"); 
+            var dragger = TimerSlider.Q<VisualElement>("unity-dragger"); 
+            if (dragger != null)
             {
-                if (ScreenTime >= TimerDuration)
-                {
-                    EventManager.TimerFinished.Invoke();
-                }
-                else
-                {
-                    ScreenTime += Time.deltaTime;
-                    TimerSlider.value = TimerDuration - ScreenTime;
-                    TimeText.text = TimeSpan.FromSeconds(TimerDuration - ScreenTime).ToString(@"mm\:ss");
-                }
+                dragger.style.display = DisplayStyle.None; 
             }
         }
-        public void StartTimer()
+
+        if (TrackerFill == null || TimerSlider == null || TimeText == null)
         {
-            IsTimerRunning = true;
+            Debug.LogWarning("Slider, TimeText or Tracker Fill is not found!");
         }
 
-        public void StopTimer()
-        {
-            throw new NotImplementedException();
-        }
+        TimerSlider.lowValue = 0;
+        TimerSlider.highValue = TimerDuration;
+        TimerSlider.value = TimerDuration;
+        TimeText.text = TimerDuration.ToString("F2");
+        IsTimerRunning = true;
+    }
 
-        public void ResetTimer()
+    private IEnumerator UpdateSliderCoroutine()
+    {
+        float startTime = Time.time;
+    
+        while (IsTimerRunning)
         {
-            throw new NotImplementedException();
+            float timeRatio = (Time.time - startTime) / TimerDuration;
+            float remainingTime = Mathf.Lerp(TimerDuration, 0, timeRatio);
+
+            TimerSlider.value = remainingTime;
+            TimeText.text = TimeSpan.FromSeconds(remainingTime).ToString(@"mm\:ss");
+
+            if (TrackerFill != null)
+            {
+                TrackerFill.style.width = new StyleLength(Length.Percent(remainingTime / TimerDuration * 100));
+                TrackerFill.style.backgroundColor = Color.Lerp(Color.red, Color.green, remainingTime / TimerDuration);
+            }
+
+            yield return null;
         }
+    }
 }
