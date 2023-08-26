@@ -4,8 +4,9 @@ using System.Runtime.InteropServices;
 using DefaultNamespace;
 using SFB;
 using UnityEngine;
+using UnityEngine.Video;
 
-public class MobileCameraBridge : MonoBehaviour
+public class MobileCameraImageBridge : MonoBehaviour
 {
 #if UNITY_WEBGL && !UNITY_EDITOR
     [DllImport("__Internal")]
@@ -14,7 +15,7 @@ public class MobileCameraBridge : MonoBehaviour
     delegate void MobileCameraCallback(string imageData);
     [AOT.MonoPInvokeCallback(typeof(MobileCameraCallback))]
 
-    private static void OnImageReceived(string imageData)
+    public static void OnImageReceived(string imageData)
     {
         byte[] bytes = Convert.FromBase64String(imageData);
         Texture2D texture = new Texture2D(2, 2);
