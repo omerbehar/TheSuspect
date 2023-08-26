@@ -34,7 +34,7 @@ namespace DataLayer
         {
             Uri uri = new Uri("https://thesecretteam.000webhostapp.com/savedata.php");
             string fullUrl = $"{uri}?guid={Data.guid}";
-
+            Debug.Log(Data.guid);
             try
             {
                 using UnityWebRequest request = UnityWebRequest.Get(fullUrl);
