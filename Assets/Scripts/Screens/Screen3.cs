@@ -114,7 +114,7 @@ namespace Screens
         public async Task LoadData()
         {
             Data.LoadData();
-            await Database.LoadDataFromDatabase();
+            //await Database.LoadDataFromDatabase();
             instructorName = Data.InstructorName;
             names = Data.PlayerNames;
             instructorNameInputField.text = instructorName;
