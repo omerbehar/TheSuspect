@@ -54,9 +54,14 @@ namespace Screens
                     namesAddedCount++;
                 }
             }
+            Debug.Log($"namesAddedCount: {namesAddedCount}, instructorName: {instructorName}");
             if (namesAddedCount >= MINIMUM_NAMES_ALLOWED && instructorName != "")
             {
                 EventManager.AssignmentCompleted.Invoke();
+            }
+            else
+            {
+                EventManager.AssignmentNotCompleted.Invoke();
             }
         }
 
@@ -65,35 +70,16 @@ namespace Screens
             addNameInputFieldButton.onClick.AddListener(AddNameInputField);
             foreach (InputField nameInputField in nameInputFields)
             {
-                //nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(nameInputField); });
                 nameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
             }
-
-            //instructorNameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(instructorNameInputField); });
             instructorNameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
         }
-
-        private void OnInputFieldSelected(TMP_InputField inputField)
-        {
-            // if (TouchScreenKeyboard.isSupported)
-            // {
-            //     TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false, "");
-            //     inputField.ActivateInputField();
-            //     inputField.Select();
-            // }
-            // else
-            // {
-            //     Debug.Log("TouchScreenKeyboard not supported");
-            //     inputField.Select();
-            // }
-        }
-
+        
         private void AddNameInputField()
         {
             GameObject inputFieldGameObject = Instantiate(inputFieldPrefab, inputFieldsLayout);
             InputField nameInputField = inputFieldGameObject.GetComponent<InputField>();
             nameInputFields.Add(nameInputField);
-            //nameInputField.onSelect.AddListener(delegate { OnInputFieldSelected(nameInputField); });
             nameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
             LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
             inputFieldsCount++;

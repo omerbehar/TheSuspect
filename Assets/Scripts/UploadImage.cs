@@ -7,7 +7,6 @@ namespace DefaultNamespace
 {
     public class UploadImage : MonoBehaviour
     {
-        [SerializeField] private TMP_Text debugText;
         [SerializeField] RawImage rawImageDisplay;
         [SerializeField] RawImage imageBorderDisplay;
         [SerializeField] private int horizontalWidth = 1024; // Your desired width for horizontal images
@@ -31,8 +30,11 @@ namespace DefaultNamespace
         {
             rawImageDisplay.texture = null;
             rawImageDisplay.color = new Color(1, 1, 1, 0); // Switch back to fully transparent.
-
+            imageBorderDisplay.color = new Color(1, 1, 1, 0); // Switch back to fully transparent.
             PlayerPrefs.DeleteKey("capturedImage");
+            whenNoUploadIcons.SetActive(false);
+            whenUploadIcons.SetActive(true);
+
         }
 
         public void DisplayImage(Texture2D capturedImage)

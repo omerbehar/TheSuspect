@@ -4,10 +4,12 @@ using System.Runtime.InteropServices;
 using DefaultNamespace;
 using SFB;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class MobileCameraImageBridge : MonoBehaviour
 {
+    [SerializeField] private Button deleteButton;
 #if UNITY_WEBGL && !UNITY_EDITOR
     [DllImport("__Internal")]
     private static extern void OpenCamera(MobileCameraCallback callback);
@@ -24,6 +26,13 @@ public class MobileCameraImageBridge : MonoBehaviour
         uploadImage.DisplayImage(texture);
     }
 #endif
+
+    private void Start()
+    {
+        deleteButton.onClick.AddListener(DeleteImage);
+        deleteButton.onClick.Invoke();
+    }
+
     public void RequestImage()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -31,8 +40,15 @@ public class MobileCameraImageBridge : MonoBehaviour
 #else
         PickImageAndDisplayFromExplorer();
 #endif
+        EventManager.AssignmentCompleted.Invoke();
     }
-
+    
+    public void DeleteImage()
+    {
+        UploadImage uploadImage = FindObjectOfType<UploadImage>();
+        uploadImage.RemoveImage();
+        EventManager.AssignmentNotCompleted.Invoke();
+    }
     private void PickImageAndDisplayFromExplorer()
     {
         string[] paths = StandaloneFileBrowser.OpenFilePanel("Open Image File", "", "jpg,png,bmp", false);

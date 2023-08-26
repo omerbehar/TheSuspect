@@ -25,12 +25,12 @@ namespace Screens.Bases
         protected virtual void Start()
         {
             InitListeners();
-            NextButton.interactable = true; //remove later
         }
 
         private void InitListeners()
         {
             EventManager.AssignmentCompleted.AddListener(OnAssigmentCompleted);
+            EventManager.AssignmentNotCompleted.AddListener(OnAssignmentNotCompleted);
             if (BackButton == null)
                 Debug.LogWarning("BackButton is null");
             else
@@ -48,6 +48,10 @@ namespace Screens.Bases
         private void OnAssigmentCompleted()
         {
             NextButton.interactable = true;
+        }
+        private void OnAssignmentNotCompleted()
+        {
+            NextButton.interactable = false;
         }
 
         public void OnBackButtonClicked()
