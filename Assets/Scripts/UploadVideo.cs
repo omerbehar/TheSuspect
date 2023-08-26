@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.IO;
+using System.Runtime.InteropServices;
 using Screens.Bases;
 using UnityEngine;
 using UnityEngine.UI;
 using SFB;
+using UnityEngine.Networking;
 using UnityEngine.Video;
 
 public class UploadVideo : ScreenBaseWithTimer
@@ -15,14 +18,94 @@ public class UploadVideo : ScreenBaseWithTimer
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private RawImage rawImageDisplay;
 
+    private static string _path;
+#if UNITY_WEBGL && !UNITY_EDITOR
+
+        [DllImport("__Internal")]
+        private static extern void CaptureVideo(CaptureVideoCallback callback);
+    
+        delegate void CaptureVideoCallback(string videoData);
+        [AOT.MonoPInvokeCallback(typeof(CaptureVideoCallback))]
+        public static void OnVideoReceived(string videoData)
+        {
+            // Debug.Log("Video captured: " + url);
+            // _path = url;
+            // EventManager.VideoCaptured.Invoke();
+            try
+            {
+                byte[] bytes = Convert.FromBase64String(videoData);
+                Debug.Log($"video size: {bytes.Length}");
+                _path = Path.Combine(Application.persistentDataPath, "myVideo.mp4");
+                PlayerPrefs.SetString("capturedVideo", _path);
+                File.WriteAllBytes(_path, bytes);
+            
+                if (EventManager.VideoCaptured != null)
+                {
+                    EventManager.VideoCaptured.Invoke();
+                }
+            }
+            catch (FormatException e)
+            {
+                Debug.LogError("Base64 string format is invalid: " + e.Message);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("An error occurred: " + e.Message);
+            }
+        }
+#endif
+    // IEnumerator LoadVideoFromURL(string url)
+    // {
+    //     UnityWebRequest www = UnityWebRequest.Get(url);
+    //     DownloadHandlerFile downloadVideo = new DownloadHandlerFile(url);
+    //     //DownloadHandlerVideoClip downloadVideo = new DownloadHandlerVideoClip(url);
+    //     www.downloadHandler = downloadVideo;
+    //
+    //     yield return www.SendWebRequest();
+    //
+    //     if (www.result != UnityWebRequest.Result.Success)
+    //     {
+    //         Debug.Log(www.error);
+    //     }
+    //     else
+    //     {
+    //         VideoPlayer videoPlayer = GetComponent<VideoPlayer>();
+    //         videoPlayer.clip = downloadVideo.GetContent(www);
+    //     }
+    // }
+
+    public void RequestVideo()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        CaptureVideo(OnVideoReceived);
+#else
+            
+        PickVideoDesktop();
+#endif
+    }
+
     private void Awake()
     {
-        rawImageDisplay.gameObject.SetActive(false); // Make the RawImage not visible at the start
-        uploadButton.onClick.AddListener(OnButtonClick);
+        EventManager.VideoCaptured.AddListener(OnVideoCaptured);
+        //rawImageDisplay.gameObject.SetActive(false); // Make the RawImage not visible at the start
+        uploadButton.onClick.AddListener(RequestVideo);
         
         deleteButton.onClick.AddListener(OnDeleteButtonClick); // add this line
         deleteButton.gameObject.SetActive(false); // Initially the delete button is hidden
+        // videoPlayer.url = "blob:http://localhost:65490/574a03ed-0663-412e-ae99-069ffb71e4e9.mp4";
+        // Debug.Log("Video URL: " + videoPlayer.url);
+        // videoPlayer.enabled = true;
+        // //videoPlayer.gameObject.SetActive(true);
+        // videoPlayer.prepareCompleted += Prepared;
+        // videoPlayer.Prepare();
+        //videoPlayer.Play();
     }
+
+    private void OnVideoCaptured()
+    {
+        StartCoroutine(DelayPlayVideo("file://" + _path));
+    }
+
     private IEnumerator Start()
     {
         base.Start();
@@ -121,14 +204,27 @@ public class UploadVideo : ScreenBaseWithTimer
     {
         if(videoPlayer == null)
             videoPlayer = GetComponent<VideoPlayer>();
-        
+        videoPlayer.enabled = true;
+        videoPlayer.gameObject.SetActive(true);
+        Debug.Log("Playing video: " + videoUrl);
         videoPlayer.url = videoUrl;
-        videoPlayer.Play();
+        videoPlayer.prepareCompleted += Prepared;
+        videoPlayer.errorReceived += HandleError;
+
+        videoPlayer.Prepare();
 
         rawImageDisplay.gameObject.SetActive(true);
         deleteButton.gameObject.SetActive(true); // set delete button active when video is loaded// Make the RawImage visible when video is ready to play
     }
 
+    public void Prepared(VideoPlayer vp)
+    {
+        vp.Play();
+    }
+    void HandleError(VideoPlayer vp, string errorMessage)
+    {
+        Debug.LogError("Error: " + errorMessage);
+    }
     public void CleanUpVideo()
     {
         deleteButton.interactable = false; // Disable delete button during cleanup
@@ -141,7 +237,7 @@ public class UploadVideo : ScreenBaseWithTimer
             PlayerPrefs.Save();
         }
 
-        rawImageDisplay.gameObject.SetActive(false); // Make the RawImage not visible when older video is removed
+        //rawImageDisplay.gameObject.SetActive(false); // Make the RawImage not visible when older video is removed
 
         deleteButton.interactable = true;  // Re-enable delete button after cleanup
     }
@@ -156,7 +252,7 @@ public class UploadVideo : ScreenBaseWithTimer
         PlayerPrefs.DeleteKey("capturedVideo");
         videoPlayer.clip = null;
 
-        rawImageDisplay.gameObject.SetActive(false); // Make the RawImage not visible when video file is removed
+        //rawImageDisplay.gameObject.SetActive(false); // Make the RawImage not visible when video file is removed
     }
 
     private void LoadVideo()

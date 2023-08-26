@@ -39,6 +39,10 @@ namespace Screens
             {
                 EventManager.AssignmentCompleted.Invoke();
             }
+            else
+            {
+                EventManager.AssignmentNotCompleted.Invoke();
+            }
         }
 
         public Task LoadData()

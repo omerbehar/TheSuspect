@@ -7,25 +7,26 @@ namespace Screens
 {
     public class Screen6 : ScreenBaseWithTimer 
     {
-        [SerializeField] CanvasGroup canvasGroup;
-        [SerializeField] private Button continueButton;
 
         void OnEnable()
         {
             EventManager.AssignmentCompleted.AddListener(OnAssigmentCompleted);
+            EventManager.AssignmentNotCompleted.AddListener(OnAssignmentNotCompleted);
         }
 
         void OnDisable()
         {
             EventManager.AssignmentCompleted.RemoveListener(OnAssigmentCompleted);
+            EventManager.AssignmentNotCompleted.RemoveListener(OnAssignmentNotCompleted);
         }
 
         void OnAssigmentCompleted()
         {
-            // Change the alpha of the CanvasGroup to desired value
-            // As an example, this line will make it fully opaque.
-            canvasGroup.alpha = 1f;
-            continueButton.interactable = true;
+            NextButton.interactable = true;
+        }
+        void OnAssignmentNotCompleted()
+        {
+            NextButton.interactable = false;
         }
     }
 }
