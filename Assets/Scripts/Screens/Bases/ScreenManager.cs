@@ -45,6 +45,14 @@ namespace Screens.Bases
 
             answerListView.selectionType = SelectionType.None;
         }
+        public void AdjustListViewHeight()
+        {
+            var totalItemHeight = itemHeight * questions[currentQuestionIndex].GetAnswerOptions().Count;
+            var totalSpacing = SPACING * (questions[currentQuestionIndex].GetAnswerOptions().Count - 1);
+            var totalHeight = totalItemHeight + totalSpacing;
+    
+            answerListView.style.height = totalHeight;
+        }
 
         // Create a visual element with spacer for UI
         private VisualElement CreateContainerWithSpacer(VisualElement vo)
@@ -98,34 +106,53 @@ namespace Screens.Bases
         // Display the current question on the UI
         public void DisplayCurrentQuestion()
         {
+            // No more questions to display
+            if (currentQuestionIndex >= questions.Count)
+            {
+                Debug.Log("No more questions");
+                return;
+            }
+
+            // Get current question
+            var currentQuestion = questions[currentQuestionIndex];
+
+            // Fetch needed UI Elements
             var root = GetRootVisualElement();
             var questionLabel = root.Q<Label>("QuestionLabel");
-            questionLabel.text = questions[currentQuestionIndex].QuestionText;
 
+            // Set question text
+            questionLabel.text = currentQuestion.QuestionText;
+
+            // Reset ListView
             ResetListView();
 
-            answerListView.itemsSource = questions[currentQuestionIndex].GetAnswerOptions();
+            // Supply ListView with new data source
+            answerListView.itemsSource = currentQuestion.GetAnswerOptions();
 
-            if (questions[currentQuestionIndex].Type == QuestionType.SingleChoice)
+            if (currentQuestion.Type == QuestionType.SingleChoice)
             {
                 answerListView.makeItem = MakeSingleChoiceAnswerVO;
                 answerListView.bindItem = BindItemToSingleChoiceAnswerVO;
             }
-            else if (questions[currentQuestionIndex].Type == QuestionType.MultipleChoice)
+            else if (currentQuestion.Type == QuestionType.MultipleChoice)
             {
                 answerListView.makeItem = MakeMultiChoiceAnswerVO;
                 answerListView.bindItem = BindItemToMultiChoiceAnswerVO;
             }
-            else if (questions[currentQuestionIndex].Type == QuestionType.OpenEnded)
+            else if (currentQuestion.Type == QuestionType.OpenEnded)
             {
+                answerListView.Clear(); // Clear the old elements
                 answerListView.makeItem = MakeOpenEndedAnswerVO;
                 answerListView.bindItem = BindItemToOpenEndedAnswerVO;
+                answerListView.itemsSource = currentQuestion.GetAnswerOptions();
+               
             }
             else
             {
-                throw new NotImplementedException($"Display for question type {questions[currentQuestionIndex].Type} is not implemented");
+                throw new NotImplementedException($"Display for question type {currentQuestion.Type} is not implemented");
             }
-
+    
+            // Refresh the ListView
             answerListView.Rebuild();
         }
 
