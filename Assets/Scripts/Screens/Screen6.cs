@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Screens
 {
-    public class Screen6 : ScreenBase 
+    public class Screen6 : ScreenBaseWithTimer 
     {
         [SerializeField] CanvasGroup canvasGroup;
         [SerializeField] private Button continueButton;
