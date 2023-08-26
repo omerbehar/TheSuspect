@@ -8,6 +8,8 @@ namespace DataLayer
 {
     public static class Database
     {
+        private static Uri _uri = new Uri("https://thesecretteam.000webhostapp.com/savedata.php");
+
         public static async Task SaveDataToDatabase()
         {
             WWWForm form = new WWWForm();
@@ -17,10 +19,9 @@ namespace DataLayer
             form.AddField("instructorName", Data.InstructorName);
             Debug.Log(string.Join(",", Data.PlayerNames));
             form.AddField("playerNames", string.Join(",", Data.PlayerNames));
-            Uri uri = new Uri("http://localhost:81/sqlconnect/savedata.php");
             try
             {
-                using UnityWebRequest request = UnityWebRequest.Post(uri, form);
+                using UnityWebRequest request = UnityWebRequest.Post(_uri, form);
                 await request.SendWebRequestAsync();
                 Debug.Log(request.downloadHandler.text);
             }
@@ -32,8 +33,7 @@ namespace DataLayer
 
         public static async Task LoadDataFromDatabase()
         {
-            Uri uri = new Uri("http://localhost:81/sqlconnect/savedata.php");
-            string fullUrl = $"{uri}?guid={Data.guid}";
+            string fullUrl = $"{_uri}?guid={Data.guid}";
 
             try
             {

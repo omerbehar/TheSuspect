@@ -43,7 +43,7 @@ namespace DataLayer
             PlayerPrefs.SetInt("Score", Score);
         }
         //load data from player prefs
-        public static void LoadData()
+        public static bool LoadData()
         {
             //if no guid in playerpref, create one and reset data
             if (!PlayerPrefs.HasKey("guid"))
@@ -51,6 +51,7 @@ namespace DataLayer
                 Debug.Log("No guid found, creating new one");
                 ResetData();
                 PlayerPrefs.SetString("guid", guid);
+                return false;
             }
             else
             {
@@ -77,12 +78,14 @@ namespace DataLayer
                             {
                                 Debug.LogWarning("Could not parse bool array from PlayerPrefs: " +  exception.Message);
                             }
-                            return;
+                            //return true;
                         }
                     }
                 }
                 Score = PlayerPrefs.GetInt("Score");
             }
+
+            return true;
         }
 
         private static byte[] LoadImage()

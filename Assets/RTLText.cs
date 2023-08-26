@@ -1,74 +1,100 @@
+using System;
+using System.Collections;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class RTLText : MonoBehaviour
 {
     [SerializeField] private InputField inputField;
     private string originalString = "";
+    public RectTransform canvasRectTransform; // Assign the Canvas' RectTransform
+    public float desiredYOffsetFromTop = 100f; // How many pixels you want from the top
+    private Vector2 originalPosition;
+    private RectTransform inputFieldRectTransform;
+    int keyboardHeight = 270;
+    bool wasKeyboardOpen;
+    private bool gotFocus;
+    private static int _screenWidth;
+    private static int _newScreenHeight;
+    private int originalScreenHeight;
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+    [DllImport("__Internal")]
+    private static extern void SendScreenWidth(GetScreenWidth callback);
+    [DllImport("__Internal")]
+    private static extern void SendScreenHeight(GetScreenHeight callback);
+
+    delegate void GetScreenWidth(string screenWidth);
+    [AOT.MonoPInvokeCallback(typeof(GetScreenWidth))]
+
+    private static void OnWidthRecieved(string receivedScreenWidth)
+    {
+        _screenWidth = int.Parse(receivedScreenWidth);
+    }
+    delegate void GetScreenHeight(string screenHeight);
+    [AOT.MonoPInvokeCallback(typeof(GetScreenHeight))]
+
+    private static void OnHeightRecieved(string receivedScreenHeight)
+    {
+        _newScreenHeight = int.Parse(receivedScreenHeight);
+    }
+#endif
 
     void Start()
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        SendScreenHeight(OnHeightRecieved);
+        originalScreenHeight = _newScreenHeight;
+#endif
+        inputFieldRectTransform = GetComponent<RectTransform>();
+        GameObject mainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
+        Debug.Log(mainCanvas);
+        canvasRectTransform = mainCanvas.GetComponent<RectTransform>();
+        originalPosition = canvasRectTransform.anchoredPosition;
         inputField.onValueChanged.AddListener(ReverseInputText);
-        
-    }
-    void FixedUpdate()
-    {
-        if (inputField.isFocused)
-        {
-            HandleBackspace();
-        }
-       
     }
 
-    private void HandleBackspace()
+    private void Update()
     {
-        if (BackspacePressed() && originalString.Length > 0 && IsRightToLeft(originalString))
+        if (inputField.isFocused && !gotFocus)
         {
-            originalString = originalString[..^1];
-            // Now, update the text of the input field to reflect the deletion
-            inputField.text = originalString;
-            //ReverseInputText(originalString); // we'll manually call this with the updated originalString
+            gotFocus = true;
+            OnInputSelected();
+        }
+        if (!inputField.isFocused && gotFocus)
+        {
+            gotFocus = false;
+            OnInputDeselected();
         }
     }
-
+    
     private void ReverseInputText(string value)
     {
         if (value.Length > originalString.Length)
         {
             // Add the new character to the original string
-            originalString = value[0] + originalString;
-            
+            originalString += value[value.Length - 1];
+
         }
         else if (value.Length < originalString.Length)
         {
             // Remove the last character from the original string
-            originalString = originalString[..^1];
+            originalString = originalString.Substring(0, originalString.Length - 1);
         }
 
         if (IsRightToLeft(originalString))
         {
-            AdjustCaretPosition();
-            // // Reverse the original string
-            // char[] reversedChars = originalString.ToCharArray();
-            // System.Array.Reverse(reversedChars);
-            // inputField.onValueChanged.RemoveListener(ReverseInputText);
-            // inputField.text = new string(reversedChars);
-            // inputField.onValueChanged.AddListener(ReverseInputText);
-            // // Adjust caret position for RTL text
+            // Reverse the original string
+            char[] reversedChars = originalString.ToCharArray();
+            Array.Reverse(reversedChars);
+            inputField.onValueChanged.RemoveListener(ReverseInputText);
+            inputField.text = new string(reversedChars);
+            inputField.onValueChanged.AddListener(ReverseInputText);
         }
         
-    }
-    private bool BackspacePressed()
-    {
-        return Input.GetKey(KeyCode.Backspace);
-    }
-    private void AdjustCaretPosition()
-    {
-        if (inputField != null)
-        {
-            inputField.caretPosition = 0;
-        }
     }
 
     private bool IsRightToLeft(string text)
@@ -86,4 +112,46 @@ public class RTLText : MonoBehaviour
         }
         return false;
     }
+
+    private void OnInputSelected()
+    {
+        if (!wasKeyboardOpen)
+        {
+            StartCoroutine(GetKeyboardHeight());
+            wasKeyboardOpen = true;
+        }
+#if UNITY_WEBGL && !UNITY_EDITOR
+        SendScreenWidth(OnWidthRecieved);
+        if (Input.touchSupported && _screenWidth < 800)
+        {
+            float distanceFromTop = -inputFieldRectTransform.localPosition.y;
+            canvasRectTransform.anchoredPosition = new Vector2(originalPosition.x,
+                canvasRectTransform.anchoredPosition.y - keyboardHeight + distanceFromTop);
+        }
+#endif
+    }
+
+    private void MockKeyboard()
+    {
+        canvasRectTransform.anchoredPosition = new Vector2(originalPosition.x, originalPosition.y + keyboardHeight);
+    }
+
+    private void OnInputDeselected()
+    {
+        canvasRectTransform.anchoredPosition = Vector2.zero;
+    }
+    private IEnumerator GetKeyboardHeight()
+    {
+        yield return new WaitForSeconds(0.1f);
+#if UNITY_EDITOR
+        //MockKeyboard();
+#endif
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        SendScreenHeight(OnHeightRecieved);
+        keyboardHeight = originalScreenHeight - _newScreenHeight;
+#endif
+    }
 }
+
+    

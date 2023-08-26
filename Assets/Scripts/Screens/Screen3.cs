@@ -24,7 +24,9 @@ namespace Screens
         [SerializeField] private string instructorName;
         
         private int namesAddedCount;
-
+        public void Awake()
+        {
+        }
         protected override async void Start()
         {
             await Initialize();
@@ -36,8 +38,8 @@ namespace Screens
 
         private async Task Initialize()
         {
-            base.Start();
             LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
+            base.Start();
             await LoadData();
             names = new string[Data.MAX_PLAYERS];
             IsAssignmentCompleted();
@@ -127,8 +129,14 @@ namespace Screens
 
         public async Task LoadData()
         {
-            Data.LoadData();
-            await Database.LoadDataFromDatabase();
+            if (Data.LoadData())
+            {
+                await Database.LoadDataFromDatabase();
+            }
+            else
+            {
+                await SaveData();
+            }
             instructorName = Data.InstructorName;
             names = Data.PlayerNames;
             instructorNameInputField.text = instructorName;
