@@ -2171,6 +2171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 487951512}
   - component: {fileID: 487951513}
+  - component: {fileID: 487951514}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2225,6 +2226,22 @@ MonoBehaviour:
   AllCorrectAnswerEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &487951514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487951510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42fe5020e6d35554685957741b87f736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelDesigns: []
+  currentLevel: {fileID: 0}
+  loadingImage: {fileID: 0}
+  nextButton: {fileID: 0}
 --- !u!1001 &489333114
 PrefabInstance:
   m_ObjectHideFlags: 0
