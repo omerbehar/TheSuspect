@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using DataLayer;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,6 +17,7 @@ public class GameManager1 : MonoBehaviour
     private const string INTRO_SCENE2 = "IntroScene2";
     [SerializeField] private Transform loadingImage;
     [SerializeField] private Button nextButton;
+    Dictionary<string, int> scoreManager = new();
     private void Awake()
     {
         if (instance == null)
@@ -63,5 +66,29 @@ public class GameManager1 : MonoBehaviour
     private void OnNextButtonClicked()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    
+    public async Task AddScoreToManager(string levelName, int newScore)
+    {
+        if (scoreManager.ContainsKey(levelName))
+        {
+            scoreManager[levelName] = newScore;
+        }
+        else
+        {
+            scoreManager.Add(levelName, newScore);
+        }
+        await SumScore();
+    }
+
+    private async Task SumScore()
+    {
+        Data.Score = 0;
+        foreach (var scoreValue in scoreManager.Values)
+        {
+            Data.Score += scoreValue;
+        }
+
+        await Database.SaveDataToDatabase();
     }
 }

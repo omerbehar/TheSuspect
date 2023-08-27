@@ -695,8 +695,8 @@ MonoBehaviour:
           FCU supports,\nyou need to activate them in this section.
     - Id: FRAMES_KEY
       State: 1
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: FRAMES TO DOWNLOAD (40/40)
         m_Image: {fileID: 0}
@@ -711,24 +711,24 @@ MonoBehaviour:
         m_Tooltip: 
     - Id: 0:1_Cover
       State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: Cover (1/1)
         m_Image: {fileID: 0}
         m_Tooltip: 
     - Id: 1:6_UI design
       State: 1
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: UI design (21/21)
         m_Image: {fileID: 0}
         m_Tooltip: 
     - Id: 117:1502_Draft
       State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: Draft (18/18)
         m_Image: {fileID: 0}
@@ -852,11 +852,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BackButton>k__BackingField: {fileID: 179949910}
   <NextButton>k__BackingField: {fileID: 883283878}
+  scoreIfCorrect: 5
+  scoreReductionIfTimeOut: 2
+  scoreReductionIfHintUsed: 2
   <CorrectAnswerScore>k__BackingField: 5
   <HintButton>k__BackingField: {fileID: 1028917012}
   <HintPopup>k__BackingField: {fileID: 1621162835}
   <HintPopupCloseButton>k__BackingField: {fileID: 1402577244}
-  <CorrectAnswer>k__BackingField: {fileID: 0}
+  <CorrectAnswer>k__BackingField: {fileID: 792504800}
 --- !u!1001 &69961682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -868,6 +871,10 @@ PrefabInstance:
     - target: {fileID: 2448707500351592663, guid: 1dd3c5d9a4f9e9e419d11ef19e994587, type: 3}
       propertyPath: m_Name
       value: RadioButtonField
+      objectReference: {fileID: 0}
+    - target: {fileID: 7010120330981614441, guid: 1dd3c5d9a4f9e9e419d11ef19e994587, type: 3}
+      propertyPath: m_text
+      value: "\u05D0\u05D7\u05D9 \u05D4\u05EA\u05D5\u05EA\u05D7"
       objectReference: {fileID: 0}
     - target: {fileID: 7438540562777846701, guid: 1dd3c5d9a4f9e9e419d11ef19e994587, type: 3}
       propertyPath: m_Pivot.x
@@ -1134,7 +1141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &179949906
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1512,7 +1519,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 43, y: 11}
+  m_SizeDelta: {x: 43, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &207255117
 MonoBehaviour:
@@ -2546,7 +2553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &493377048
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3080,7 +3087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &734513984
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3124,6 +3131,11 @@ MonoBehaviour:
   text: {fileID: 0}
   buttonComponent: 0
   figmaAligment: 
+--- !u!1 &792504800 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2448707500351592663, guid: 1dd3c5d9a4f9e9e419d11ef19e994587, type: 3}
+  m_PrefabInstance: {fileID: 1536218377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &792595155
 GameObject:
   m_ObjectHideFlags: 0
@@ -3250,7 +3262,6 @@ GameObject:
   - component: {fileID: 883283871}
   - component: {fileID: 883283877}
   - component: {fileID: 883283876}
-  - component: {fileID: 883283875}
   - component: {fileID: 883283874}
   - component: {fileID: 883283873}
   - component: {fileID: 883283872}
@@ -3318,7 +3329,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b1a651bd0682e3743a4acc2ae6926138, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3336,18 +3347,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883283870}
   m_CullTransparentMesh: 1
---- !u!225 &883283875
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 883283870}
-  m_Enabled: 1
-  m_Alpha: 0.3
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!114 &883283876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4589,7 +4588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1144827006
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4940,7 +4939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1213196133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5572,7 +5571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1430187280
 RectTransform:
   m_ObjectHideFlags: 0

@@ -1105,13 +1105,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3697510194278398267}
   - component: {fileID: 6896764302094276974}
+  - component: {fileID: 7015575711795636123}
   m_Layer: 0
   m_Name: HintPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3697510194278398267
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1163,6 +1164,19 @@ MonoBehaviour:
   text: {fileID: 0}
   buttonComponent: 0
   figmaAligment: 
+--- !u!114 &7015575711795636123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6096789461956247294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d3f369b4eee7484f938a6f0e63fcd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeButton: {fileID: 0}
 --- !u!1 &6503283083572708767
 GameObject:
   m_ObjectHideFlags: 0

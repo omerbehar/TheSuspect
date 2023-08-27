@@ -15,6 +15,8 @@ namespace DataLayer
         public static string[] PlayerNames { get; set; }
         public static Texture2D TeamPhoto { get; set; } = new(1, 1, TextureFormat.ARGB32, false);
         public static Dictionary<string, bool[]> SelectedAnswersData { get; set; } = new();
+        public static Dictionary<string, string[]> AnswersText { get; set; } = new();
+        public static Dictionary<string, bool> AnswerLocked { get; set; } = new();
         public static int Score { get; set; }
 
         public static void ResetData()
@@ -40,6 +42,17 @@ namespace DataLayer
             {
                 PlayerPrefs.SetString(key, string.Join(",", SelectedAnswersData[key]));
             }
+
+            foreach (string key in AnswersText.Keys)
+            {
+                PlayerPrefs.SetString(key, string.Join(",", AnswersText[key]));
+            }
+
+            foreach (string key in AnswerLocked.Keys)
+            {
+                PlayerPrefs.SetString(key, AnswerLocked[key].ToString());
+            }
+            if (PlayerPrefs.HasKey("2-4")) Debug.Log(PlayerPrefs.GetString("2-4"));
             PlayerPrefs.SetInt("Score", Score);
         }
         //load data from player prefs
@@ -80,6 +93,23 @@ namespace DataLayer
                             return;
                         }
                     }
+                }
+
+                foreach (string key in AnswersText.Keys.ToList())
+                {
+                    if (AnswersText[key].Length != 0 && PlayerPrefs.GetString(key).Split(',').Length != 0)
+                    {
+                        if (PlayerPrefs.GetString(key).Split(',')[0] != "")
+                        {
+                            AnswersText[key] = PlayerPrefs.GetString(key).Split(',');
+                            return;
+                        }
+                    }
+                }
+
+                foreach (string key in AnswerLocked.Keys.ToList())
+                {
+                    AnswerLocked[key] = bool.Parse(PlayerPrefs.GetString(key));
                 }
                 Score = PlayerPrefs.GetInt("Score");
             }

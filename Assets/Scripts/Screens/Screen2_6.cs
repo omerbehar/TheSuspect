@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Screens
 {
-    public class Screen7 : ScreenBaseWithTimer, ILoadData, ISaveData, IHint
+    public class Screen2_6 : ScreenBaseWithTimer, ILoadData, ISaveData, IHint
     {
         //[field: SerializeField] public int CorrectAnswerScore { get; set; }
         [field: SerializeField] public Button HintButton { get; set; }

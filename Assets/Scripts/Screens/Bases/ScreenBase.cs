@@ -62,6 +62,7 @@ namespace Screens.Bases
 
         public virtual void OnNextButtonClicked()
         {
+            Debug.Log("Next button clicked");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

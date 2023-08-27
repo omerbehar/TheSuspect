@@ -1,7 +1,4 @@
-using DefaultNamespace;
 using Screens.Bases;
-using UnityEngine;
-using UnityEngine.UI;
 
 namespace Screens
 {
@@ -23,10 +20,12 @@ namespace Screens
         void OnAssigmentCompleted()
         {
             NextButton.interactable = true;
+            answerScore = scoreIfCorrect;
         }
         void OnAssignmentNotCompleted()
         {
             NextButton.interactable = false;
+            answerScore = 0;
         }
     }
 }

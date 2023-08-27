@@ -862,6 +862,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BackButton>k__BackingField: {fileID: 792505947}
   <NextButton>k__BackingField: {fileID: 166068120}
+  scoreIfCorrect: 5
+  scoreReductionIfTimeOut: 2
+  scoreReductionIfHintUsed: 2
 --- !u!114 &48891756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4789,6 +4792,10 @@ PrefabInstance:
     - target: {fileID: 9075031537644079443, guid: c818cdaff1f50b344b1b5d71da8cf324, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9076887487993442764, guid: c818cdaff1f50b344b1b5d71da8cf324, type: 3}
+      propertyPath: <TimerDuration>k__BackingField
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
