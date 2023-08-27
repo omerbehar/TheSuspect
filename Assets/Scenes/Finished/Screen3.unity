@@ -927,32 +927,32 @@ MonoBehaviour:
           FCU supports,\nyou need to activate them in this section.
     - Id: FRAMES_KEY
       State: 1
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: FRAMES TO DOWNLOAD (40/40)
         m_Image: {fileID: 0}
         m_Tooltip: 
     - Id: 0:1_Cover
       State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: Cover (1/1)
         m_Image: {fileID: 0}
         m_Tooltip: 
     - Id: 1:6_UI design
       State: 1
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: UI design (21/21)
         m_Image: {fileID: 0}
         m_Tooltip: 
     - Id: 117:1502_Draft
       State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
+      CheckBoxValue: 1
+      CheckBoxValueTemp: 1
       GUIContent:
         m_Text: Draft (18/18)
         m_Image: {fileID: 0}
@@ -2223,7 +2223,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 43, y: 25}
+  m_SizeDelta: {x: 43, y: 11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &698763496
 MonoBehaviour:
@@ -3740,7 +3740,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 187.5, y: -60}
+  m_AnchoredPosition: {x: 187.5, y: -61.000122}
   m_SizeDelta: {x: 327, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1784903972
@@ -3776,7 +3776,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b1a651bd0682e3743a4acc2ae6926138, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3801,7 +3801,7 @@ CanvasGroup:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1784903970}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Alpha: 0.3
   m_Interactable: 1
   m_BlocksRaycasts: 1
@@ -3824,7 +3824,7 @@ MonoBehaviour:
     m_Top: 12
     m_Bottom: 12
   m_ChildAlignment: 4
-  m_Spacing: -200
+  m_Spacing: 12
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
