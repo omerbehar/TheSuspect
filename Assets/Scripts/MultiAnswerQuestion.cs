@@ -33,6 +33,8 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
 
     public void OnContinueButtonPressed()
     {
+        CalculateCorrectAnswers();
+
         if (AreAllCorrectSelected())
         {
             AllCorrectAnswerEvent?.Invoke();
@@ -50,22 +52,28 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
         // If any toggle is clicked, set the NextButton as interactable
         NextButton.interactable = true;
 
-        // Update correct answers count
-        correctAnswerCount = AreAllCorrectSelected() ? correctAnswerCount : 0;
+        CalculateCorrectAnswers();
+    }
+
+    private void CalculateCorrectAnswers()
+    {
+        correctAnswerCount = 0;
+        foreach (var correctIndex in correctAnswerIndices)
+        {
+            if (toggles[correctIndex].isOn)
+            {
+                correctAnswerCount++;
+            }
+        }
     }
 
     private bool AreAllCorrectSelected()
     {
-        correctAnswerCount = 0;
         foreach (var correctIndex in correctAnswerIndices)
         {
             if (!toggles[correctIndex].isOn)
             {
                 return false;
-            }
-            else
-            {
-                correctAnswerCount++;
             }
         }
 
