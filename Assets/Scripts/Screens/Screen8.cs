@@ -77,8 +77,12 @@ namespace Screens
                     isCodeCorrect = false;
                 }
             }
+
             if (isCodeCorrect)
+            {
+                DeactivateFailedMessage();
                 EventManager.AssignmentCompleted.Invoke();
+            }
             else
                 ActivateFailedMessage();
         }
@@ -95,11 +99,9 @@ namespace Screens
         private void ActivateFailedMessage()
         {
             failedGO.SetActive(true);
-            //change color of input fields
             foreach (InputField inputField in inputFields)
             {
                 bool parseSuccess = ColorUtility.TryParseHtmlString("#FF4050", out Color newCol);
-                Debug.Log(parseSuccess + " " + newCol);
                 inputField.image.color = newCol;
             }
         }

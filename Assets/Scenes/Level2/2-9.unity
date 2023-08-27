@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 48891751}
   - component: {fileID: 48891750}
   - component: {fileID: 48891749}
+  - component: {fileID: 48891754}
   m_Layer: 0
   m_Name: Canvas 4
   m_TagString: Untagged
@@ -993,6 +994,38 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &48891754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48891748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad3b1fef02f4b508f276e9d52a708a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <BackButton>k__BackingField: {fileID: 489333116}
+  <NextButton>k__BackingField: {fileID: 1973820965}
+  <HintButton>k__BackingField: {fileID: 1850687196}
+  <CloseButton>k__BackingField: {fileID: 874808293}
+  <TargetObject>k__BackingField: {fileID: 97583707}
+  scoreIfCorrect: 5
+  scoreReductionIfTimeOut: 2
+  scoreReductionIfHintUsed: 2
+  correctAnswerCount: 0
+  toggles:
+  - {fileID: 875063405}
+  - {fileID: 1983389241}
+  - {fileID: 1675332476}
+  - {fileID: 1976058102}
+  - {fileID: 1726062531}
+  - {fileID: 57332978}
+  correctAnswerIndices: 0000000001000000
+  AllCorrectAnswerEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &57332978 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 613803929004757197, guid: 15937e8205f869b41bbc043b2d11156e, type: 3}
@@ -2170,7 +2203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 487951512}
-  - component: {fileID: 487951513}
+  - component: {fileID: 487951514}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2193,7 +2226,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &487951513
+--- !u!114 &487951514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2202,29 +2235,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 487951510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bad3b1fef02f4b508f276e9d52a708a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 42fe5020e6d35554685957741b87f736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <BackButton>k__BackingField: {fileID: 489333116}
-  <NextButton>k__BackingField: {fileID: 1973820965}
-  <HintButton>k__BackingField: {fileID: 1850687196}
-  <CloseButton>k__BackingField: {fileID: 874808293}
-  <TargetObject>k__BackingField: {fileID: 97583707}
-  scoreIfCorrect: 5
-  scoreReductionIfTimeOut: 2
-  scoreReductionIfHintUsed: 2
-  correctAnswerCount: 0
-  toggles:
-  - {fileID: 875063405}
-  - {fileID: 1983389241}
-  - {fileID: 1675332476}
-  - {fileID: 1976058102}
-  - {fileID: 1726062531}
-  - {fileID: 57332978}
-  correctAnswerIndices: 0000000001000000
-  AllCorrectAnswerEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  levelDesigns: []
+  currentLevel: {fileID: 0}
+  loadingImage: {fileID: 0}
+  nextButton: {fileID: 0}
 --- !u!1001 &489333114
 PrefabInstance:
   m_ObjectHideFlags: 0

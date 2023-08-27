@@ -17,10 +17,11 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
     [SerializeField]
     public UnityEvent AllCorrectAnswerEvent;
 
+    private int incorrectAnswerCount;
+
     protected override void Start()
     {
         base.Start(); 
-        NextButton.onClick.AddListener(OnContinueButtonPressed);
 
         foreach (var toggle in toggles)
         {
@@ -31,7 +32,7 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
         NextButton.interactable = false;
     }
 
-    public void OnContinueButtonPressed()
+    public override void OnNextButtonClicked()
     {
         CalculateCorrectAnswers();
 
@@ -45,13 +46,14 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
             Debug.Log("Not all correct answers have been selected.");
         }
         Debug.Log($"Correct answers selected: {correctAnswerCount}");
+        base.OnNextButtonClicked();
     }
+    
 
     private void OnToggleValueChanged(bool isOn)
     {
         // If any toggle is clicked, set the NextButton as interactable
         NextButton.interactable = true;
-
         CalculateCorrectAnswers();
     }
 
@@ -65,6 +67,17 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
                 correctAnswerCount++;
             }
         }
+
+        foreach (Toggle toggle in toggles)
+        {
+            if (toggle.isOn && !correctAnswerIndices.Contains(toggles.IndexOf(toggle)))
+            {
+                incorrectAnswerCount++;
+            }
+        }
+
+        answerScore = scoreIfCorrect / correctAnswerIndices.Count * correctAnswerCount - incorrectAnswerCount;
+        answerScore = Mathf.Clamp(answerScore, 0, scoreIfCorrect);
     }
 
     private bool AreAllCorrectSelected()

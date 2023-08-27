@@ -64,6 +64,7 @@ namespace Screens.Bases
                     score -= scoreReductionIfHintUsed;
                 score = Mathf.Max(score, 0);
             }
+            Debug.Log(GameManager.instance);
             await GameManager.instance.AddScoreToManager(SceneManager.GetActiveScene().name, score);
             Debug.Log("Score: " + Data.Score);
         }
