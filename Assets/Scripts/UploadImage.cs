@@ -75,6 +75,7 @@ namespace DefaultNamespace
             rawImageDisplay.color = new Color(1, 1, 1, 1);
             whenNoUploadIcons.SetActive(true);
             whenUploadIcons.SetActive(false);
+            EventManager.AssignmentCompleted?.Invoke();
             ResizeAndDisplayImage(capturedImage);
 
            
@@ -205,7 +206,7 @@ namespace DefaultNamespace
                 tex.LoadImage(imgData);
 
                 DisplayImage(tex);
-                EventManager.AssignmentCompleted?.Invoke();
+               
             }
         }
     }
