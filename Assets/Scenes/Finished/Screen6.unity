@@ -897,6 +897,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BackButton>k__BackingField: {fileID: 805162614}
   <NextButton>k__BackingField: {fileID: 1891068788}
+  <HintButton>k__BackingField: {fileID: 0}
+  <CloseButton>k__BackingField: {fileID: 0}
+  <TargetObject>k__BackingField: {fileID: 0}
+  scoreIfCorrect: 5
+  scoreReductionIfTimeOut: 2
+  scoreReductionIfHintUsed: 2
   isPlayTest: 1
   storedVideoName: myVideo.mp4
   uploadButton: {fileID: 853468614}
@@ -1236,8 +1242,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u05D4\u05DE\u05E9\u05DA"
   m_isRightToLeft: 1
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a3c111fd2a66c4a41803eafabe978884, type: 2}
+  m_sharedMaterial: {fileID: 3928367029427521708, guid: a3c111fd2a66c4a41803eafabe978884, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1487,8 +1493,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u05E0\u05D9\u05E7\u05D5\u05D3 \u05DE\u05D9\u05E8\u05D1\u05D9 - 5 \u05E0\u05E7\u2019"
   m_isRightToLeft: 1
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4371cd29174de8945a34e3d0c7939111, type: 2}
+  m_sharedMaterial: {fileID: -4882662183521603227, guid: 4371cd29174de8945a34e3d0c7939111, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

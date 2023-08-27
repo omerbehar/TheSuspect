@@ -11,11 +11,7 @@ namespace Screens
     public class Screen2_7 : ScreenBaseWithTimer, ILoadData, ISaveData, IHint
     {
         //[field: SerializeField] public int CorrectAnswerScore { get; set; }
-<<<<<<< Updated upstream
-        [field: SerializeField] public Button HintButton { get; set; }
-=======
         //[field: SerializeField] public Button HintButton { get; set; }
->>>>>>> Stashed changes
         [field: SerializeField] public GameObject HintPopup { get; set; }
         [field: SerializeField] public Button HintPopupCloseButton { get; set; }
         [field: SerializeField] public GameObject CorrectAnswer { get; set; }

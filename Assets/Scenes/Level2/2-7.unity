@@ -930,16 +930,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 48891748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: e8f6016650884625a29488caea69e177, type: 3}
-=======
-  m_Script: {fileID: 11500000, guid: 8dfa8b310edc4c19b7eab091323681d3, type: 3}
->>>>>>> Stashed changes
   m_Name: 
   m_EditorClassIdentifier: 
   <BackButton>k__BackingField: {fileID: 575494385}
   <NextButton>k__BackingField: {fileID: 1648509698}
-<<<<<<< Updated upstream
   scoreIfCorrect: 5
   scoreReductionIfTimeOut: 2
   scoreReductionIfHintUsed: 2
@@ -947,18 +942,6 @@ MonoBehaviour:
   <HintPopup>k__BackingField: {fileID: 303211091}
   <HintPopupCloseButton>k__BackingField: {fileID: 916725682}
   <CorrectAnswer>k__BackingField: {fileID: 807765019}
-=======
-  <HintButton>k__BackingField: {fileID: 422699921}
-  <CloseButton>k__BackingField: {fileID: 0}
-  <TargetObject>k__BackingField: {fileID: 0}
-  scoreIfCorrect: 5
-  scoreReductionIfTimeOut: 2
-  scoreReductionIfHintUsed: 2
-  <HintButton>k__BackingField: {fileID: 0}
-  <HintPopup>k__BackingField: {fileID: 786296628}
-  <HintPopupCloseButton>k__BackingField: {fileID: 1256237722}
-  <CorrectAnswer>k__BackingField: {fileID: 1126160740}
->>>>>>> Stashed changes
 --- !u!1 &143700652
 GameObject:
   m_ObjectHideFlags: 0
@@ -2401,7 +2384,6 @@ MonoBehaviour:
   text: {fileID: 0}
   buttonComponent: 0
   figmaAligment: 
-<<<<<<< Updated upstream
 --- !u!1 &807765019 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2448707500351592663, guid: 1dd3c5d9a4f9e9e419d11ef19e994587, type: 3}
@@ -2418,13 +2400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-=======
---- !u!1 &786296628 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3275887084442069340, guid: 0e8af4d3fdb30c9488435b0580c9b3f5, type: 3}
-  m_PrefabInstance: {fileID: 1932925513}
-  m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &928516007
 GameObject:
   m_ObjectHideFlags: 0
