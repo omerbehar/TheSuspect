@@ -52,7 +52,7 @@ namespace Screens.Bases
             base.OnNextButtonClicked();
         }
 
-        private void CalculateScore()
+        private async void CalculateScore()
         {
             int score = 0;
             if (answerScore > 0)
@@ -64,7 +64,7 @@ namespace Screens.Bases
                     score -= scoreReductionIfHintUsed;
                 score = Mathf.Max(score, 0);
             }
-            GameManager1.instance.AddScoreToManager(SceneManager.GetActiveScene().name, score);
+            await GameManager.instance.AddScoreToManager(SceneManager.GetActiveScene().name, score);
             Debug.Log("Score: " + Data.Score);
         }
     }

@@ -167,7 +167,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3488429916341143308}
   - component: {fileID: 6333715415764651257}
-  - component: {fileID: 3983651351528783150}
   m_Layer: 0
   m_Name: QRPopup
   m_TagString: Untagged
@@ -191,7 +190,7 @@ RectTransform:
   - {fileID: 7785279958129182653}
   - {fileID: 4900660803438044858}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -219,19 +218,6 @@ MonoBehaviour:
   text: {fileID: 0}
   buttonComponent: 0
   figmaAligment: 
---- !u!114 &3983651351528783150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2585881963781563738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d3f369b4eee7484f938a6f0e63fcd10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  closeButton: {fileID: 0}
 --- !u!1 &3448131239763206620
 GameObject:
   m_ObjectHideFlags: 0

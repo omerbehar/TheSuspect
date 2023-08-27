@@ -935,10 +935,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BackButton>k__BackingField: {fileID: 575494385}
   <NextButton>k__BackingField: {fileID: 1648509698}
+  <HintButton>k__BackingField: {fileID: 422699921}
+  <CloseButton>k__BackingField: {fileID: 0}
+  <TargetObject>k__BackingField: {fileID: 0}
   scoreIfCorrect: 5
   scoreReductionIfTimeOut: 2
   scoreReductionIfHintUsed: 2
-  <HintButton>k__BackingField: {fileID: 422699921}
   <HintPopup>k__BackingField: {fileID: 445185366}
   <HintPopupCloseButton>k__BackingField: {fileID: 2126079149}
   <CorrectAnswer>k__BackingField: {fileID: 1856941286}
@@ -4148,6 +4150,10 @@ PrefabInstance:
     - target: {fileID: 3275887084442069340, guid: 0e8af4d3fdb30c9488435b0580c9b3f5, type: 3}
       propertyPath: m_Name
       value: VideoPopup
+      objectReference: {fileID: 0}
+    - target: {fileID: 3275887084442069340, guid: 0e8af4d3fdb30c9488435b0580c9b3f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6608770225348224306, guid: 0e8af4d3fdb30c9488435b0580c9b3f5, type: 3}
       propertyPath: m_Pivot.x
