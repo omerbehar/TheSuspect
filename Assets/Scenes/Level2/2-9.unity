@@ -2169,7 +2169,11 @@ MonoBehaviour:
   <BackButton>k__BackingField: {fileID: 489333116}
   <NextButton>k__BackingField: {fileID: 1973820965}
   <HintButton>k__BackingField: {fileID: 1850687196}
+  <CloseButton>k__BackingField: {fileID: 0}
   <TargetObject>k__BackingField: {fileID: 0}
+  scoreIfCorrect: 5
+  scoreReductionIfTimeOut: 2
+  scoreReductionIfHintUsed: 2
   correctAnswerCount: 0
   toggles:
   - {fileID: 875063405}
@@ -2678,7 +2682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7438540562777846701, guid: 15937e8205f869b41bbc043b2d11156e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -70
+      value: -127.500015
       objectReference: {fileID: 0}
     - target: {fileID: 7438540562777846701, guid: 15937e8205f869b41bbc043b2d11156e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3000,7 +3004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7438540562777846701, guid: 15937e8205f869b41bbc043b2d11156e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -310
+      value: -367.5
       objectReference: {fileID: 0}
     - target: {fileID: 7438540562777846701, guid: 15937e8205f869b41bbc043b2d11156e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3866,7 +3870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7438540562777846701, guid: 15937e8205f869b41bbc043b2d11156e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -230
+      value: -287.5
       objectReference: {fileID: 0}
     - target: {fileID: 7438540562777846701, guid: 15937e8205f869b41bbc043b2d11156e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5738,7 +5742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7438540562777846701, guid: 15937e8205f869b41bbc043b2d11156e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 10
+      value: -47.5
       objectReference: {fileID: 0}
     - target: {fileID: 7438540562777846701, guid: 15937e8205f869b41bbc043b2d11156e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5771,6 +5775,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 48891753}
     m_Modifications:
     - target: {fileID: 3252892436722542834, guid: a1ec3309957318841a5e68ab2178c627, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3252892436722542834, guid: a1ec3309957318841a5e68ab2178c627, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3252892436722542834, guid: a1ec3309957318841a5e68ab2178c627, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
       objectReference: {fileID: 0}
@@ -5785,6 +5797,10 @@ PrefabInstance:
     - target: {fileID: 3252892436722542834, guid: a1ec3309957318841a5e68ab2178c627, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3252892436722542834, guid: a1ec3309957318841a5e68ab2178c627, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 173.09888
       objectReference: {fileID: 0}
     - target: {fileID: 3252892436986328043, guid: a1ec3309957318841a5e68ab2178c627, type: 3}
       propertyPath: m_Name
@@ -5920,7 +5936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5681489238896921518, guid: a1ec3309957318841a5e68ab2178c627, type: 3}
       propertyPath: snapTarget
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5681489238896921518, guid: a1ec3309957318841a5e68ab2178c627, type: 3}
       propertyPath: sizeControl
@@ -5940,7 +5956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5681489238896921518, guid: a1ec3309957318841a5e68ab2178c627, type: 3}
       propertyPath: useOcclusionCulling
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5681489238896921518, guid: a1ec3309957318841a5e68ab2178c627, type: 3}
       propertyPath: useInfiniteScrolling
@@ -5952,7 +5968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5681489238896921518, guid: a1ec3309957318841a5e68ab2178c627, type: 3}
       propertyPath: automaticLayoutMargins.Left
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -6248,7 +6264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7438540562777846701, guid: 15937e8205f869b41bbc043b2d11156e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -390
+      value: -447.5
       objectReference: {fileID: 0}
     - target: {fileID: 7438540562777846701, guid: 15937e8205f869b41bbc043b2d11156e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6605,7 +6621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7438540562777846701, guid: 15937e8205f869b41bbc043b2d11156e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: -207.50002
       objectReference: {fileID: 0}
     - target: {fileID: 7438540562777846701, guid: 15937e8205f869b41bbc043b2d11156e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
