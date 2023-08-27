@@ -862,6 +862,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BackButton>k__BackingField: {fileID: 792505947}
   <NextButton>k__BackingField: {fileID: 166068120}
+  <HintButton>k__BackingField: {fileID: 0}
+  <CloseButton>k__BackingField: {fileID: 0}
+  <TargetObject>k__BackingField: {fileID: 0}
   scoreIfCorrect: 5
   scoreReductionIfTimeOut: 2
   scoreReductionIfHintUsed: 2
@@ -3512,7 +3515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2046495980
 RectTransform:
   m_ObjectHideFlags: 0

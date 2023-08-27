@@ -13,7 +13,7 @@ namespace DefaultNamespace
         [SerializeField] private int horizontalHeight = 512; // Your desired height for horizontal images
         [SerializeField] private int verticalWidth = 512; // Your desired width for vertical images
         [SerializeField] private int verticalHeight = 1024; // Your desired height for vertical images
-        [SerializeField] Rect imageBounds = new Rect(0, 0, 1024, 1024); // Define the position and size of image bounds.
+        [SerializeField] Rect imageBounds = new Rect(0, 0, 327, 168); // Define the position and size of image bounds.
         [SerializeField] bool isPlayTest = true;
         [SerializeField] private GameObject whenUploadIcons;
         [SerializeField] private GameObject whenNoUploadIcons;
@@ -71,87 +71,90 @@ namespace DefaultNamespace
             imageBorderDisplay.rectTransform.anchoredPosition = Vector2.zero;
             
           
-            imageBorderDisplay.color = new Color(1, 1, 1, 1);
+            //imageBorderDisplay.color = new Color(1, 1, 1, 1);
             rawImageDisplay.color = new Color(1, 1, 1, 1);
-            ResizeAndDisplayImage(capturedImage);
-
             whenNoUploadIcons.SetActive(true);
             whenUploadIcons.SetActive(false);
+            ResizeAndDisplayImage(capturedImage);
+
+           
         }
         
-       private void ResizeAndDisplayImage(Texture2D capturedImage)
-{
+        private void ResizeAndDisplayImage(Texture2D capturedImage)
+        {
+            // crop the image to desired aspect ratio (here 1:1 is used as an example)
+            int croppedSize = Mathf.Min(capturedImage.width, capturedImage.height);
+            capturedImage = CropTexture(capturedImage, 0, 0, croppedSize, croppedSize);
     
-    // get the image's original dimensions
-    float originalWidth = capturedImage.width;
-    float originalHeight = capturedImage.height;
+            // get the image's original dimensions
+            float originalWidth = capturedImage.width;
+            float originalHeight = capturedImage.height;
 
-    // calculate the aspect ratio
-    float originalAspectRatio = originalWidth / originalHeight;
+            // calculate the aspect ratio
+            float originalAspectRatio = originalWidth / originalHeight;
 
-    float newWidth = 0, newHeight = 0;
+            int newWidth = 0, newHeight = 0;
 
-    // if the image is horizontal
-    if (originalWidth > originalHeight)
-    {
-        // if the original width is greater than max horizontal width
-        // set newWidth to max width and scale height accordingly
-        if (originalWidth > horizontalWidth)
-        {
-            newWidth = horizontalWidth;
-            newHeight = (int)(newWidth / originalAspectRatio);
+            // if the image is horizontal
+            if (originalWidth > originalHeight)
+            {
+                if (originalWidth > horizontalWidth)
+                {
+                    newWidth = horizontalWidth;
+                    newHeight = (int)(newWidth / originalAspectRatio);
+                }
+                else
+                {
+                    newWidth = (int)originalWidth;
+                    newHeight = (int)originalHeight;
+                }
+            }
+            else if (originalWidth < originalHeight)
+            {
+                if (originalHeight > verticalHeight)
+                {
+                    newHeight = verticalHeight;
+                    newWidth = (int)(newHeight * originalAspectRatio);
+                }
+                else
+                {
+                    newWidth = (int)originalWidth;
+                    newHeight = (int)originalHeight;
+                }
+            }
+
+            // Resize the Texture
+            capturedImage = ResizeImage(capturedImage, newWidth, newHeight);
+
+            // Set the new dimensions:
+            rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
+            rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
+
+            // Display the image
+            rawImageDisplay.texture = capturedImage;
+
+            // Place the image in the center of the parent frame
+            rawImageDisplay.rectTransform.anchoredPosition = Vector2.zero;
         }
-        else
+        private Texture2D ResizeImage(Texture2D sourceTex, int targetWidth, int targetHeight)
         {
-            newWidth = (int)originalWidth;
-            newHeight = (int)originalHeight;
+            if (sourceTex.width != targetWidth || sourceTex.height != targetHeight)
+            {
+                RenderTexture rt = RenderTexture.GetTemporary(targetWidth, targetHeight);
+                rt.filterMode = FilterMode.Point;
+                RenderTexture.active = rt;
+                Graphics.Blit(sourceTex, rt);
+                Texture2D result = new Texture2D(targetWidth, targetHeight, sourceTex.format, false);
+                result.ReadPixels(new Rect(0, 0, targetWidth, targetHeight), 0, 0);
+                result.Apply();
+                RenderTexture.active = null;
+                return result;
+            }
+            else
+            {
+                return sourceTex;
+            }
         }
-
-        // Reset the position for horizontal image
-        rawImageDisplay.rectTransform.anchoredPosition = new Vector2(rawImageDisplay.rectTransform.anchoredPosition.x, 0);
-    }
-    // else if the image is vertical
-    else if (originalWidth < originalHeight)
-    {
-        // if the original height is greater than max vertical height
-        // set newHeight to max height and scale width accordingly
-        if (originalHeight > verticalHeight)
-        {
-            newHeight = verticalHeight;
-            newWidth = (int)(newHeight * originalAspectRatio);
-        }
-        else
-        {
-            newWidth = (int)originalWidth;
-            newHeight = (int)originalHeight;
-        }
-
-        // Adjust the position for vertical image
-        rawImageDisplay.rectTransform.anchoredPosition = new Vector2(rawImageDisplay.rectTransform.anchoredPosition.x, -60);
-    }
-
-    // Set the new dimensions:
-    rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
-    rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
-
-    // Display the image after resizing
-    rawImageDisplay.texture = capturedImage;
-}
-        private void ResizeImage(Texture2D source, int targetWidth, int targetHeight)
-        {
-            RenderTexture rt = new RenderTexture(targetWidth, targetHeight, 24);
-            RenderTexture.active = rt;
-
-            Graphics.Blit(source, rt);
-
-            Texture2D result = new Texture2D(targetWidth, targetHeight);
-            result.ReadPixels(new Rect(0, 0, targetWidth, targetHeight), 0, 0);
-            result.Apply();
-
-            RenderTexture.active = null;
-            rawImageDisplay.texture = result;
-        }
-
         private Texture2D CropTexture(Texture2D source, int xOffset, int yOffset, int width, int height)
         {
             // Check if the cropping area exceeds the source texture's dimensions
