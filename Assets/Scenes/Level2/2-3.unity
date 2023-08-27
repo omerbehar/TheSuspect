@@ -876,6 +876,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BackButton>k__BackingField: {fileID: 0}
   <NextButton>k__BackingField: {fileID: 69960198}
+  <HintButton>k__BackingField: {fileID: 0}
+  <CloseButton>k__BackingField: {fileID: 0}
+  <TargetObject>k__BackingField: {fileID: 0}
   mapButton: {fileID: 1522682135}
   carButton: {fileID: 1940902451}
   mapPopup: {fileID: 1629509747}
@@ -4750,6 +4753,10 @@ PrefabInstance:
     - target: {fileID: 6096789461956247294, guid: 8f5c77e917b0ae74085a4231d1c123b0, type: 3}
       propertyPath: m_Name
       value: Popup window map
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096789461956247294, guid: 8f5c77e917b0ae74085a4231d1c123b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

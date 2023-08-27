@@ -1097,6 +1097,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BackButton>k__BackingField: {fileID: 0}
   <NextButton>k__BackingField: {fileID: 1784903978}
+  <HintButton>k__BackingField: {fileID: 0}
+  <CloseButton>k__BackingField: {fileID: 0}
+  <TargetObject>k__BackingField: {fileID: 0}
   addInputFieldGO: {fileID: 607532294}
   addNameInputFieldButton: {fileID: 1294499084}
   nameInputFields:
