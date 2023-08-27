@@ -10,10 +10,12 @@ using UnityEngine.UI;
 namespace Screens.Bases
 {
     public class ScreenBase : MonoBehaviour, IBackButton, INextButton
-    {
-        
+    {        
         [field: SerializeField] public Button BackButton { get; set; }
         [field: SerializeField] public Button NextButton { get; set; }
+        [field: SerializeField] public Button HintButton { get; set; }
+        [field: SerializeField] public Button CloseButton { get; set; }
+        [field: SerializeField] public GameObject TargetObject { get; set; }
         protected int answersCount;
 
         private void Awake()
@@ -26,6 +28,8 @@ namespace Screens.Bases
         {
             InitListeners();
             NextButton.interactable = true;
+            if (TargetObject)
+                TargetObject.SetActive(false);
         }
 
         private void InitListeners()
@@ -43,8 +47,15 @@ namespace Screens.Bases
                 NextButton.onClick.AddListener(OnNextButtonClicked);
                 NextButton.interactable = false;
             }
+            if (HintButton == null)
+                Debug.LogWarning("HintButton is null");
+            else
+                HintButton.onClick.AddListener(OnHintButtonClicked);
+            if (CloseButton == null)
+                Debug.LogWarning("CloseButton is null");
+            else
+                CloseButton.onClick.AddListener(OnCloseButtonClicked);
         }
-
 
         private void OnAssigmentCompleted()
         {
@@ -64,6 +75,30 @@ namespace Screens.Bases
         {
             Debug.Log("Next button clicked");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+        public void OnHintButtonClicked()
+        {
+            if (TargetObject != null)
+            {
+                TargetObject.SetActive(!TargetObject.activeSelf);
+            }
+            else
+            {
+                Debug.LogWarning("TargetObject is null");
+            }
+        }
+
+        public void OnCloseButtonClicked()
+        {
+            if (TargetObject != null)
+            {
+                TargetObject.SetActive(false);
+            }
+            else
+            {
+                Debug.LogWarning("TargetObject is null");
+            }
         }
     }
 }
