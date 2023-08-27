@@ -26,7 +26,7 @@ public class InitLayout : MonoBehaviour
 
     private void InitLevel()
     {
-        levelDesign = GameManager1.instance.currentLevel;
+        levelDesign = GameManager.instance.currentLevel;
         Image suspectImage = Instantiate(levelDesign.suspectImage, transform);
         suspectImage.transform.SetSiblingIndex(0);
         suspectTextImage.GetComponentInChildren<TextMeshProUGUI>().text = levelDesign.suspectText;
@@ -46,7 +46,7 @@ public class InitLayout : MonoBehaviour
 
     private void AnswerButtonClicked(int selectedAnswer)
     {
-        GameManager1.instance.currentLevel = selectedAnswer == levelDesign.correctAnswer ? levelDesign.rightAnswerLevel : levelDesign.wrongAnswerLevel;
+        GameManager.instance.currentLevel = selectedAnswer == levelDesign.correctAnswer ? levelDesign.rightAnswerLevel : levelDesign.wrongAnswerLevel;
         InitLevel();
     }
 }
