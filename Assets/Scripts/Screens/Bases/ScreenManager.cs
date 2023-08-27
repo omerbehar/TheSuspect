@@ -4,6 +4,7 @@ using System.Linq;
 using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 namespace Screens.Bases
 {
@@ -75,20 +76,40 @@ namespace Screens.Bases
         #region game management 
 
         // Initialization of UI event handlers
-        private void Start()
+        public void Start()
         {
             InitializeListView();
             DisplayCurrentQuestion();
 
             var root = GetRootVisualElement();
-
             var continueButton = root.Q<Button>("ContinueButton");
-
             if (continueButton != null)
             {
                 continueButton.clicked += ContinueButtonClicked;
             }
+
+            // Adding this for your BackButton
+            var backButton = root.Q<Button>("BackButton");
+            if (backButton != null)
+            {
+                backButton.clicked += BackButtonClicked;
+            }
         }
+
+        public void BackButtonClicked()
+        {
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            if (currentSceneIndex > 0)
+            {
+                SceneManager.LoadScene(currentSceneIndex - 1);
+            }
+            else
+            {
+                Debug.Log("Cannot go back further, already at first scene.");
+            }
+        }
+        
+        
 
         // Handle the event of Continue button being clicked
         public void ContinueButtonClicked()
@@ -100,9 +121,18 @@ namespace Screens.Bases
             }
             else
             {
-                Debug.Log("No more questions");
+                int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+                if(currentSceneIndex < SceneManager.sceneCountInBuildSettings - 1)
+                {
+                    SceneManager.LoadScene(currentSceneIndex + 1);
+                }
+                else
+                {
+                    Debug.Log("No more scenes");
+                }
             }
         }
+        
         // Display the current question on the UI
         public void DisplayCurrentQuestion()
         {
