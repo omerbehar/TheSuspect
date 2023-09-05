@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 48891754}
   m_Layer: 0
   m_Name: Canvas 5
-  m_TagString: Untagged
+  m_TagString: MainCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1097,7 +1097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &220936555
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1996,7 +1996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5947616874078750344, guid: b148a200a1c3a274a905b51035ffff72, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 100
+      value: 188.10913
       objectReference: {fileID: 0}
     - target: {fileID: 5947616874078750344, guid: b148a200a1c3a274a905b51035ffff72, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2051,7 +2051,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -44, y: 185.89087}
+  m_AnchoredPosition: {x: -44, y: 274}
   m_SizeDelta: {x: 242, y: 24.2183}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &894163542
@@ -2693,7 +2693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 132, y: 191}
+  m_AnchoredPosition: {x: 132, y: 279.10913}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1759105849

@@ -106,13 +106,13 @@ namespace Screens
         public void OnHintButtonClicked()
         {
             hintUsedScoreReduction = true;
-            HintPopup.SetActive(true);
-            HintPopupCloseButton.onClick.AddListener(OnHintPopupCloseButtonClicked);
+            //HintPopup.SetActive(true);
+            //HintPopupCloseButton.onClick.AddListener(OnHintPopupCloseButtonClicked);
         }
 
         private void OnHintPopupCloseButtonClicked()
         {
-            HintPopup.SetActive(false);
+            //HintPopup.SetActive(false);
         }
 
         public override void OnNextButtonClicked()

@@ -284,7 +284,6 @@ RectTransform:
   - {fileID: 1078252993}
   - {fileID: 378290650}
   m_Father: {fileID: 390357601}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -381,7 +380,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1152826165}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -609,352 +607,402 @@ MonoBehaviour:
       ParentId: 0:1_Cover
       ParentName: Cover
       Name: Frame 1
-      Selected: 0
+      Selected: 1
     - Id: 117:2532
-      ParentId: 1:6_UI design
-      ParentName: UI design
-      Name: Screen8
-      Selected: 0
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
+      Name: Screen 01
+      Selected: 1
     - Id: 161:2552
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 12
-      Selected: 0
+      Selected: 1
     - Id: 230:1219
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 35
-      Selected: 0
+      Selected: 1
     - Id: 205:2278
-      ParentId: 1:6_UI design
-      ParentName: UI design
-      Name: Screen9
-      Selected: 0
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
+      Name: Screen 34
+      Selected: 1
     - Id: 143:1599
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:1501
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 03
-      Selected: 0
+      Selected: 1
     - Id: 205:2113
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 33
-      Selected: 0
+      Selected: 1
     - Id: 177:4197
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 23
-      Selected: 0
+      Selected: 1
     - Id: 161:2314
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 04
-      Selected: 0
+      Selected: 1
     - Id: 205:1407
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 28
-      Selected: 0
+      Selected: 1
     - Id: 117:2549
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 05
-      Selected: 0
+      Selected: 1
     - Id: 177:2886
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 14
       Selected: 1
     - Id: 205:1735
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 30
-      Selected: 0
+      Selected: 1
     - Id: 205:1002
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 24
-      Selected: 0
+      Selected: 1
     - Id: 205:2020
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 32
-      Selected: 0
+      Selected: 1
     - Id: 205:1634
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 29
-      Selected: 0
+      Selected: 1
     - Id: 205:1915
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 31
-      Selected: 0
+      Selected: 1
     - Id: 205:1100
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 25
-      Selected: 0
+      Selected: 1
     - Id: 205:1203
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 26
-      Selected: 0
+      Selected: 1
     - Id: 205:1301
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 27
-      Selected: 0
+      Selected: 1
     - Id: 177:3153
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 15
-      Selected: 0
+      Selected: 1
     - Id: 161:2713
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 06
-      Selected: 0
+      Selected: 1
     - Id: 161:2614
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 07
-      Selected: 0
+      Selected: 1
     - Id: 177:3257
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 16
-      Selected: 0
+      Selected: 1
     - Id: 177:3549
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 18
-      Selected: 0
+      Selected: 1
     - Id: 177:3661
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 19
-      Selected: 0
+      Selected: 1
     - Id: 177:4077
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 22
-      Selected: 0
+      Selected: 1
     - Id: 177:3770
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 20
-      Selected: 0
+      Selected: 1
     - Id: 177:3956
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 21
-      Selected: 0
+      Selected: 1
     - Id: 104:292
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: splash screen
-      Selected: 0
+      Selected: 1
     - Id: 104:360
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 01
-      Selected: 0
+      Selected: 1
     - Id: 106:454
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 02
-      Selected: 0
+      Selected: 1
     - Id: 106:523
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 03
-      Selected: 0
+      Selected: 1
     - Id: 110:348
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 04
-      Selected: 0
+      Selected: 1
     - Id: 110:428
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 05
-      Selected: 0
+      Selected: 1
     - Id: 110:520
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 06
-      Selected: 0
+      Selected: 1
     - Id: 110:597
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 07
-      Selected: 0
+      Selected: 1
     - Id: 110:680
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 08
-      Selected: 0
+      Selected: 1
     - Id: 110:922
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 10
-      Selected: 0
+      Selected: 1
     - Id: 110:1015
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 11
-      Selected: 0
+      Selected: 1
     - Id: 143:1353
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 177:4246
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 205:2169
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 177:4349
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 177:4566
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 110:783
-      ParentId: 1:6_UI design
-      ParentName: UI design
+      ParentId: 1:6_UI design / Mobile
+      ParentName: UI design / Mobile
       Name: Screen 09
-      Selected: 0
+      Selected: 1
+    - Id: 337:1490
+      ParentId: 337:1429_UI design / Desktop
+      ParentName: UI design / Desktop
+      Name: Login screen
+      Selected: 1
+    - Id: 337:1527
+      ParentId: 337:1429_UI design / Desktop
+      ParentName: UI design / Desktop
+      Name: Login screen
+      Selected: 1
+    - Id: 337:1585
+      ParentId: 337:1429_UI design / Desktop
+      ParentName: UI design / Desktop
+      Name: Login screen
+      Selected: 1
+    - Id: 337:1620
+      ParentId: 337:1429_UI design / Desktop
+      ParentName: UI design / Desktop
+      Name: Login screen
+      Selected: 1
+    - Id: 337:1556
+      ParentId: 337:1429_UI design / Desktop
+      ParentName: UI design / Desktop
+      Name: Admin panel
+      Selected: 1
+    - Id: 345:3973
+      ParentId: 337:1429_UI design / Desktop
+      ParentName: UI design / Desktop
+      Name: Admin panel
+      Selected: 1
+    - Id: 380:1963
+      ParentId: 337:1429_UI design / Desktop
+      ParentName: UI design / Desktop
+      Name: Admin panel
+      Selected: 1
+    - Id: 376:165
+      ParentId: 337:1429_UI design / Desktop
+      ParentName: UI design / Desktop
+      Name: Admin panel
+      Selected: 1
+    - Id: 345:1909
+      ParentId: 337:1429_UI design / Desktop
+      ParentName: UI design / Desktop
+      Name: Admin panel
+      Selected: 1
+    - Id: 345:3334
+      ParentId: 337:1429_UI design / Desktop
+      ParentName: UI design / Desktop
+      Name: Admin panel
+      Selected: 1
     - Id: 117:1531
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: 1
-      Selected: 0
+      Selected: 1
     - Id: 117:1593
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1613
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1637
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1688
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1738
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1788
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1822
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1857
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1896
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1939
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:1984
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:2037
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:2094
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 117:2138
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:958
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:1021
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 143:1084
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 161:1690
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 161:1775
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 161:1860
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 161:1971
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     - Id: 161:2035
       ParentId: 117:1502_Draft
       ParentName: Draft
       Name: Onboarding
-      Selected: 0
+      Selected: 1
     textMeshSettings:
       controller: {fileID: 48891752}
       autoSize: 0
@@ -1160,10 +1208,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 390357601}
-  - {fileID: 1152826165}
   - {fileID: 1189810947}
+  - {fileID: 1152826165}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1224,7 +1271,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 539875118}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1381,7 +1427,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1078252993}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1538,7 +1583,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1330742124}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -1642,7 +1686,6 @@ RectTransform:
   - {fileID: 2114680504}
   - {fileID: 1010387636}
   m_Father: {fileID: 390357601}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1823,7 +1866,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 380275529}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1921,7 +1963,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 16775322}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2020,7 +2061,6 @@ RectTransform:
   - {fileID: 300604777}
   - {fileID: 709266598}
   m_Father: {fileID: 1330742124}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2111,7 +2151,6 @@ RectTransform:
   - {fileID: 816317990}
   - {fileID: 16775322}
   m_Father: {fileID: 48891753}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2321,13 +2360,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487951510}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 400, y: 180, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &500816567
 GameObject:
@@ -2361,7 +2400,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 539875118}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2523,7 +2561,6 @@ RectTransform:
   - {fileID: 70584065}
   - {fileID: 689570247}
   m_Father: {fileID: 390357601}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -2602,7 +2639,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 390357601}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2812,7 +2848,6 @@ RectTransform:
   - {fileID: 1517396071}
   - {fileID: 1864740895}
   m_Father: {fileID: 747376026}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -2916,7 +2951,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2126938152}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -3013,7 +3047,6 @@ RectTransform:
   m_Children:
   - {fileID: 578795535}
   m_Father: {fileID: 539875118}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3195,7 +3228,6 @@ RectTransform:
   - {fileID: 856597721}
   - {fileID: 1946805207}
   m_Father: {fileID: 380275529}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3376,7 +3408,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2126938152}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -3534,7 +3565,6 @@ RectTransform:
   - {fileID: 619089434}
   - {fileID: 2126938152}
   m_Father: {fileID: 390357601}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3594,7 +3624,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 390357601}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3693,7 +3722,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709266598}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3990,7 +4018,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 390357601}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4030,7 +4057,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 231861360}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -4147,7 +4173,6 @@ RectTransform:
   m_Children:
   - {fileID: 109586711}
   m_Father: {fileID: 16775322}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4193,6 +4218,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 48891753}
     m_Modifications:
+    - target: {fileID: 867363575147505674, guid: ddfe9425dbc75a14a8712dc787ec417b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2485792643156052930, guid: ddfe9425dbc75a14a8712dc787ec417b, type: 3}
       propertyPath: m_Name
       value: back and points
@@ -4325,7 +4354,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 231861360}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4456,7 +4484,6 @@ RectTransform:
   - {fileID: 135732893}
   - {fileID: 380275529}
   m_Father: {fileID: 390357601}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4518,7 +4545,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709266598}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4701,13 +4727,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460013798}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 196.08162, y: 530.1164, z: -2.37555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1468306409
 GameObject:
@@ -4741,7 +4767,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 380275529}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -4839,7 +4864,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 619089434}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -4995,7 +5019,6 @@ RectTransform:
   m_Children:
   - {fileID: 700432475}
   m_Father: {fileID: 539875118}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5059,7 +5082,6 @@ RectTransform:
   m_Children:
   - {fileID: 409160415}
   m_Father: {fileID: 539875118}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5124,7 +5146,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 539875118}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5281,7 +5302,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 747376026}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -5380,7 +5400,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 619089434}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -5503,7 +5522,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709266598}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -5689,6 +5707,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9076887487993442764, guid: c818cdaff1f50b344b1b5d71da8cf324, type: 3}
+      propertyPath: <TimerDuration>k__BackingField
+      value: 240
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5732,7 +5754,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 231861360}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5937,13 +5958,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120973049}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2126938151
 GameObject:
@@ -5977,7 +5998,6 @@ RectTransform:
   - {fileID: 726312062}
   - {fileID: 646081649}
   m_Father: {fileID: 747376026}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -6005,3 +6025,11 @@ MonoBehaviour:
   text: {fileID: 0}
   buttonComponent: 0
   figmaAligment: 
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 2120973052}
+  - {fileID: 487951512}
+  - {fileID: 1460013801}
+  - {fileID: 48891753}

@@ -447,7 +447,7 @@ MonoBehaviour:
     - Id: 117:2532
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Screen8
+      Name: Screen 01
       Selected: 1
     - Id: 161:2552
       ParentId: 1:6_UI design
@@ -462,7 +462,7 @@ MonoBehaviour:
     - Id: 205:2278
       ParentId: 1:6_UI design
       ParentName: UI design
-      Name: Screen9
+      Name: Screen 34
       Selected: 0
     - Id: 143:1599
       ParentId: 1:6_UI design
@@ -996,7 +996,7 @@ MonoBehaviour:
   <HintButton>k__BackingField: {fileID: 0}
   <CloseButton>k__BackingField: {fileID: 0}
   <TargetObject>k__BackingField: {fileID: 0}
-  keycode: 112
+  keycode: 130
   failedGO: {fileID: 537104998}
 --- !u!1 &108938424
 GameObject:

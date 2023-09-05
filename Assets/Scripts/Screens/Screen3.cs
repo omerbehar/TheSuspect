@@ -12,7 +12,7 @@ namespace Screens
     public class Screen3 : ScreenBase, ISaveData, ILoadData
     {
         const int INITIAL_INPUT_FIELDS = 3;
-        private const int MINIMUM_NAMES_ALLOWED = 2;
+        private const int MINIMUM_NAMES_ALLOWED = 1;
         [SerializeField] private GameObject addInputFieldGO;
         [SerializeField] private Button addNameInputFieldButton;
         [SerializeField] private List<InputField> nameInputFields = new();
@@ -22,7 +22,7 @@ namespace Screens
         private int inputFieldsCount = INITIAL_INPUT_FIELDS;
         [SerializeField] private InputField instructorNameInputField;
         [SerializeField] private string instructorName;
-        
+        [SerializeField] private TMP_Dropdown companyDropdown;
         private int namesAddedCount;
 
         protected override async void Start()
@@ -54,7 +54,6 @@ namespace Screens
                     namesAddedCount++;
                 }
             }
-            Debug.Log($"namesAddedCount: {namesAddedCount}, instructorName: {instructorName}");
             if (namesAddedCount >= MINIMUM_NAMES_ALLOWED && instructorName != "")
             {
                 EventManager.AssignmentCompleted.Invoke();
@@ -74,7 +73,13 @@ namespace Screens
             }
             instructorNameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
         }
-        
+
+        public override async void OnNextButtonClicked()
+        {
+            await SaveData();
+            base.OnNextButtonClicked();
+        }
+
         private void AddNameInputField()
         {
             GameObject inputFieldGameObject = Instantiate(inputFieldPrefab, inputFieldsLayout);
@@ -107,6 +112,8 @@ namespace Screens
         {
             Data.InstructorName = instructorName;
             Data.PlayerNames = names;
+            Data.CompanyName = companyDropdown.options[companyDropdown.value].text;
+            Debug.Log(Data.CompanyName);
             Data.SaveData();
             await Database.SaveDataToDatabase();
         }
@@ -114,8 +121,12 @@ namespace Screens
         public async Task LoadData()
         {
             Data.LoadData();
-            //await Database.LoadDataFromDatabase();
             instructorName = Data.InstructorName;
+            companyDropdown.value = Data.CompanyName == ""
+                ? 0
+                : companyDropdown.options.FindIndex(option => option.text == Data.CompanyName);
+            Debug.Log(Data.CompanyName);
+            Debug.Log(companyDropdown.value);
             names = Data.PlayerNames;
             instructorNameInputField.text = instructorName;
             for (int i = 0; i < names.Length; i++)

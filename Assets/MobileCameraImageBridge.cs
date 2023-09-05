@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using DefaultNamespace;
 using SFB;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -10,20 +11,45 @@ using UnityEngine.Video;
 public class MobileCameraImageBridge : MonoBehaviour
 {
     [SerializeField] private Button deleteButton;
+    private static string debugText;
+    //[SerializeField] private TMP_Text debugTextObject;
+
+    private static int orientation;
+
 #if UNITY_WEBGL && !UNITY_EDITOR
     [DllImport("__Internal")]
-    private static extern void OpenCamera(MobileCameraCallback callback);
+    private static extern void getOrientation(OrientationCallback2 callback);
+    
+    [DllImport("__Internal")]
+    private static extern void OpenCamera(MobileCameraCallback callback, OrientationCallback orientationCallback);
 
     delegate void MobileCameraCallback(string imageData);
-    [AOT.MonoPInvokeCallback(typeof(MobileCameraCallback))]
+    delegate void OrientationCallback(int orientation);
+    delegate void OrientationCallback2(int orientation);
 
+    [AOT.MonoPInvokeCallback(typeof(MobileCameraCallback))]
     public static void OnImageReceived(string imageData)
     {
         byte[] bytes = Convert.FromBase64String(imageData);
         Texture2D texture = new Texture2D(2, 2);
         texture.LoadImage(bytes);
         UploadImage uploadImage = FindObjectOfType<UploadImage>();
-        uploadImage.DisplayImage(texture);
+        uploadImage.DisplayImage(texture, orientation);
+    }
+    [AOT.MonoPInvokeCallback(typeof(OrientationCallback))]
+    public static void OnOrientationReceived(int picOrientation)
+    {
+        //debugText = "Received orientation: " + picOrientation;
+        orientation = picOrientation;
+        EventManager.TextureRecieved.Invoke();
+        //Debug.Log("Received orientation: " + picOrientation);
+    }
+    [AOT.MonoPInvokeCallback(typeof(OrientationCallback2))]
+    public static void OnOrientationReceived2(int orientation)
+    {
+        //debugText = "Received orientation2: " + orientation;
+        EventManager.TextureRecieved.Invoke();
+        //Debug.Log("Received orientation2: " + orientation);
     }
 #endif
 
@@ -31,16 +57,24 @@ public class MobileCameraImageBridge : MonoBehaviour
     {
         deleteButton.onClick.AddListener(DeleteImage);
         deleteButton.onClick.Invoke();
+        EventManager.TextureRecieved.AddListener(OnTextureRecieved);
+    }
+
+    private void OnTextureRecieved()
+    {
+        //debugTextObject.text = debugText;
     }
 
     public void RequestImage()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        OpenCamera(OnImageReceived);
+        OpenCamera(OnImageReceived, OnOrientationReceived);
+        //getOrientation(OnOrientationReceived2);
 #else
         PickImageAndDisplayFromExplorer();
 #endif
         EventManager.AssignmentCompleted.Invoke();
+        
     }
     
     public void DeleteImage()
@@ -78,7 +112,7 @@ public class MobileCameraImageBridge : MonoBehaviour
 
             // Display the image
             UploadImage uploadImage = FindObjectOfType<UploadImage>();
-            uploadImage.DisplayImage(readableTexture);
+            uploadImage.DisplayImage(readableTexture, 1);
         }
     }
 

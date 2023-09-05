@@ -18,14 +18,19 @@ namespace DataLayer
         public static Dictionary<string, string[]> AnswersText { get; set; } = new();
         public static Dictionary<string, bool> AnswerLocked { get; set; } = new();
         public static int Score { get; set; }
+        public static string CompanyName { get; set; }
 
         public static void ResetData()
         {
-            TeamName = "testteamname";
+            TeamName = "";
             InstructorName = "";
             Score = 0;
             PlayerNames = new string[MAX_PLAYERS];
             TeamPhoto = null;
+            SelectedAnswersData = new Dictionary<string, bool[]>();
+            AnswersText = new Dictionary<string, string[]>();
+            AnswerLocked = new Dictionary<string, bool>();
+            CompanyName = "";
             guid = Guid.NewGuid().ToString();
         }
         //save data to player prefs
@@ -52,7 +57,7 @@ namespace DataLayer
             {
                 PlayerPrefs.SetString(key, AnswerLocked[key].ToString());
             }
-            if (PlayerPrefs.HasKey("2-4")) Debug.Log(PlayerPrefs.GetString("2-4"));
+            PlayerPrefs.SetString("CompanyName", CompanyName);
             PlayerPrefs.SetInt("Score", Score);
         }
         //load data from player prefs
@@ -111,6 +116,7 @@ namespace DataLayer
                 {
                     AnswerLocked[key] = bool.Parse(PlayerPrefs.GetString(key));
                 }
+                CompanyName = PlayerPrefs.GetString("CompanyName");
                 Score = PlayerPrefs.GetInt("Score");
             }
         }

@@ -51,7 +51,6 @@ public class RTLText : MonoBehaviour
 #endif
         inputFieldRectTransform = GetComponent<RectTransform>();
         GameObject mainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
-        Debug.Log(mainCanvas);
         canvasRectTransform = mainCanvas.GetComponent<RectTransform>();
         originalPosition = canvasRectTransform.anchoredPosition;
         inputField.onValueChanged.AddListener(ReverseInputText);
@@ -73,11 +72,11 @@ public class RTLText : MonoBehaviour
     
     private void ReverseInputText(string value)
     {
+        Debug.Log("reverseMain");
         if (value.Length > originalString.Length)
         {
             // Add the new character to the original string
             originalString += value[value.Length - 1];
-
         }
         else if (value.Length < originalString.Length)
         {
@@ -88,6 +87,7 @@ public class RTLText : MonoBehaviour
         if (IsRightToLeft(originalString))
         {
             // Reverse the original string
+            Debug.Log("text reversed");
             char[] reversedChars = originalString.ToCharArray();
             Array.Reverse(reversedChars);
             inputField.onValueChanged.RemoveListener(ReverseInputText);
@@ -99,6 +99,7 @@ public class RTLText : MonoBehaviour
 
     private bool IsRightToLeft(string text)
     {
+        Debug.Log("IsRightToLeft");
         foreach (char c in text)
         {
             UnicodeCategory category = CharUnicodeInfo.GetUnicodeCategory(c);
