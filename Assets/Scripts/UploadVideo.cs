@@ -298,26 +298,26 @@ public class UploadVideo : ScreenBaseWithTimer
         }
     }
 
-    public void PickVideoMobile()
-    {
-        NativeGallery.Permission permission = NativeGallery.GetVideoFromGallery((path) =>
-        {
-            if(path != null)
-            {
-                PlayerPrefs.SetString("capturedVideo", path);
-                PlayerPrefs.Save();
-                StartCoroutine(DelayPlayVideo("file://" + path));
-            }
-        }, "Select a video");
-
-        Debug.Log("Permission result: " + permission);
-    }
-
-    private IEnumerator DelayPlayVideo(string videoUrl)
-    {
-        yield return new WaitForSeconds(0.1f);
-        PlayVideo(videoUrl);
-    }
+    // public void PickVideoMobile()
+    // {
+    //     NativeGallery.Permission permission = NativeGallery.GetVideoFromGallery((path) =>
+    //     {
+    //         if(path != null)
+    //         {
+    //             PlayerPrefs.SetString("capturedVideo", path);
+    //             PlayerPrefs.Save();
+    //             StartCoroutine(DelayPlayVideo("file://" + path));
+    //         }
+    //     }, "Select a video");
+    //
+    //     Debug.Log("Permission result: " + permission);
+    // }
+    //
+    // private IEnumerator DelayPlayVideo(string videoUrl)
+    // {
+    //     yield return new WaitForSeconds(0.1f);
+    //     PlayVideo(videoUrl);
+    // }
 
     private void PlayVideo(string videoUrl)
     {

@@ -20,9 +20,10 @@ namespace Screens
         [SerializeField] private GameObject inputFieldPrefab;
         [SerializeField] private string[] names;
         private int inputFieldsCount = INITIAL_INPUT_FIELDS;
-        [SerializeField] private InputField instructorNameInputField;
+        //[SerializeField] private InputField instructorNameInputField;
         [SerializeField] private string instructorName;
         [SerializeField] private TMP_Dropdown companyDropdown;
+        [SerializeField] private TMP_Dropdown instructorDropdown;
         private int namesAddedCount;
 
         protected override async void Start()
@@ -71,7 +72,21 @@ namespace Screens
             {
                 nameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
             }
-            instructorNameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
+            companyDropdown.onValueChanged.AddListener(delegate { OnCompanyChanged(); });
+        }
+
+        private void OnCompanyChanged()
+        {
+            if (companyDropdown.value == 0)
+            {
+                instructorDropdown.ClearOptions();
+                instructorDropdown.AddOptions(Data.IndieInstructor);
+            }
+            else
+            {
+                instructorDropdown.ClearOptions();
+                instructorDropdown.AddOptions(Data.Instructors);
+            }
         }
 
         public override async void OnNextButtonClicked()
@@ -103,7 +118,7 @@ namespace Screens
                     names[i] = nameInputFields[i].text;
                 }
             }
-            instructorName = instructorNameInputField.text;
+            instructorName = instructorDropdown.options[instructorDropdown.value].text;
             await SaveData();
             IsAssignmentCompleted();
         }
@@ -128,7 +143,9 @@ namespace Screens
             Debug.Log(Data.CompanyName);
             Debug.Log(companyDropdown.value);
             names = Data.PlayerNames;
-            instructorNameInputField.text = instructorName;
+            instructorDropdown.value = Data.InstructorName == ""
+                ? 0
+                : instructorDropdown.options.FindIndex(option => option.text == Data.InstructorName);
             for (int i = 0; i < names.Length; i++)
             {
                 if (names[i] != null && names[i] != "")

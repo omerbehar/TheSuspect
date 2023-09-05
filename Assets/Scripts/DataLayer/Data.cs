@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace DataLayer
@@ -19,7 +20,8 @@ namespace DataLayer
         public static Dictionary<string, bool> AnswerLocked { get; set; } = new();
         public static int Score { get; set; }
         public static string CompanyName { get; set; }
-
+        public static List<string> Instructors { get; set; } = new(){"מדריך 1", "מדריך 2", "מדריך 3"};
+        public static List<string> IndieInstructor { get; set; } = new() { "עצמאי" };
         public static void ResetData()
         {
             TeamName = "";
