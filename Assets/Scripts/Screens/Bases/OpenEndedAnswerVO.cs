@@ -26,7 +26,7 @@ namespace Screens.Bases
             {
                 var originalText = ReverseHebrewText(evt.newValue);
                 onSubmit?.Invoke(originalText);
-                Debug.Log("Open-ended answer received: " + originalText);
+                //Debug.Log("Open-ended answer received: " + originalText);
             });
         }
 

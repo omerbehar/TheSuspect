@@ -46,7 +46,7 @@ public class UploadVideo : ScreenBaseWithTimer
             {
                 bytes = Convert.FromBase64String(videoData);
                 //_debugText.text = $"video size: {bytes.Length}";
-                Debug.Log($"video size: {bytes.Length}");
+                //Debug.Log($"video size: {bytes.Length}");
                 // _path = Path.Combine(Application.persistentDataPath, "myVideo.mp4");
                 // PlayerPrefs.SetString("capturedVideo", _path);
                 // File.WriteAllBytes(_path, bytes);
@@ -298,26 +298,26 @@ public class UploadVideo : ScreenBaseWithTimer
         }
     }
 
-    public void PickVideoMobile()
-    {
-        NativeGallery.Permission permission = NativeGallery.GetVideoFromGallery((path) =>
-        {
-            if(path != null)
-            {
-                PlayerPrefs.SetString("capturedVideo", path);
-                PlayerPrefs.Save();
-                StartCoroutine(DelayPlayVideo("file://" + path));
-            }
-        }, "Select a video");
-
-        Debug.Log("Permission result: " + permission);
-    }
-
-    private IEnumerator DelayPlayVideo(string videoUrl)
-    {
-        yield return new WaitForSeconds(0.1f);
-        PlayVideo(videoUrl);
-    }
+    // public void PickVideoMobile()
+    // {
+    //     NativeGallery.Permission permission = NativeGallery.GetVideoFromGallery((path) =>
+    //     {
+    //         if(path != null)
+    //         {
+    //             PlayerPrefs.SetString("capturedVideo", path);
+    //             PlayerPrefs.Save();
+    //             StartCoroutine(DelayPlayVideo("file://" + path));
+    //         }
+    //     }, "Select a video");
+    //
+    //     Debug.Log("Permission result: " + permission);
+    // }
+    //
+    // private IEnumerator DelayPlayVideo(string videoUrl)
+    // {
+    //     yield return new WaitForSeconds(0.1f);
+    //     PlayVideo(videoUrl);
+    // }
 
     private void PlayVideo(string videoUrl)
     {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace DataLayer
@@ -19,7 +20,8 @@ namespace DataLayer
         public static Dictionary<string, bool> AnswerLocked { get; set; } = new();
         public static int Score { get; set; }
         public static string CompanyName { get; set; }
-
+        public static List<string> Instructors { get; set; } = new(){"מדריך 1", "מדריך 2", "מדריך 3"};
+        public static List<string> IndieInstructor { get; set; } = new() { "עצמאי" };
         public static void ResetData()
         {
             TeamName = "";
@@ -36,7 +38,7 @@ namespace DataLayer
         //save data to player prefs
         public static void SaveData()
         {
-            Debug.Log("Saving data");
+            //Debug.Log("Saving data");
             PlayerPrefs.SetString("TeamName", TeamName);
             PlayerPrefs.SetString("InstructorName", InstructorName);
             PlayerPrefs.SetString("PlayerNames", string.Join(",", PlayerNames));
@@ -66,13 +68,13 @@ namespace DataLayer
             //if no guid in playerpref, create one and reset data
             if (!PlayerPrefs.HasKey("guid"))
             {
-                Debug.Log("No guid found, creating new one");
+                //Debug.Log("No guid found, creating new one");
                 ResetData();
                 PlayerPrefs.SetString("guid", guid);
             }
             else
             {
-                Debug.Log("Guid found, loading data");
+                //Debug.Log("Guid found, loading data");
                 guid = PlayerPrefs.GetString("guid");
                 TeamName = PlayerPrefs.GetString("TeamName");
                 InstructorName = PlayerPrefs.GetString("InstructorName");
