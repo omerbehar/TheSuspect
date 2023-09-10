@@ -88,7 +88,5 @@ public class GameManager : MonoBehaviour
         {
             Data.Score += scoreValue;
         }
-
-        await Database.SaveDataToDatabase();
     }
 }

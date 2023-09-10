@@ -91,7 +91,7 @@ namespace Screens
 
         public override async void OnNextButtonClicked()
         {
-            await SaveData();
+            await Database.SaveDataToDatabase();
             base.OnNextButtonClicked();
         }
 
@@ -125,12 +125,10 @@ namespace Screens
 
         public async Task SaveData()
         {
-            Data.InstructorName = instructorName;
+            Data.InstructorName = instructorDropdown.options[instructorDropdown.value].text;
             Data.PlayerNames = names;
             Data.CompanyName = companyDropdown.options[companyDropdown.value].text;
-            Debug.Log(Data.CompanyName);
             Data.SaveData();
-            await Database.SaveDataToDatabase();
         }
 
         public async Task LoadData()
@@ -141,7 +139,7 @@ namespace Screens
                 ? 0
                 : companyDropdown.options.FindIndex(option => option.text == Data.CompanyName);
             Debug.Log(Data.CompanyName);
-            Debug.Log(companyDropdown.value);
+            //Debug.Log(companyDropdown.value);
             names = Data.PlayerNames;
             instructorDropdown.value = Data.InstructorName == ""
                 ? 0
@@ -157,6 +155,7 @@ namespace Screens
                     nameInputFields[i].text = names[i];
                 }
             }
+            OnCompanyChanged();
         }
     }
 }

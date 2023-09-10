@@ -35,12 +35,12 @@ public class AnswerCheck : ScreenBaseWithTimer
     {
         if (inputField.text == correctAnswer)
         {
-            Debug.Log("The correct answer was input.");
+            //Debug.Log("The correct answer was input.");
             CorrectAnswerEvent?.Invoke();
         }
         else
         {
-            Debug.Log("The incorrect answer was input.");
+            //Debug.Log("The incorrect answer was input.");
             IncorrectAnswerEvent?.Invoke();
         }
         

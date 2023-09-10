@@ -36,22 +36,30 @@ namespace Screens.Bases
             EventManager.AssignmentCompleted.AddListener(OnAssigmentCompleted);
             EventManager.AssignmentNotCompleted.AddListener(OnAssignmentNotCompleted);
             if (BackButton == null)
-                Debug.LogWarning("BackButton is null");
+            {
+                //Debug.LogWarning("BackButton is null");
+            }            
             else
                 BackButton.onClick.AddListener(OnBackButtonClicked);
             if (NextButton == null)
-                Debug.LogWarning("NextButton is null");
+            {
+                //Debug.LogWarning("NextButton is null");
+            }   
             else
             {
                 NextButton.onClick.AddListener(OnNextButtonClicked);
                 NextButton.interactable = false;
             }
             if (HintButton == null)
-                Debug.LogWarning("HintButton is null");
+            {
+                //Debug.LogWarning("HintButton is null");
+            }     
             else
                 HintButton.onClick.AddListener(OnHintButtonClicked);
             if (CloseButton == null)
-                Debug.LogWarning("CloseButton is null");
+            {
+                //Debug.LogWarning("CloseButton is null");
+            }
             else
                 CloseButton.onClick.AddListener(OnCloseButtonClicked);
         }
@@ -72,7 +80,7 @@ namespace Screens.Bases
 
         public virtual void OnNextButtonClicked()
         {
-            Debug.Log("Next button clicked");
+            //Debug.Log("Next button clicked");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
@@ -84,7 +92,7 @@ namespace Screens.Bases
             }
             else
             {
-                Debug.LogWarning("TargetObject is null");
+                //Debug.LogWarning("TargetObject is null");
             }
         }
 
@@ -96,7 +104,7 @@ namespace Screens.Bases
             }
             else
             {
-                Debug.LogWarning("TargetObject is null");
+                //Debug.LogWarning("TargetObject is null");
             }
         }
     }

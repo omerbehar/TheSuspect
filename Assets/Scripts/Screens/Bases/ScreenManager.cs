@@ -105,7 +105,7 @@ namespace Screens.Bases
             }
             else
             {
-                Debug.Log("Cannot go back further, already at first scene.");
+                //Debug.Log("Cannot go back further, already at first scene.");
             }
         }
         
@@ -128,7 +128,7 @@ namespace Screens.Bases
                 }
                 else
                 {
-                    Debug.Log("No more scenes");
+                    //Debug.Log("No more scenes");
                 }
             }
         }
@@ -140,7 +140,7 @@ namespace Screens.Bases
             // No more questions to display
             if (currentQuestionIndex >= questions.Count)
             {
-                Debug.Log("No more questions");
+                //Debug.Log("No more questions");
                 return;
             }
 
@@ -270,12 +270,12 @@ namespace Screens.Bases
 
             if (isCorrectAnswer)
             {
-                Debug.Log("Open-ended answer is correct!");
+                //Debug.Log("Open-ended answer is correct!");
                 // Perform actions related to correct answer...
             }
             else
             {
-                Debug.Log("Open-ended answer is incorrect.");
+                //Debug.Log("Open-ended answer is incorrect.");
                 // Perform actions related to incorrect answer...
             }
         }

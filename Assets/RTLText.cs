@@ -72,7 +72,7 @@ public class RTLText : MonoBehaviour
     
     private void ReverseInputText(string value)
     {
-        Debug.Log("reverseMain");
+        //Debug.Log("reverseMain");
         if (value.Length > originalString.Length)
         {
             // Add the new character to the original string
@@ -87,7 +87,7 @@ public class RTLText : MonoBehaviour
         if (IsRightToLeft(originalString))
         {
             // Reverse the original string
-            Debug.Log("text reversed");
+            //Debug.Log("text reversed");
             char[] reversedChars = originalString.ToCharArray();
             Array.Reverse(reversedChars);
             inputField.onValueChanged.RemoveListener(ReverseInputText);
@@ -99,7 +99,7 @@ public class RTLText : MonoBehaviour
 
     private bool IsRightToLeft(string text)
     {
-        Debug.Log("IsRightToLeft");
+        //Debug.Log("IsRightToLeft");
         foreach (char c in text)
         {
             UnicodeCategory category = CharUnicodeInfo.GetUnicodeCategory(c);

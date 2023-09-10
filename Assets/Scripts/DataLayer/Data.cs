@@ -38,7 +38,7 @@ namespace DataLayer
         //save data to player prefs
         public static void SaveData()
         {
-            Debug.Log("Saving data");
+            //Debug.Log("Saving data");
             PlayerPrefs.SetString("TeamName", TeamName);
             PlayerPrefs.SetString("InstructorName", InstructorName);
             PlayerPrefs.SetString("PlayerNames", string.Join(",", PlayerNames));
@@ -68,13 +68,13 @@ namespace DataLayer
             //if no guid in playerpref, create one and reset data
             if (!PlayerPrefs.HasKey("guid"))
             {
-                Debug.Log("No guid found, creating new one");
+                //Debug.Log("No guid found, creating new one");
                 ResetData();
                 PlayerPrefs.SetString("guid", guid);
             }
             else
             {
-                Debug.Log("Guid found, loading data");
+                //Debug.Log("Guid found, loading data");
                 guid = PlayerPrefs.GetString("guid");
                 TeamName = PlayerPrefs.GetString("TeamName");
                 InstructorName = PlayerPrefs.GetString("InstructorName");

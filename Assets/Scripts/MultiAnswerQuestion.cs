@@ -39,13 +39,13 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
         if (AreAllCorrectSelected())
         {
             AllCorrectAnswerEvent?.Invoke();
-            Debug.Log("All correct answers have been selected.");
+            //Debug.Log("All correct answers have been selected.");
         }
         else
         {
-            Debug.Log("Not all correct answers have been selected.");
+            //Debug.Log("Not all correct answers have been selected.");
         }
-        Debug.Log($"Correct answers selected: {correctAnswerCount}");
+        //Debug.Log($"Correct answers selected: {correctAnswerCount}");
         base.OnNextButtonClicked();
     }
     
@@ -94,7 +94,7 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
         {
             if (!correctAnswerIndices.Contains(i) && toggles[i].isOn)
             {
-                Debug.Log("Incorrect answer selected at index: " + i);
+                //Debug.Log("Incorrect answer selected at index: " + i);
                 return false;
             }
         }

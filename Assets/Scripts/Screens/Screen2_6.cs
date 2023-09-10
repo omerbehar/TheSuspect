@@ -51,7 +51,6 @@ namespace Screens
             }
             Data.SelectedAnswersData[SceneManager.GetActiveScene().name] = SelectedAnswers;
             Data.SaveData();
-            await Database.SaveDataToDatabase();
         }
         private void InitToggles()
         {

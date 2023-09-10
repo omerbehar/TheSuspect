@@ -46,7 +46,7 @@ public class UploadVideo : ScreenBaseWithTimer
             {
                 bytes = Convert.FromBase64String(videoData);
                 //_debugText.text = $"video size: {bytes.Length}";
-                Debug.Log($"video size: {bytes.Length}");
+                //Debug.Log($"video size: {bytes.Length}");
                 // _path = Path.Combine(Application.persistentDataPath, "myVideo.mp4");
                 // PlayerPrefs.SetString("capturedVideo", _path);
                 // File.WriteAllBytes(_path, bytes);
