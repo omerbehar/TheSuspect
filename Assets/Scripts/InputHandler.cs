@@ -21,7 +21,7 @@ public class InputHandler : MonoBehaviour
     
     private void OnEnable()
     {
-        Debug.Log("OnEnable called");
+        //Debug.Log("OnEnable called");
         // Add a listener to the input field's onEndEdit event
         inputField.onEndEdit.AddListener(delegate { ShowInputDialog(); });
     }

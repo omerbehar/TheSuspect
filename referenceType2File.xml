@@ -1,0 +1,2379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfTypeDate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TypeDate>
+    <guid>ff758a73b21d4a04aa6f95679b3da605</guid>
+    <fileName>Assets/Plugins/NativeCamera/NativeCamera.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.2479128+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>b2bbe0051e738ea4585119c46d863f19</guid>
+    <fileName>Assets/Plugins/NativeCamera/Android/NCCallbackHelper.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.2302109+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>3cc8df584d2a4344b929a4f13a53723a</guid>
+    <fileName>Assets/Plugins/NativeCamera/Android/NCCameraCallbackAndroid.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.2328056+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>bafa24bbc8c455f44a2b98dcbe6451bd</guid>
+    <fileName>Assets/Plugins/NativeCamera/Android/NCPermissionCallbackAndroid.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.2347913+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>fa3b57e342928704cb910789ae4dde20</guid>
+    <fileName>Assets/Plugins/NativeCamera/Editor/NCPostProcessBuild.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.2419223+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>d8f19d5713752dc41bd377562677d8ee</guid>
+    <fileName>Assets/Plugins/NativeCamera/iOS/NCCameraCallbackiOS.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.2515719+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>1efd0cf9fb7457142b76fb1bc8672e8d</guid>
+    <fileName>Assets/Plugins/NativeCamera/iOS/NCPermissionCallbackiOS.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.2535779+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>feb50e7203e59284ea9c0ce02b6dd762</guid>
+    <fileName>Assets/Plugins/UnitySweeper/Editor/AssetCollector.cs</fileName>
+    <timeStamp>2023-09-05T17:50:06.4671376+03:00</timeStamp>
+    <typeFullName>
+      <string>UnitySweeper.AssetCollector</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a78de1c8093eb0045a7692c394c1fa06</guid>
+    <fileName>Assets/Plugins/UnitySweeper/Editor/AssetReferenceCollection.cs</fileName>
+    <timeStamp>2023-09-05T17:50:06.4828199+03:00</timeStamp>
+    <typeFullName>
+      <string>UnitySweeper.AssetReferenceCollection</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>4cd261b70c6f9e541912bcf9191352fa</guid>
+    <fileName>Assets/Plugins/UnitySweeper/Editor/ClassReferenceCollection.cs</fileName>
+    <timeStamp>2023-09-05T17:50:06.5341702+03:00</timeStamp>
+    <typeFullName>
+      <string>UnitySweeper.ClassReferenceCollection</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a809a95a55b17a842993d4e41649098d</guid>
+    <fileName>Assets/Plugins/UnitySweeper/Editor/CollectionData.cs</fileName>
+    <timeStamp>2023-09-05T17:50:06.5770864+03:00</timeStamp>
+    <typeFullName>
+      <string>UnitySweeper.CollectionData</string>
+      <string>UnitySweeper.TypeDate</string>
+      <string>UnitySweeper.IReferenceCollection</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2b6ec76b2369e674dab308a21f4b8a54</guid>
+    <fileName>Assets/Plugins/UnitySweeper/Editor/FindUnusedAssetsWindow.cs</fileName>
+    <timeStamp>2023-09-05T17:50:06.5997634+03:00</timeStamp>
+    <typeFullName>
+      <string>UnitySweeper.FindUnusedAssetsWindow</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>409a285dee4278b41b695c060ef00eac</guid>
+    <fileName>Assets/Plugins/UnitySweeper/Editor/ShaderReferenceCollection.cs</fileName>
+    <timeStamp>2023-09-05T17:50:06.6243933+03:00</timeStamp>
+    <typeFullName>
+      <string>UnitySweeper.ShaderReferenceCollection</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d38aadebabeac02439a2cbc38dfdda5a</guid>
+    <fileName>Assets/EndGame.cs</fileName>
+    <timeStamp>2023-08-27T17:38:01.8736584+03:00</timeStamp>
+    <typeFullName>
+      <string>EndGame</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5d3f369b4eee7484f938a6f0e63fcd10</guid>
+    <fileName>Assets/HintPopup.cs</fileName>
+    <timeStamp>2023-08-27T17:38:01.8784515+03:00</timeStamp>
+    <typeFullName>
+      <string>HintPopup</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>1378ed5a400160c4a81d88f64b1162bf</guid>
+    <fileName>Assets/MobileCameraImageBridge.cs</fileName>
+    <timeStamp>2023-08-30T16:24:31.0347435+03:00</timeStamp>
+    <typeFullName>
+      <string>MobileCameraImageBridge</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ddab108e5a5c1204482154d610fe4fdf</guid>
+    <fileName>Assets/RTLText.cs</fileName>
+    <timeStamp>2023-09-04T08:26:48.4857032+03:00</timeStamp>
+    <typeFullName>
+      <string>RTLText</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c8daf4c511cd3d2468396ffc280f850e</guid>
+    <fileName>Assets/TimerScript.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.9589043+03:00</timeStamp>
+    <typeFullName>
+      <string>TimerScript</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6a4cb39d62e232a40959f3a586c4c1dd</guid>
+    <fileName>Assets/ViewportSizeAdjuster.cs</fileName>
+    <timeStamp>2023-08-24T21:16:57.9008442+03:00</timeStamp>
+    <typeFullName>
+      <string>ViewportSizeAdjuster</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>f5efad07a8474318a07a07d08daa66aa</guid>
+    <fileName>Assets/Scripts/AnswerCheck.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.0675398+03:00</timeStamp>
+    <typeFullName>
+      <string>AnswerCheck</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c85bc179e8b04496bf3f9cd6ccd9ec1e</guid>
+    <fileName>Assets/Scripts/EventManager.cs</fileName>
+    <timeStamp>2023-08-31T10:50:16.8123004+03:00</timeStamp>
+    <typeFullName>
+      <string>EventManager</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>42fe5020e6d35554685957741b87f736</guid>
+    <fileName>Assets/Scripts/GameManager.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.0804969+03:00</timeStamp>
+    <typeFullName>
+      <string>GameManager</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>14242d1d7f1062345b2c401de4f8e224</guid>
+    <fileName>Assets/Scripts/InitLayout.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.0814678+03:00</timeStamp>
+    <typeFullName>
+      <string>InitLayout</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d4e5b263010c4c24855ee41881d46b80</guid>
+    <fileName>Assets/Scripts/InputHandler.cs</fileName>
+    <timeStamp>2023-08-24T21:16:57.7499159+03:00</timeStamp>
+    <typeFullName>
+      <string>InputHandler</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c80a687588d54992ae944b65364c5313</guid>
+    <fileName>Assets/Scripts/LevelDesign.cs</fileName>
+    <timeStamp>2023-06-12T14:57:28.2828469+03:00</timeStamp>
+    <typeFullName>
+      <string>LevelDesign</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>0ad14223fcd64193b876aac8b35460e8</guid>
+    <fileName>Assets/Scripts/MobileCameraVideoBridge.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.082471+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>bad3b1fef02f4b508f276e9d52a708a3</guid>
+    <fileName>Assets/Scripts/MultiAnswerQuestion.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.0845324+03:00</timeStamp>
+    <typeFullName>
+      <string>MultiAnswerQuestion</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>810edac6d5ec49e8aa62fdc0a0540e18</guid>
+    <fileName>Assets/Scripts/NewTimerUI.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.086636+03:00</timeStamp>
+    <typeFullName>
+      <string>NewTimerUI</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>0dd938f12c3543ed93c0a731f4a01470</guid>
+    <fileName>Assets/Scripts/Question.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.0875655+03:00</timeStamp>
+    <typeFullName>
+      <string>Question</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8d3d9fb16b08404b9f4621ce026caf1d</guid>
+    <fileName>Assets/Scripts/QuestionType.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.0892241+03:00</timeStamp>
+    <typeFullName>
+      <string>DefaultNamespace.QuestionType</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>065ab9c5e870462cb04da14085119127</guid>
+    <fileName>Assets/Scripts/UploadImage.cs</fileName>
+    <timeStamp>2023-08-30T16:20:46.8211045+03:00</timeStamp>
+    <typeFullName>
+      <string>UploadImage</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ea319bcb56f94994aca1f429232c338e</guid>
+    <fileName>Assets/Scripts/UploadVideo.cs</fileName>
+    <timeStamp>2023-09-03T16:44:25.7204343+03:00</timeStamp>
+    <typeFullName>
+      <string>UploadVideo</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>7609f7b6787a54496aa41a3053fcc76a</guid>
+    <fileName>Assets/StandaloneFileBrowser/IStandaloneFileBrowser.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.4992122+03:00</timeStamp>
+    <typeFullName>
+      <string>SFB.IStandaloneFileBrowser</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3c708be74128e4ced9b79eaaf80e8443</guid>
+    <fileName>Assets/StandaloneFileBrowser/StandaloneFileBrowser.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.6776401+03:00</timeStamp>
+    <typeFullName>
+      <string>SFB.ExtensionFilter</string>
+      <string>SFB.StandaloneFileBrowser</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2650af8de2cda46b99b1bc7cf5d30ca5</guid>
+    <fileName>Assets/StandaloneFileBrowser/StandaloneFileBrowserEditor.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.6840565+03:00</timeStamp>
+    <typeFullName>
+      <string>SFB.StandaloneFileBrowserEditor</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5d3a668018554b8a89c3fe12de72b60c</guid>
+    <fileName>Assets/StandaloneFileBrowser/StandaloneFileBrowserLinux.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.6917261+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>bcb49ddb0ed5644fda9c3b055cafa27a</guid>
+    <fileName>Assets/StandaloneFileBrowser/StandaloneFileBrowserMac.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.6988235+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>194e247414a78461d83ae606c1b96917</guid>
+    <fileName>Assets/StandaloneFileBrowser/StandaloneFileBrowserWindows.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.7061206+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>9f42c55b761c00446a0041d34fdb8dbe</guid>
+    <fileName>Assets/D.A. Assets/Shared/Console.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3870199+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.Console</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>13b58de69cf30c346bf4e2cd730158da</guid>
+    <fileName>Assets/D.A. Assets/Shared/ControllerHolder.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3895586+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.ControllerHolder`1</string>
+      <string>DA_Assets.FCU.Core.ControllerHolderExtensions</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>55eb6b42348fd4541954238f3b395c5b</guid>
+    <fileName>Assets/D.A. Assets/Shared/CoroutineResult.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3895586+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.CoroutineResult`1</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c48acc25efb6e1b48a99548fe4264b03</guid>
+    <fileName>Assets/D.A. Assets/Shared/Levenshtein.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3987219+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.Levenshtein</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e6c94466b6a9f6f458d2e07362894ecb</guid>
+    <fileName>Assets/D.A. Assets/Shared/SingletoneScriptableObject.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3987219+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.SingletoneScriptableObject`1</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>611884458f738cb4cbd0d4bd268cdba7</guid>
+    <fileName>Assets/D.A. Assets/Shared/SlowCycles.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.399803+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.SlowCycles</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>07bf16638a69a044194fb25b589d4f6d</guid>
+    <fileName>Assets/D.A. Assets/Shared/StaticSingleton.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.4005957+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.StaticSingleton`1</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>626e537c677e3e44e8df233259c6daa2</guid>
+    <fileName>Assets/D.A. Assets/Shared/UpdateBool.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.4012037+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.UpdateBool</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>200b9ecac0cc5b6479f33e6338cda4ad</guid>
+    <fileName>Assets/LightShaft/Scripts/DemoCustomPlayerScript.cs</fileName>
+    <timeStamp>2023-08-26T06:35:12+03:00</timeStamp>
+    <typeFullName>
+      <string>DemoCustomPlayerScript</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9ff0468e58bad8e4d8fb4f89ad46515e</guid>
+    <fileName>Assets/LightShaft/Scripts/ReactingLights.cs</fileName>
+    <timeStamp>2023-08-26T06:35:36+03:00</timeStamp>
+    <typeFullName>
+      <string>ReactingLights</string>
+      <string>ReactingLights+VideoSide</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c47fa775d62ff5f4d9ebe91da24244ff</guid>
+    <fileName>Assets/LightShaft/Scripts/SimpleJSON.cs</fileName>
+    <timeStamp>2023-08-26T06:35:45+03:00</timeStamp>
+    <typeFullName>
+      <string>SimpleJSON.JSONNodeType</string>
+      <string>SimpleJSON.JSONTextMode</string>
+      <string>SimpleJSON.JSONNode</string>
+      <string>SimpleJSON.JSONArray</string>
+      <string>SimpleJSON.JSONObject</string>
+      <string>SimpleJSON.JSONString</string>
+      <string>SimpleJSON.JSONNumber</string>
+      <string>SimpleJSON.JSONBool</string>
+      <string>SimpleJSON.JSONNull</string>
+      <string>SimpleJSON.JSONLazyCreator</string>
+      <string>SimpleJSON.JSON</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>dc1c711c17e52f84da5ac81a04d1566a</guid>
+    <fileName>Assets/LightShaft/Scripts/UIExtensions.cs</fileName>
+    <timeStamp>2023-08-26T06:35:50+03:00</timeStamp>
+    <typeFullName>
+      <string>UISetExtensions</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>259e1a6b89421ae46ae2b2baa2a44b26</guid>
+    <fileName>Assets/LightShaft/Scripts/VideoPlayerController.cs</fileName>
+    <timeStamp>2023-08-26T06:35:13+03:00</timeStamp>
+    <typeFullName>
+      <string>VideoPlayerController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>309c19d25981db34282ed510bcf4c80e</guid>
+    <fileName>Assets/LightShaft/Scripts/YoutubeDemoScript.cs</fileName>
+    <timeStamp>2023-08-26T06:35:15+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeDemoScript</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>f459b5a1d38507740bebb78005bb582a</guid>
+    <fileName>Assets/LightShaft/Scripts/YoutubeLogo.cs</fileName>
+    <timeStamp>2023-08-26T06:35:55+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeLogo</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5e7418089f4181645b5df8f90e317bf4</guid>
+    <fileName>Assets/LightShaft/Scripts/YoutubePlayer.cs</fileName>
+    <timeStamp>2023-09-04T09:52:34.0103488+03:00</timeStamp>
+    <typeFullName>
+      <string>LightShaft.Scripts.YoutubePlayer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5f897ddd262e2794686f0e6984a5adc9</guid>
+    <fileName>Assets/LightShaft/Scripts/YoutubePlayerLivestream.cs</fileName>
+    <timeStamp>2023-08-26T06:35:24+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubePlayerLivestream</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>94fb4cfb0fae36a4e958beeaf3a4d77e</guid>
+    <fileName>Assets/LightShaft/Scripts/YoutubeSettings.cs</fileName>
+    <timeStamp>2023-09-04T10:03:50.0507396+03:00</timeStamp>
+    <typeFullName>
+      <string>LightShaft.Scripts.YoutubeSettings</string>
+      <string>LightShaft.Scripts.YoutubeSettings+YoutubeVideoQuality</string>
+      <string>LightShaft.Scripts.YoutubeSettings+VideoFormatType</string>
+      <string>LightShaft.Scripts.YoutubeSettings+Layout3D</string>
+      <string>LightShaft.Scripts.YoutubeSettings+Html5PlayerResult</string>
+      <string>LightShaft.Scripts.YoutubeResultIds</string>
+      <string>LightShaft.Scripts.Extensions</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>87fc08d9533c69d4b94db5f4b9e2605b</guid>
+    <fileName>Assets/LightShaft/Scripts/YoutubeSimplified.cs</fileName>
+    <timeStamp>2023-08-26T06:35:33+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeSimplified</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6fff3c7be5a953945843ab394d52e8cf</guid>
+    <fileName>Assets/LightShaft/Scripts/YoutubeVideoController.cs</fileName>
+    <timeStamp>2023-08-26T06:35:28+03:00</timeStamp>
+    <typeFullName>
+      <string>LightShaft.Scripts.YoutubeVideoController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b121d95bc3e711f4fad11014675bfd8b</guid>
+    <fileName>Assets/LightShaft/Scripts/YoutubeVideoEvents.cs</fileName>
+    <timeStamp>2023-08-26T06:35:42+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeTimedEvent</string>
+      <string>UrlLoadEvent</string>
+      <string>LightShaft.Scripts.YoutubeVideoEvents</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c3781d742b3a70c409464b03b436ed6e</guid>
+    <fileName>Assets/LightShaft/YoutubeSrc/Exceptions.cs</fileName>
+    <timeStamp>2023-08-26T06:35:45+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeLight.VideoNotAvailableException</string>
+      <string>YoutubeLight.YoutubeParseException</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>f2aab6d66ebdddf42a236f57aade3629</guid>
+    <fileName>Assets/LightShaft/YoutubeSrc/HTTPHelperYoutube.cs</fileName>
+    <timeStamp>2023-08-26T06:35:55+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeLight.HTTPHelperYoutube</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>10ed8a43912d4a540b6193cd02ef56e7</guid>
+    <fileName>Assets/LightShaft/YoutubeSrc/MagicHands.cs</fileName>
+    <timeStamp>2023-08-26T06:35:09+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeLight.MagicHands</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e26a26e8e17ca8f4aa95c33e1dcd6da5</guid>
+    <fileName>Assets/LightShaft/YoutubeSrc/Types.cs</fileName>
+    <timeStamp>2023-08-26T06:35:51+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeLight.AudioType</string>
+      <string>YoutubeLight.VideoType</string>
+      <string>YoutubeLight.AdaptiveType</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>77e7ffe40ac1b7145b7abd53c1c93603</guid>
+    <fileName>Assets/LightShaft/YoutubeSrc/VideoInfo.cs</fileName>
+    <timeStamp>2023-08-26T06:35:30+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeLight.VideoInfo</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ec000d8176e08804ba7af3a2e25a8aa4</guid>
+    <fileName>Assets/LightShaft/YoutubeSrc/VideoRequest.cs</fileName>
+    <timeStamp>2023-08-26T06:35:53+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeLight.Downloader</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e67a7fd977e441c5bf114478897622e3</guid>
+    <fileName>Assets/Scripts/DataLayer/Data.cs</fileName>
+    <timeStamp>2023-08-28T13:46:05.7284394+03:00</timeStamp>
+    <typeFullName>
+      <string>DataLayer.Data</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e74a2d06a64a4cd383865d0da05eed46</guid>
+    <fileName>Assets/Scripts/DataLayer/Database.cs</fileName>
+    <timeStamp>2023-08-30T15:28:21.8617881+03:00</timeStamp>
+    <typeFullName>
+      <string>DataLayer.Database</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>837efdd655944a469308690378a30b6f</guid>
+    <fileName>Assets/Scripts/Screens/MultipleChoiceQuestion.cs</fileName>
+    <timeStamp>2023-08-24T21:13:07.0902756+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.MultipleChoiceQuestion</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>01449fc3c6c94e3bb1865219a86c53ae</guid>
+    <fileName>Assets/Scripts/Screens/Screen2_10.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.1123423+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Screen2_10</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>7ad0f52fcb804ee0b4540b5bc09cdb2c</guid>
+    <fileName>Assets/Scripts/Screens/Screen2_2.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.2640121+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Screen2_2</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9354e9ca6a9a4a88b19a7a3d14746448</guid>
+    <fileName>Assets/Scripts/Screens/Screen2_3.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.2665452+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Bases.Screen2_3</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>f990775e751844058a82e5726c91862e</guid>
+    <fileName>Assets/Scripts/Screens/Screen2_4.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.2749402+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Screen2_4</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>94e5af03c0304445bf10b36a9abb05af</guid>
+    <fileName>Assets/Scripts/Screens/Screen2_5.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.2852058+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Screen2_5</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>07657014275642c18b9783aa25f5f67f</guid>
+    <fileName>Assets/Scripts/Screens/Screen2_6.cs</fileName>
+    <timeStamp>2023-09-05T10:59:22.7114783+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Screen2_6</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e8f6016650884625a29488caea69e177</guid>
+    <fileName>Assets/Scripts/Screens/Screen2_7.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.3035361+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Screen2_7</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>62888add98b84880937a0cf99e1f3d38</guid>
+    <fileName>Assets/Scripts/Screens/Screen2_8.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.3147059+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Screen2_8</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b851568a922c38446834c0b7d5015570</guid>
+    <fileName>Assets/Scripts/Screens/Screen3.cs</fileName>
+    <timeStamp>2023-08-28T13:58:46.3756625+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Screen3</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d520a86cae6b4132a825305992653683</guid>
+    <fileName>Assets/Scripts/Screens/Screen4.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.3252872+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Screen4</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>4e42c98fd51f4a7d8c87f6bb21327666</guid>
+    <fileName>Assets/Scripts/Screens/Screen6.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.3331305+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Screen6</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5c595cc7eb44424c99c70250b3a2cd29</guid>
+    <fileName>Assets/Scripts/Screens/Screen7.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.339718+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Screen7</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8cd654ec655944569a07f9c6d8c5a00a</guid>
+    <fileName>Assets/Scripts/Screens/Screen8.cs</fileName>
+    <timeStamp>2023-08-28T14:30:47.2871397+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Screen8</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b0941c71a3be4c58ad0890436be5e49d</guid>
+    <fileName>Assets/Scripts/Screens/SingleChoiceQuestion.cs</fileName>
+    <timeStamp>2023-08-17T14:34:58.1029716+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.SingleChoiceQuestion</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b9771a503dd94d969064e2a57efbd0b8</guid>
+    <fileName>Assets/Scripts/Screens/WatchVideo.cs</fileName>
+    <timeStamp>2023-09-03T20:11:40.0519395+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.WatchVideo</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5148400295519405d82bb0fa65246ea2</guid>
+    <fileName>Assets/StandaloneFileBrowser/Sample/BasicSample.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.6170595+03:00</timeStamp>
+    <typeFullName>
+      <string>BasicSample</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>331c95b7bf39e4792acecff50a972040</guid>
+    <fileName>Assets/StandaloneFileBrowser/Sample/CanvasSampleOpenFileImage.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.6345977+03:00</timeStamp>
+    <typeFullName>
+      <string>CanvasSampleOpenFileImage</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>99a65d6437df64949b37cba4eadc67a2</guid>
+    <fileName>Assets/StandaloneFileBrowser/Sample/CanvasSampleOpenFileText.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.6423704+03:00</timeStamp>
+    <typeFullName>
+      <string>CanvasSampleOpenFileText</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>71c09849449d61e47a4599e06b964998</guid>
+    <fileName>Assets/StandaloneFileBrowser/Sample/CanvasSampleOpenFileTextMultiple.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.6483892+03:00</timeStamp>
+    <typeFullName>
+      <string>CanvasSampleOpenFileTextMultiple</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6e681018aa67241a69b8447678ec3b4e</guid>
+    <fileName>Assets/StandaloneFileBrowser/Sample/CanvasSampleSaveFileImage.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.6568614+03:00</timeStamp>
+    <typeFullName>
+      <string>CanvasSampleSaveFileImage</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8e97f52f0bd664ee78305dae0094a755</guid>
+    <fileName>Assets/StandaloneFileBrowser/Sample/CanvasSampleSaveFileText.cs</fileName>
+    <timeStamp>2023-08-13T10:37:16.6629043+03:00</timeStamp>
+    <typeFullName>
+      <string>CanvasSampleSaveFileText</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>cc33a39070010f94fb1c2dd721c1286d</guid>
+    <fileName>Assets/WebGLSupport/WebGLInput/WebGLInput.cs</fileName>
+    <timeStamp>2023-07-04T06:35:55+03:00</timeStamp>
+    <typeFullName>
+      <string>WebGLSupport.WebGLInputPlugin</string>
+      <string>WebGLSupport.WebGLInput</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5fcbb4f34ed8e894896251ff74a4633d</guid>
+    <fileName>Assets/WebGLSupport/WebGLWindow/WebGLWindow.cs</fileName>
+    <timeStamp>2023-07-03T11:15:28+03:00</timeStamp>
+    <typeFullName>
+      <string>WebGLSupport.WebGLWindowPlugin</string>
+      <string>WebGLSupport.WebGLWindow</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>cb50b5b4038022744b7d09fe41d03007</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/FigmaConverterUnity.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3561497+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.FigmaConverterUnity</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6524e57dc4d98a14f8146352f930e583</guid>
+    <fileName>Assets/D.A. Assets/Shared/CodeHelpers/FileNameExtensions.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3840009+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.CodeHelpers.FileNameExtensions</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3efacdcf8bddd404395e6d93a8427bcb</guid>
+    <fileName>Assets/D.A. Assets/Shared/CodeHelpers/JsonExtensions.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.385016+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.CodeHelpers.JsonExtensions</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>cb488b4e150d26942b4c98b673d4794d</guid>
+    <fileName>Assets/D.A. Assets/Shared/CodeHelpers/ListExtensions.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.385016+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.CodeHelpers.ListExtensions</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>980a5b90d0f184a4fbaf5a38652b3134</guid>
+    <fileName>Assets/D.A. Assets/Shared/CodeHelpers/RectTransformExtensions.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3860149+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.CodeHelpers.RectTransformExtensions</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>4999ba2ac7240c3449fe61eaf933547f</guid>
+    <fileName>Assets/D.A. Assets/Shared/CodeHelpers/ReflectionExtensions.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3860149+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.CodeHelpers.ReflectionExtensions</string>
+      <string>DA_Assets.Shared.CodeHelpers.ProxyList`2</string>
+      <string>DA_Assets.Shared.CodeHelpers.ProxyDictionary`3</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>eed2732e3b885384f89b0955115f3f84</guid>
+    <fileName>Assets/D.A. Assets/Shared/CodeHelpers/UnityCodeHelpers.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3870199+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.CodeHelpers.UnityCodeHelpers</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>01eb77c02364e444e9da3789abe3e2cf</guid>
+    <fileName>Assets/D.A. Assets/Shared/Editor/DA_GUI_Editor.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3947815+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.DA_GUI_Editor</string>
+      <string>DA_Assets.Shared.CustomStyle</string>
+      <string>DA_Assets.Shared.GroupType</string>
+      <string>DA_Assets.Shared.Group</string>
+      <string>DA_Assets.Shared.LabelWidthType</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>19104630e705bc445af90f0e6a52adcd</guid>
+    <fileName>Assets/D.A. Assets/Shared/Editor/FontAtlasGenerator.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3963256+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.FontAtlasGenerator</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5c04c068c0c5f794380184f65954f141</guid>
+    <fileName>Assets/D.A. Assets/Shared/Editor/GameViewUtils.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3963256+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.GameViewUtils</string>
+      <string>DA_Assets.Shared.GameViewSizeType</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ed596fdb0631adb4ea394fbd84ff7161</guid>
+    <fileName>Assets/D.A. Assets/Shared/Editor/HandleDefine.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3977106+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.DefineModifier</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>25e64621691bf3d42bae651929bcfc32</guid>
+    <fileName>Assets/LightShaft/CustomScripts/Editor/InvertedSphere.cs</fileName>
+    <timeStamp>2023-08-26T06:35:13+03:00</timeStamp>
+    <typeFullName>
+      <string>InvertedSphere</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c3f1c240681b515449954d30697d56c9</guid>
+    <fileName>Assets/LightShaft/Scripts/CustomTools/DrawIfAttribute.cs</fileName>
+    <timeStamp>2023-08-26T06:35:45+03:00</timeStamp>
+    <typeFullName>
+      <string>DrawIfAttribute</string>
+      <string>DrawIfAttribute+DisablingType</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c49316e933df9624c904fce25aaaea28</guid>
+    <fileName>Assets/LightShaft/Scripts/CustomTools/PlayerPrefsX.cs</fileName>
+    <timeStamp>2023-08-26T06:35:46+03:00</timeStamp>
+    <typeFullName>
+      <string>PlayerPrefsX</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>135b5a0b210bf5347a24878dfdd573cb</guid>
+    <fileName>Assets/LightShaft/Scripts/CustomTools/SliderDrag.cs</fileName>
+    <timeStamp>2023-08-26T06:35:09+03:00</timeStamp>
+    <typeFullName>
+      <string>LightShaft.Scripts.CustomTools.SliderDrag</string>
+      <string>LightShaft.Scripts.CustomTools.SliderDragEvent</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>4503a05643450e246b327845d8287979</guid>
+    <fileName>Assets/LightShaft/Scripts/VideoController/LoadVideoTitleToText.cs</fileName>
+    <timeStamp>2023-08-26T06:35:18+03:00</timeStamp>
+    <typeFullName>
+      <string>LoadVideoTitleToText</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9bf86810d8e77e74f92ff76978a6463b</guid>
+    <fileName>Assets/LightShaft/Scripts/VideoController/PauseIcon.cs</fileName>
+    <timeStamp>2023-08-26T06:35:35+03:00</timeStamp>
+    <typeFullName>
+      <string>PauseIcon</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>babb526a0c99bbc49a57597e4f7d179e</guid>
+    <fileName>Assets/LightShaft/Scripts/VideoController/VideoProgressBar.cs</fileName>
+    <timeStamp>2023-08-26T06:35:43+03:00</timeStamp>
+    <typeFullName>
+      <string>VideoProgressBar</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e2e389c5e5e25fe419623529e88165e9</guid>
+    <fileName>Assets/LightShaft/Scripts/VideoController/YT_RotateCamera.cs</fileName>
+    <timeStamp>2023-08-26T06:35:52+03:00</timeStamp>
+    <typeFullName>
+      <string>YT_RotateCamera</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>7c5102728a8056349af05cf7901044ec</guid>
+    <fileName>Assets/LightShaft/YoutubeAPI/Scripts/YoutubeDemoUsage.cs</fileName>
+    <timeStamp>2023-08-26T06:35:31+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeDemoUsage</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6d2e6754a304b0c45913a61f70cf437d</guid>
+    <fileName>Assets/LightShaft/YoutubeAPI/Scripts/YoutubeSubtitlesReader.cs</fileName>
+    <timeStamp>2023-08-26T06:35:27+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeSubtitlesReader</string>
+      <string>SubtitleItem</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b570e31d38a8471fa3bfd222c1752d33</guid>
+    <fileName>Assets/Scripts/Screens/Bases/MultiChoiceAnswerVO.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.0939284+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Bases.MultiChoiceAnswerVO</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>34da61f736bc4c6795e0c4ba1a44df95</guid>
+    <fileName>Assets/Scripts/Screens/Bases/OpenEndedAnswerVO.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.0949289+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Bases.OpenEndedAnswerVO</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>78bbd2d45007409cb9b0f8d4e197e31a</guid>
+    <fileName>Assets/Scripts/Screens/Bases/OpenEndedQuestion.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.0959459+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Bases.OpenEndedQuestion</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9fcd120abc6f4025abd8d453c724125c</guid>
+    <fileName>Assets/Scripts/Screens/Bases/ScreenBase.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.1040095+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Bases.ScreenBase</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>157baa4ab6084bc49e28417b24f3bb33</guid>
+    <fileName>Assets/Scripts/Screens/Bases/ScreenBaseWithTimer.cs</fileName>
+    <timeStamp>2023-08-27T17:38:36.0269875+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Bases.ScreenBaseWithTimer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b6db94a1cd6d4d28ad335e9bdd7eee47</guid>
+    <fileName>Assets/Scripts/Screens/Bases/ScreenLoad.cs</fileName>
+    <timeStamp>2023-08-17T14:34:58.0950041+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Bases.ScreenLoad</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b6434aea4c0d405a97b382e15345345f</guid>
+    <fileName>Assets/Scripts/Screens/Bases/ScreenManager.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.1066703+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Bases.ScreenManager</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>4114e82649f04f9c840518d564450cfb</guid>
+    <fileName>Assets/Scripts/Screens/Bases/SingleChoiceAnswerVO.cs</fileName>
+    <timeStamp>2023-08-17T14:34:58.0984505+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Bases.SingleChoiceAnswerVO</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3970670fce374f04882187dd5b376e9f</guid>
+    <fileName>Assets/Scripts/Screens/Interfaces/IBackButton.cs</fileName>
+    <timeStamp>2023-08-13T12:15:30.1204488+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.IBackButton</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a916bca841e043d4b7fdf13198f3cc91</guid>
+    <fileName>Assets/Scripts/Screens/Interfaces/IHint.cs</fileName>
+    <timeStamp>2023-08-14T12:32:08.8527776+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Interfaces.IHint</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b2fd8ce739684118a9e4bec81cc8745b</guid>
+    <fileName>Assets/Scripts/Screens/Interfaces/ILoadData.cs</fileName>
+    <timeStamp>2023-08-17T14:32:58.4575845+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Interfaces.ILoadData</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>85d47ee276194bf680940827cfaf4912</guid>
+    <fileName>Assets/Scripts/Screens/Interfaces/INextButton.cs</fileName>
+    <timeStamp>2023-08-13T12:15:30.1340752+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Interfaces.INextButton</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b3b976d0a2f14b5fb60a876ed84d0a3d</guid>
+    <fileName>Assets/Scripts/Screens/Interfaces/IQuestion.cs</fileName>
+    <timeStamp>2023-08-17T14:34:58.1002641+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>4b15f28514d64f09a18fecea84c41516</guid>
+    <fileName>Assets/Scripts/Screens/Interfaces/ISaveData.cs</fileName>
+    <timeStamp>2023-08-24T21:16:57.7589356+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Interfaces.ISaveData</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>0390c63bc96b43b4a3bad4e04f981661</guid>
+    <fileName>Assets/Scripts/Screens/Interfaces/ISingleAnswer.cs</fileName>
+    <timeStamp>2023-08-13T15:25:47.8868471+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Interfaces.ISingleAnswer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a8f8038e98014e76ad0fee1d299e6de4</guid>
+    <fileName>Assets/Scripts/Screens/Interfaces/ITimer.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.1076706+03:00</timeStamp>
+    <typeFullName>
+      <string>Screens.Interfaces.ITimer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ce1403606c3629046a0147d3e705f7cc</guid>
+    <fileName>Assets/UnityNativeGallery-master/Plugins/NativeGallery/NativeGallery.cs</fileName>
+    <timeStamp>2023-08-14T16:17:16.9691871+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>3cb8b49a6bee2384b888ba951eb2bdbd</guid>
+    <fileName>Assets/WebGLSupport/WebGLInput/Detail/RebuildChecker.cs</fileName>
+    <timeStamp>2022-06-04T05:34:15+03:00</timeStamp>
+    <typeFullName>
+      <string>WebGLSupport.Detail.RebuildChecker</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>56393f797a0f7e94e95547f5052052a4</guid>
+    <fileName>Assets/WebGLSupport/WebGLInput/Mobile/WebGLInputMobile.cs</fileName>
+    <timeStamp>2022-06-04T05:34:15+03:00</timeStamp>
+    <typeFullName>
+      <string>WebGLSupport.WebGLInputMobilePlugin</string>
+      <string>WebGLSupport.WebGLInputMobile</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8be52c4f26f76e04fbae3cb86e539bdb</guid>
+    <fileName>Assets/WebGLSupport/WebGLInput/Wrapper/IInputField.cs</fileName>
+    <timeStamp>2022-06-04T05:34:15+03:00</timeStamp>
+    <typeFullName>
+      <string>WebGLSupport.ContentType</string>
+      <string>WebGLSupport.LineType</string>
+      <string>WebGLSupport.IInputField</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>0c8464791034e144ca224c37c1816e37</guid>
+    <fileName>Assets/WebGLSupport/WebGLInput/Wrapper/WrappedInputField.cs</fileName>
+    <timeStamp>2022-06-04T05:34:15+03:00</timeStamp>
+    <typeFullName>
+      <string>WebGLSupport.WrappedInputField</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e1629c3a135d89a45aca880fa8052f5d</guid>
+    <fileName>Assets/WebGLSupport/WebGLInput/Wrapper/WrappedTMPInputField.cs</fileName>
+    <timeStamp>2022-06-04T05:34:15+03:00</timeStamp>
+    <typeFullName>
+      <string>WebGLSupport.WrappedTMPInputField</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>471efbc970a337c4c83b1330ba757435</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Config/FCU_Config.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3263101+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Config.FCU_Config</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>1c7aa20e1409c9b46a58e62a282f0be3</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/Cacher.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3288539+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.Cacher</string>
+      <string>DA_Assets.FCU.Core.CacheMeta</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9cc62d5e62a8afe4bbaee509c24b58fe</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/Delegates.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3308336+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>68413375e2f718e46a8fcdf865861e2e</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/Localizator.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3404+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.Localizator</string>
+      <string>DA_Assets.FCU.Core.LocExtensions</string>
+      <string>DA_Assets.FCU.Core.LocItem</string>
+      <string>DA_Assets.FCU.Core.AssetLanguage</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ec63c722fe672fa47b218afded4d85d1</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/ProjectParser.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3404+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.ProjectParser</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>f5c54b02105c25f4fb23f6495d502b19</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/RequestCreator.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3404+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.RequestCreator</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>959ed648adf4962429a079e9c197599c</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/Tools.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3420487+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.Tools</string>
+      <string>DA_Assets.FCU.Core.ResolutionData</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6d1aadc03ba40564a82d3bfe463443b6</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/WebClient.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3430635+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.WebClient</string>
+      <string>DA_Assets.FCU.Core.Request</string>
+      <string>DA_Assets.FCU.Core.RequestHeader</string>
+      <string>DA_Assets.FCU.Core.RequestType</string>
+      <string>DA_Assets.FCU.Core.AuthResult</string>
+      <string>DA_Assets.FCU.Core.FigmaImageRequest</string>
+      <string>DA_Assets.FCU.Core.DownloadedImage</string>
+      <string>DA_Assets.FCU.Core.FigmaImage</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c3f6e39f8c94656418f7f492f1dc5538</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Editor/AssetFinder.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3440637+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.AssetFinder</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>0f2c649f01a069947909a6dff1e254ec</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Editor/AssetPatcher.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3450496+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.AssetPatcher</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>0d3475d8005d28c47b3cbc3cb5f5db35</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Editor/EditorTools.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3450496+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.EditorTools</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>7dd7849f6d449a34097c3996ac7be3d8</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Editor/FCU_ConfigEditor.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3467322+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.FCU_ConfigEditor</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>dea829a034245bc42acac8cab08a0d51</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Editor/FCU_Editor.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3467322+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.FCU_Editor</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8b975f73d3ef6144d8eec4b8ac738be3</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Editor/FCU_MetaEditor.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3477928+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.FCU_MetaEditor</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>7a0a1087c617a28429fe53c54d6e886d</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Editor/FCU_WindowEditor.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3487371+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.FCU_WindowEditor</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c5d6a028bd143c041a134d05d930f0b8</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Enums/Enums.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3497369+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.FCU_LogType</string>
+      <string>DA_Assets.FCU.Model.LayoutType</string>
+      <string>DA_Assets.FCU.Model.ImageFormat</string>
+      <string>DA_Assets.FCU.Model.ImageScale</string>
+      <string>DA_Assets.FCU.Model.ButtonState</string>
+      <string>DA_Assets.FCU.Model.RectAxis</string>
+      <string>DA_Assets.FCU.Model.TextComponent</string>
+      <string>DA_Assets.FCU.Model.ShadowComponent</string>
+      <string>DA_Assets.FCU.Model.ComponentDetectionType</string>
+      <string>DA_Assets.FCU.Model.AnchorType</string>
+      <string>DA_Assets.FCU.Model.PivotType</string>
+      <string>DA_Assets.FCU.Model.AnchorMinMax</string>
+      <string>DA_Assets.FCU.Model.ModifierType</string>
+      <string>DA_Assets.FCU.Model.ImageComponent</string>
+      <string>DA_Assets.FCU.Model.ButtonComponent</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3eb5a805e99e8874881fa13b3693657e</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Enums/FCU_Tag.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3497369+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.FCU_Tag</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3095fd2b2bf8a994bba83ed54fe65682</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Enums/LocKey.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3497369+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.LocKey</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>358f7cb48a5db1644baf3de755e17cde</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Extensions/AdaptivityExtensions.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3514161+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Extensions.AdaptivityExtensions</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8682a8cd31b06f14ea3d30dbef0010db</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Extensions/ConfigExtensions.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3524167+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Extensions.ConfigExtensions</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>37fc6be770bfb01449cfb3b1d4a7f25c</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Extensions/FCU_Extensions.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3524167+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Extensions.FCU_Extensions</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>779a5a334f500474499d3fe965b7d78a</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Extensions/ImageExtensions.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3536403+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Extensions.ImageExtensions</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3fcc0ad1f585482438d39c2901cd078a</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Extensions/TagExtensions.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3546446+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Extensions.TagExtensions</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>16320b2d0b683f840b80ccde2cbb6b9a</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Extensions/TextExtensions.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3546446+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Extensions.TextExtensions</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e7f15f65ac12aae42afd4fb794a003b7</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Extensions/TransformExtensions.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3546446+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Extensions.TransformExtensions</string>
+      <string>DA_Assets.FCU.Extensions.FigmaAligment</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>845b6e27aa730e345b8a34920a3b8777</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/AssemblyConfig.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3561497+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.AssemblyConfig</string>
+      <string>DA_Assets.FCU.Model.AssetType</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>18b42570416bdca4697b2749e5bf8c5c</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/FCU_Meta.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3571592+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.FCU_Meta</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d52bb9cb439b40c4b9a6a319322acc7f</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/FCU_Model.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3571592+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.hierarchy_aligment</string>
+      <string>DA_Assets.FCU.Model.FCU_Model</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5154cd3b0fd100b47a4c48cc9088fa07</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/FigmaError.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3581593+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.FigmaError</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e3731067170012443ab12dd8ea9fca47</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/FigmaProject.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3591592+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.FigmaProject</string>
+      <string>DA_Assets.FCU.Model.FObject</string>
+      <string>DA_Assets.FCU.Model.BoundingBox</string>
+      <string>DA_Assets.FCU.Model.Constraints</string>
+      <string>DA_Assets.FCU.Model.GradientStop</string>
+      <string>DA_Assets.FCU.Model.Fill</string>
+      <string>DA_Assets.FCU.Model.Geometry</string>
+      <string>DA_Assets.FCU.Model.Effect</string>
+      <string>DA_Assets.FCU.Model.ArcData</string>
+      <string>DA_Assets.FCU.Model.Stroke</string>
+      <string>DA_Assets.FCU.Model.Styles</string>
+      <string>DA_Assets.FCU.Model.Background</string>
+      <string>DA_Assets.FCU.Model.Style</string>
+      <string>DA_Assets.FCU.Model.Constraint</string>
+      <string>DA_Assets.FCU.Model.ExportSetting</string>
+      <string>DA_Assets.FCU.Model.FigmaSize</string>
+      <string>DA_Assets.FCU.Model.PrototypeDevice</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>4900b6b9596bc5d4092a7c186a9d682d</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/FigmaUser.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3591592+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.FigmaUser</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>1ee440d94d8b50b4c8942d313fd9c07b</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/FindedTag.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3591592+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.FindedTag</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>1eb7856c5f78e474fa74898bacaa1a8a</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/FObjectExtra.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3581593+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.FObjectExtra</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>bbd7ed04e43969e47bc5e16d1358098e</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/HamburgerItem.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3606641+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.HamburgerItem</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>42c2fb933f6aea648b9a6236ca632ae0</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/SelectableItem.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3617219+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.SelectableItem</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>aaaa5a9158c5bf043866042fa968b2e2</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/TagConfig.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3664386+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.TagConfig</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>15b870658eb713a48b89b33b924817f4</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/UI/DraggablePopup.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3674383+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.UI.DraggablePopup</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ec6471ecf7ac9a04e8d673ff05111592</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/UI/FCU_Button.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3684384+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.UI.FCU_Button</string>
+      <string>DA_Assets.FCU.UI.FCU_Button+ButtonClickedEvent</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a99c3ce3ecb205948a1c72bd09d9e965</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/UI/NoDragScrollRect.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3684384+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.UI.NoDragScrollRect</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>cd4f20cb38bca0e448256f875abc2a86</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/UI/ResizePanel.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.370402+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.UI.ResizePanel</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>42d9f79df9838cb468d65d7a509a165d</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/UI/UIManager.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3715134+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.UI.UIManager</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b6db2d6f8a878174887fb51837f96143</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/UI/UIManagerButton.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3715134+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.UI.UIManagerButton</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9eea35a453ddbe34b9d48b473bdffc01</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/UI/Window.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3715134+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.UI.Window</string>
+      <string>DA_Assets.FCU.UI.IdNameInstanceId</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>f652322c3c242464599fdb0a715087d9</guid>
+    <fileName>Assets/D.A. Assets/Shared/Editor/Coroutine/EditorCoroutine.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3915651+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.EditorCoroutine</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>83d570c024a983741b18835b873dd4b0</guid>
+    <fileName>Assets/D.A. Assets/Shared/Editor/Coroutine/EditorCoroutineUtil.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3915651+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.EditorCoroutineUtil</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>275c3000a6236a3439b6f36d70d04d1a</guid>
+    <fileName>Assets/D.A. Assets/Shared/Editor/Coroutine/EditorWaitForSeconds.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.393208+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.EditorWaitForSeconds</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3e506eec7234b9e40abb97b6023ecb91</guid>
+    <fileName>Assets/D.A. Assets/Shared/Editor/Coroutine/EditorWindowCoroutineExtension.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3937712+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.Shared.EditorWindowCoroutineExtension</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>606026b32907df249b21d835cf54b3dd</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/Examples/Scripts/Spinner.cs</fileName>
+    <timeStamp>2023-08-26T06:35:25+03:00</timeStamp>
+    <typeFullName>
+      <string>Spinner</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a2af9378cf493bf4fbc1496878f86aa8</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/Examples/Scripts/VolumeAnimator.cs</fileName>
+    <timeStamp>2023-08-26T06:35:37+03:00</timeStamp>
+    <typeFullName>
+      <string>VolumeAnimator</string>
+      <string>PointerRouter</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>cd3817e3678f4c647aa71b9706224379</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/VideoPlayer Helper/Scripts/ClickRouter.cs</fileName>
+    <timeStamp>2023-08-26T06:35:47+03:00</timeStamp>
+    <typeFullName>
+      <string>Unity.VideoHelper.ClickRouter</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a6e5a9941adb81a4b9351a703392f514</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/VideoPlayer Helper/Scripts/DirectClickRouter.cs</fileName>
+    <timeStamp>2023-08-26T06:35:38+03:00</timeStamp>
+    <typeFullName>
+      <string>Unity.VideoHelper.DirectClickRouter</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>75b2e17144d96414781bab6dd9aa40d9</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/VideoPlayer Helper/Scripts/DisplayController.cs</fileName>
+    <timeStamp>2023-08-26T06:35:29+03:00</timeStamp>
+    <typeFullName>
+      <string>Unity.VideoHelper.DisplayController</string>
+      <string>Unity.VideoHelper.DisplayControllerInternal</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>06cd8c5ee680ab44aa09cd4ec58107a5</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/VideoPlayer Helper/Scripts/Extensions.cs</fileName>
+    <timeStamp>2023-08-26T06:35:07+03:00</timeStamp>
+    <typeFullName>
+      <string>Unity.VideoHelper.Extensions</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>12c8f632d5af5544491529f8efdbddad</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/VideoPlayer Helper/Scripts/Interfaces.cs</fileName>
+    <timeStamp>2023-08-26T06:35:09+03:00</timeStamp>
+    <typeFullName>
+      <string>Unity.VideoHelper.ITimelineProvider</string>
+      <string>Unity.VideoHelper.IActivate</string>
+      <string>Unity.VideoHelper.IDeactivate</string>
+      <string>Unity.VideoHelper.IDisplayController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>54bf6bf26aba8e54a879cfe2862722e4</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/VideoPlayer Helper/Scripts/OverlayController.cs</fileName>
+    <timeStamp>2023-08-26T06:35:21+03:00</timeStamp>
+    <typeFullName>
+      <string>Unity.VideoHelper.OverlayController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>84399e23c8aaaee4884094eca753b08b</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/VideoPlayer Helper/Scripts/Timeline.cs</fileName>
+    <timeStamp>2023-08-26T06:35:33+03:00</timeStamp>
+    <typeFullName>
+      <string>Unity.VideoHelper.FloatEvent</string>
+      <string>Unity.VideoHelper.Timeline</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>0572726cd3aaaab4f87116458b99d872</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/VideoPlayer Helper/Scripts/VideoController.cs</fileName>
+    <timeStamp>2023-08-26T06:35:05+03:00</timeStamp>
+    <typeFullName>
+      <string>Unity.VideoHelper.VideoController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>bd2e2417834df8f49bb17944a9263a8b</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/VideoPlayer Helper/Scripts/VideoPresenter.cs</fileName>
+    <timeStamp>2023-08-26T06:35:44+03:00</timeStamp>
+    <typeFullName>
+      <string>Unity.VideoHelper.VolumeInfo</string>
+      <string>Unity.VideoHelper.VideoPresenter</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>66160cee30c8bc448b229cb00fae2e70</guid>
+    <fileName>Assets/LightShaft/Scripts/VideoController/Editor/DrawIfPropertyDrawer.cs</fileName>
+    <timeStamp>2023-08-26T06:35:26+03:00</timeStamp>
+    <typeFullName>
+      <string>DrawIfPropertyDrawer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>70cf7ee82ce132640bfe59841e19e851</guid>
+    <fileName>Assets/LightShaft/Scripts/VideoController/Editor/YoutubeAddPlayerToSceneEditor.cs</fileName>
+    <timeStamp>2023-08-26T06:35:28+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeAddPlayerToSceneEditor</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8afe46a351d27fe4489ce843a309358e</guid>
+    <fileName>Assets/LightShaft/YoutubeAPI/Scripts/Demos/ChannelSearchDemo.cs</fileName>
+    <timeStamp>2023-08-26T06:35:34+03:00</timeStamp>
+    <typeFullName>
+      <string>ChannelSearchDemo</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>56e214b806c89d042a6e6941f8291aa3</guid>
+    <fileName>Assets/LightShaft/YoutubeAPI/Scripts/Demos/CommentsDemo.cs</fileName>
+    <timeStamp>2023-08-26T06:35:21+03:00</timeStamp>
+    <typeFullName>
+      <string>CommentsDemo</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>7a8e9500e7680074e962e743dcfec597</guid>
+    <fileName>Assets/LightShaft/YoutubeAPI/Scripts/Demos/IndividualVideoDataDemo.cs</fileName>
+    <timeStamp>2023-08-26T06:35:31+03:00</timeStamp>
+    <typeFullName>
+      <string>IndividualVideoDataDemo</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>17d9599dd363d8c45bccc7669b5ba4c3</guid>
+    <fileName>Assets/LightShaft/YoutubeAPI/Scripts/Demos/PlaylistDemo.cs</fileName>
+    <timeStamp>2023-08-26T06:35:11+03:00</timeStamp>
+    <typeFullName>
+      <string>PlaylistDemo</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>df0fe247d87a31541a3113e71acdcb28</guid>
+    <fileName>Assets/LightShaft/YoutubeAPI/Scripts/Demos/VideoSearchDemo.cs</fileName>
+    <timeStamp>2023-08-26T06:35:50+03:00</timeStamp>
+    <typeFullName>
+      <string>VideoSearchDemo</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5d8d1d9583ade1f4f9ed0ba9d6210743</guid>
+    <fileName>Assets/LightShaft/YoutubeAPI/Scripts/Demos/YoutubeApiGetUnlimitedVideos.cs</fileName>
+    <timeStamp>2023-08-26T06:35:23+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeApiGetUnlimitedVideos</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6a66f17210727814d9d900e5c43de95a</guid>
+    <fileName>Assets/LightShaft/YoutubeAPI/Scripts/Demos/YoutubeChannelUI.cs</fileName>
+    <timeStamp>2023-08-26T06:35:26+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeChannelUI</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>0abe19da228327a46aae25927e4351c5</guid>
+    <fileName>Assets/LightShaft/YoutubeAPI/Scripts/Demos/YoutubeVideoUi.cs</fileName>
+    <timeStamp>2023-08-26T06:35:08+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeVideoUi</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>06178a471c7cd0842844a5c9357fa7d3</guid>
+    <fileName>Assets/LightShaft/YoutubeAPI/Scripts/Src/YoutubeAPIManager.cs</fileName>
+    <timeStamp>2023-08-26T06:35:06+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeAPIManager</string>
+      <string>YoutubeAPIManager+YoutubeSearchOrderFilter</string>
+      <string>YoutubeAPIManager+YoutubeSafeSearchFilter</string>
+      <string>YoutubeData</string>
+      <string>YoutubeComments</string>
+      <string>YoutubePlaylistItems</string>
+      <string>YoutubeChannel</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5eed5db8d6688da4a9e7e7d6554b0f62</guid>
+    <fileName>Assets/LightShaft/YoutubeAPI/Scripts/Src/YoutubeContentDetails.cs</fileName>
+    <timeStamp>2023-08-26T06:35:24+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeContentDetails</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>dfc7b870dd46b364a8f3bda469aa5f3d</guid>
+    <fileName>Assets/LightShaft/YoutubeAPI/Scripts/Src/YoutubeSnippet.cs</fileName>
+    <timeStamp>2023-08-26T06:35:51+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeSnippet</string>
+      <string>YoutubeTumbnails</string>
+      <string>YoutubeThumbnailData</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9a3eaf2bff4bd884b8242c263895dbaa</guid>
+    <fileName>Assets/LightShaft/YoutubeAPI/Scripts/Src/YoutubeStatistics.cs</fileName>
+    <timeStamp>2023-08-26T06:35:35+03:00</timeStamp>
+    <typeFullName>
+      <string>YoutubeStatistics</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c502cb3690ba9ab4991878d05370d8b1</guid>
+    <fileName>Assets/Simple Scroll-Snap/Examples/Example 1 (macOS Finder)/Scripts/FileUI.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.3621829+03:00</timeStamp>
+    <typeFullName>
+      <string>DanielLochner.Assets.SimpleScrollSnap.FileUI</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>f26d04ac989a15842b9227d045286c69</guid>
+    <fileName>Assets/Simple Scroll-Snap/Examples/Example 3 (Slot Machine)/Scripts/SlotMachine.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.501454+03:00</timeStamp>
+    <typeFullName>
+      <string>DanielLochner.Assets.SimpleScrollSnap.SlotMachine</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>4fdd7870f24e46a40b91e37601722a06</guid>
+    <fileName>Assets/Simple Scroll-Snap/Examples/Example 5 (Dynamic Content)/Scripts/DynamicContent.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.612183+03:00</timeStamp>
+    <typeFullName>
+      <string>DanielLochner.Assets.SimpleScrollSnap.DynamicContent</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d85aaaec377f5644da61d35b96f954e8</guid>
+    <fileName>Assets/Simple Scroll-Snap/Examples/Example 6 (3D Shape Selection)/Scripts/Rotator.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6205423+03:00</timeStamp>
+    <typeFullName>
+      <string>DanielLochner.Assets.SimpleScrollSnap.Rotator</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>83c2fbb2e31f8f24dbbda89b12da0241</guid>
+    <fileName>Assets/Simple Scroll-Snap/Examples/_Common/Scripts/ExpandInformation.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6335679+03:00</timeStamp>
+    <typeFullName>
+      <string>DanielLochner.Assets.SimpleScrollSnap.ExpandInformation</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>49ae40c6b4f608b4c8fb444da3a2d364</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Editor/SimpleScrollSnapEditor.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6446975+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>29cf7ea2f25bb4845bc399ddb84ea997</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Editor/SSSCopyrightEditor.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6411684+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f48484db9b1f6524193b047016d92447</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Plugins/Utilities/StringUtility.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6746235+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>eac9b24fd774b6643b9cbfe490bc94b6</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Plugins/Utilities/UnityEventUtility.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6746235+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>2d517fd0f2f85f24698df2775bee58e9</guid>
+    <fileName>Assets/UnityNativeGallery-master/Plugins/NativeGallery/Android/NGCallbackHelper.cs</fileName>
+    <timeStamp>2023-08-14T16:17:16.9027371+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>4c18d702b07a63945968db47201b95c9</guid>
+    <fileName>Assets/UnityNativeGallery-master/Plugins/NativeGallery/Android/NGMediaReceiveCallbackAndroid.cs</fileName>
+    <timeStamp>2023-08-14T16:17:16.9135456+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>a07afac614af1294d8e72a3c083be028</guid>
+    <fileName>Assets/UnityNativeGallery-master/Plugins/NativeGallery/Android/NGPermissionCallbackAndroid.cs</fileName>
+    <timeStamp>2023-08-14T16:17:16.9226445+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>dff1540cf22bfb749a2422f445cf9427</guid>
+    <fileName>Assets/UnityNativeGallery-master/Plugins/NativeGallery/Editor/NGPostProcessBuild.cs</fileName>
+    <timeStamp>2023-08-14T16:17:16.9457586+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>71fb861c149c2d1428544c601e52a33c</guid>
+    <fileName>Assets/UnityNativeGallery-master/Plugins/NativeGallery/iOS/NGMediaReceiveCallbackiOS.cs</fileName>
+    <timeStamp>2023-08-14T16:17:16.9904478+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>9cbb865d0913a0d47bb6d2eb3ad04c4f</guid>
+    <fileName>Assets/UnityNativeGallery-master/Plugins/NativeGallery/iOS/NGMediaSaveCallbackiOS.cs</fileName>
+    <timeStamp>2023-08-14T16:17:16.9994278+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>bc6d7fa0a99114a45b1a6800097c6eb1</guid>
+    <fileName>Assets/UnityNativeGallery-master/Plugins/NativeGallery/iOS/NGPermissionCallbackiOS.cs</fileName>
+    <timeStamp>2023-08-14T16:17:17.0340634+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>c8590781ff08976459b76b461546a328</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/Drawers/ButtonDrawer.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.332353+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.Drawers.ButtonDrawer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>bd6c9e8e57177a746803379c925c002e</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/Drawers/CanvasDrawer.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3333691+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.CanvasDrawer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>19dbb9366551cb54ebe9eeb77bbfc61e</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/Drawers/CanvasGroupDrawer.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.334365+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.Drawers.CanvasGroupDrawer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d239724a524b6d547b239956636f0c18</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/Drawers/I2LocalizationDrawer.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3353802+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.Drawers.I2LocalizationDrawer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6e622092c38b94545b0d3441627feb19</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/Drawers/ImageDrawer.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3353802+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.Drawers.ImageDrawer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8de4a22520740d44588e460737598dcd</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/Drawers/InputFieldDrawer.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3353802+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.Drawers.InputFieldDrawer</string>
+      <string>DA_Assets.FCU.Core.Drawers.InputFieldModel</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a02d7a50d522db44cb83cd6d61a04b92</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/Drawers/LayoutGroupDrawer.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3372757+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.Drawers.LayoutGroupDrawer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9d4195a64eccb0f4b8cec364d684cde3</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/Drawers/MaskDrawer.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3383405+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.Drawers.MaskDrawer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>dc01f977d4ef2884bbcaaa4ed9620b90</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/Drawers/ShadowDrawer.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3383405+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.Drawers.ShadowDrawer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>582ce39c250b1a3499c3bb2e8bcdd362</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Core/Drawers/TextDrawer.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3394045+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Core.Drawers.TextDrawer</string>
+      <string>DA_Assets.FCU.Core.Drawers.SimFont</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c9b30a0eec70a6c41ba70cc32012fa02</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/Settings/DebugModeSettings.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3627132+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.DebugModeSettings</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a2a6d2cbd8eaaa2488826f06f75abaad</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/Settings/MainSettings.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3637886+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.MainSettings</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3e8058be29efb9e4da71b96b3e601d25</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/Settings/MPUIKIT_Settings.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3627132+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.MPUIKIT_Settings</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>98908eee19cfcd942a10df0218fc6916</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/Settings/PUI_Settings.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3637886+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.PUI_Settings</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>44389a6843dd1364d82854511a264c51</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/Settings/Shapes2D_Settings.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3637886+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.Shapes2D_Settings</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2f9917ec0cd932f4ab4796448ed95b2d</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/Settings/TextMeshSettings.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3654369+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.TextMeshSettings</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d3eea0f7e81ea524396a7de8561c8bbc</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/Settings/UnityImageSettings.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3654369+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.UnityImageSettings</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>11e1f837678a544439936c07dd2aa5e3</guid>
+    <fileName>Assets/D.A. Assets/Figma Converter for Unity/Scripts/Model/Settings/UnityTextSettings.cs</fileName>
+    <timeStamp>2023-08-10T12:10:15.3664386+03:00</timeStamp>
+    <typeFullName>
+      <string>DA_Assets.FCU.Model.UnityTextSettings</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>df6f36bba18e8374484300fa6b6b8cc5</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/VideoPlayer Helper/Scripts/Animation/AnimationCurveAnimator.cs</fileName>
+    <timeStamp>2023-08-26T06:35:51+03:00</timeStamp>
+    <typeFullName>
+      <string>Unity.VideoHelper.Animation.AnimationCurveAnimator</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>bdadac4b5e939334d84f505c9fe7af91</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/VideoPlayer Helper/Scripts/Animation/CanvasGroupAnimator.cs</fileName>
+    <timeStamp>2023-08-26T06:35:44+03:00</timeStamp>
+    <typeFullName>
+      <string>Unity.VideoHelper.Animation.CanvasGroupAnimator</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>0db753353388bef4782f208b3811b53a</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/VideoPlayer Helper/Scripts/Animation/ScaleTransformAnimator.cs</fileName>
+    <timeStamp>2023-08-26T06:35:08+03:00</timeStamp>
+    <typeFullName>
+      <string>Unity.VideoHelper.Animation.ScaleTransformAnimator</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>649a9641541892b48aa894b643f603d8</guid>
+    <fileName>Assets/LightShaft/CustomYoutubePlayer/VideoPlayer Helper/Scripts/Editor/AddVideoTemplateEditor.cs</fileName>
+    <timeStamp>2023-08-26T06:35:26+03:00</timeStamp>
+    <typeFullName>
+      <string>Unity.VideoHelper.Editor.AddVideoTemplateEditor</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>54aaa385a9b88e84e9d50b9804aaa24e</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/SimpleScrollSnap.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.649809+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>a116b1c721609814b9efdc7b240ccadf</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Enums/Direction.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6610217+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>bf816f710811f764f9ecd3fa0ee4ff47</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Enums/MovementAxis.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6620215+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>56c924e52e45a9f4b8d4d7fa15cea2e1</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Enums/MovementType.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6620215+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>cdbdfab938e3cad46a9e6949970f268e</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Enums/SizeControl.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6634833+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>a16f79dfcb08a0b4ba81c68445f3046b</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Enums/SnapTarget.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6634833+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>999f102d2c25e9e49b28b99ad102d65c</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Plugins/CopyrightEditor/Editor/CopyrightEditor.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6681073+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>075942792a0d85840b82960bb1703d6f</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Plugins/SimpleInspectorAttributes/Editor/MinMaxDrawer.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6691081+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f63524c493027aa408fdfb996091c681</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Plugins/SimpleInspectorAttributes/Runtime/Margins.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6701073+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>869180e47a4d6b24da061a327940dbf3</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Plugins/SimpleInspectorAttributes/Runtime/MinMax.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6716122+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>7969b7d9da6829f4a89c7c4a0a83b3aa</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Plugins/Utilities/Editor/EditorLayoutUtility.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6726226+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>b062ed099cb30744394aab356d0dd584</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/Helper/NestedScrollRect.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.648809+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>467544b14a7588445b663df99831b544</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/TransitionEffect/TransitionEffectBase.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6600216+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>6276bd81a2d1cef4e8b84355ddd9101e</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/TransitionEffect/Samples/Fade.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.652397+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>cc4f9f7c478894249bab1fae70825701</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/TransitionEffect/Samples/RecolourBlue.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6533982+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>61c45debf63dd4144a04b023fcff572c</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/TransitionEffect/Samples/RecolourGreen.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6543988+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>cbf1fb29f54aa1e4d819975ed47b10e3</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/TransitionEffect/Samples/RecolourRed.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6543988+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>2edcfda215ef0dd4abdcc7f06570b187</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/TransitionEffect/Samples/RotateX.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6553982+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>072e367f4cd9f714c8eb46f7cb860953</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/TransitionEffect/Samples/RotateY.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6553982+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>ccd4c872fc8ee074ca91b83c93bc83a3</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/TransitionEffect/Samples/RotateZ.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6570204+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>f48746d449c8c7d499df614ae4640802</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/TransitionEffect/Samples/Scale.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6570204+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>079f408d174cf4c4cbb124462d1a5b84</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/TransitionEffect/Samples/ScaleX.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6580218+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>63158873726087b4e86e1831fcbc9235</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/TransitionEffect/Samples/ScaleY.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6590216+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>ec1b22c7c635aa64f9bd7c8a045cfda0</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/TransitionEffect/Samples/ScaleZ.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6590216+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>077f9306a89128f4daf4986f1347ce1d</guid>
+    <fileName>Assets/Simple Scroll-Snap/Scripts/Core/Runtime/Behaviours/TransitionEffect/Samples/TranslateZ.cs</fileName>
+    <timeStamp>2023-08-27T17:38:02.6600216+03:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+</ArrayOfTypeDate>

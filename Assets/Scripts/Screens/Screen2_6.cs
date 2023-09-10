@@ -51,7 +51,6 @@ namespace Screens
             }
             Data.SelectedAnswersData[SceneManager.GetActiveScene().name] = SelectedAnswers;
             Data.SaveData();
-            await Database.SaveDataToDatabase();
         }
         private void InitToggles()
         {
@@ -106,13 +105,13 @@ namespace Screens
         public void OnHintButtonClicked()
         {
             hintUsedScoreReduction = true;
-            HintPopup.SetActive(true);
-            HintPopupCloseButton.onClick.AddListener(OnHintPopupCloseButtonClicked);
+            //HintPopup.SetActive(true);
+            //HintPopupCloseButton.onClick.AddListener(OnHintPopupCloseButtonClicked);
         }
 
         private void OnHintPopupCloseButtonClicked()
         {
-            HintPopup.SetActive(false);
+            //HintPopup.SetActive(false);
         }
 
         public override void OnNextButtonClicked()

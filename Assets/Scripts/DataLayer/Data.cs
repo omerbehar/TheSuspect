@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace DataLayer
@@ -18,20 +19,26 @@ namespace DataLayer
         public static Dictionary<string, string[]> AnswersText { get; set; } = new();
         public static Dictionary<string, bool> AnswerLocked { get; set; } = new();
         public static int Score { get; set; }
-
+        public static string CompanyName { get; set; }
+        public static List<string> Instructors { get; set; } = new(){"מדריך 1", "מדריך 2", "מדריך 3"};
+        public static List<string> IndieInstructor { get; set; } = new() { "עצמאי" };
         public static void ResetData()
         {
-            TeamName = "testteamname";
+            TeamName = "";
             InstructorName = "";
             Score = 0;
             PlayerNames = new string[MAX_PLAYERS];
             TeamPhoto = null;
+            SelectedAnswersData = new Dictionary<string, bool[]>();
+            AnswersText = new Dictionary<string, string[]>();
+            AnswerLocked = new Dictionary<string, bool>();
+            CompanyName = "";
             guid = Guid.NewGuid().ToString();
         }
         //save data to player prefs
         public static void SaveData()
         {
-            Debug.Log("Saving data");
+            //Debug.Log("Saving data");
             PlayerPrefs.SetString("TeamName", TeamName);
             PlayerPrefs.SetString("InstructorName", InstructorName);
             PlayerPrefs.SetString("PlayerNames", string.Join(",", PlayerNames));
@@ -52,7 +59,7 @@ namespace DataLayer
             {
                 PlayerPrefs.SetString(key, AnswerLocked[key].ToString());
             }
-            if (PlayerPrefs.HasKey("2-4")) Debug.Log(PlayerPrefs.GetString("2-4"));
+            PlayerPrefs.SetString("CompanyName", CompanyName);
             PlayerPrefs.SetInt("Score", Score);
         }
         //load data from player prefs
@@ -61,13 +68,13 @@ namespace DataLayer
             //if no guid in playerpref, create one and reset data
             if (!PlayerPrefs.HasKey("guid"))
             {
-                Debug.Log("No guid found, creating new one");
+                //Debug.Log("No guid found, creating new one");
                 ResetData();
                 PlayerPrefs.SetString("guid", guid);
             }
             else
             {
-                Debug.Log("Guid found, loading data");
+                //Debug.Log("Guid found, loading data");
                 guid = PlayerPrefs.GetString("guid");
                 TeamName = PlayerPrefs.GetString("TeamName");
                 InstructorName = PlayerPrefs.GetString("InstructorName");
@@ -111,6 +118,7 @@ namespace DataLayer
                 {
                     AnswerLocked[key] = bool.Parse(PlayerPrefs.GetString(key));
                 }
+                CompanyName = PlayerPrefs.GetString("CompanyName");
                 Score = PlayerPrefs.GetInt("Score");
             }
         }

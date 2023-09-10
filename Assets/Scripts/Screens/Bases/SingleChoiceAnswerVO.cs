@@ -22,7 +22,7 @@ namespace Screens.Bases
                 if (evt.newValue) // If the radio button was checked
                 {
                     onAnswerClicked?.Invoke(OptionIndex); 
-                    Debug.Log("A RadioButton was clicked, its index is: " + OptionIndex);
+                    //Debug.Log("A RadioButton was clicked, its index is: " + OptionIndex);
                 }
             });
 

@@ -62,7 +62,7 @@ namespace Screens.Bases
                 score = Mathf.Max(score, 0);
             }
             await GameManager.instance.AddScoreToManager(SceneManager.GetActiveScene().name, score);
-            Debug.Log("Score: " + Data.Score);
+            //Debug.Log("Score: " + Data.Score);
         }
     }
 }

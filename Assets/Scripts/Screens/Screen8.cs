@@ -41,14 +41,15 @@ namespace Screens
 
         private void OnFieldValueChanged(int i, string text)
         {
-            if(string.IsNullOrEmpty(text) && i > 0)
-            {
-                inputFields[i - 1].Select();
-            }
-            else if (i < inputFields.Length - 1 && text != "")
-            {
-                inputFields[i + 1].Select();
-            }
+            // if(string.IsNullOrEmpty(text) && i > 0)
+            // {
+            //     inputFields[i - 1].Select();
+            // }
+            // else if (i < inputFields.Length - 1 && text != "")
+            // {
+            //     inputFields[i + 1].Select();
+            //     
+            // }
         }
         
 

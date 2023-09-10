@@ -12,7 +12,7 @@ namespace Screens
     public class Screen3 : ScreenBase, ISaveData, ILoadData
     {
         const int INITIAL_INPUT_FIELDS = 3;
-        private const int MINIMUM_NAMES_ALLOWED = 2;
+        private const int MINIMUM_NAMES_ALLOWED = 1;
         [SerializeField] private GameObject addInputFieldGO;
         [SerializeField] private Button addNameInputFieldButton;
         [SerializeField] private List<InputField> nameInputFields = new();
@@ -20,9 +20,10 @@ namespace Screens
         [SerializeField] private GameObject inputFieldPrefab;
         [SerializeField] private string[] names;
         private int inputFieldsCount = INITIAL_INPUT_FIELDS;
-        [SerializeField] private InputField instructorNameInputField;
+        //[SerializeField] private InputField instructorNameInputField;
         [SerializeField] private string instructorName;
-        
+        [SerializeField] private TMP_Dropdown companyDropdown;
+        [SerializeField] private TMP_Dropdown instructorDropdown;
         private int namesAddedCount;
 
         protected override async void Start()
@@ -54,7 +55,6 @@ namespace Screens
                     namesAddedCount++;
                 }
             }
-            Debug.Log($"namesAddedCount: {namesAddedCount}, instructorName: {instructorName}");
             if (namesAddedCount >= MINIMUM_NAMES_ALLOWED && instructorName != "")
             {
                 EventManager.AssignmentCompleted.Invoke();
@@ -72,9 +72,29 @@ namespace Screens
             {
                 nameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
             }
-            instructorNameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
+            companyDropdown.onValueChanged.AddListener(delegate { OnCompanyChanged(); });
         }
-        
+
+        private void OnCompanyChanged()
+        {
+            if (companyDropdown.value == 0)
+            {
+                instructorDropdown.ClearOptions();
+                instructorDropdown.AddOptions(Data.IndieInstructor);
+            }
+            else
+            {
+                instructorDropdown.ClearOptions();
+                instructorDropdown.AddOptions(Data.Instructors);
+            }
+        }
+
+        public override async void OnNextButtonClicked()
+        {
+            await Database.SaveDataToDatabase();
+            base.OnNextButtonClicked();
+        }
+
         private void AddNameInputField()
         {
             GameObject inputFieldGameObject = Instantiate(inputFieldPrefab, inputFieldsLayout);
@@ -98,26 +118,32 @@ namespace Screens
                     names[i] = nameInputFields[i].text;
                 }
             }
-            instructorName = instructorNameInputField.text;
+            instructorName = instructorDropdown.options[instructorDropdown.value].text;
             await SaveData();
             IsAssignmentCompleted();
         }
 
         public async Task SaveData()
         {
-            Data.InstructorName = instructorName;
+            Data.InstructorName = instructorDropdown.options[instructorDropdown.value].text;
             Data.PlayerNames = names;
+            Data.CompanyName = companyDropdown.options[companyDropdown.value].text;
             Data.SaveData();
-            await Database.SaveDataToDatabase();
         }
 
         public async Task LoadData()
         {
             Data.LoadData();
-            //await Database.LoadDataFromDatabase();
             instructorName = Data.InstructorName;
+            companyDropdown.value = Data.CompanyName == ""
+                ? 0
+                : companyDropdown.options.FindIndex(option => option.text == Data.CompanyName);
+            Debug.Log(Data.CompanyName);
+            //Debug.Log(companyDropdown.value);
             names = Data.PlayerNames;
-            instructorNameInputField.text = instructorName;
+            instructorDropdown.value = Data.InstructorName == ""
+                ? 0
+                : instructorDropdown.options.FindIndex(option => option.text == Data.InstructorName);
             for (int i = 0; i < names.Length; i++)
             {
                 if (names[i] != null && names[i] != "")
@@ -129,6 +155,7 @@ namespace Screens
                     nameInputFields[i].text = names[i];
                 }
             }
+            OnCompanyChanged();
         }
     }
 }

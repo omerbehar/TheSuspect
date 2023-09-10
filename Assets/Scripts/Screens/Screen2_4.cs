@@ -22,7 +22,7 @@ namespace Screens
         {
             base.Start();
             inputFields = GetComponentsInChildren<InputField>();
-            Debug.Log(inputFields.Length);
+            //Debug.Log(inputFields.Length);
             LoadData();
             if (Data.AnswersText.ContainsKey(SceneManager.GetActiveScene().name)) Debug.Log(Data.AnswersText[SceneManager.GetActiveScene().name][0]);
             hintButton.onClick.AddListener(OnHintButtonClicked);
@@ -47,7 +47,7 @@ namespace Screens
 
         private async void OnValueChanged(InputField inputField)
         {
-            Debug.Log(inputField.text);
+            //Debug.Log(inputField.text);
             answersText = new [] {inputFields[0].text, inputFields[1].text, inputFields[2].text};
             await SaveData();
             IsAssignmentCompleted();
@@ -103,7 +103,6 @@ namespace Screens
                 Data.AnswerLocked.Add(SceneManager.GetActiveScene().name + "isLocked", AnswerLocked);
             Data.SaveData();
             
-            await Database.SaveDataToDatabase();
         }
 
         public Task LoadData()
@@ -118,7 +117,7 @@ namespace Screens
             }
             if (Data.AnswerLocked.ContainsKey(SceneManager.GetActiveScene().name + "isLocked"))
                 AnswerLocked = Data.AnswerLocked[SceneManager.GetActiveScene().name + "isLocked"];
-            Debug.Log(AnswerLocked);
+            //Debug.Log(AnswerLocked);
             return Task.CompletedTask;
         }
     }
