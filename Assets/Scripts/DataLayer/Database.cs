@@ -11,13 +11,14 @@ namespace DataLayer
         public static async Task SaveDataToDatabase()
         {
             WWWForm form = new WWWForm();
+            Debug.Log(Data.TeamName);
             form.AddField("guid", Data.guid);
             form.AddField("teamName", Data.TeamName);
             form.AddField("score", Data.Score);
             form.AddField("instructorName", Data.InstructorName);
-            Debug.Log(Data.CompanyName);
             form.AddField("companyName", Data.CompanyName);
-            form.AddField("playerNames", string.Join(",", Data.PlayerNames));
+            form.AddField("playerCount", Data.playerCount);
+            //form.AddField("playerNames", string.Join(",", Data.PlayerNames));
             string date = DateTime.Now.ToString("yyyy-MM-dd");
             form.AddField("date", date);
             Uri uri = new Uri("https://icl.eitangames.co.il/savedata.php");

@@ -1,4 +1,5 @@
 using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class UploadImage : MonoBehaviour
     [SerializeField] private GameObject whenNoUploadIcons;
     private WebCamDevice[] devices;
     private static Texture2D tex;
+    //[SerializeField] TMP_Text debugTextObject;
 
     void Start()
     {
@@ -45,14 +47,7 @@ public class UploadImage : MonoBehaviour
         float scaleFactor = imageAspect < areaAspect
             ? imageBounds.height / capturedImage.height
             : imageBounds.width / capturedImage.width;
-        // if (imageAspect < areaAspect)
-        // {
-        //     scaleFactor = imageBounds.height / capturedImage.height;
-        // }
-        // else
-        // {
-        //     scaleFactor = imageBounds.width / capturedImage.width;
-        // }
+
         int width = Mathf.RoundToInt(capturedImage.width * scaleFactor);
         int height = Mathf.RoundToInt(capturedImage.height * scaleFactor);
             
@@ -77,8 +72,6 @@ public class UploadImage : MonoBehaviour
         whenUploadIcons.SetActive(false);
         EventManager.AssignmentCompleted?.Invoke();
         ResizeAndDisplayImage(capturedImage);
-
-           
     }
 
     private Texture2D FixOrientation(Texture2D originalTexture, int orientation)
@@ -234,6 +227,7 @@ public class UploadImage : MonoBehaviour
     {
         if (sourceTex.width != targetWidth || sourceTex.height != targetHeight)
         {
+            Debug.Log(targetWidth + " " + targetHeight);
             RenderTexture rt = RenderTexture.GetTemporary(targetWidth, targetHeight);
             rt.filterMode = FilterMode.Point;
             RenderTexture.active = rt;

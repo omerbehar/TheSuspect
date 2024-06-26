@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using DataLayer;
 using Screens.Bases;
@@ -9,23 +8,19 @@ using UnityEngine.UI;
 
 namespace Screens
 {
-    public class Screen3 : ScreenBase, ISaveData, ILoadData
+    public class Screen3 : ScreenBase, ISaveData
     {
-        const int INITIAL_INPUT_FIELDS = 3;
-        private const int MINIMUM_NAMES_ALLOWED = 1;
-        [SerializeField] private GameObject addInputFieldGO;
-        [SerializeField] private Button addNameInputFieldButton;
-        [SerializeField] private List<InputField> nameInputFields = new();
-        [SerializeField] private Transform inputFieldsLayout;
-        [SerializeField] private GameObject inputFieldPrefab;
-        [SerializeField] private string[] names;
-        private int inputFieldsCount = INITIAL_INPUT_FIELDS;
-        //[SerializeField] private InputField instructorNameInputField;
-        [SerializeField] private string instructorName;
+        [SerializeField] private TMP_Dropdown playerCountDropdown;
         [SerializeField] private TMP_Dropdown companyDropdown;
         [SerializeField] private TMP_Dropdown instructorDropdown;
-        private int namesAddedCount;
-
+        [SerializeField] private InputField teamNameInputField;
+        [SerializeField] private Button fakeNextButton;
+        [SerializeField] private Image companyDropdownRedBorder;
+        [SerializeField] private Image instructorDropdownRedBorder;
+        [SerializeField] private Image teamNameInputFieldRedBorder;
+        [SerializeField] private Image playerCountDropdownRedBorder;
+        
+        
         protected override async void Start()
         {
             await Initialize();
@@ -38,124 +33,102 @@ namespace Screens
         private async Task Initialize()
         {
             base.Start();
-            LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
             await LoadData();
-            names = new string[Data.MAX_PLAYERS];
             IsAssignmentCompleted();
             AddListeners();
+            OnCompanyChanged();
+        }
+
+        private void OnFakeNextButtonClicked()
+        {
+            Debug.Log("Fake Next Button Clicked");
+                //set red border alpha to 1 if value is 0
+                companyDropdownRedBorder.color = companyDropdown.value == 0 ? new Color(1, 0, 0, 1) : new Color(1, 1, 1, 0);
+                instructorDropdownRedBorder.color = instructorDropdown.value == 0 ? new Color(1, 0, 0, 1) : new Color(1, 1, 1, 0);
+                teamNameInputFieldRedBorder.color = teamNameInputField.text == "" ? new Color(1, 0, 0, 1) : new Color(1, 1, 1, 0);
+                playerCountDropdownRedBorder.color = playerCountDropdown.value == 0 ? new Color(1, 0, 0, 1) : new Color(1, 1, 1, 0);
         }
 
         private void IsAssignmentCompleted()
         {
-            namesAddedCount = 0;
-            foreach (InputField nameInputField in nameInputFields)
-            {
-                if (nameInputField.text != "")
-                {
-                    namesAddedCount++;
-                }
-            }
-            if (namesAddedCount >= MINIMUM_NAMES_ALLOWED && instructorName != "")
+
+            if (playerCountDropdown.value != 0 && companyDropdown.value != 0 && instructorDropdown.value != 0 && teamNameInputField.text != "")
             {
                 EventManager.AssignmentCompleted.Invoke();
+                fakeNextButton.gameObject.SetActive(false);
+                // fakeNextButton.interactable = false;
             }
             else
             {
                 EventManager.AssignmentNotCompleted.Invoke();
+                fakeNextButton.gameObject.SetActive(true);
+                //fakeNextButton.interactable = true;
             }
         }
 
         private void AddListeners()
         {
-            addNameInputFieldButton.onClick.AddListener(AddNameInputField);
-            foreach (InputField nameInputField in nameInputFields)
-            {
-                nameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
-            }
             companyDropdown.onValueChanged.AddListener(delegate { OnCompanyChanged(); });
+            instructorDropdown.onValueChanged.AddListener(delegate { IsAssignmentCompleted(); });
+            teamNameInputField.onValueChanged.AddListener(delegate { IsAssignmentCompleted(); });
+            playerCountDropdown.onValueChanged.AddListener(delegate { IsAssignmentCompleted(); });
+            fakeNextButton.onClick.AddListener(OnFakeNextButtonClicked);
         }
 
         private void OnCompanyChanged()
         {
-            if (companyDropdown.value == 0)
+            switch (companyDropdown.value)
             {
-                instructorDropdown.ClearOptions();
-                instructorDropdown.AddOptions(Data.IndieInstructor);
+                case 0:
+                    instructorDropdown.ClearOptions();
+                    instructorDropdown.AddOptions(Data.NoInstructors);
+                    instructorDropdown.interactable = false;
+                    break;
+                case 1:
+                    instructorDropdown.ClearOptions();
+                    instructorDropdown.AddOptions(Data.IndieInstructor);
+                    instructorDropdown.interactable = true;
+                    break;
+                default:
+                    instructorDropdown.ClearOptions();
+                    instructorDropdown.AddOptions(Data.Instructors);
+                    instructorDropdown.interactable = true;
+                    break;
             }
-            else
-            {
-                instructorDropdown.ClearOptions();
-                instructorDropdown.AddOptions(Data.Instructors);
-            }
+            IsAssignmentCompleted();
         }
 
         public override async void OnNextButtonClicked()
         {
+            await SaveData();
             await Database.SaveDataToDatabase();
             base.OnNextButtonClicked();
         }
-
-        private void AddNameInputField()
-        {
-            GameObject inputFieldGameObject = Instantiate(inputFieldPrefab, inputFieldsLayout);
-            InputField nameInputField = inputFieldGameObject.GetComponent<InputField>();
-            nameInputFields.Add(nameInputField);
-            nameInputField.onValueChanged.AddListener(delegate { UpdateNames(); });
-            LayoutRebuilder.ForceRebuildLayoutImmediate(inputFieldsLayout.GetComponent<RectTransform>());
-            inputFieldsCount++;
-            if (inputFieldsCount == Data.MAX_PLAYERS)
-            {
-                addInputFieldGO.SetActive(false);
-            }
-        }
-
-        private async Task UpdateNames()
-        {
-            for (int i = 0; i < nameInputFields.Count; i++)
-            {
-                if (nameInputFields[i] != null)
-                {
-                    names[i] = nameInputFields[i].text;
-                }
-            }
-            instructorName = instructorDropdown.options[instructorDropdown.value].text;
-            await SaveData();
-            IsAssignmentCompleted();
-        }
-
+        
         public async Task SaveData()
         {
             Data.InstructorName = instructorDropdown.options[instructorDropdown.value].text;
-            Data.PlayerNames = names;
             Data.CompanyName = companyDropdown.options[companyDropdown.value].text;
+            Data.playerCount = playerCountDropdown.value;
+            Debug.Log(Data.playerCount);
+            Data.TeamName = teamNameInputField.text;
             Data.SaveData();
         }
 
         public async Task LoadData()
         {
             Data.LoadData();
-            instructorName = Data.InstructorName;
-            companyDropdown.value = Data.CompanyName == ""
-                ? 0
-                : companyDropdown.options.FindIndex(option => option.text == Data.CompanyName);
-            Debug.Log(Data.CompanyName);
-            //Debug.Log(companyDropdown.value);
-            names = Data.PlayerNames;
-            instructorDropdown.value = Data.InstructorName == ""
-                ? 0
-                : instructorDropdown.options.FindIndex(option => option.text == Data.InstructorName);
-            for (int i = 0; i < names.Length; i++)
-            {
-                if (names[i] != null && names[i] != "")
-                {
-                    if (i > nameInputFields.Count - 1)
-                    {
-                        AddNameInputField();
-                    }
-                    nameInputFields[i].text = names[i];
-                }
-            }
-            OnCompanyChanged();
+            // instructorDropdown.value = Data.InstructorName == ""
+            //     ? 0
+            //     : instructorDropdown.options.FindIndex(option => option.text == Data.InstructorName);
+            // companyDropdown.value = Data.CompanyName == ""
+            //     ? 0
+            //     : companyDropdown.options.FindIndex(option => option.text == Data.CompanyName);
+            // Debug.Log(Data.CompanyName);
+            // instructorDropdown.value = Data.InstructorName == ""
+            //     ? 0
+            //     : instructorDropdown.options.FindIndex(option => option.text == Data.InstructorName);
+            // OnCompanyChanged();
         }
     }
 }

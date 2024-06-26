@@ -171,10 +171,24 @@ namespace Vimeo.Player
 
         public void Play()
         {
-            videoPlayer.Play();
-            if (OnPlay != null) {
-                OnPlay(this);
+            StartCoroutine(PlayWhenPrepared());
+            // videoPlayer.Play();
+            // if (OnPlay != null) {
+            //     OnPlay(this);
+            // }
+        }
+        
+        private IEnumerator PlayWhenPrepared()
+        {
+            while (!videoPlayer.isPrepared) {
+                yield return null;
             }
+
+            if (OnVideoStart != null) {
+                OnVideoStart(this);
+            }
+
+            videoPlayer.Play();
         }
 
         public long GetCurrentFrame()

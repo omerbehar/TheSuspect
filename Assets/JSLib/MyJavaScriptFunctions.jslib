@@ -1,82 +1,35 @@
-var MobileCamera = 
-{
-	getOrientation: function(callback) 
-	{
-        var input = document.createElement('input');
-        var orientationOnWasmHeap = _malloc(4); // 4 bytes for int
-        input.type = 'file';
-        input.accept = 'image/*';
-        input.onchange = function (event) 
-	    {    
-	        var file = event.target.files[0];
-            var reader = new FileReader();
-            reader.onload = function(e) 
-            {
-                var view = new DataView(e.target.result);
-                if (view.getUint16(0, false) != 0xFFD8)
-                {
-                    console.log("Invalid JPEG");
-                    setValue(orientationOnWasmHeap, -2, 'i32');
-                    {{{ makeDynCall('vi', 'callback') }}}(getValue(orientationOnWasmHeap, 'i32'));
-                }
-                var length = view.byteLength, offset = 2;
-                while (offset < length) 
-                {
-                    if (view.getUint16(offset+2, false) <= 8) return callback(-1);
-                    var marker = view.getUint16(offset, false);
-                    offset += 2;
-                    if (marker == 0xFFE1) 
-                    {
-                        if (view.getUint32(offset += 2, false) != 0x45786966) 
-                        {
-                            //debug
-                            console.log("Invalid Exif data");
-                            setValue(orientationOnWasmHeap, -1, 'i32');
-                            {{{ makeDynCall('vi', 'callback') }}}(getValue(orientationOnWasmHeap, 'i32'));
-                        }
-                        var little = view.getUint16(offset += 6, false) == 0x4949;
-                        offset += view.getUint32(offset + 4, little);
-                        var tags = view.getUint16(offset, little);
-                        offset += 2;
-                        for (var i = 0; i < tags; i++)
-                        {
-                            if (view.getUint16(offset + (i * 12), little) == 0x0112)
-                            {
-                                console.log("Orientation: " + view.getUint16(offset + (i * 12) + 8, little));
-                                setValue(orientationOnWasmHeap, view.getUint16(offset + (i * 12) + 8, 'i32'));
-                                {{{ makeDynCall('vi', 'callback') }}}(getValue(orientationOnWasmHeap, 'i32'));
-                            }
-                        }
-                    }
-                    else if ((marker & 0xFF00) != 0xFF00)
-                    {
-                        break;
-                    }
-                    else
-                    { 
-                        offset += view.getUint16(offset, false);
-                    }
-                }
-                setValue(orientationOnWasmHeap, -1, 'i32');
-                {{{ makeDynCall('vi', 'callback') }}}(getValue(orientationOnWasmHeap, 'i32'));
-            };
-        reader.readAsArrayBuffer(file);
-        };
-        input.click();
+var plugin = {
+    OpenTab: function (url) {
+        url = UTF8ToString(url);
+        window.open(url, '_blank');
     },
 
+    };
+    mergeInto(LibraryManager.library, plugin);
+var MobileCamera = 
+{
     OpenCamera: function (callback, orientationCallback) {
         var input = document.createElement('input');
         input.type = 'file';
         input.accept = 'image/*';
         input.onchange = function (event) {
+            console.log("LOG: input.onchange");
             var file = event.target.files[0];
- 	    // Read Exif data to get orientation
+// Check if a file is selected
+    if (!file) {
+        console.log('No file selected');
+        return;
+    }
+    
+    // Log various file properties
+    console.log('File selected:', file);
+    console.log('File name:', file.name);
+    console.log('File type:', file.type);
+    console.log('File size:', file.size); 	    // Read Exif data to get orientation
             EXIF.getData(file, function() {
-		console.log(EXIF.getAllTags(this));
 
                 var orientation = EXIF.getTag(this, "Orientation");
-                console.log("EXIF Orientation:", orientation);
+                console.log("LOG: EXIF Orientation:" + orientation);
 
                 // Pass the orientation back to Unity
                 var orientationOnWasmHeap = _malloc(4); // 4 bytes for int
@@ -85,15 +38,27 @@ var MobileCamera =
             });
 
             var reader = new FileReader();
+            reader.onerror = function (error) {
+                console.log('LOG: FileReader error:', error);
+            };
+
             reader.onload = function () {
+            
                 var base64 = reader.result.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
-                var lengthBytes = lengthBytesUTF8(base64) + 1; 
+                console.log("LOG: reader.onload: " + base64);
+                var lengthBytes = lengthBytesUTF8(base64) + 1;
+                console.log("LOG: lengthBytes: " + lengthBytes); 
                 var stringOnWasmHeap = _malloc(lengthBytes);
+                console.log("LOG: stringOnWasmHeap: " + stringOnWasmHeap);
                 stringToUTF8(base64, stringOnWasmHeap, lengthBytes);
+                
                 {{{ makeDynCall('vi', 'callback') }}}(stringOnWasmHeap);
             };
+            console.log("LOG: file: " + file.name);
             reader.readAsDataURL(file);
+            input.value = '';
         };
+        console.log("LOG: input.click");
         input.click();
     },
 

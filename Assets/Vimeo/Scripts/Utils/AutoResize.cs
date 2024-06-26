@@ -30,14 +30,15 @@ namespace Vimeo.Utils
 
         private void OnVideoStart()
         {
+            Debug.Log($"width: {vimeoPlayer.GetWidth()}, height: {vimeoPlayer.GetHeight()} ");
             if (vimeoPlayer.GetWidth() > vimeoPlayer.GetHeight()) {
                 aspectRatio = (float)vimeoPlayer.GetHeight() / vimeoPlayer.GetWidth();
             } else {
                 aspectRatio = (float)vimeoPlayer.GetWidth() / vimeoPlayer.GetHeight();
             }
-
+            Debug.Log($"aspectRatio: {aspectRatio} ");
             targetHeight = aspectRatio * vimeoPlayer.videoScreen.transform.localScale.x;
-
+            Debug.Log($"targetHeight: {targetHeight} ");
             isLoaded = true;
         }
 
@@ -46,7 +47,7 @@ namespace Vimeo.Utils
             if (targetHeight > 0 && isLoaded) {
                 if (vimeoPlayer.videoScreen.GetComponent<RawImage>() == null) {
                     Vector3 scale = vimeoPlayer.videoScreen.transform.localScale;
-
+                    
                     vimeoPlayer.videoScreen.transform.localScale = new Vector3(
                         heightAxis.x == 1 ? targetHeight : scale.x,
                         heightAxis.y == 1 ? targetHeight : scale.y,

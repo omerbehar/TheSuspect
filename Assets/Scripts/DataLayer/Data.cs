@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using TMPro;
 using UnityEngine;
 
 namespace DataLayer
@@ -11,6 +12,7 @@ namespace DataLayer
     {
         public const int MAX_PLAYERS = 5;
         public static string guid;
+        public static int playerCount;
         public static string TeamName { get; set; }
         public static string InstructorName { get; set; }
         public static string[] PlayerNames { get; set; }
@@ -20,8 +22,10 @@ namespace DataLayer
         public static Dictionary<string, bool> AnswerLocked { get; set; } = new();
         public static int Score { get; set; }
         public static string CompanyName { get; set; }
-        public static List<string> Instructors { get; set; } = new(){"מדריך 1", "מדריך 2", "מדריך 3"};
-        public static List<string> IndieInstructor { get; set; } = new() { "עצמאי" };
+        public static List<string> Instructors { get; set; } = new(){"בחר...", "מדריך 1", "מדריך 2", "מדריך 3", "מדריך 4"};
+        public static List<string> IndieInstructor { get; set; } = new() { "בחר...", "עצמאי" };
+        public static List<string> NoInstructors { get; set; } = new() { "ראשית בחר חברה..."};
+
         public static void ResetData()
         {
             TeamName = "";
@@ -40,8 +44,10 @@ namespace DataLayer
         {
             //Debug.Log("Saving data");
             PlayerPrefs.SetString("TeamName", TeamName);
+            PlayerPrefs.SetString("CompanyName", CompanyName);
             PlayerPrefs.SetString("InstructorName", InstructorName);
-            PlayerPrefs.SetString("PlayerNames", string.Join(",", PlayerNames));
+            PlayerPrefs.SetInt("PlayerCount", playerCount);
+            //PlayerPrefs.SetString("PlayerNames", string.Join(",", PlayerNames));
             byte[] bytes = TeamPhoto == null ? null : TeamPhoto.EncodeToPNG();
             if (bytes != null) PlayerPrefs.SetString("TeamPhoto", Convert.ToBase64String(bytes));
 
@@ -59,7 +65,6 @@ namespace DataLayer
             {
                 PlayerPrefs.SetString(key, AnswerLocked[key].ToString());
             }
-            PlayerPrefs.SetString("CompanyName", CompanyName);
             PlayerPrefs.SetInt("Score", Score);
         }
         //load data from player prefs

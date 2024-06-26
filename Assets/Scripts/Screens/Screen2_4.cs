@@ -15,9 +15,9 @@ namespace Screens
         [SerializeField] private GameObject hintPopup;
         string correctAnswer1 = "38";
         string correctAnswer2 = "60";
-        string correctAnswer3 = "12000";
-        string[] answersText = new string[3];
-        InputField[] inputFields = new InputField[3];
+        //string correctAnswer3 = "12000";
+        string[] answersText = new string[2];
+        InputField[] inputFields = new InputField[2];
         protected override void Start()
         {
             base.Start();
@@ -48,7 +48,7 @@ namespace Screens
         private async void OnValueChanged(InputField inputField)
         {
             //Debug.Log(inputField.text);
-            answersText = new [] {inputFields[0].text, inputFields[1].text, inputFields[2].text};
+            answersText = new [] {inputFields[0].text, inputFields[1].text};
             await SaveData();
             IsAssignmentCompleted();
 
@@ -85,10 +85,10 @@ namespace Screens
                 answerScore += scoreIfCorrect / 3;
             if (inputFields[1].text == correctAnswer2)
                 answerScore += scoreIfCorrect / 3;
-            if (inputFields[2].text == correctAnswer3)
-                answerScore += scoreIfCorrect / 3;
+            // if (inputFields[2].text == correctAnswer3)
+            //     answerScore += scoreIfCorrect / 3;
             AnswerLocked = true;
-            answersText = new [] {inputFields[0].text, inputFields[1].text, inputFields[2].text};
+            answersText = new [] {inputFields[0].text, inputFields[1].text};
         }
 
         public async Task SaveData()
@@ -113,7 +113,7 @@ namespace Screens
                 answersText = Data.AnswersText[SceneManager.GetActiveScene().name];
                 inputFields[0].text = answersText[0];
                 inputFields[1].text = answersText[1];
-                inputFields[2].text = answersText[2];
+                //inputFields[2].text = answersText[2];
             }
             if (Data.AnswerLocked.ContainsKey(SceneManager.GetActiveScene().name + "isLocked"))
                 AnswerLocked = Data.AnswerLocked[SceneManager.GetActiveScene().name + "isLocked"];

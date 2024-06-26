@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using DA_Assets.Shared.CodeHelpers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,17 +10,19 @@ using UnityEngine.UI;
 public class RTLText : MonoBehaviour
 {
     [SerializeField] private InputField inputField;
+    //[SerializeField] private RectTransform mainScreen;
     private string originalString = "";
-    public RectTransform canvasRectTransform; // Assign the Canvas' RectTransform
+    //public RectTransform canvasRectTransform; // Assign the Canvas' RectTransform
     public float desiredYOffsetFromTop = 100f; // How many pixels you want from the top
     private Vector2 originalPosition;
     private RectTransform inputFieldRectTransform;
-    int keyboardHeight = 270;
+    int keyboardHeight = 250;
     bool wasKeyboardOpen;
     private bool gotFocus;
     private static int _screenWidth;
     private static int _newScreenHeight;
     private int originalScreenHeight;
+    
 
 #if UNITY_WEBGL && !UNITY_EDITOR
     [DllImport("__Internal")]
@@ -50,9 +53,7 @@ public class RTLText : MonoBehaviour
         originalScreenHeight = _newScreenHeight;
 #endif
         inputFieldRectTransform = GetComponent<RectTransform>();
-        GameObject mainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
-        canvasRectTransform = mainCanvas.GetComponent<RectTransform>();
-        originalPosition = canvasRectTransform.anchoredPosition;
+        //originalPosition = canvasRectTransform.anchoredPosition;
         inputField.onValueChanged.AddListener(ReverseInputText);
     }
 
@@ -86,8 +87,6 @@ public class RTLText : MonoBehaviour
 
         if (IsRightToLeft(originalString))
         {
-            // Reverse the original string
-            //Debug.Log("text reversed");
             char[] reversedChars = originalString.ToCharArray();
             Array.Reverse(reversedChars);
             inputField.onValueChanged.RemoveListener(ReverseInputText);
@@ -99,7 +98,6 @@ public class RTLText : MonoBehaviour
 
     private bool IsRightToLeft(string text)
     {
-        //Debug.Log("IsRightToLeft");
         foreach (char c in text)
         {
             UnicodeCategory category = CharUnicodeInfo.GetUnicodeCategory(c);
@@ -121,31 +119,43 @@ public class RTLText : MonoBehaviour
             StartCoroutine(GetKeyboardHeight());
             wasKeyboardOpen = true;
         }
+#if UNITY_EDITOR
+        MockKeyboardOpening();
+#endif
 #if UNITY_WEBGL && !UNITY_EDITOR
         SendScreenWidth(OnWidthRecieved);
-        if (Input.touchSupported && _screenWidth < 800)
-        {
-            float distanceFromTop = -inputFieldRectTransform.localPosition.y;
-            canvasRectTransform.anchoredPosition = new Vector2(originalPosition.x,
-                canvasRectTransform.anchoredPosition.y - keyboardHeight + distanceFromTop);
-        }
 #endif
+        if (_screenWidth < 800)
+        {
+            //move canvas down by keyboard height
+            // canvasRectTransform.position = new Vector2(canvasRectTransform.position.x,
+            //      canvasRectTransform.position.y - (keyboardHeight - 100));
+
+        }
     }
 
-    private void MockKeyboard()
+    private void MockKeyboardOpening()
     {
-        canvasRectTransform.anchoredPosition = new Vector2(originalPosition.x, originalPosition.y + keyboardHeight);
+        //move main screen up by keyboard height
+        //mainScreen.anchoredPosition = new Vector2(mainScreen.anchoredPosition.x, mainScreen.anchoredPosition.y + keyboardHeight);
     }
-
+    private void MockKeyboardClosing()
+    {
+        //move main screen down by keyboard height
+        //mainScreen.anchoredPosition = new Vector2(mainScreen.anchoredPosition.x, mainScreen.anchoredPosition.y - keyboardHeight);
+    }
     private void OnInputDeselected()
     {
-        canvasRectTransform.anchoredPosition = Vector2.zero;
+        #if UNITY_EDITOR
+        MockKeyboardClosing();
+        #endif
+        //canvasRectTransform.anchoredPosition = Vector2.zero;
     }
     private IEnumerator GetKeyboardHeight()
     {
         yield return new WaitForSeconds(0.1f);
 #if UNITY_EDITOR
-        //MockKeyboard();
+        keyboardHeight = 250;
 #endif
 
 #if UNITY_WEBGL && !UNITY_EDITOR

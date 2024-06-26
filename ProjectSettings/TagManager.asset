@@ -32,6 +32,8 @@ TagManager:
   - o
   - p
   - MainCanvas
+  - UploadButton
+  - GoodJobMessage
   layers:
   - Default
   - TransparentFX

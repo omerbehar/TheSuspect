@@ -10,25 +10,23 @@ using UnityEngine.Video;
 public class MobileCameraImageBridge : MonoBehaviour
 {
     [SerializeField] private Button deleteButton;
-    private static string debugText;
+    //private static string debugText;
     //[SerializeField] private TMP_Text debugTextObject;
 
     private static int orientation;
 
 #if UNITY_WEBGL && !UNITY_EDITOR
-    [DllImport("__Internal")]
-    private static extern void getOrientation(OrientationCallback2 callback);
     
     [DllImport("__Internal")]
     private static extern void OpenCamera(MobileCameraCallback callback, OrientationCallback orientationCallback);
 
     delegate void MobileCameraCallback(string imageData);
     delegate void OrientationCallback(int orientation);
-    delegate void OrientationCallback2(int orientation);
 
     [AOT.MonoPInvokeCallback(typeof(MobileCameraCallback))]
     public static void OnImageReceived(string imageData)
     {
+       //debugText = "Received image: " + imageData.Length;
         byte[] bytes = Convert.FromBase64String(imageData);
         Texture2D texture = new Texture2D(2, 2);
         texture.LoadImage(bytes);
@@ -42,13 +40,6 @@ public class MobileCameraImageBridge : MonoBehaviour
         orientation = picOrientation;
         EventManager.TextureRecieved.Invoke();
         //Debug.Log("Received orientation: " + picOrientation);
-    }
-    [AOT.MonoPInvokeCallback(typeof(OrientationCallback2))]
-    public static void OnOrientationReceived2(int orientation)
-    {
-        //debugText = "Received orientation2: " + orientation;
-        EventManager.TextureRecieved.Invoke();
-        //Debug.Log("Received orientation2: " + orientation);
     }
 #endif
 
@@ -68,7 +59,6 @@ public class MobileCameraImageBridge : MonoBehaviour
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         OpenCamera(OnImageReceived, OnOrientationReceived);
-        //getOrientation(OnOrientationReceived2);
 #else
         PickImageAndDisplayFromExplorer();
 #endif
@@ -84,6 +74,7 @@ public class MobileCameraImageBridge : MonoBehaviour
     }
     private void PickImageAndDisplayFromExplorer()
     {
+        
         string[] paths = StandaloneFileBrowser.OpenFilePanel("Open Image File", "", "jpg,png,bmp", false);
         if (paths.Length > 0)
         {
@@ -105,6 +96,7 @@ public class MobileCameraImageBridge : MonoBehaviour
 
             // Save image to a file
             byte[] imgData = readableTexture.EncodeToPNG();
+            //debugTextObject.text = "Received image: " + imgData.Length;
             string fileName = "myImage.png";
             File.WriteAllBytes(Path.Combine(Application.persistentDataPath, fileName), imgData);
             PlayerPrefs.SetString("capturedImage", fileName);
@@ -113,6 +105,7 @@ public class MobileCameraImageBridge : MonoBehaviour
             UploadImage uploadImage = FindObjectOfType<UploadImage>();
             uploadImage.DisplayImage(readableTexture, 1);
         }
+
     }
 
 
