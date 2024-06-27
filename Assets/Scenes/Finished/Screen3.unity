@@ -1435,14 +1435,14 @@ MonoBehaviour:
   playerCountDropdown: {fileID: 433876121}
   companyDropdown: {fileID: 1403932281}
   instructorDropdown: {fileID: 259318548}
-  chooseFactoryDropdown: {fileID: 0}
+  chooseFactoryDropdown: {fileID: 318126827}
   teamNameInputField: {fileID: 2077965995}
   fakeNextButton: {fileID: 1887731998}
   companyDropdownRedBorder: {fileID: 1540683824}
   instructorDropdownRedBorder: {fileID: 394419498}
   teamNameInputFieldRedBorder: {fileID: 1793920104}
   playerCountDropdownRedBorder: {fileID: 1644244080}
-  chooseFactoryDropdownRedBorder: {fileID: 0}
+  chooseFactoryDropdownRedBorder: {fileID: 145536590}
 --- !u!1 &103831794
 GameObject:
   m_ObjectHideFlags: 0

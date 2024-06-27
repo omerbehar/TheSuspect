@@ -11,13 +11,14 @@ namespace DataLayer
         public static async Task SaveDataToDatabase()
         {
             WWWForm form = new WWWForm();
-            Debug.Log(Data.TeamName);
+            // Debug.Log(Data.TeamName);
             form.AddField("guid", Data.guid);
             form.AddField("teamName", Data.TeamName);
             form.AddField("score", Data.Score);
             form.AddField("instructorName", Data.InstructorName);
             form.AddField("companyName", Data.CompanyName);
             form.AddField("playerCount", Data.playerCount);
+            form.AddField("FactoryName", Data.FactoryName);
             //form.AddField("playerNames", string.Join(",", Data.PlayerNames));
             string date = DateTime.Now.ToString("yyyy-MM-dd");
             form.AddField("date", date);
@@ -26,6 +27,7 @@ namespace DataLayer
             {
                 using UnityWebRequest request = UnityWebRequest.Post(uri, form);
                 await request.SendWebRequestAsync();
+                Debug.Log($"{request.downloadHandler.text}");
                 //Debug.Log(request.downloadHandler.text);
             }
             catch (UnityWebRequestException ex)
