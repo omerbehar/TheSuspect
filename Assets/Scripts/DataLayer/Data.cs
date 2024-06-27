@@ -25,11 +25,13 @@ namespace DataLayer
         public static List<string> Instructors { get; set; } = new(){"בחר...", "מדריך 1", "מדריך 2", "מדריך 3", "מדריך 4"};
         public static List<string> IndieInstructor { get; set; } = new() { "בחר...", "עצמאי" };
         public static List<string> NoInstructors { get; set; } = new() { "ראשית בחר חברה..."};
+        public static string FactoryName { get; set; }
 
         public static void ResetData()
         {
             TeamName = "";
             InstructorName = "";
+            FactoryName = "";
             Score = 0;
             PlayerNames = new string[MAX_PLAYERS];
             TeamPhoto = null;
@@ -46,6 +48,7 @@ namespace DataLayer
             PlayerPrefs.SetString("TeamName", TeamName);
             PlayerPrefs.SetString("CompanyName", CompanyName);
             PlayerPrefs.SetString("InstructorName", InstructorName);
+            PlayerPrefs.SetString("FactoryName", FactoryName);
             PlayerPrefs.SetInt("PlayerCount", playerCount);
             //PlayerPrefs.SetString("PlayerNames", string.Join(",", PlayerNames));
             byte[] bytes = TeamPhoto == null ? null : TeamPhoto.EncodeToPNG();
@@ -84,6 +87,7 @@ namespace DataLayer
                 TeamName = PlayerPrefs.GetString("TeamName");
                 InstructorName = PlayerPrefs.GetString("InstructorName");
                 PlayerNames = PlayerPrefs.GetString("PlayerNames").Split(',');
+                FactoryName = PlayerPrefs.GetString("FactoryName");
                 byte[] bytes = LoadImage();
                 TeamPhoto = new Texture2D(1, 1, TextureFormat.ARGB32, false);
                 if (bytes != null) TeamPhoto.LoadImage(bytes);
