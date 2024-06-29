@@ -4,6 +4,7 @@ using System.Linq;
 using Screens.Bases;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Screens
@@ -13,7 +14,7 @@ namespace Screens
     {
         public string word;
         public List<char> missingChars; // List of characters to be replaced with input fields
-        public Transform inputFieldParent; // Parent transform for the input fields of this word
+        [FormerlySerializedAs("inputFieldParent")] public Transform lineTransform; // Parent transform for the input fields of this word
     }
 
     public class Screen8StringCheck : ScreenBase
@@ -65,7 +66,7 @@ namespace Screens
             {
                 string word = wordWithMissingChars.word;
                 List<char> missingChars = wordWithMissingChars.missingChars;
-                Transform inputFieldParent = wordWithMissingChars.inputFieldParent;
+                Transform inputFieldParent = wordWithMissingChars.lineTransform;
 
                 if (string.IsNullOrEmpty(word))
                 {
