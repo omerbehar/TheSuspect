@@ -126,7 +126,7 @@ public class UploadVideo : ScreenBaseWithTimer
     private void Awake()
     {
         //find upload button with tag
-        uploadButton = GameObject.FindGameObjectWithTag("UploadButton").GetComponent<Button>();
+        // uploadButton = GameObject.FindGameObjectWithTag("UploadButton").GetComponent<Button>();
         goodJobMessage = GameObject.FindGameObjectWithTag("GoodJobMessage");
         goodJobMessage.SetActive(false);
         EventManager.VideoCaptured.AddListener(OnVideoCaptured);

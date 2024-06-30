@@ -33,14 +33,16 @@ public class AnswerCheck : ScreenBaseWithTimer
 
     public override void OnNextButtonClicked()
     {
-        if (inputField.text == correctAnswer)
+        if (inputField.text.Equals(correctAnswer))
         {
-            //Debug.Log("The correct answer was input.");
+            Debug.Log("The correct answer was input.");
             CorrectAnswerEvent?.Invoke();
         }
         else
         {
-            //Debug.Log("The incorrect answer was input.");
+            Debug.Log(correctAnswer);
+            Debug.Log(inputField.text);
+            Debug.Log("The incorrect answer was input.");
             IncorrectAnswerEvent?.Invoke();
         }
         
