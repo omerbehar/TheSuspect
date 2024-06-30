@@ -25,6 +25,7 @@ namespace Screens
         [SerializeField] private List<WordWithMissingChars> wordsWithMissingChars;
         [SerializeField] private GameObject failedGO;
         [SerializeField] private float elementSpacing = 2f; // Adjustable spacing value
+        [SerializeField] private Button fakeNextButton;
 
         private List<InputField> inputFields = new List<InputField>();
         private List<string> correctChars = new List<string>();
@@ -32,6 +33,13 @@ namespace Screens
         protected override void Start()
         {
             Init();
+            fakeNextButton.onClick.AddListener(OnFakeNextButtonClicked);
+
+        }
+
+        private void OnFakeNextButtonClicked()
+        {
+            ActivateFailedMessage();
         }
 
         private void Init()
@@ -144,7 +152,9 @@ namespace Screens
         private void OnFieldValueChanged()
         {
             IsSentenceCorrect();
+            DeactivateFailedMessage();
         }
+        
 
         private void IsSentenceCorrect()
         {
@@ -181,13 +191,15 @@ namespace Screens
             if (isSentenceCorrect && inputFields.All(field => !string.IsNullOrEmpty(field.text)))
             {
                 Debug.Log("Sentence is correct!");
-                DeactivateFailedMessage();
+                //DeactivateFailedMessage();
                 EventManager.AssignmentCompleted.Invoke();
+                fakeNextButton.gameObject.SetActive(false);
             }
             else
             {
                 Debug.Log("Sentence is incorrect or not all fields are filled.");
-                ActivateFailedMessage();
+                fakeNextButton.gameObject.SetActive(true);
+                //ActivateFailedMessage();
             }
         }
 
