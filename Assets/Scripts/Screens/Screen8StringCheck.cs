@@ -27,14 +27,13 @@ namespace Screens
         [SerializeField] private float elementSpacing = 2f; // Adjustable spacing value
         [SerializeField] private Button fakeNextButton;
 
-        private List<InputField> inputFields = new List<InputField>();
-        private List<string> correctChars = new List<string>();
+        public List<InputField> inputFields = new List<InputField>();
+        public List<string> correctChars = new List<string>();
 
         protected override void Start()
         {
-            Init();
+            // Removed Init call from Start
             fakeNextButton.onClick.AddListener(OnFakeNextButtonClicked);
-
         }
 
         private void OnFakeNextButtonClicked()
@@ -42,7 +41,7 @@ namespace Screens
             ActivateFailedMessage();
         }
 
-        private void Init()
+        public void Init()
         {
             base.Start();
             NextButton.interactable = false;
@@ -154,7 +153,6 @@ namespace Screens
             IsSentenceCorrect();
             DeactivateFailedMessage();
         }
-        
 
         private void IsSentenceCorrect()
         {
@@ -177,6 +175,7 @@ namespace Screens
                     }
                     if (!charFound)
                     {
+                        Debug.Log($"Character '{missingChar}' is missing or incorrect.");
                         isSentenceCorrect = false;
                         break;
                     }
@@ -199,7 +198,7 @@ namespace Screens
             {
                 Debug.Log("Sentence is incorrect or not all fields are filled.");
                 fakeNextButton.gameObject.SetActive(true);
-                //ActivateFailedMessage();
+                ActivateFailedMessage();
             }
         }
 
