@@ -1,6 +1,6 @@
+using Screens;
 using UnityEditor;
 using UnityEngine;
-using Screens;
 using UnityEngine.UI;
 
 [CustomEditor(typeof(Screen8StringCheck))]
@@ -17,23 +17,11 @@ public class Screen8StringCheckEditor : Editor
             screen8StringCheck.Init();
         }
 
-        // Display the lists in the Inspector
-        if (screen8StringCheck.inputFields != null && screen8StringCheck.inputFields.Count > 0)
+        if (GUILayout.Button("Clear Fields"))
         {
-            EditorGUILayout.LabelField("Input Fields", EditorStyles.boldLabel);
-            foreach (var inputField in screen8StringCheck.inputFields)
-            {
-                EditorGUILayout.ObjectField(inputField, typeof(InputField), true);
-            }
+            screen8StringCheck.ClearFields();
         }
 
-        if (screen8StringCheck.correctChars != null && screen8StringCheck.correctChars.Count > 0)
-        {
-            EditorGUILayout.LabelField("Correct Chars", EditorStyles.boldLabel);
-            foreach (var correctChar in screen8StringCheck.correctChars)
-            {
-                EditorGUILayout.TextField(correctChar);
-            }
-        }
+
     }
 }
