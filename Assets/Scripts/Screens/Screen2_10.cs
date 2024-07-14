@@ -105,7 +105,7 @@ namespace Screens
         public void OnHintButtonClicked()
         {
             hintUsedScoreReduction = true;
-            HintPopup.SetActive(true);
+            HintPopup?.SetActive(true);
             HintPopupCloseButton.onClick.AddListener(OnHintPopupCloseButtonClicked);
         }
 

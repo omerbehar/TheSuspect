@@ -14,7 +14,7 @@ namespace DataLayer
         public static string guid;
         public static int playerCount;
         public static string TeamName { get; set; }
-        public static string InstructorName { get; set; }
+        public static string InstructorName { get; set; } = "";
         public static string[] PlayerNames { get; set; }
         public static Texture2D TeamPhoto { get; set; } = new(1, 1, TextureFormat.ARGB32, false);
         public static Dictionary<string, bool[]> SelectedAnswersData { get; set; } = new();

@@ -8,68 +8,59 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/Finished/LoadingScene.unity
+  - enabled: 1
+    path: Assets/Scenes/Stage1/1-0 - LoadingScreen.unity
     guid: 264e329d126948641942e04298e6dbab
   - enabled: 1
-    path: Assets/Scenes/Finished/IntroScene1.unity
+    path: Assets/Scenes/Stage1/1-1 - Intro1.unity
     guid: 9695231cc3730c948915a4bbd94beb59
   - enabled: 1
-    path: Assets/Scenes/Finished/IntroScene2.unity
+    path: Assets/Scenes/Stage1/1-2 - Intro2.unity
     guid: 4aeafde51f9082949aff8c8fab948fd7
   - enabled: 1
-    path: Assets/Scenes/Finished/Screen3.unity
+    path: Assets/Scenes/Stage1/1-3 - DataCollection.unity
     guid: d2643d8ca33743e4984fe1fa607924a8
   - enabled: 1
-    path: Assets/Scenes/Finished/Screen5.unity
+    path: Assets/Scenes/Stage1/1-4 - UploadImage.unity
     guid: 0a6beb1321df6c244a33194ea37a6f38
   - enabled: 1
-    path: Assets/Scenes/Finished/Screen6.unity
+    path: Assets/Scenes/Stage1/1-5 - MOM.unity
     guid: 858fe60258cfaa442b7169020cb4b422
   - enabled: 1
-    path: Assets/Scenes/Finished/Screen7.unity
+    path: Assets/Scenes/Stage1/1-6 - Gimatria.unity
     guid: 4bc0458140fbdea498815a0c834fe35f
   - enabled: 1
-    path: Assets/Scenes/Level2/2-1.unity
+    path: Assets/Scenes/Stage1/1-7 - SentenceComplete.unity
     guid: 0f97abac99440074a9e6c5b2481be269
   - enabled: 1
-    path: Assets/Scenes/Level2/2-2.unity
+    path: Assets/Scenes/Stage1/1-8 - Stage1End.unity
     guid: 7a38882daf5c6c247bcbbe927ab8ebf8
   - enabled: 1
-    path: Assets/Scenes/Level2/2-3.unity
-    guid: 846ad270b1b90134d9c238be1487aae7
-  - enabled: 1
-    path: Assets/Scenes/Level2/2-4.unity
-    guid: 0e003d861ce47664984c037b1bec0e1b
-  - enabled: 1
-    path: Assets/Scenes/Level2/2-5.unity
-    guid: 29fa8bed4f035a244b5a071322bb649a
-  - enabled: 1
-    path: Assets/Scenes/Level2/2-6.unity
-    guid: e6632cdff4bb01b47aa4babc06615e0c
-  - enabled: 1
-    path: Assets/Scenes/Level2/2-7.unity
-    guid: 4c12c3a7e1e79cc40ac5c08e48f10b7f
-  - enabled: 1
-    path: Assets/Scenes/Level2/2-8.unity
+    path: Assets/Scenes/Stage2/2-1 - ICLSuccess.unity
     guid: 08202b856b5fa6b4cabef661f3d37ed5
   - enabled: 1
-    path: Assets/Scenes/Level2/2-9.unity
+    path: Assets/Scenes/Stage2/2-2 - CoreValues.unity
     guid: 6c6c49e17672a76488806f8534bb1de8
   - enabled: 1
-    path: Assets/Scenes/Level2/2-10.unity
-    guid: 2d6d7de37d8c01d4c9c21354a0dcb0e2
+    path: Assets/Scenes/Stage2/2-3 - SocialInvest.unity
+    guid: 6e8d7f57c134ed6448a77ec603b36658
   - enabled: 1
-    path: Assets/Scenes/Level2/2-11.unity
+    path: Assets/Scenes/Stage2/2-4 - DidYouKnow.unity
+    guid: ee4d6c58073d6444f93f10762cd88338
+  - enabled: 1
+    path: Assets/Scenes/Stage2/2-5 - Innovation.unity
     guid: cb9e539780059684d9192878a62c1015
   - enabled: 1
-    path: Assets/Scenes/Level2/2-12.unity
+    path: Assets/Scenes/Stage2/2-6 - sign languge.unity
     guid: 6c6221744b4fd32429ff57f1dd073f21
   - enabled: 1
-    path: Assets/Scenes/Level2/2-13.unity
-    guid: d4771c9d2f18aa54e882f140e4ea75a7
+    path: Assets/Scenes/Stage2/2-7 - BestWork.unity
+    guid: 6b5d6f4fdabf4b4468aff4b1c56069d2
   - enabled: 1
-    path: Assets/Scenes/Level2/2-14.unity
+    path: Assets/Scenes/Stage2/2-8 - Effecting.unity
+    guid: ca1cb81bdafc7a8428e6c72b8215a319
+  - enabled: 1
+    path: Assets/Scenes/Stage2/2-9 - EndStage2.unity
     guid: 46592c5ea5422fa4da9e56f7e9511d3c
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 86dde720ea5adb54e9ed20d623a90e4a, type: 2}
