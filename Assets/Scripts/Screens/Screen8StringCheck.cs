@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Screens.Bases;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -26,8 +28,8 @@ namespace Screens
         [SerializeField] private GameObject failedGO;
         [SerializeField] private float elementSpacing = 2f; // Adjustable spacing value
         [SerializeField] private float charOffset = 10f; // Adjustable offset between characters
-        [SerializeField] private Button fakeNextButton;
         [SerializeField] private bool initializeOnStart = true;
+        [SerializeField] private Button fakeNextButton; // Fake button for the initial state
 
         private List<InputField> inputFields = new List<InputField>();
         private List<string> correctChars = new List<string>();
@@ -36,39 +38,23 @@ namespace Screens
 
         protected override void Start()
         {
+            base.Start();
             if (initializeOnStart)
             {
                 Init();
             }
-
-            fakeNextButton.onClick.AddListener(OnFakeNextButtonClicked);
             NextButton.onClick.AddListener(OnNextButtonClicked);
-        }
-
-        private void OnFakeNextButtonClicked()
-        {
-            ActivateFailedMessage();
+            fakeNextButton.onClick.AddListener(OnFakeNextButtonClicked);
+            fakeNextButton.gameObject.SetActive(true); // Show the fake button initially
+            NextButton.gameObject.SetActive(false); // Hide the real next button initially
         }
 
         public void Init()
         {
-            base.Start();
             NextButton.interactable = false;
-            if (inputFieldPrefab == null)
+            if (inputFieldPrefab == null || textPrefab == null || wordParentPrefab == null)
             {
-                Debug.LogError("inputFieldPrefab is not assigned.");
-                return;
-            }
-
-            if (textPrefab == null)
-            {
-                Debug.LogError("textPrefab is not assigned.");
-                return;
-            }
-
-            if (wordParentPrefab == null)
-            {
-                Debug.LogError("wordParentPrefab is not assigned.");
+                Debug.LogError("One or more prefabs are not assigned.");
                 return;
             }
 
@@ -84,115 +70,68 @@ namespace Screens
                 List<char> missingChars = wordWithMissingChars.missingChars;
                 Transform inputFieldParent = wordWithMissingChars.lineTransform;
 
-                if (string.IsNullOrEmpty(word))
+                if (string.IsNullOrEmpty(word) || missingChars == null || missingChars.Count == 0 || inputFieldParent == null)
                 {
-                    Debug.LogError("Word is null or empty.");
+                    Debug.LogError("Missing or incorrect parameters for word setup.");
                     continue;
                 }
 
-                if (missingChars == null || missingChars.Count == 0)
-                {
-                    Debug.LogError("missingChars is null or empty.");
-                    continue;
-                }
-
-                if (inputFieldParent == null)
-                {
-                    Debug.LogError("inputFieldParent is not assigned for word: " + word);
-                    continue;
-                }
-
-                // Instantiate the parent for this word
                 GameObject wordParentGO = Instantiate(wordParentPrefab, inputFieldParent);
                 instantiatedObjects.Add(wordParentGO); // Track the instantiated GameObject
 
-                // Ensure the parent GameObject has a HorizontalLayoutGroup to arrange the characters properly
-                HorizontalLayoutGroup layoutGroup = wordParentGO.GetComponent<HorizontalLayoutGroup>();
-                if (layoutGroup == null)
-                {
-                    layoutGroup = wordParentGO.AddComponent<HorizontalLayoutGroup>();
-                }
-
-                // Set the alignment to middle center and adjust spacing
+                HorizontalLayoutGroup layoutGroup = wordParentGO.GetComponent<HorizontalLayoutGroup>() ?? wordParentGO.AddComponent<HorizontalLayoutGroup>();
                 layoutGroup.childAlignment = TextAnchor.MiddleCenter;
                 layoutGroup.reverseArrangement = true; // Enable RTL support
 
-                // Calculate the total width of the word
                 float totalWidth = word.Length * (inputFieldPrefab.GetComponent<RectTransform>().rect.width + charOffset);
-
-                // Adjust spacing and padding based on the word length
-                layoutGroup.spacing = elementSpacing + charOffset; // Use the adjustable spacing value and char offset
-                layoutGroup.padding = new RectOffset((int)(totalWidth / 2), (int)(totalWidth / 2), 0, 0); // Adjust padding
+                layoutGroup.spacing = elementSpacing + charOffset;
+                layoutGroup.padding = new RectOffset((int)(totalWidth / 2), (int)(totalWidth / 2), 0, 0);
 
                 for (int i = 0; i < word.Length; i++)
                 {
                     char c = word[i];
                     if (missingChars.Contains(c))
                     {
-                        // Instantiate input field prefab for missing character
                         GameObject inputFieldGO = Instantiate(inputFieldPrefab, wordParentGO.transform);
-                        instantiatedObjects.Add(inputFieldGO); // Track the instantiated GameObject
+                        instantiatedObjects.Add(inputFieldGO);
                         InputField inputField = inputFieldGO.GetComponent<InputField>();
-                        if (inputField == null)
-                        {
-                            Debug.LogError("TMP_InputField component is missing on inputFieldPrefab.");
-                            continue;
-                        }
                         inputField.characterLimit = 1;
-                        inputField.onValueChanged.AddListener(delegate { OnFieldValueChanged(inputField.text, inputFields.IndexOf(inputField)); });
+                        inputField.onValueChanged.AddListener(delegate { OnFieldValueChanged(inputField); });
                         inputFields.Add(inputField);
                         correctChars.Add(c.ToString());
                     }
                     else
                     {
-                        // Instantiate text prefab for existing character
                         GameObject textGO = Instantiate(textPrefab, wordParentGO.transform);
-                        instantiatedObjects.Add(textGO); // Track the instantiated GameObject
+                        instantiatedObjects.Add(textGO);
                         TextMeshProUGUI textComponent = textGO.GetComponent<TextMeshProUGUI>();
-                        if (textComponent == null)
-                        {
-                            Debug.LogError("TextMeshProUGUI component is missing on textPrefab.");
-                            continue;
-                        }
                         textComponent.text = c.ToString();
                     }
                 }
             }
         }
 
-        public void ClearFields()
+        private void OnFieldValueChanged(InputField inputField)
         {
-            // Destroy all instantiated GameObjects
-            foreach (var obj in instantiatedObjects)
+            int currentFieldIndex = inputFields.IndexOf(inputField);
+            if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
             {
-                DestroyImmediate(obj);
-            }
-            instantiatedObjects.Clear();
-
-            // Clear the lists
-            inputFields.Clear();
-            correctChars.Clear();
-
-            Debug.Log("All fields and lists have been cleared.");
-        }
-
-        private void OnFieldValueChanged(string input, int fieldIndex)
-        {
-            // Move to the next input field
-            if (fieldIndex < inputFields.Count - 1)
-            {
-                inputFields[fieldIndex + 1].ActivateInputField();
+                inputFields[currentFieldIndex + 1].ActivateInputField();
             }
 
-            // Check if all input fields are filled
             if (inputFields.All(field => !string.IsNullOrEmpty(field.text)))
             {
-                Debug.Log("All input fields are filled.");
                 NextButton.interactable = true; // Enable the next button when all fields are filled
+                fakeNextButton.interactable = true; // Enable the fake next button when all fields are filled
             }
         }
 
         private void OnNextButtonClicked()
+        {
+            IsSentenceCorrect();
+        }
+
+        private void OnFakeNextButtonClicked()
         {
             IsSentenceCorrect();
         }
@@ -206,6 +145,7 @@ namespace Screens
                 if (inputFields[i].text != correctChars[i])
                 {
                     Debug.Log($"Character '{inputFields[i].text}' is incorrect. Expected '{correctChars[i]}'.");
+                    ActivateFailedMessage();
                     isSentenceCorrect = false;
                     break;
                 }
@@ -215,30 +155,42 @@ namespace Screens
             {
                 Debug.Log("Sentence is correct!");
                 EventManager.AssignmentCompleted.Invoke();
-                fakeNextButton.gameObject.SetActive(false);
                 NextButton.interactable = true; // Make the next button interactable
+                NextButton.gameObject.SetActive(true); // Show the real next button
+                fakeNextButton.gameObject.SetActive(false); // Hide the fake next button
+                LoadNextScene(); // Move to the next scene
             }
             else
             {
-                Debug.Log("Sentence is incorrect.");
                 incorrectTries++;
-                if (incorrectTries >= 2)
+                ClearFields();
+                Init();
+                if (incorrectTries % 2 == 1)
                 {
-                    NextButton.interactable = true; // Make the next button interactable after 2 incorrect tries
+                    fakeNextButton.gameObject.SetActive(false); // Hide the fake next button
+                    NextButton.gameObject.SetActive(true); // Show the real next button
+                    NextButton.interactable = false; // Make the real next button non-interactable
                 }
-                fakeNextButton.gameObject.SetActive(true);
-                ActivateFailedMessage();
+                else
+                {
+                    fakeNextButton.gameObject.SetActive(true); // Show the fake next button
+                    fakeNextButton.interactable = false; // Make the fake next button non-interactable
+                    NextButton.gameObject.SetActive(false); // Hide the real next button
+                    StartCoroutine(EnableNextButtonAfterDelay(1f)); // Make the real next button interactable after 1 second
+                }
             }
         }
 
-        private void DeactivateFailedMessage()
+        private IEnumerator EnableNextButtonAfterDelay(float delay)
         {
-            failedGO.SetActive(false);
-            // Change color of input fields
-            foreach (InputField inputField in inputFields)
-            {
-                inputField.image.color = Color.white;
-            }
+            yield return new WaitForSeconds(delay);
+            NextButton.interactable = true;
+        }
+
+        private void LoadNextScene()
+        {
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentSceneIndex + 1);
         }
 
         private void ActivateFailedMessage()
@@ -249,6 +201,17 @@ namespace Screens
                 bool parseSuccess = ColorUtility.TryParseHtmlString("#FF4050", out Color newCol);
                 inputField.image.color = newCol;
             }
+        }
+
+        public void ClearFields()
+        {
+            foreach (var obj in instantiatedObjects)
+            {
+                Destroy(obj);
+            }
+            instantiatedObjects.Clear();
+            inputFields.Clear();
+            correctChars.Clear();
         }
 
         [ContextMenu("Initialize")]
