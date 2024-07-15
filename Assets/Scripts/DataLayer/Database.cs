@@ -15,7 +15,7 @@ namespace DataLayer
             form.AddField("guid", Data.guid);
             form.AddField("teamName", Data.TeamName);
             form.AddField("score", Data.Score);
-            form.AddField("instructorName", Data.InstructorName);
+            // form.AddField("instructorName", Data.InstructorName);
             form.AddField("companyName", Data.CompanyName);
             form.AddField("playerCount", Data.playerCount);
             form.AddField("FactoryName", Data.FactoryName);
@@ -95,7 +95,7 @@ namespace DataLayer
             public string guid;
             public string teamName;
             public int score;
-            public string instructorName;
+            // public string instructorName;
             public string playerNames;
             //public DateTime date;
         }

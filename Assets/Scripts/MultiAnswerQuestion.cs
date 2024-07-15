@@ -26,6 +26,7 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
         foreach (var toggle in toggles)
         {
             toggle.onValueChanged.AddListener(OnToggleValueChanged);
+            Debug.Log(toggle.name + " add listener ");
         }
 
         // This will not be interactable until at least one answer is selected
@@ -53,6 +54,8 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
     private void OnToggleValueChanged(bool isOn)
     {
         // If any toggle is clicked, set the NextButton as interactable
+        Debug.Log(" some toggle value changed ");
+
         NextButton.interactable = true;
         CalculateCorrectAnswers();
     }

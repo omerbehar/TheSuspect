@@ -5,6 +5,7 @@ using System.Linq;
 using Screens.Bases;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -26,6 +27,7 @@ namespace Screens
         [SerializeField] private GameObject wordParentPrefab; // Prefab for the parent of each word
         [SerializeField] private List<WordWithMissingChars> wordsWithMissingChars;
         [SerializeField] private GameObject failedGO;
+        [SerializeField] private GameObject failedAgainGO;
         [SerializeField] private float elementSpacing = 2f; // Adjustable spacing value
         [SerializeField] private float charOffset = 10f; // Adjustable offset between characters
         [SerializeField] private bool initializeOnStart = true;
@@ -116,15 +118,43 @@ namespace Screens
             int currentFieldIndex = inputFields.IndexOf(inputField);
             if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
             {
-                inputFields[currentFieldIndex + 1].ActivateInputField();
+                inputFields[currentFieldIndex + 1].Select();
+                if (currentFieldIndex + 1 != inputFields.Count) OpenKeyboard();
+
+                // StartCoroutine(ActivateNextInputField(currentFieldIndex + 1));
             }
+            // if (currentFieldIndex == inputFields.Count - 1)  EventSystem.current.SetSelectedGameObject(null);
 
             if (inputFields.All(field => !string.IsNullOrEmpty(field.text)))
             {
                 NextButton.interactable = true; // Enable the next button when all fields are filled
                 fakeNextButton.interactable = true; // Enable the fake next button when all fields are filled
+                CloseKeyboard();
             }
         }
+        public void OpenKeyboard()
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        Application.ExternalCall("openKeyboard");
+#endif
+        }
+        public void CloseKeyboard()
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        Application.ExternalCall("closeKeyboard");
+#endif
+        }
+        // private IEnumerator ActivateNextInputField(int nextFieldIndex)
+        // {
+        //     // yield return new WaitForSeconds(0.1f); // Small delay to ensure the focus transition is smooth
+        //     // // inputFields[nextFieldIndex].ActivateInputField();
+        //     // inputFields[nextFieldIndex].Select();
+        //     // yield return new WaitForSeconds(0.1f);
+        //     inputFields[nextFieldIndex].Select();
+        //     if (nextFieldIndex != inputFields.Count) OpenKeyboard();
+        //
+        //     // inputFields[nextFieldIndex].caretPosition = 0;
+        // }
 
         private void OnNextButtonClicked()
         {
@@ -165,18 +195,18 @@ namespace Screens
                 incorrectTries++;
                 ClearFields();
                 Init();
-                if (incorrectTries % 2 == 1)
+                if (incorrectTries > 1)
                 {
                     fakeNextButton.gameObject.SetActive(false); // Hide the fake next button
                     NextButton.gameObject.SetActive(true); // Show the real next button
-                    NextButton.interactable = false; // Make the real next button non-interactable
+                    NextButton.interactable = true; // Make the real next button non-interactable
                 }
                 else
                 {
                     fakeNextButton.gameObject.SetActive(true); // Show the fake next button
                     fakeNextButton.interactable = false; // Make the fake next button non-interactable
                     NextButton.gameObject.SetActive(false); // Hide the real next button
-                    StartCoroutine(EnableNextButtonAfterDelay(1f)); // Make the real next button interactable after 1 second
+                    //StartCoroutine(EnableNextButtonAfterDelay(1f)); // Make the real next button interactable after 1 second
                 }
             }
         }
@@ -195,7 +225,12 @@ namespace Screens
 
         private void ActivateFailedMessage()
         {
-            failedGO.SetActive(true);
+            if (incorrectTries == 0) failedGO.SetActive(true);
+            else
+            {
+                failedGO.SetActive(false);
+                failedAgainGO.SetActive(true);
+            }
             foreach (InputField inputField in inputFields)
             {
                 bool parseSuccess = ColorUtility.TryParseHtmlString("#FF4050", out Color newCol);

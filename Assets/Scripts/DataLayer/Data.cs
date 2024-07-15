@@ -14,7 +14,7 @@ namespace DataLayer
         public static string guid;
         public static int playerCount;
         public static string TeamName { get; set; }
-        public static string InstructorName { get; set; } = "";
+        // public static string InstructorName { get; set; } = "";
         public static string[] PlayerNames { get; set; }
         public static Texture2D TeamPhoto { get; set; } = new(1, 1, TextureFormat.ARGB32, false);
         public static Dictionary<string, bool[]> SelectedAnswersData { get; set; } = new();
@@ -30,7 +30,7 @@ namespace DataLayer
         public static void ResetData()
         {
             TeamName = "";
-            InstructorName = "";
+            // InstructorName = "";
             FactoryName = "";
             Score = 0;
             PlayerNames = new string[MAX_PLAYERS];
@@ -47,7 +47,7 @@ namespace DataLayer
             //Debug.Log("Saving data");
             PlayerPrefs.SetString("TeamName", TeamName);
             PlayerPrefs.SetString("CompanyName", CompanyName);
-            PlayerPrefs.SetString("InstructorName", InstructorName);
+            // PlayerPrefs.SetString("InstructorName", InstructorName);
             PlayerPrefs.SetString("FactoryName", FactoryName);
             PlayerPrefs.SetInt("PlayerCount", playerCount);
             //PlayerPrefs.SetString("PlayerNames", string.Join(",", PlayerNames));
@@ -85,7 +85,7 @@ namespace DataLayer
                 //Debug.Log("Guid found, loading data");
                 guid = PlayerPrefs.GetString("guid");
                 TeamName = PlayerPrefs.GetString("TeamName");
-                InstructorName = PlayerPrefs.GetString("InstructorName");
+                // InstructorName = PlayerPrefs.GetString("InstructorName");
                 PlayerNames = PlayerPrefs.GetString("PlayerNames").Split(',');
                 FactoryName = PlayerPrefs.GetString("FactoryName");
                 byte[] bytes = LoadImage();
