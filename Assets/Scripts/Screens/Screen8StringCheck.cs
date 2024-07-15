@@ -32,6 +32,7 @@ namespace Screens
         private List<InputField> inputFields = new List<InputField>();
         private List<string> correctChars = new List<string>();
         private List<GameObject> instantiatedObjects = new List<GameObject>(); // List to track instantiated GameObjects
+        private int incorrectTries = 0; // Counter for incorrect tries
 
         protected override void Start()
         {
@@ -41,6 +42,7 @@ namespace Screens
             }
 
             fakeNextButton.onClick.AddListener(OnFakeNextButtonClicked);
+            NextButton.onClick.AddListener(OnNextButtonClicked);
         }
 
         private void OnFakeNextButtonClicked()
@@ -176,24 +178,6 @@ namespace Screens
 
         private void OnFieldValueChanged(string input, int fieldIndex)
         {
-            // Check if the input is correct
-            if (input == correctChars[fieldIndex])
-            {
-                // Input is correct, do nothing
-                DeactivateFailedMessage();
-            }
-            else if (string.IsNullOrEmpty(input))
-            {
-                // Input is empty, do nothing
-                DeactivateFailedMessage();
-            }
-            else
-            {
-                // Input is incorrect
-                Debug.Log($"Character '{input}' is incorrect. Expected '{correctChars[fieldIndex]}'.");
-                ActivateFailedMessage();
-            }
-
             // Move to the next input field
             if (fieldIndex < inputFields.Count - 1)
             {
@@ -203,9 +187,14 @@ namespace Screens
             // Check if all input fields are filled
             if (inputFields.All(field => !string.IsNullOrEmpty(field.text)))
             {
-                Debug.Log("All input fields are filled. Checking sentence correctness...");
-                IsSentenceCorrect();
+                Debug.Log("All input fields are filled.");
+                NextButton.interactable = true; // Enable the next button when all fields are filled
             }
+        }
+
+        private void OnNextButtonClicked()
+        {
+            IsSentenceCorrect();
         }
 
         private void IsSentenceCorrect()
@@ -227,10 +216,16 @@ namespace Screens
                 Debug.Log("Sentence is correct!");
                 EventManager.AssignmentCompleted.Invoke();
                 fakeNextButton.gameObject.SetActive(false);
+                NextButton.interactable = true; // Make the next button interactable
             }
             else
             {
                 Debug.Log("Sentence is incorrect.");
+                incorrectTries++;
+                if (incorrectTries >= 2)
+                {
+                    NextButton.interactable = true; // Make the next button interactable after 2 incorrect tries
+                }
                 fakeNextButton.gameObject.SetActive(true);
                 ActivateFailedMessage();
             }
