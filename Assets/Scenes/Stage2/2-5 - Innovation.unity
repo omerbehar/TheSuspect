@@ -2486,6 +2486,10 @@ MonoBehaviour:
   AllCorrectAnswerEvent:
     m_PersistentCalls:
       m_Calls: []
+  failedGO: {fileID: 0}
+  failedAgainGO: {fileID: 0}
+  wrongAnswerMessage: []
+  correctAnswerMessage: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2749,7 +2753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2585881963781563738, guid: d881c08618239ec47af0b713a9478a6f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3488429916341143308, guid: d881c08618239ec47af0b713a9478a6f, type: 3}
       propertyPath: m_Pivot.x
