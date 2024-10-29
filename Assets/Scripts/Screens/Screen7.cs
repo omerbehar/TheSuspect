@@ -15,6 +15,7 @@ namespace Screens
         [field: SerializeField] public GameObject HintPopup { get; set; }
         [field: SerializeField] public Button HintPopupCloseButton { get; set; }
         [field: SerializeField] public GameObject CorrectAnswer { get; set; }
+        [field: SerializeField] public GameObject wrongAnswerObject { get; set; }
         public int PotentialScore { get; set; }
         private Toggle[] toggles;
 
@@ -72,10 +73,17 @@ namespace Screens
             if (CorrectAnswer.GetComponentInChildren<Toggle>().isOn)
             {
                 answerScore = scoreIfCorrect;
+                
             }
             else
             {
                 answerScore = 0;
+              
+                AnswerLocked = false;
+                foreach (Toggle toggle in toggles)
+                {
+                    toggle.interactable = true;
+                }
             }
             Data.SaveData();
         }
@@ -116,8 +124,23 @@ namespace Screens
 
         public override void OnNextButtonClicked()
         {
-            OnAnswer();
-            base.OnNextButtonClicked();
+            if (CorrectAnswer.GetComponentInChildren<Toggle>().isOn)
+            {
+                // If correct, deactivate the object if it's active, or do nothing if it's already inactive
+                if (wrongAnswerObject.activeSelf)
+                {
+                    wrongAnswerObject.SetActive(false);
+                }
+                base.OnNextButtonClicked();
+            }
+            else
+            {
+                  // If wrong, activate the object
+                wrongAnswerObject.SetActive(true);
+                // Show an error message or prompt the user to try again
+                Debug.Log("Wrong answer, please try again.");
+                // Unlock the toggles to allow the user to try again
+            }
         }
     }
 }
