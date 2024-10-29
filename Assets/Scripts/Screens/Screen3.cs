@@ -11,12 +11,12 @@ namespace Screens
     public class Screen3 : ScreenBase, ISaveData
     {
         [SerializeField] private TMP_Dropdown playerCountDropdown;
-        [SerializeField] private TMP_Dropdown companyDropdown;
+        // [SerializeField] private TMP_Dropdown companyDropdown;
         // [SerializeField] private TMP_Dropdown instructorDropdown;
         [SerializeField] private TMP_Dropdown chooseFactoryDropdown;
         [SerializeField] private InputField teamNameInputField;
         [SerializeField] private Button fakeNextButton;
-        [SerializeField] private Image companyDropdownRedBorder;
+        // [SerializeField] private Image companyDropdownRedBorder;
         // [SerializeField] private Image instructorDropdownRedBorder;
         [SerializeField] private Image teamNameInputFieldRedBorder;
         [SerializeField] private Image playerCountDropdownRedBorder;
@@ -45,7 +45,7 @@ namespace Screens
         private void OnFakeNextButtonClicked()
         {
             Debug.Log("Fake Next Button Clicked");
-            companyDropdownRedBorder.color = companyDropdown.value == 0 ? new Color(1, 0, 0, 1) : new Color(1, 1, 1, 0);
+            // companyDropdownRedBorder.color = companyDropdown.value == 0 ? new Color(1, 0, 0, 1) : new Color(1, 1, 1, 0);
             // instructorDropdownRedBorder.color = instructorDropdown.value == 0 ? new Color(1, 0, 0, 1) : new Color(1, 1, 1, 0);
             teamNameInputFieldRedBorder.color = teamNameInputField.text == "" ? new Color(1, 0, 0, 1) : new Color(1, 1, 1, 0);
             playerCountDropdownRedBorder.color = playerCountDropdown.value == 0 ? new Color(1, 0, 0, 1) : new Color(1, 1, 1, 0);
@@ -56,7 +56,7 @@ namespace Screens
         {
 
             // if (chooseFactoryDropdown.value != 0 && playerCountDropdown.value != 0 && companyDropdown.value != 0 && instructorDropdown.value != 0 && teamNameInputField.text != "")
-            if (chooseFactoryDropdown.value != 0 && playerCountDropdown.value != 0 && companyDropdown.value != 0 && teamNameInputField.text != "")
+            if (chooseFactoryDropdown.value != 0 && playerCountDropdown.value != 0 && teamNameInputField.text != "")
             {
                 EventManager.AssignmentCompleted.Invoke();
                 fakeNextButton.gameObject.SetActive(false);
@@ -72,7 +72,7 @@ namespace Screens
 
         private void AddListeners()
         {
-            companyDropdown.onValueChanged.AddListener(delegate { OnCompanyChanged(); });
+            // companyDropdown.onValueChanged.AddListener(delegate { OnCompanyChanged(); });
             // instructorDropdown.onValueChanged.AddListener(delegate { IsAssignmentCompleted(); });
             teamNameInputField.onValueChanged.AddListener(delegate { IsAssignmentCompleted(); });
             playerCountDropdown.onValueChanged.AddListener(delegate { IsAssignmentCompleted(); });
@@ -113,7 +113,7 @@ namespace Screens
         public async Task SaveData()
         {
             // Data.InstructorName = instructorDropdown.options[instructorDropdown.value].text;
-            Data.CompanyName = companyDropdown.options[companyDropdown.value].text;
+            // Data.CompanyName = companyDropdown.options[companyDropdown.value].text;
             Data.playerCount = playerCountDropdown.value;
             Data.FactoryName = chooseFactoryDropdown.options[chooseFactoryDropdown.value].text;
             Data.TeamName = teamNameInputField.text;

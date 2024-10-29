@@ -16,8 +16,13 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
 
     [SerializeField]
     public UnityEvent AllCorrectAnswerEvent;
+    [SerializeField] private GameObject failedGO;
+    [SerializeField] private GameObject failedAgainGO;
+    private int incorrectTries = 0; // Counter for incorrect tries
 
     private int incorrectAnswerCount;
+    [SerializeField] private GameObject[] wrongAnswerMessage;
+    [SerializeField] private GameObject[] correctAnswerMessage;
 
     protected override void Start()
     {
@@ -32,6 +37,18 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
         // This will not be interactable until at least one answer is selected
         NextButton.interactable = false;
     }
+    private void ActivateFailedMessage()
+    {
+        if (incorrectTries == 0) failedGO.SetActive(true);
+        else
+        {
+            failedAgainGO.SetActive(true);
+        }
+        foreach (Toggle toggle in toggles)
+        {
+            
+        }
+    }
 
     public override void OnNextButtonClicked()
     {
@@ -41,16 +58,21 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
         {
             AllCorrectAnswerEvent?.Invoke();
             //Debug.Log("All correct answers have been selected.");
+            base.OnNextButtonClicked();
         }
         else
         {
+            ActivateFailedMessage();
+            incorrectTries++;
             //Debug.Log("Not all correct answers have been selected.");
         }
         //Debug.Log($"Correct answers selected: {correctAnswerCount}");
+    }
+
+    public void FailedNextSceneButtonClicked()
+    {
         base.OnNextButtonClicked();
     }
-    
-
     private void OnToggleValueChanged(bool isOn)
     {
         // If any toggle is clicked, set the NextButton as interactable
@@ -85,11 +107,16 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
 
     private bool AreAllCorrectSelected()
     {
-        foreach (var correctIndex in correctAnswerIndices)
+        int wrongAnswerCount = 0;
+        foreach (int correctIndex in correctAnswerIndices)
         {
             if (!toggles[correctIndex].isOn)
             {
-                return false;
+                wrongAnswerCount++;
+            }
+            else
+            {
+                correctAnswerMessage[correctIndex].SetActive(true);
             }
         }
 
@@ -97,11 +124,11 @@ public class MultiAnswerQuestion : ScreenBaseWithTimer
         {
             if (!correctAnswerIndices.Contains(i) && toggles[i].isOn)
             {
-                //Debug.Log("Incorrect answer selected at index: " + i);
-                return false;
+                wrongAnswerCount++;
+                wrongAnswerMessage[i].SetActive(true);
             }
         }
 
-        return true;
+        return wrongAnswerCount == 0;
     }
 }

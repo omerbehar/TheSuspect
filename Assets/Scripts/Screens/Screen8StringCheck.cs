@@ -5,7 +5,6 @@ using System.Linq;
 using Screens.Bases;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -217,7 +216,7 @@ namespace Screens
             NextButton.interactable = true;
         }
 
-        private void LoadNextScene()
+        public void LoadNextScene()
         {
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(currentSceneIndex + 1);
@@ -228,7 +227,7 @@ namespace Screens
             if (incorrectTries == 0) failedGO.SetActive(true);
             else
             {
-                failedGO.SetActive(false);
+                //failedGO.SetActive(false);
                 failedAgainGO.SetActive(true);
             }
             foreach (InputField inputField in inputFields)

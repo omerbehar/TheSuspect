@@ -16,7 +16,7 @@ namespace DataLayer
             form.AddField("teamName", Data.TeamName);
             form.AddField("score", Data.Score);
             // form.AddField("instructorName", Data.InstructorName);
-            form.AddField("companyName", Data.CompanyName);
+            // form.AddField("companyName", Data.CompanyName);
             form.AddField("playerCount", Data.playerCount);
             form.AddField("FactoryName", Data.FactoryName);
             //form.AddField("playerNames", string.Join(",", Data.PlayerNames));

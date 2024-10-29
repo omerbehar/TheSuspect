@@ -21,7 +21,7 @@ namespace DataLayer
         public static Dictionary<string, string[]> AnswersText { get; set; } = new();
         public static Dictionary<string, bool> AnswerLocked { get; set; } = new();
         public static int Score { get; set; }
-        public static string CompanyName { get; set; }
+        // public static string CompanyName { get; set; }
         public static List<string> Instructors { get; set; } = new(){"בחר...", "מדריך 1", "מדריך 2", "מדריך 3", "מדריך 4"};
         public static List<string> IndieInstructor { get; set; } = new() { "בחר...", "עצמאי" };
         public static List<string> NoInstructors { get; set; } = new() { "ראשית בחר חברה..."};
@@ -38,7 +38,7 @@ namespace DataLayer
             SelectedAnswersData = new Dictionary<string, bool[]>();
             AnswersText = new Dictionary<string, string[]>();
             AnswerLocked = new Dictionary<string, bool>();
-            CompanyName = "";
+            // CompanyName = "";
             guid = Guid.NewGuid().ToString();
         }
         //save data to player prefs
@@ -46,7 +46,7 @@ namespace DataLayer
         {
             //Debug.Log("Saving data");
             PlayerPrefs.SetString("TeamName", TeamName);
-            PlayerPrefs.SetString("CompanyName", CompanyName);
+            // PlayerPrefs.SetString("CompanyName", CompanyName);
             // PlayerPrefs.SetString("InstructorName", InstructorName);
             PlayerPrefs.SetString("FactoryName", FactoryName);
             PlayerPrefs.SetInt("PlayerCount", playerCount);
@@ -127,7 +127,7 @@ namespace DataLayer
                 {
                     AnswerLocked[key] = bool.Parse(PlayerPrefs.GetString(key));
                 }
-                CompanyName = PlayerPrefs.GetString("CompanyName");
+                // CompanyName = PlayerPrefs.GetString("CompanyName");
                 Score = PlayerPrefs.GetInt("Score");
             }
         }
