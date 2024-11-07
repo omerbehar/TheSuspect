@@ -139,7 +139,7 @@ private void OnFieldValueChanged(InputField inputField)
     {
         NextButton.interactable = true; // Enable the next button when all fields are filled
         fakeNextButton.interactable = true; // Enable the fake next button when all fields are filled
-        //CloseKeyboard();
+       
     }
     else
     {
@@ -210,6 +210,7 @@ public void CloseKeyboard()
             if (isSentenceCorrect)
             {
                 Debug.Log("Sentence is correct!");
+                CloseKeyboard();
                 EventManager.AssignmentCompleted.Invoke();
                 NextButton.interactable = true; // Make the next button interactable
                 NextButton.gameObject.SetActive(true); // Show the real next button
