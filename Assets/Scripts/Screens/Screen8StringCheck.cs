@@ -122,7 +122,7 @@ private void OnFieldValueChanged(InputField inputField)
         if (currentFieldIndex > 0)
         {
             inputFields[currentFieldIndex - 1].Select();
-            CloseKeyboard(); // Optional: close the keyboard here if needed
+           
         }
     }
     else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
