@@ -232,7 +232,8 @@ public void CloseKeyboard()
                 else
                 {
                     fakeNextButton.gameObject.SetActive(true); // Show the fake next button
-                    fakeNextButton.interactable = false; // Make the fake next button non-interactable
+                    fakeNextButton.interactable = false;
+                     CloseKeyboard(); // Make the fake next button non-interactable
                     NextButton.gameObject.SetActive(false); // Hide the real next button
                     //StartCoroutine(EnableNextButtonAfterDelay(1f)); // Make the real next button interactable after 1 second
                 }
