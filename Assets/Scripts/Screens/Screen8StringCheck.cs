@@ -112,27 +112,43 @@ namespace Screens
             }
         }
 
-       private void OnFieldValueChanged(InputField inputField)
+  private void OnFieldValueChanged(InputField inputField)
 {
     int currentFieldIndex = inputFields.IndexOf(inputField);
-    if (string.IsNullOrEmpty(inputField.text) && currentFieldIndex > 0)
+
+    if (string.IsNullOrEmpty(inputField.text))
     {
-        inputFields[currentFieldIndex - 1].Select();
-        // CloseKeyboard(); // You may want to close the keyboard here
+        // Move to the previous input field when backspacing in an empty field
+        if (currentFieldIndex > 0)
+        {
+            inputFields[currentFieldIndex - 1].Select();
+            CloseKeyboard(); // Optional: close the keyboard here if needed
+        }
     }
     else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
     {
+        // Move to the next input field when a character is entered
+        inputFields[currentFieldIndex + 1].text = " "; // Set the text to a single space character
         inputFields[currentFieldIndex + 1].Select();
         if (currentFieldIndex + 1 != inputFields.Count) OpenKeyboard();
     }
 
-    if (inputFields.All(field => !string.IsNullOrEmpty(field.text)))
+    // Enable the next button only when all input fields are filled
+    if (inputFields.All(field => field.text.Trim() != ""))
     {
         NextButton.interactable = true; // Enable the next button when all fields are filled
         fakeNextButton.interactable = true; // Enable the fake next button when all fields are filled
         CloseKeyboard();
     }
+    else
+    {
+        NextButton.interactable = false; // Disable the next button when not all fields are filled
+        fakeNextButton.interactable = false; // Disable the fake next button when not all fields are filled
+    }
 }
+
+
+
         public void OpenKeyboard()
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
