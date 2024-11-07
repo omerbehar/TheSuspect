@@ -1087,31 +1087,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1341007715691413272, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1341007715691413272, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
       propertyPath: m_Pivot.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1341007715691413272, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1341007715691413272, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1341007715691413272, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1341007715691413272, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1341007715691413272, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1341007715691413272, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1147,11 +1147,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1341007715691413272, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -95.515396
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1341007715691413272, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -281.15
+      value: 68
       objectReference: {fileID: 0}
     - target: {fileID: 1341007715691413272, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1164,6 +1164,14 @@ PrefabInstance:
     - target: {fileID: 1341007715691413272, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537951125647202121, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
+      propertyPath: m_margin.x
+      value: 10.905685
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537951125647202121, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
+      propertyPath: m_margin.z
+      value: 7.9977417
       objectReference: {fileID: 0}
     - target: {fileID: 8104308736945914121, guid: 3413f93672740c148b95f8e44bce7879, type: 3}
       propertyPath: m_Name
@@ -1854,7 +1862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
