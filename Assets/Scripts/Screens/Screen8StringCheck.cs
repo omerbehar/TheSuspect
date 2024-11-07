@@ -225,7 +225,8 @@ public void CloseKeyboard()
                 if (incorrectTries > 1)
                 {
                     fakeNextButton.gameObject.SetActive(false); // Hide the fake next button
-                    NextButton.gameObject.SetActive(true); // Show the real next button
+                    NextButton.gameObject.SetActive(true);
+                     CloseKeyboard(); // Show the real next button
                     NextButton.interactable = true; // Make the real next button non-interactable
                 }
                 else
