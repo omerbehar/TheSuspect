@@ -150,18 +150,26 @@ private void OnFieldValueChanged(InputField inputField)
 
 
 
-        public void OpenKeyboard()
-        {
+private bool isKeyboardClosed = true;
+
+public void OpenKeyboard()
+{
+    isKeyboardClosed = false;
 #if UNITY_WEBGL && !UNITY_EDITOR
-        Application.ExternalCall("openKeyboard");
+    Application.ExternalCall("openKeyboard");
 #endif
-        }
-        public void CloseKeyboard()
-        {
+}
+
+public void CloseKeyboard()
+{
+    if (!isKeyboardClosed)
+    {
+        isKeyboardClosed = true;
 #if UNITY_WEBGL && !UNITY_EDITOR
         Application.ExternalCall("closeKeyboard");
 #endif
-        }
+    }
+}
         // private IEnumerator ActivateNextInputField(int nextFieldIndex)
         // {
         //     // yield return new WaitForSeconds(0.1f); // Small delay to ensure the focus transition is smooth
