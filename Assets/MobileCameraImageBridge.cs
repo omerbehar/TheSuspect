@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.IO;
 using System.Runtime.InteropServices;
 using SFB;
@@ -14,7 +15,7 @@ public class MobileCameraImageBridge : MonoBehaviour
     [SerializeField] private GameObject popupGameObject;
     //private static string debugText;
     //[SerializeField] private TMP_Text debugTextObject;
-
+    private static bool wasImageLoaded;
     private static int orientation;
 
  #if UNITY_WEBGL && !UNITY_EDITOR
@@ -33,6 +34,7 @@ public class MobileCameraImageBridge : MonoBehaviour
         Texture2D texture = new Texture2D(2, 2);
         texture.LoadImage(bytes);
         UploadImage uploadImage = FindObjectOfType<UploadImage>();
+        wasImageLoaded = true;
         uploadImage.DisplayImage(texture, orientation);
     }
     [AOT.MonoPInvokeCallback(typeof(OrientationCallback))]
@@ -64,12 +66,23 @@ public class MobileCameraImageBridge : MonoBehaviour
 #else
         PickImageAndDisplayFromExplorer();
 #endif
-        popupGameObject.SetActive(true);
-
+        StartCoroutine(PopupAfterImageLoading());
         EventManager.AssignmentCompleted.Invoke();
         
     }
-    
+
+    private IEnumerator PopupAfterImageLoading()
+    {
+        float timer = 0;
+        while (wasImageLoaded == false)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 5) break;
+            yield return new WaitForEndOfFrame();
+        }
+        popupGameObject.SetActive(true);
+    }
+
     public void DeleteImage()
     {
         UploadImage uploadImage = FindObjectOfType<UploadImage>();
@@ -107,7 +120,7 @@ public class MobileCameraImageBridge : MonoBehaviour
 
             // Display the image
             UploadImage uploadImage = FindObjectOfType<UploadImage>();
-            // popupGameObject.SetActive(true);
+            wasImageLoaded = true;
             uploadImage.DisplayImage(readableTexture, 1);
         }
 
