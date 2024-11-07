@@ -112,25 +112,27 @@ namespace Screens
             }
         }
 
-        private void OnFieldValueChanged(InputField inputField)
-        {
-            int currentFieldIndex = inputFields.IndexOf(inputField);
-            if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
-            {
-                inputFields[currentFieldIndex + 1].Select();
-                if (currentFieldIndex + 1 != inputFields.Count) OpenKeyboard();
+       private void OnFieldValueChanged(InputField inputField)
+{
+    int currentFieldIndex = inputFields.IndexOf(inputField);
+    if (string.IsNullOrEmpty(inputField.text) && currentFieldIndex > 0)
+    {
+        inputFields[currentFieldIndex - 1].Select();
+        // CloseKeyboard(); // You may want to close the keyboard here
+    }
+    else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
+    {
+        inputFields[currentFieldIndex + 1].Select();
+        if (currentFieldIndex + 1 != inputFields.Count) OpenKeyboard();
+    }
 
-                // StartCoroutine(ActivateNextInputField(currentFieldIndex + 1));
-            }
-            // if (currentFieldIndex == inputFields.Count - 1)  EventSystem.current.SetSelectedGameObject(null);
-
-            if (inputFields.All(field => !string.IsNullOrEmpty(field.text)))
-            {
-                NextButton.interactable = true; // Enable the next button when all fields are filled
-                fakeNextButton.interactable = true; // Enable the fake next button when all fields are filled
-                CloseKeyboard();
-            }
-        }
+    if (inputFields.All(field => !string.IsNullOrEmpty(field.text)))
+    {
+        NextButton.interactable = true; // Enable the next button when all fields are filled
+        fakeNextButton.interactable = true; // Enable the fake next button when all fields are filled
+        CloseKeyboard();
+    }
+}
         public void OpenKeyboard()
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
