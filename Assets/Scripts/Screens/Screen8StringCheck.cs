@@ -139,7 +139,7 @@ private void OnFieldValueChanged(InputField inputField)
     {
         NextButton.interactable = true; // Enable the next button when all fields are filled
         fakeNextButton.interactable = true; // Enable the fake next button when all fields are filled
-        CloseKeyboard();
+        //CloseKeyboard();
     }
     else
     {
