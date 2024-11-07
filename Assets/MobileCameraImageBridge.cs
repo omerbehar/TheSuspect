@@ -10,12 +10,14 @@ using UnityEngine.Video;
 public class MobileCameraImageBridge : MonoBehaviour
 {
     [SerializeField] private Button deleteButton;
+
+    [SerializeField] private GameObject popupGameObject;
     //private static string debugText;
     //[SerializeField] private TMP_Text debugTextObject;
 
     private static int orientation;
 
-#if UNITY_WEBGL && !UNITY_EDITOR
+ #if UNITY_WEBGL && !UNITY_EDITOR
     
     [DllImport("__Internal")]
     private static extern void OpenCamera(MobileCameraCallback callback, OrientationCallback orientationCallback);
@@ -62,6 +64,8 @@ public class MobileCameraImageBridge : MonoBehaviour
 #else
         PickImageAndDisplayFromExplorer();
 #endif
+        popupGameObject.SetActive(true);
+
         EventManager.AssignmentCompleted.Invoke();
         
     }
@@ -103,6 +107,7 @@ public class MobileCameraImageBridge : MonoBehaviour
 
             // Display the image
             UploadImage uploadImage = FindObjectOfType<UploadImage>();
+            // popupGameObject.SetActive(true);
             uploadImage.DisplayImage(readableTexture, 1);
         }
 

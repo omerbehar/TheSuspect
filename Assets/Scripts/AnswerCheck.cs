@@ -17,8 +17,9 @@ public class AnswerCheck : ScreenBaseWithTimer
     [SerializeField]
     private string correctAnswer;
 
-    [SerializeField]
-    private GameObject wrongAnswerObject;
+    [SerializeField] private GameObject failedGO;
+    [SerializeField] private GameObject failedAgainGO;
+    private int incorrectTries = 0; // Counter for incorrect tries
 
     protected override void Start()
     {
@@ -38,28 +39,31 @@ public class AnswerCheck : ScreenBaseWithTimer
     {
         if (inputField.text.Equals(correctAnswer))
         {
-            // If correct, deactivate the object if it's active, or do nothing if it's already inactive
-            if (wrongAnswerObject.activeSelf)
-            {
-                wrongAnswerObject.SetActive(false);
-            }
-            Debug.Log("The correct answer was input.");
             CorrectAnswerEvent?.Invoke();
             base.OnNextButtonClicked();
         }
         else
         {
-            // If wrong, activate the object
-            wrongAnswerObject.SetActive(true);
-            Debug.Log(correctAnswer);
-            Debug.Log(inputField.text);
-            Debug.Log("The incorrect answer was input.");
+            ActivateFailedMessage();
+            incorrectTries++;
             IncorrectAnswerEvent?.Invoke();
-            // Show an error message or prompt the user to try again
-            Debug.Log("Wrong answer, please try again.");
-            // Do not call base.OnNextButtonClicked() here
         }
     }
+
+    public void TwoMistakesNextScene()
+    {
+        base.OnNextButtonClicked();
+    }
+    
+    private void ActivateFailedMessage()
+    {
+        if (incorrectTries == 0) failedGO.SetActive(true);
+        else
+        {
+            failedAgainGO.SetActive(true);
+        }
+    }
+
     public void LinkClicked()
     {
         Application.OpenURL("https://levana.org.il/%D7%A9%D7%A4%D7%AA-%D7%94%D7%A1%D7%99%D7%9E%D7%A0%D7%99%D7%9D/");

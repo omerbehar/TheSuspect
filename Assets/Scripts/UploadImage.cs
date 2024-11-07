@@ -211,8 +211,8 @@ public class UploadImage : MonoBehaviour
         }
 
         // Resize the Texture
-        capturedImage = ResizeImage(capturedImage, newWidth, newHeight);
-
+        Texture2D resizedImage = ResizeImage(capturedImage, newWidth, newHeight);
+        capturedImage = resizedImage ? resizedImage : capturedImage;
         // Set the new dimensions:
         rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
         rawImageDisplay.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
@@ -228,6 +228,7 @@ public class UploadImage : MonoBehaviour
         if (sourceTex.width != targetWidth || sourceTex.height != targetHeight)
         {
             Debug.Log(targetWidth + " " + targetHeight);
+            if (targetWidth == 0 || targetHeight == 0) return null;
             RenderTexture rt = RenderTexture.GetTemporary(targetWidth, targetHeight);
             rt.filterMode = FilterMode.Point;
             RenderTexture.active = rt;
