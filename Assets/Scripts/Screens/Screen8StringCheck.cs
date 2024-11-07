@@ -112,11 +112,11 @@ namespace Screens
             }
         }
 
-  private void OnFieldValueChanged(InputField inputField)
+private void OnFieldValueChanged(InputField inputField)
 {
     int currentFieldIndex = inputFields.IndexOf(inputField);
 
-    if (string.IsNullOrEmpty(inputField.text))
+    if (string.IsNullOrEmpty(inputField.text) || inputField.text == " ")
     {
         // Move to the previous input field when backspacing in an empty field
         if (currentFieldIndex > 0)
@@ -128,8 +128,9 @@ namespace Screens
     else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
     {
         // Move to the next input field when a character is entered
-        inputFields[currentFieldIndex + 1].text = " "; // Set the text to a single space character
+        inputFields[currentFieldIndex + 1].text = " "; // Pre-fill with a space
         inputFields[currentFieldIndex + 1].Select();
+        inputFields[currentFieldIndex + 1].caretPosition = 0; // Move the caret to the beginning
         if (currentFieldIndex + 1 != inputFields.Count) OpenKeyboard();
     }
 
