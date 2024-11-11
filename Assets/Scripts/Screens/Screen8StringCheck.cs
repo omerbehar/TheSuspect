@@ -121,17 +121,15 @@ private void OnFieldValueChanged(InputField inputField)
         // Move to the previous input field when backspacing in an empty field
         if (currentFieldIndex > 0)
         {
-            inputFields[currentFieldIndex - 1].Select();
-           
+            inputFields[currentFieldIndex - 1].ActivateInputField();
         }
     }
     else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
     {
         // Move to the next input field when a character is entered
         inputFields[currentFieldIndex + 1].text = " "; // Pre-fill with a space
-        inputFields[currentFieldIndex + 1].Select();
+        inputFields[currentFieldIndex + 1].ActivateInputField();
         inputFields[currentFieldIndex + 1].caretPosition = 0; // Move the caret to the beginning
-        if (currentFieldIndex + 1 != inputFields.Count) OpenKeyboard();
     }
 
     // Enable the next button only when all input fields are filled
@@ -155,6 +153,7 @@ private bool isKeyboardClosed = true;
 public void OpenKeyboard()
 {
     isKeyboardClosed = false;
+    Screen.fullScreenMode = FullScreenMode.Windowed;
 #if UNITY_WEBGL && !UNITY_EDITOR
     Application.ExternalCall("openKeyboard");
 #endif
@@ -165,6 +164,7 @@ public void CloseKeyboard()
     if (!isKeyboardClosed)
     {
         isKeyboardClosed = true;
+        Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
 #if UNITY_WEBGL && !UNITY_EDITOR
         Application.ExternalCall("closeKeyboard");
 #endif
