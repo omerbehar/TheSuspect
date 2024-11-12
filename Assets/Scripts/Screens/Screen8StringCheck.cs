@@ -65,7 +65,7 @@ namespace Screens
             if (!inputFieldPrefab || !textPrefab || !wordParentPrefab) return;
 
             if (wordsWithMissingChars == null || wordsWithMissingChars.Count == 0) return;
-
+            
             foreach (WordWithMissingChars wordWithMissingChars in wordsWithMissingChars)
             {
                 string word = wordWithMissingChars.word;
@@ -97,6 +97,7 @@ namespace Screens
                         instantiatedObjects.Add(inputFieldGO);
                         InputField inputField = inputFieldGO.GetComponent<InputField>();
                         inputField.characterLimit = 1;
+                        inputField.text = " ";
                         inputField.onValueChanged.AddListener(delegate { OnFieldValueChanged(inputField); });
                         inputFields.Add(inputField);
                         correctChars.Add(c.ToString());
@@ -125,9 +126,9 @@ namespace Screens
             }
             else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
             {
-                inputFields[currentFieldIndex + 1].text = " ";
                 inputFields[currentFieldIndex + 1].ActivateInputField();
                 inputFields[currentFieldIndex + 1].caretPosition = 0;
+                OpenKeyboard();
             }
 
             if (inputFields.All(field => field.text.Trim() != ""))
@@ -207,7 +208,7 @@ namespace Screens
             if (isSentenceCorrect)
             {
                 Debug.Log("Sentence is correct!");
-                CloseKeyboard();
+                //CloseKeyboard();
                 EventManager.AssignmentCompleted.Invoke();
                 NextButton.interactable = true; // Make the next button interactable
                 NextButton.gameObject.SetActive(true); // Show the real next button
@@ -223,14 +224,14 @@ namespace Screens
                 {
                     fakeNextButton.gameObject.SetActive(false); // Hide the fake next button
                     NextButton.gameObject.SetActive(true);
-                    CloseKeyboard(); // Show the real next button
+                    //CloseKeyboard(); // Show the real next button
                     NextButton.interactable = true; // Make the real next button non-interactable
                 }
                 else
                 {
                     fakeNextButton.gameObject.SetActive(true); // Show the fake next button
                     fakeNextButton.interactable = false;
-                    CloseKeyboard(); // Make the fake next button non-interactable
+                    //CloseKeyboard(); // Make the fake next button non-interactable
                     NextButton.gameObject.SetActive(false); // Hide the real next button
                     //StartCoroutine(EnableNextButtonAfterDelay(1f)); // Make the real next button interactable after 1 second
                 }
