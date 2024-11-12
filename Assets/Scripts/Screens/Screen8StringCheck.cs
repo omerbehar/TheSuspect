@@ -15,89 +15,82 @@ namespace Screens
     public class WordWithMissingChars
     {
         public string word;
-        public List<char> missingChars; // List of characters to be replaced with input fields
-        [FormerlySerializedAs("inputFieldParent")] public Transform lineTransform; // Parent transform for the input fields of this word
+        public List<char> missingChars;
+
+        [FormerlySerializedAs("inputFieldParent")]
+        public Transform lineTransform;
     }
 
     public class Screen8StringCheck : ScreenBase
     {
         [SerializeField] private GameObject inputFieldPrefab;
         [SerializeField] private GameObject textPrefab;
-        [SerializeField] private GameObject wordParentPrefab; // Prefab for the parent of each word
+        [SerializeField] private GameObject wordParentPrefab;
         [SerializeField] private List<WordWithMissingChars> wordsWithMissingChars;
         [SerializeField] private GameObject failedGO;
         [SerializeField] private GameObject failedAgainGO;
-        [SerializeField] private float elementSpacing = 2f; // Adjustable spacing value
-        [SerializeField] private float charOffset = 10f; // Adjustable offset between characters
+        [SerializeField] private float elementSpacing = 2f;
+        [SerializeField] private float charOffset = 10f;
         [SerializeField] private bool initializeOnStart = true;
-        [SerializeField] private Button fakeNextButton; // Fake button for the initial state
-        [SerializeField] private UnityEngine.UI.ScrollRect scrollView;
-        
+        [SerializeField] private Button fakeNextButton;
+        // [SerializeField] private ScrollRect scrollView;
 
-        private List<InputField> inputFields = new List<InputField>();
-        private List<string> correctChars = new List<string>();
-        private List<GameObject> instantiatedObjects = new List<GameObject>(); // List to track instantiated GameObjects
-        private int incorrectTries = 0; // Counter for incorrect tries
+
+        private List<InputField> inputFields = new();
+        private List<string> correctChars = new();
+        private List<GameObject> instantiatedObjects = new();
+        private int incorrectTries;
 
         protected override void Start()
         {
             base.Start();
-            
+
             if (initializeOnStart)
             {
                 Init();
-                 #if !UNITY_EDITOR && UNITY_WEBGL 
-                // disable WebGLInput.mobileKeyboardSupport so the built-in mobile keyboard support is disabled.
+#if !UNITY_EDITOR && UNITY_WEBGL
                 WebGLInput.mobileKeyboardSupport = true;
-            #endif
+#endif
             }
+
             NextButton.onClick.AddListener(OnNextButtonClicked);
             fakeNextButton.onClick.AddListener(OnFakeNextButtonClicked);
-            fakeNextButton.gameObject.SetActive(true); // Show the fake button initially
-            NextButton.gameObject.SetActive(false); // Hide the real next button initially
+            fakeNextButton.gameObject.SetActive(true);
+            NextButton.gameObject.SetActive(false);
         }
 
         public void Init()
         {
             NextButton.interactable = false;
-            if (inputFieldPrefab == null || textPrefab == null || wordParentPrefab == null)
-            {
-                Debug.LogError("One or more prefabs are not assigned.");
-                return;
-            }
+            if (!inputFieldPrefab || !textPrefab || !wordParentPrefab) return;
 
-            if (wordsWithMissingChars == null || wordsWithMissingChars.Count == 0)
-            {
-                Debug.LogError("wordsWithMissingChars is not assigned or empty.");
-                return;
-            }
+            if (wordsWithMissingChars == null || wordsWithMissingChars.Count == 0) return;
 
-            foreach (var wordWithMissingChars in wordsWithMissingChars)
+            foreach (WordWithMissingChars wordWithMissingChars in wordsWithMissingChars)
             {
                 string word = wordWithMissingChars.word;
                 List<char> missingChars = wordWithMissingChars.missingChars;
                 Transform inputFieldParent = wordWithMissingChars.lineTransform;
 
-                if (string.IsNullOrEmpty(word) || missingChars == null || missingChars.Count == 0 || inputFieldParent == null)
-                {
-                    Debug.LogError("Missing or incorrect parameters for word setup.");
-                    continue;
-                }
+                if (string.IsNullOrEmpty(word) || missingChars == null || missingChars.Count == 0 ||
+                    !inputFieldParent) continue;
 
                 GameObject wordParentGO = Instantiate(wordParentPrefab, inputFieldParent);
-                instantiatedObjects.Add(wordParentGO); // Track the instantiated GameObject
+                instantiatedObjects.Add(wordParentGO);
 
-                HorizontalLayoutGroup layoutGroup = wordParentGO.GetComponent<HorizontalLayoutGroup>() ?? wordParentGO.AddComponent<HorizontalLayoutGroup>();
+                HorizontalLayoutGroup layoutGroup = wordParentGO.GetComponent<HorizontalLayoutGroup>() ??
+                                                    wordParentGO.AddComponent<HorizontalLayoutGroup>();
                 layoutGroup.childAlignment = TextAnchor.MiddleCenter;
-                layoutGroup.reverseArrangement = true; // Enable RTL support
+                layoutGroup.reverseArrangement = true;
 
-                float totalWidth = word.Length * (inputFieldPrefab.GetComponent<RectTransform>().rect.width + charOffset);
+                float totalWidth =
+                    word.Length * (inputFieldPrefab.GetComponent<RectTransform>().rect.width + charOffset);
                 layoutGroup.spacing = elementSpacing + charOffset;
-                layoutGroup.padding = new RectOffset((int)(totalWidth / 2), (int)(totalWidth / 2), 0, 0);
+                layoutGroup.padding =
+                    new RectOffset((int)(totalWidth / 2), (int)(totalWidth / 2), 0, 0);
 
-                for (int i = 0; i < word.Length; i++)
+                foreach (char c in word)
                 {
-                    char c = word[i];
                     if (missingChars.Contains(c))
                     {
                         GameObject inputFieldGO = Instantiate(inputFieldPrefab, wordParentGO.transform);
@@ -119,66 +112,61 @@ namespace Screens
             }
         }
 
-private void OnFieldValueChanged(InputField inputField)
-{
-    int currentFieldIndex = inputFields.IndexOf(inputField);
-
-    if (string.IsNullOrEmpty(inputField.text) || inputField.text == " ")
-    {
-        // Move to the previous input field when backspacing in an empty field
-        if (currentFieldIndex > 0)
+        private void OnFieldValueChanged(InputField inputField)
         {
-            inputFields[currentFieldIndex - 1].ActivateInputField();
+            int currentFieldIndex = inputFields.IndexOf(inputField);
+
+            if (string.IsNullOrEmpty(inputField.text) || inputField.text == " ")
+            {
+                if (currentFieldIndex > 0)
+                {
+                    inputFields[currentFieldIndex - 1].ActivateInputField();
+                }
+            }
+            else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
+            {
+                inputFields[currentFieldIndex + 1].text = " ";
+                inputFields[currentFieldIndex + 1].ActivateInputField();
+                inputFields[currentFieldIndex + 1].caretPosition = 0;
+            }
+
+            if (inputFields.All(field => field.text.Trim() != ""))
+            {
+                NextButton.interactable = true;
+                fakeNextButton.interactable = true;
+            }
+            else
+            {
+                NextButton.interactable = false;
+                fakeNextButton.interactable = false;
+            }
         }
-    }
-    else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
-    {
-        // Move to the next input field when a character is entered
-        inputFields[currentFieldIndex + 1].text = " "; // Set a space in the next input field
-        inputFields[currentFieldIndex + 1].ActivateInputField();
-        inputFields[currentFieldIndex + 1].caretPosition = 0; // Move the caret to the beginning
-    }
-
-    // Enable the next button only when all input fields are filled
-    if (inputFields.All(field => field.text.Trim() != ""))
-    {
-        NextButton.interactable = true; // Enable the next button when all fields are filled
-        fakeNextButton.interactable = true; // Enable the fake next button when all fields are filled
-    }
-    else
-    {
-        NextButton.interactable = false; // Disable the next button when not all fields are filled
-        fakeNextButton.interactable = false; // Disable the fake next button when not all fields are filled
-    }
-}
 
 
+        private bool isKeyboardClosed = true;
 
-
-private bool isKeyboardClosed = true;
-
-public void OpenKeyboard()
-{
-    isKeyboardClosed = false;
-    Screen.fullScreenMode = FullScreenMode.Windowed;
+        public void OpenKeyboard()
+        {
+            isKeyboardClosed = false;
+            Screen.fullScreenMode = FullScreenMode.Windowed;
 #if UNITY_WEBGL && !UNITY_EDITOR
-    Application.ExternalCall("openKeyboard");
+            Application.ExternalCall("openKeyboard");
 #endif
- scrollView.enabled = true; 
-}
+            //scrollView.enabled = true;
+        }
 
-public void CloseKeyboard()
-{
-    if (!isKeyboardClosed)
-    {
-        isKeyboardClosed = true;
-        Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+        public void CloseKeyboard()
+        {
+            if (!isKeyboardClosed)
+            {
+                isKeyboardClosed = true;
+                Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
 #if UNITY_WEBGL && !UNITY_EDITOR
-        Application.ExternalCall("closeKeyboard");
+                Application.ExternalCall("closeKeyboard");
 #endif
- scrollView.enabled = false;
-    }
-}
+                //scrollView.enabled = false;
+            }
+        }
         // private IEnumerator ActivateNextInputField(int nextFieldIndex)
         // {
         //     // yield return new WaitForSeconds(0.1f); // Small delay to ensure the focus transition is smooth
@@ -235,14 +223,14 @@ public void CloseKeyboard()
                 {
                     fakeNextButton.gameObject.SetActive(false); // Hide the fake next button
                     NextButton.gameObject.SetActive(true);
-                     CloseKeyboard(); // Show the real next button
+                    CloseKeyboard(); // Show the real next button
                     NextButton.interactable = true; // Make the real next button non-interactable
                 }
                 else
                 {
                     fakeNextButton.gameObject.SetActive(true); // Show the fake next button
                     fakeNextButton.interactable = false;
-                     CloseKeyboard(); // Make the fake next button non-interactable
+                    CloseKeyboard(); // Make the fake next button non-interactable
                     NextButton.gameObject.SetActive(false); // Hide the real next button
                     //StartCoroutine(EnableNextButtonAfterDelay(1f)); // Make the real next button interactable after 1 second
                 }
@@ -269,6 +257,7 @@ public void CloseKeyboard()
                 //failedGO.SetActive(false);
                 failedAgainGO.SetActive(true);
             }
+
             foreach (InputField inputField in inputFields)
             {
                 bool parseSuccess = ColorUtility.TryParseHtmlString("#FF4050", out Color newCol);
@@ -282,6 +271,7 @@ public void CloseKeyboard()
             {
                 Destroy(obj);
             }
+
             instantiatedObjects.Clear();
             inputFields.Clear();
             correctChars.Clear();
