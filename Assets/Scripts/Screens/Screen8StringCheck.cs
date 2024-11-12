@@ -46,6 +46,10 @@ namespace Screens
             if (initializeOnStart)
             {
                 Init();
+                 #if !UNITY_EDITOR && UNITY_WEBGL 
+                // disable WebGLInput.mobileKeyboardSupport so the built-in mobile keyboard support is disabled.
+                WebGLInput.mobileKeyboardSupport = true;
+            #endif
             }
             NextButton.onClick.AddListener(OnNextButtonClicked);
             fakeNextButton.onClick.AddListener(OnFakeNextButtonClicked);
