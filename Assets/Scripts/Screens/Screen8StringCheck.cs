@@ -31,6 +31,8 @@ namespace Screens
         [SerializeField] private float charOffset = 10f; // Adjustable offset between characters
         [SerializeField] private bool initializeOnStart = true;
         [SerializeField] private Button fakeNextButton; // Fake button for the initial state
+        [SerializeField] private UnityEngine.UI.ScrollRect scrollView;
+        
 
         private List<InputField> inputFields = new List<InputField>();
         private List<string> correctChars = new List<string>();
@@ -40,6 +42,7 @@ namespace Screens
         protected override void Start()
         {
             base.Start();
+            
             if (initializeOnStart)
             {
                 Init();
@@ -157,6 +160,7 @@ public void OpenKeyboard()
 #if UNITY_WEBGL && !UNITY_EDITOR
     Application.ExternalCall("openKeyboard");
 #endif
+ scrollView.enabled = true; 
 }
 
 public void CloseKeyboard()
@@ -168,6 +172,7 @@ public void CloseKeyboard()
 #if UNITY_WEBGL && !UNITY_EDITOR
         Application.ExternalCall("closeKeyboard");
 #endif
+ scrollView.enabled = false;
     }
 }
         // private IEnumerator ActivateNextInputField(int nextFieldIndex)
