@@ -130,7 +130,7 @@ private void OnFieldValueChanged(InputField inputField)
     else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
     {
         // Move to the next input field when a character is entered
-        inputFields[currentFieldIndex + 1].text = " "; // Pre-fill with a space
+        inputFields[currentFieldIndex + 1].text = " "; // Set a space in the next input field
         inputFields[currentFieldIndex + 1].ActivateInputField();
         inputFields[currentFieldIndex + 1].caretPosition = 0; // Move the caret to the beginning
     }
@@ -140,7 +140,6 @@ private void OnFieldValueChanged(InputField inputField)
     {
         NextButton.interactable = true; // Enable the next button when all fields are filled
         fakeNextButton.interactable = true; // Enable the fake next button when all fields are filled
-       
     }
     else
     {
@@ -148,6 +147,7 @@ private void OnFieldValueChanged(InputField inputField)
         fakeNextButton.interactable = false; // Disable the fake next button when not all fields are filled
     }
 }
+
 
 
 
