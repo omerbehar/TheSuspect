@@ -122,6 +122,10 @@ namespace Screens
                 if (currentFieldIndex > 0)
                 {
                     inputFields[currentFieldIndex - 1].ActivateInputField();
+                    if (currentFieldIndex == 0)
+                        {
+                             Init();
+                        }
                 }
             }
             else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
@@ -146,28 +150,64 @@ namespace Screens
 
         private bool isKeyboardClosed = true;
 
-        public void OpenKeyboard()
-        {
-            isKeyboardClosed = false;
-            Screen.fullScreenMode = FullScreenMode.Windowed;
+    public void OpenKeyboard()
+{
+    isKeyboardClosed = false;
 #if UNITY_WEBGL && !UNITY_EDITOR
-            Application.ExternalCall("openKeyboard");
+    Application.ExternalCall("openKeyboard");
+#elif UNITY_ANDROID
+    AndroidJavaClass UnityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+    AndroidJavaObject View = UnityClass.GetStatic<AndroidJavaObject>("currentActivity").Get<AndroidJavaObject>("getWindow").Call<AndroidJavaObject>("getDecorView");
+    AndroidJavaObject InputMethodManager = new AndroidJavaObject("android.view.inputmethod.InputMethodManager");
+    InputMethodManager.Call("showSoftInput", View, 0);
 #endif
-            //scrollView.enabled = true;
-        }
 
-        public void CloseKeyboard()
-        {
-            if (!isKeyboardClosed)
-            {
-                isKeyboardClosed = true;
-                Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+    // Get the keyboard height
+    float keyboardHeight = GetKeyboardHeight();
+
+    // Find the main camera
+    Camera mainCamera = Camera.main;
+
+    // Adjust the position of the main camera based on the keyboard height
+    mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y - keyboardHeight, mainCamera.transform.position.z);
+}
+
+public void CloseKeyboard()
+{
+    if (!isKeyboardClosed)
+    {
+        isKeyboardClosed = true;
 #if UNITY_WEBGL && !UNITY_EDITOR
-                Application.ExternalCall("closeKeyboard");
+        Application.ExternalCall("closeKeyboard");
 #endif
-                //scrollView.enabled = false;
-            }
+
+        // Get the keyboard height
+        float keyboardHeight = GetKeyboardHeight();
+
+        // Find the main camera
+        Camera mainCamera = Camera.main;
+
+        // Reset the position of the main camera based on the keyboard height
+        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + keyboardHeight, mainCamera.transform.position.z);
+    }
+}
+private float GetKeyboardHeight()
+{
+    if (Application.platform == RuntimePlatform.Android)
+    {
+        using (AndroidJavaClass UnityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+        {
+            AndroidJavaObject View = UnityClass.GetStatic<AndroidJavaObject>("currentActivity").Get<AndroidJavaObject>("getWindow").Call<AndroidJavaObject>("getDecorView");
+            AndroidJavaObject InputMethodManager = new AndroidJavaObject("android.view.inputmethod.InputMethodManager");
+            return InputMethodManager.Call<float>("getInputMethodWindowVisibleHeight", View);
         }
+    }
+    else
+    {
+        return Screen.height * 0.2f; // Use a default value for other platforms
+    }
+}
+
         // private IEnumerator ActivateNextInputField(int nextFieldIndex)
         // {
         //     // yield return new WaitForSeconds(0.1f); // Small delay to ensure the focus transition is smooth
