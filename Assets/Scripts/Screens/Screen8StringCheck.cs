@@ -122,7 +122,12 @@ private void OnFieldValueChanged(InputField inputField)
         if (currentFieldIndex > 0)
         {
             inputFields[currentFieldIndex - 1].Select();
-           
+            // Workaround for Android keyboard issue
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                CloseKeyboard();
+                Invoke("OpenKeyboard", 0.1f);
+            }
         }
     }
     else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
@@ -131,7 +136,12 @@ private void OnFieldValueChanged(InputField inputField)
         inputFields[currentFieldIndex + 1].text = " "; // Pre-fill with a space
         inputFields[currentFieldIndex + 1].Select();
         inputFields[currentFieldIndex + 1].caretPosition = 0; // Move the caret to the beginning
-        if (currentFieldIndex + 1 != inputFields.Count) OpenKeyboard();
+        // Workaround for Android keyboard issue
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            CloseKeyboard();
+            Invoke("OpenKeyboard", 0.1f);
+        }
     }
 
     // Enable the next button only when all input fields are filled
@@ -139,7 +149,6 @@ private void OnFieldValueChanged(InputField inputField)
     {
         NextButton.interactable = true; // Enable the next button when all fields are filled
         fakeNextButton.interactable = true; // Enable the fake next button when all fields are filled
-       
     }
     else
     {
@@ -158,6 +167,15 @@ public void OpenKeyboard()
 #if UNITY_WEBGL && !UNITY_EDITOR
     Application.ExternalCall("openKeyboard");
 #endif
+
+    // Get the keyboard height
+    float keyboardHeight = GetKeyboardHeight()*2f;
+
+    // Find the main camera
+    Camera mainCamera = Camera.main;
+
+    // Adjust the position of the main camera based on the keyboard height
+    mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y - keyboardHeight, mainCamera.transform.position.z);
 }
 
 public void CloseKeyboard()
@@ -168,8 +186,30 @@ public void CloseKeyboard()
 #if UNITY_WEBGL && !UNITY_EDITOR
         Application.ExternalCall("closeKeyboard");
 #endif
+
+        // Get the keyboard height
+        float keyboardHeight = GetKeyboardHeight() *2f;
+
+        // Find the main camera
+        Camera mainCamera = Camera.main;
+
+        // Reset the position of the main camera based on the keyboard height
+        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + keyboardHeight, mainCamera.transform.position.z);
     }
 }
+
+private float GetKeyboardHeight()
+{
+    if (Application.platform == RuntimePlatform.Android)
+    {
+        return Screen.height * 1f; // Use a default value for Android
+    }
+    else
+    {
+        return Screen.height * 0.2f; // Use a default value for other platforms
+    }
+}
+
         // private IEnumerator ActivateNextInputField(int nextFieldIndex)
         // {
         //     // yield return new WaitForSeconds(0.1f); // Small delay to ensure the focus transition is smooth
@@ -182,41 +222,42 @@ public void CloseKeyboard()
         //     // inputFields[nextFieldIndex].caretPosition = 0;
         // }
 
-        private void OnNextButtonClicked()
+   private void OnNextButtonClicked()
+{
+    IsSentenceCorrect();
+    CloseKeyboard();
+}
+
+private void OnFakeNextButtonClicked()
+{
+    IsSentenceCorrect();
+    CloseKeyboard();
+}
+
+private void IsSentenceCorrect()
+{
+    bool isSentenceCorrect = true;
+
+    for (int i = 0; i < inputFields.Count; i++)
+    {
+        if (inputFields[i].text != correctChars[i])
         {
-            IsSentenceCorrect();
+            Debug.Log($"Character '{inputFields[i].text}' is incorrect. Expected '{correctChars[i]}'");
+            ActivateFailedMessage();
+            isSentenceCorrect = false;
+            break;
         }
+    }
 
-        private void OnFakeNextButtonClicked()
-        {
-            IsSentenceCorrect();
-        }
-
-        private void IsSentenceCorrect()
-        {
-            bool isSentenceCorrect = true;
-
-            for (int i = 0; i < inputFields.Count; i++)
-            {
-                if (inputFields[i].text != correctChars[i])
-                {
-                    Debug.Log($"Character '{inputFields[i].text}' is incorrect. Expected '{correctChars[i]}'.");
-                    ActivateFailedMessage();
-                    isSentenceCorrect = false;
-                    break;
-                }
-            }
-
-            if (isSentenceCorrect)
-            {
-                Debug.Log("Sentence is correct!");
-                CloseKeyboard();
-                EventManager.AssignmentCompleted.Invoke();
-                NextButton.interactable = true; // Make the next button interactable
-                NextButton.gameObject.SetActive(true); // Show the real next button
-                fakeNextButton.gameObject.SetActive(false); // Hide the fake next button
-                LoadNextScene(); // Move to the next scene
-            }
+    if (isSentenceCorrect)
+    {
+        Debug.Log("Sentence is correct!");
+        EventManager.AssignmentCompleted.Invoke();
+        NextButton.interactable = true; // Make the next button interactable
+        NextButton.gameObject.SetActive(true); // Show the real next button
+        fakeNextButton.gameObject.SetActive(false); // Hide the fake next button
+        LoadNextScene(); // Move to the next scene
+    }
             else
             {
                 incorrectTries++;
