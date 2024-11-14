@@ -165,12 +165,7 @@ GameManagerKB.Instance.textBox = inputField;
 
 private void OnInputFieldDeSelect(string arg0)
 {
-    // Only close the keyboard if the last field is deselected
-    if (currentlySelectedInputFieldIndex == inputFields.Count - 1)
-    {
-        keyboardAnimator.SetBool(KeyboardIn, false);
-        keyboardAnimator2.SetBool(KeyboardIn, false);
-    }
+   
 }
 
          public void OnKeyboardClick()
@@ -208,6 +203,12 @@ private void OnInputFieldDeSelect(string arg0)
             inputFields[currentFieldIndex + 1].ActivateInputField();
             inputFields[currentFieldIndex + 1].caretPosition = 0;
         }
+        else if (currentFieldIndex == inputFields.Count - 1)
+        {
+            // Stop moving focus when the last field is reached
+            inputField.ActivateInputField();
+            inputField.caretPosition = 0;
+        }
     }
     else
     {
@@ -219,43 +220,30 @@ private void OnInputFieldDeSelect(string arg0)
             inputFields[currentFieldIndex - 1].caretPosition = 0;
         }
     }
+ 
+  
+         // Keep the keyboard animators open
+    keyboardAnimator.SetBool(KeyboardIn, true);
+    keyboardAnimator2.SetBool(KeyboardIn, true);
+    
+   
+
+    
 
     // Check if all fields are filled
     if (inputFields.All(field => field.text.Trim() != "" && field.text.Trim() != " "))
     {
         NextButton.interactable = true;
         fakeNextButton.interactable = true;
-
-        // Close keyboard when all fields are filled
-        keyboardAnimator.SetBool(KeyboardIn, false);
-        keyboardAnimator2.SetBool(KeyboardIn, false);
-        CloseKeyboard();
     }
     else
     {
         NextButton.interactable = false;
         fakeNextButton.interactable = false;
     }
-
-    // Check correctness of the current field
-    if (currentlySelectedInputField != null)
-    {
-        int currentIndex = inputFields.IndexOf(currentlySelectedInputField);
-        if (currentIndex >= 0 && currentIndex < correctChars.Count)
-        {
-            if (currentlySelectedInputField.text == correctChars[currentIndex])
-            {
-                // Correct character entered
-                Debug.Log("Correct!");
-            }
-            else
-            {
-                // Incorrect character entered
-                Debug.Log("Incorrect");
-            }
-        }
-    }
 }
+
+
 
 
         private bool isKeyboardClosed = true;
