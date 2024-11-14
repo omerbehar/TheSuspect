@@ -8,3 +8,6 @@
 	<uses-permission android:name="android.permission.READ_MEDIA_AUDIO" tools:node="replace" />
 	<application android:requestLegacyExternalStorage="true" />
 </manifest>
+<activity android:name="com.unity3d.player.UnityPlayerActivity"
+          android:windowSoftInputMode="adjustNothing">
+</activity>

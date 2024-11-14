@@ -23,7 +23,8 @@ namespace Screens
 
     public class Screen8StringCheck : ScreenBase
     {
-        [SerializeField] private GameObject inputFieldPrefab;
+        // [SerializeField] private GameObject inputFieldPrefab;
+        [SerializeField] private GameObject tmproInputFieldPrefab;
         [SerializeField] private GameObject textPrefab;
         [SerializeField] private GameObject wordParentPrefab;
         [SerializeField] private List<WordWithMissingChars> wordsWithMissingChars;
@@ -36,7 +37,7 @@ namespace Screens
         // [SerializeField] private ScrollRect scrollView;
 
 
-        private List<InputField> inputFields = new();
+        private List<TMP_InputField> inputFields = new();
         private List<string> correctChars = new();
         private List<GameObject> instantiatedObjects = new();
         private int incorrectTries;
@@ -62,7 +63,7 @@ namespace Screens
         public void Init()
         {
             NextButton.interactable = false;
-            if (!inputFieldPrefab || !textPrefab || !wordParentPrefab) return;
+            if ( !tmproInputFieldPrefab || !textPrefab || !wordParentPrefab) return;
 
             if (wordsWithMissingChars == null || wordsWithMissingChars.Count == 0) return;
             
@@ -82,9 +83,11 @@ namespace Screens
                                                     wordParentGO.AddComponent<HorizontalLayoutGroup>();
                 layoutGroup.childAlignment = TextAnchor.MiddleCenter;
                 layoutGroup.reverseArrangement = true;
-
+                float inputFieldWidth = tmproInputFieldPrefab.GetComponent<RectTransform>().rect.width;
+                
                 float totalWidth =
-                    word.Length * (inputFieldPrefab.GetComponent<RectTransform>().rect.width + charOffset);
+                    word.Length * (inputFieldWidth + charOffset);
+                
                 layoutGroup.spacing = elementSpacing + charOffset;
                 layoutGroup.padding =
                     new RectOffset((int)(totalWidth / 2), (int)(totalWidth / 2), 0, 0);
@@ -93,9 +96,9 @@ namespace Screens
                 {
                     if (missingChars.Contains(c))
                     {
-                        GameObject inputFieldGO = Instantiate(inputFieldPrefab, wordParentGO.transform);
+                        GameObject inputFieldGO = Instantiate(tmproInputFieldPrefab , wordParentGO.transform);
                         instantiatedObjects.Add(inputFieldGO);
-                        InputField inputField = inputFieldGO.GetComponent<InputField>();
+                        TMP_InputField inputField = inputFieldGO.GetComponent<TMP_InputField>();
                         inputField.characterLimit = 1;
                         inputField.text = " ";
                         inputField.onValueChanged.AddListener(delegate { OnFieldValueChanged(inputField); });
@@ -113,7 +116,7 @@ namespace Screens
             }
         }
 
-        private void OnFieldValueChanged(InputField inputField)
+        private void OnFieldValueChanged(TMP_InputField inputField)
         {
             int currentFieldIndex = inputFields.IndexOf(inputField);
 
@@ -123,16 +126,16 @@ namespace Screens
                 {
                     inputFields[currentFieldIndex - 1].ActivateInputField();
                     if (currentFieldIndex == 0)
-                        {
-                             Init();
-                        }
+                    {
+                        Init();
+                    }
                 }
             }
             else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
             {
                 inputFields[currentFieldIndex + 1].ActivateInputField();
                 inputFields[currentFieldIndex + 1].caretPosition = 0;
-                OpenKeyboard();
+                Invoke(nameof(OpenKeyboard), 0.1f);
             }
 
             if (inputFields.All(field => field.text.Trim() != ""))
@@ -177,6 +180,7 @@ public void CloseKeyboard()
     if (!isKeyboardClosed)
     {
         isKeyboardClosed = true;
+        Debug.Log("closing keyboard");
 #if UNITY_WEBGL && !UNITY_EDITOR
         Application.ExternalCall("closeKeyboard");
 #endif
@@ -286,6 +290,7 @@ private float GetKeyboardHeight()
 
         public void LoadNextScene()
         {
+            CloseKeyboard();
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(currentSceneIndex + 1);
         }
@@ -299,7 +304,7 @@ private float GetKeyboardHeight()
                 failedAgainGO.SetActive(true);
             }
 
-            foreach (InputField inputField in inputFields)
+            foreach (TMP_InputField inputField in inputFields)
             {
                 bool parseSuccess = ColorUtility.TryParseHtmlString("#FF4050", out Color newCol);
                 inputField.image.color = newCol;

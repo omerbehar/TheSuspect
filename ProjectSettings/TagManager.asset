@@ -34,6 +34,7 @@ TagManager:
   - MainCanvas
   - UploadButton
   - GoodJobMessage
+  - IgnoreUI
   layers:
   - Default
   - TransparentFX

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using DA_Assets.Shared.CodeHelpers;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ using UnityEngine.UI;
 public class RTLText : MonoBehaviour
 {
     [SerializeField] private InputField inputField;
+    [SerializeField] private TMP_InputField tmproInputField;
     //[SerializeField] private RectTransform mainScreen;
     private string originalString = "";
     //public RectTransform canvasRectTransform; // Assign the Canvas' RectTransform
@@ -54,17 +56,30 @@ public class RTLText : MonoBehaviour
 #endif
         inputFieldRectTransform = GetComponent<RectTransform>();
         //originalPosition = canvasRectTransform.anchoredPosition;
-        inputField.onValueChanged.AddListener(ReverseInputText);
+        inputField?.onValueChanged.AddListener(ReverseInputText);
+        tmproInputField?.onValueChanged.AddListener(ReverseInputText);
     }
 
     private void Update()
     {
-        if (inputField.isFocused && !gotFocus)
+        if (inputField && inputField.isFocused && !gotFocus)
         {
             gotFocus = true;
             OnInputSelected();
         }
-        if (!inputField.isFocused && gotFocus)
+
+        if (tmproInputField && tmproInputField.isFocused && !gotFocus)
+        {
+            gotFocus = true;
+            OnInputSelected();
+        }
+        if (inputField && !inputField.isFocused && gotFocus)
+        {
+            gotFocus = false;
+            OnInputDeselected();
+        }
+
+        if (tmproInputField && !tmproInputField.isFocused && gotFocus)
         {
             gotFocus = false;
             OnInputDeselected();
@@ -89,9 +104,12 @@ public class RTLText : MonoBehaviour
         {
             char[] reversedChars = originalString.ToCharArray();
             Array.Reverse(reversedChars);
-            inputField.onValueChanged.RemoveListener(ReverseInputText);
-            inputField.text = new string(reversedChars);
-            inputField.onValueChanged.AddListener(ReverseInputText);
+            inputField?.onValueChanged.RemoveListener(ReverseInputText);
+            tmproInputField.onValueChanged.RemoveListener(ReverseInputText);
+            if (inputField) inputField.text = new string(reversedChars);
+            tmproInputField.text = new string(reversedChars);
+            inputField?.onValueChanged.AddListener(ReverseInputText);
+            tmproInputField.onValueChanged.AddListener(ReverseInputText);
         }
         
     }
