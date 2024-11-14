@@ -7,7 +7,7 @@ public class GameManagerKB : MonoBehaviour
     public static GameManagerKB Instance;
     private static readonly int KeyboardIn = Animator.StringToHash("keyboardIn");
 
-    [SerializeField] TMP_InputField textBox;
+    public TMP_InputField textBox;
     //[SerializeField] Text printBox;
     [SerializeField] private Animator keyboardAnimator;
     [SerializeField] private Animator keyboardAnimator2;
@@ -15,7 +15,7 @@ public class GameManagerKB : MonoBehaviour
     {
         Instance = this;
         //printBox.text = "";
-        textBox.text = "";
+        //textBox.text = "";
     }
 
     public void DeleteLetter()

@@ -107,13 +107,25 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.53040123
       objectReference: {fileID: 0}
+    - target: {fileID: 6482386934332875963, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
+      propertyPath: m_text
+      value: "y\u200B"
+      objectReference: {fileID: 0}
     - target: {fileID: 7777294963376052977, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7777294963376052977, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8073884179633838766, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811878703062838907, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
+      propertyPath: m_Text
+      value: y
       objectReference: {fileID: 0}
     - target: {fileID: 8886930495559001856, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
       propertyPath: m_Pivot.x
@@ -228,10 +240,11 @@ PrefabInstance:
       value: InputField (TMP) Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8073884179633838766, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8886930495559001856, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
-      insertIndex: 1
+      insertIndex: 0
       addedObject: {fileID: 4718225150024598587}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}

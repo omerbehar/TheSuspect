@@ -23,6 +23,8 @@ namespace Screens
 
     public class Screen8StringCheck : ScreenBase
     {
+
+         private static readonly int KeyboardIn = Animator.StringToHash("keyboardIn");
         // [SerializeField] private GameObject inputFieldPrefab;
         [SerializeField] private GameObject tmproInputFieldPrefab;
         [SerializeField] private GameObject textPrefab;
@@ -36,16 +38,21 @@ namespace Screens
         [SerializeField] private Button fakeNextButton;
         // [SerializeField] private ScrollRect scrollView;
 
+        [SerializeField] private Animator keyboardAnimator;
+        [SerializeField] private Animator keyboardAnimator2;
+
 
         private List<TMP_InputField> inputFields = new();
         private List<string> correctChars = new();
         private List<GameObject> instantiatedObjects = new();
         private int incorrectTries;
 
+          private bool keyboardActive;
+
         protected override void Start()
         {
             base.Start();
-
+            
             if (initializeOnStart)
             {
                 Init();
@@ -66,6 +73,9 @@ namespace Screens
             if ( !tmproInputFieldPrefab || !textPrefab || !wordParentPrefab) return;
 
             if (wordsWithMissingChars == null || wordsWithMissingChars.Count == 0) return;
+
+            keyboardAnimator.SetBool(KeyboardIn, false);
+            keyboardAnimator2.SetBool(KeyboardIn, false);
             
             foreach (WordWithMissingChars wordWithMissingChars in wordsWithMissingChars)
             {
@@ -114,43 +124,90 @@ namespace Screens
                     }
                 }
             }
+
+             StartCoroutine(AddListenersAfterPrefill());
         }
 
-        private void OnFieldValueChanged(TMP_InputField inputField)
+        private IEnumerator AddListenersAfterPrefill()
         {
-            int currentFieldIndex = inputFields.IndexOf(inputField);
+            yield return new WaitForSeconds(0.1f); // wait for 0.1 seconds after prefill has finished
+            AddListeners();
+        }
 
-            if (string.IsNullOrEmpty(inputField.text) || inputField.text == " ")
+        private void AddListeners()
+        {
+            foreach (TMP_InputField inputField in inputFields)
             {
-                if (currentFieldIndex > 0)
-                {
-                    inputFields[currentFieldIndex - 1].ActivateInputField();
-                    if (currentFieldIndex == 0)
-                    {
-                        Init();
-                    }
-                }
-            }
-            else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
+               inputField.onSelect.AddListener((string arg) =>
             {
-                inputFields[currentFieldIndex + 1].ActivateInputField();
-                inputFields[currentFieldIndex + 1].caretPosition = 0;
-                Invoke(nameof(OpenKeyboard), 0.1f);
-            }
-
-            if (inputFields.All(field => field.text.Trim() != ""))
-            {
-                NextButton.interactable = true;
-                fakeNextButton.interactable = true;
-            }
-            else
-            {
-                NextButton.interactable = false;
-                fakeNextButton.interactable = false;
+                
+                OnInputFieldSelect(arg, inputField);
+            });
+                inputField.onDeselect.AddListener(OnInputFieldDeSelect);
+                
             }
         }
 
+        private void OnInputFieldSelect(string arg0, TMP_InputField inputField)
+        {
+            GameManagerKB.Instance.textBox = inputField;
+           
+            // Animate the keyboard in
+            keyboardAnimator.SetBool(KeyboardIn, true);
+            keyboardAnimator2.SetBool(KeyboardIn, true);
+        }
 
+        private void OnInputFieldDeSelect(string arg0)
+        {
+            // Animate the keyboard out
+            keyboardAnimator.SetBool(KeyboardIn, false);
+            keyboardAnimator2.SetBool(KeyboardIn,false);
+        }
+
+         public void OnKeyboardClick()
+        {
+            // Function to be called by buttons on the keyboard to keep it active
+            keyboardActive = true;
+        }
+
+   private void OnFieldValueChanged(TMP_InputField inputField)
+{
+    int currentFieldIndex = inputFields.IndexOf(inputField);
+    Debug.Log("Current field index: " + currentFieldIndex);
+
+    if (string.IsNullOrEmpty(inputField.text) || inputField.text == " ")
+    {
+        if (currentFieldIndex > 0)
+        {
+            inputFields[currentFieldIndex - 1].onSelect.Invoke(inputFields[currentFieldIndex - 1].text);
+            if (currentFieldIndex == 0)
+            {
+                Init();
+            }
+        }
+    }
+    else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
+    {
+        inputFields[currentFieldIndex + 1].onSelect.Invoke(inputFields[currentFieldIndex + 1].text);
+        inputFields[currentFieldIndex + 1].caretPosition = 0;
+        Invoke(nameof(OpenKeyboard), 0.1f);
+    }
+    else if (currentFieldIndex == inputFields.Count - 1)
+    {
+        keyboardAnimator2.SetBool(KeyboardIn, true);
+    }
+
+    if (inputFields.All(field => field.text.Trim() != ""))
+    {
+        NextButton.interactable = true;
+        fakeNextButton.interactable = true;
+    }
+    else
+    {
+        NextButton.interactable = false;
+        fakeNextButton.interactable = false;
+    }
+}
         private bool isKeyboardClosed = true;
 
     public void OpenKeyboard()
