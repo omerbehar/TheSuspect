@@ -185,25 +185,32 @@ private void OnFieldValueChanged(TMP_InputField inputField)
         inputField.text = inputField.text.Substring(0, 1);
     }
 
-    // Handle when the field becomes empty or contains " " after deletion
+    // Handle deletion logic
     if (string.IsNullOrEmpty(inputField.text.Trim()) || inputField.text == " ")
     {
-        inputField.text = " "; // Ensure it always shows " " when empty
+        inputField.text = " "; // Ensure the field shows " " when empty
 
-        // Move to the previous field only if the field becomes " " due to deletion
+        // Move to the previous field only if this is not the first field
         if (currentFieldIndex > 0)
         {
             inputFields[currentFieldIndex - 1].ActivateInputField();
-            inputFields[currentFieldIndex - 1].caretPosition = inputFields[currentFieldIndex - 1].text.Length; // Set caret to end of the previous field
+            inputFields[currentFieldIndex - 1].caretPosition = inputFields[currentFieldIndex - 1].text.Length; // Set caret to the end
         }
     }
     else
     {
-        // Move focus to the next field if available and valid input exists
+        // Do not move forward if on the last field
         if (currentFieldIndex < inputFields.Count - 1)
         {
+            // Move focus to the next field if valid input exists
             inputFields[currentFieldIndex + 1].ActivateInputField();
             inputFields[currentFieldIndex + 1].caretPosition = 0;
+        }
+        else
+        {
+            // Stay in the last field
+            inputField.ActivateInputField();
+            inputField.caretPosition = inputField.text.Length;
         }
     }
 
@@ -223,6 +230,8 @@ private void OnFieldValueChanged(TMP_InputField inputField)
         fakeNextButton.interactable = false;
     }
 }
+
+
 
 
 
