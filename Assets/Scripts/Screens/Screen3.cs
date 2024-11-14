@@ -38,6 +38,8 @@ namespace Screens
         {
             base.Start();
             await LoadData();
+               keyboardAnimator.SetBool(KeyboardIn, false);
+            keyboardAnimator2.SetBool(KeyboardIn, false);
             IsAssignmentCompleted();
             AddListeners();
         }

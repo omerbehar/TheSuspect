@@ -110,7 +110,7 @@ namespace Screens
                         instantiatedObjects.Add(inputFieldGO);
                         TMP_InputField inputField = inputFieldGO.GetComponent<TMP_InputField>();
                         inputField.characterLimit = 1;
-                        inputField.text = " ";
+                        //inputField.text = " ";
                         inputField.onValueChanged.AddListener(delegate { OnFieldValueChanged(inputField); });
                         inputFields.Add(inputField);
                         correctChars.Add(c.ToString());
@@ -148,21 +148,29 @@ namespace Screens
             }
         }
 
-        private void OnInputFieldSelect(string arg0, TMP_InputField inputField)
-        {
-            GameManagerKB.Instance.textBox = inputField;
-           
-            // Animate the keyboard in
-            keyboardAnimator.SetBool(KeyboardIn, true);
-            keyboardAnimator2.SetBool(KeyboardIn, true);
-        }
+       private int currentlySelectedInputFieldIndex = -1;
 
-        private void OnInputFieldDeSelect(string arg0)
-        {
-            // Animate the keyboard out
-            keyboardAnimator.SetBool(KeyboardIn, false);
-            keyboardAnimator2.SetBool(KeyboardIn,false);
-        }
+private TMP_InputField currentlySelectedInputField;
+
+private void OnInputFieldSelect(string arg0, TMP_InputField inputField)
+{
+    currentlySelectedInputField = inputField;
+    currentlySelectedInputFieldIndex = inputFields.IndexOf(inputField);
+    GameManagerKB.Instance.textBox = inputField;
+    // Animate the keyboard in
+    keyboardAnimator.SetBool(KeyboardIn, true);
+    keyboardAnimator2.SetBool(KeyboardIn, true);
+}
+
+private void OnInputFieldDeSelect(string arg0)
+{
+    if (currentlySelectedInputFieldIndex != 0)
+    {
+        // Animate the keyboard out
+        keyboardAnimator.SetBool(KeyboardIn, false);
+        keyboardAnimator2.SetBool(KeyboardIn, false);
+    }
+}
 
          public void OnKeyboardClick()
         {
@@ -170,44 +178,75 @@ namespace Screens
             keyboardActive = true;
         }
 
-   private void OnFieldValueChanged(TMP_InputField inputField)
-{
-    int currentFieldIndex = inputFields.IndexOf(inputField);
-    Debug.Log("Current field index: " + currentFieldIndex);
-
-    if (string.IsNullOrEmpty(inputField.text) || inputField.text == " ")
-    {
-        if (currentFieldIndex > 0)
-        {
-            inputFields[currentFieldIndex - 1].onSelect.Invoke(inputFields[currentFieldIndex - 1].text);
-            if (currentFieldIndex == 0)
-            {
-                Init();
-            }
-        }
-    }
-    else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
-    {
-        inputFields[currentFieldIndex + 1].onSelect.Invoke(inputFields[currentFieldIndex + 1].text);
-        inputFields[currentFieldIndex + 1].caretPosition = 0;
-        Invoke(nameof(OpenKeyboard), 0.1f);
-    }
-    else if (currentFieldIndex == inputFields.Count - 1)
-    {
-        keyboardAnimator2.SetBool(KeyboardIn, true);
-    }
-
-    if (inputFields.All(field => field.text.Trim() != ""))
-    {
-        NextButton.interactable = true;
-        fakeNextButton.interactable = true;
-    }
-    else
-    {
-        NextButton.interactable = false;
-        fakeNextButton.interactable = false;
-    }
-}
+ private void OnFieldValueChanged(TMP_InputField inputField)
+ {
+     int currentFieldIndex = inputFields.IndexOf(inputField);
+     Debug.Log("Current field index: " + currentFieldIndex);
+ 
+     // Limit input to only 1 character
+     if (inputField.text.Length > 1)
+     {
+         inputField.text = inputField.text.Substring(0, 1);
+     }
+ 
+     if (string.IsNullOrEmpty(inputField.text) || inputField.text == "")
+     {
+         if (currentFieldIndex > 0)
+         {
+             inputFields[currentFieldIndex - 1].onSelect.Invoke(inputFields[currentFieldIndex - 1].text);
+             if (currentFieldIndex == 0)
+             {
+                 Init();
+             }
+         }
+     }
+     else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
+     {
+         inputFields[currentFieldIndex + 1].onSelect.Invoke(inputFields[currentFieldIndex + 1].text);
+         inputFields[currentFieldIndex + 1].caretPosition = 0;
+         Invoke(nameof(OpenKeyboard), 0.1f);
+     }
+     else if (currentFieldIndex == inputFields.Count - 1)
+     {
+         keyboardAnimator2.SetBool(KeyboardIn, true);
+     }
+ 
+     // Check if all fields are filled
+     if (inputFields.All(field => field.text.Trim() != ""))
+     {
+         NextButton.interactable = true;
+         fakeNextButton.interactable = true;
+ 
+         // Close keyboard when all fields are filled
+         keyboardAnimator.SetBool(KeyboardIn, false);
+         keyboardAnimator2.SetBool(KeyboardIn, false);
+         CloseKeyboard();
+     }
+     else
+     {
+         NextButton.interactable = false;
+         fakeNextButton.interactable = false;
+     }
+ 
+     // Check if the currently selected input field is correct
+     if (currentlySelectedInputField != null)
+     {
+         int currentIndex = inputFields.IndexOf(currentlySelectedInputField);
+         if (currentIndex >= 0 && currentIndex < correctChars.Count)
+         {
+             if (currentlySelectedInputField.text == correctChars[currentIndex])
+             {
+                 // Correct!
+                 Debug.Log("Correct!");
+             }
+             else
+             {
+                 // Incorrect
+                 Debug.Log("Incorrect");
+             }
+         }
+     }
+ }
         private bool isKeyboardClosed = true;
 
     public void OpenKeyboard()
