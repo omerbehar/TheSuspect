@@ -152,21 +152,22 @@ namespace Screens
 
 private TMP_InputField currentlySelectedInputField;
 
+
 private void OnInputFieldSelect(string arg0, TMP_InputField inputField)
 {
     currentlySelectedInputField = inputField;
     currentlySelectedInputFieldIndex = inputFields.IndexOf(inputField);
-    GameManagerKB.Instance.textBox = inputField;
-    // Animate the keyboard in
+GameManagerKB.Instance.textBox = inputField;
+    // Keep the keyboard open
     keyboardAnimator.SetBool(KeyboardIn, true);
     keyboardAnimator2.SetBool(KeyboardIn, true);
 }
 
 private void OnInputFieldDeSelect(string arg0)
 {
-    if (currentlySelectedInputFieldIndex != 0)
+    // Only close the keyboard if the last field is deselected
+    if (currentlySelectedInputFieldIndex == inputFields.Count - 1)
     {
-        // Animate the keyboard out
         keyboardAnimator.SetBool(KeyboardIn, false);
         keyboardAnimator2.SetBool(KeyboardIn, false);
     }
@@ -179,74 +180,84 @@ private void OnInputFieldDeSelect(string arg0)
         }
 
  private void OnFieldValueChanged(TMP_InputField inputField)
- {
-     int currentFieldIndex = inputFields.IndexOf(inputField);
-     Debug.Log("Current field index: " + currentFieldIndex);
- 
-     // Limit input to only 1 character
-     if (inputField.text.Length > 1)
-     {
-         inputField.text = inputField.text.Substring(0, 1);
-     }
- 
-     if (string.IsNullOrEmpty(inputField.text) || inputField.text == "")
-     {
-         if (currentFieldIndex > 0)
-         {
-             inputFields[currentFieldIndex - 1].onSelect.Invoke(inputFields[currentFieldIndex - 1].text);
-             if (currentFieldIndex == 0)
-             {
-                 Init();
-             }
-         }
-     }
-     else if (!string.IsNullOrEmpty(inputField.text) && currentFieldIndex < inputFields.Count - 1)
-     {
-         inputFields[currentFieldIndex + 1].onSelect.Invoke(inputFields[currentFieldIndex + 1].text);
-         inputFields[currentFieldIndex + 1].caretPosition = 0;
-         Invoke(nameof(OpenKeyboard), 0.1f);
-     }
-     else if (currentFieldIndex == inputFields.Count - 1)
-     {
-         keyboardAnimator2.SetBool(KeyboardIn, true);
-     }
- 
-     // Check if all fields are filled
-     if (inputFields.All(field => field.text.Trim() != ""))
-     {
-         NextButton.interactable = true;
-         fakeNextButton.interactable = true;
- 
-         // Close keyboard when all fields are filled
-         keyboardAnimator.SetBool(KeyboardIn, false);
-         keyboardAnimator2.SetBool(KeyboardIn, false);
-         CloseKeyboard();
-     }
-     else
-     {
-         NextButton.interactable = false;
-         fakeNextButton.interactable = false;
-     }
- 
-     // Check if the currently selected input field is correct
-     if (currentlySelectedInputField != null)
-     {
-         int currentIndex = inputFields.IndexOf(currentlySelectedInputField);
-         if (currentIndex >= 0 && currentIndex < correctChars.Count)
-         {
-             if (currentlySelectedInputField.text == correctChars[currentIndex])
-             {
-                 // Correct!
-                 Debug.Log("Correct!");
-             }
-             else
-             {
-                 // Incorrect
-                 Debug.Log("Incorrect");
-             }
-         }
-     }
- }
+{
+    int currentFieldIndex = inputFields.IndexOf(inputField);
+    Debug.Log("Current field index: " + currentFieldIndex);
+
+    // Limit input to only 1 character
+    if (inputField.text.Length > 1)
+    {
+        inputField.text = inputField.text.Substring(0, 1);
+    }
+
+    // Ensure the current input field keeps its character
+    if (!string.IsNullOrEmpty(inputField.text.Trim()))
+    {
+        // Populate subsequent fields with " " if empty
+        for (int i = currentFieldIndex + 1; i < inputFields.Count; i++)
+        {
+            if (string.IsNullOrEmpty(inputFields[i].text.Trim()) || inputFields[i].text == " ")
+            {
+                inputFields[i].text = " ";
+            }
+        }
+
+        // Move focus to the next field if available
+        if (currentFieldIndex < inputFields.Count - 1)
+        {
+            inputFields[currentFieldIndex + 1].ActivateInputField();
+            inputFields[currentFieldIndex + 1].caretPosition = 0;
+        }
+    }
+    else
+    {
+        // Handle deletion: move focus back to the previous field if empty
+        if (currentFieldIndex > 0)
+        {
+            inputFields[currentFieldIndex].text = " "; // Set the current field to placeholder
+            inputFields[currentFieldIndex - 1].ActivateInputField();
+            inputFields[currentFieldIndex - 1].caretPosition = 0;
+        }
+    }
+
+    // Check if all fields are filled
+    if (inputFields.All(field => field.text.Trim() != "" && field.text.Trim() != " "))
+    {
+        NextButton.interactable = true;
+        fakeNextButton.interactable = true;
+
+        // Close keyboard when all fields are filled
+        keyboardAnimator.SetBool(KeyboardIn, false);
+        keyboardAnimator2.SetBool(KeyboardIn, false);
+        CloseKeyboard();
+    }
+    else
+    {
+        NextButton.interactable = false;
+        fakeNextButton.interactable = false;
+    }
+
+    // Check correctness of the current field
+    if (currentlySelectedInputField != null)
+    {
+        int currentIndex = inputFields.IndexOf(currentlySelectedInputField);
+        if (currentIndex >= 0 && currentIndex < correctChars.Count)
+        {
+            if (currentlySelectedInputField.text == correctChars[currentIndex])
+            {
+                // Correct character entered
+                Debug.Log("Correct!");
+            }
+            else
+            {
+                // Incorrect character entered
+                Debug.Log("Incorrect");
+            }
+        }
+    }
+}
+
+
         private bool isKeyboardClosed = true;
 
     public void OpenKeyboard()
