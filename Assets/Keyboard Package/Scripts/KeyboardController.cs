@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyboardController : MonoBehaviour
@@ -79,17 +77,17 @@ public class KeyboardController : MonoBehaviour
             actionCapitalLetters.SetActive(true);
         }
 
-        smallAlphaRow1.SetActive(false);
-        smallAlphaRow2.SetActive(false);
-        smallAlphaRow3.SetActive(false);
+        // smallAlphaRow1.SetActive(false);
+        // smallAlphaRow2.SetActive(false);
+        // smallAlphaRow3.SetActive(false);
 
         capitalAlphaRow1.SetActive(false);
         capitalAlphaRow2.SetActive(false);
         capitalAlphaRow3.SetActive(false);
 
         numbers.SetActive(true);
-        splCharsNum1.SetActive(true);
-        splCharsNum2.SetActive(true);
+        // splCharsNum1.SetActive(true);
+        // splCharsNum2.SetActive(true);
 
         splChars1.SetActive(false);
         splChars2.SetActive(false);
@@ -106,9 +104,9 @@ public class KeyboardController : MonoBehaviour
             actionCapitalLetters.SetActive(true);
         }
 
-        smallAlphaRow1.SetActive(false);
-        smallAlphaRow2.SetActive(false);
-        smallAlphaRow3.SetActive(false);
+        // smallAlphaRow1.SetActive(false);
+        // smallAlphaRow2.SetActive(false);
+        // smallAlphaRow3.SetActive(false);
 
         capitalAlphaRow1.SetActive(false);
         capitalAlphaRow2.SetActive(false);

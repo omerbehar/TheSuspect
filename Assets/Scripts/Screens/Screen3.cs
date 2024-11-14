@@ -120,7 +120,11 @@ namespace Screens
             playerCountDropdown.onValueChanged.AddListener(delegate { IsAssignmentCompleted(); });
             chooseFactoryDropdown.onValueChanged.AddListener(delegate { IsAssignmentCompleted(); });
             fakeNextButton.onClick.AddListener(OnFakeNextButtonClicked);
-            teamNameInputField.onSelect.AddListener(OnInputFieldSelect);
+            teamNameInputField.onSelect.AddListener((string arg) =>
+            {
+                
+                OnInputFieldSelect(arg, teamNameInputField);
+            });
             teamNameInputField.onDeselect.AddListener(OnInputFieldDeSelect);
         }
 
@@ -133,8 +137,9 @@ namespace Screens
             }
         }
 
-        private void OnInputFieldSelect(string arg0)
+        private void OnInputFieldSelect(string arg0, TMP_InputField inputField)
         {
+            // GameManagerKB.Instance.textBox = inputField;
             keyboardActive = true;
             keyboardAnimator.SetBool(KeyboardIn, true);
             keyboardAnimator2.SetBool(KeyboardIn, true);
