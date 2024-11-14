@@ -232,85 +232,6 @@ private void OnFieldValueChanged(TMP_InputField inputField)
 }
 
 
-
-
-
-
-
-
-        private bool isKeyboardClosed = true;
-
-    public void OpenKeyboard()
-{
-    isKeyboardClosed = false;
-#if UNITY_WEBGL && !UNITY_EDITOR
-    Application.ExternalCall("openKeyboard");
-#elif UNITY_ANDROID
-    AndroidJavaClass UnityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-    AndroidJavaObject View = UnityClass.GetStatic<AndroidJavaObject>("currentActivity").Get<AndroidJavaObject>("getWindow").Call<AndroidJavaObject>("getDecorView");
-    AndroidJavaObject InputMethodManager = new AndroidJavaObject("android.view.inputmethod.InputMethodManager");
-    InputMethodManager.Call("showSoftInput", View, 0);
-#endif
-
-    // Get the keyboard height
-    float keyboardHeight = GetKeyboardHeight();
-
-    // Find the main camera
-    Camera mainCamera = Camera.main;
-
-    // Adjust the position of the main camera based on the keyboard height
-    mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y - keyboardHeight, mainCamera.transform.position.z);
-}
-
-public void CloseKeyboard()
-{
-    if (!isKeyboardClosed)
-    {
-        isKeyboardClosed = true;
-        Debug.Log("closing keyboard");
-#if UNITY_WEBGL && !UNITY_EDITOR
-        Application.ExternalCall("closeKeyboard");
-#endif
-
-        // Get the keyboard height
-        float keyboardHeight = GetKeyboardHeight();
-
-        // Find the main camera
-        Camera mainCamera = Camera.main;
-
-        // Reset the position of the main camera based on the keyboard height
-        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + keyboardHeight, mainCamera.transform.position.z);
-    }
-}
-private float GetKeyboardHeight()
-{
-    if (Application.platform == RuntimePlatform.Android)
-    {
-        using (AndroidJavaClass UnityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-        {
-            AndroidJavaObject View = UnityClass.GetStatic<AndroidJavaObject>("currentActivity").Get<AndroidJavaObject>("getWindow").Call<AndroidJavaObject>("getDecorView");
-            AndroidJavaObject InputMethodManager = new AndroidJavaObject("android.view.inputmethod.InputMethodManager");
-            return InputMethodManager.Call<float>("getInputMethodWindowVisibleHeight", View);
-        }
-    }
-    else
-    {
-        return Screen.height * 0.2f; // Use a default value for other platforms
-    }
-}
-
-        // private IEnumerator ActivateNextInputField(int nextFieldIndex)
-        // {
-        //     // yield return new WaitForSeconds(0.1f); // Small delay to ensure the focus transition is smooth
-        //     // // inputFields[nextFieldIndex].ActivateInputField();
-        //     // inputFields[nextFieldIndex].Select();
-        //     // yield return new WaitForSeconds(0.1f);
-        //     inputFields[nextFieldIndex].Select();
-        //     if (nextFieldIndex != inputFields.Count) OpenKeyboard();
-        //
-        //     // inputFields[nextFieldIndex].caretPosition = 0;
-        // }
-
         private void OnNextButtonClicked()
         {
             IsSentenceCorrect();
@@ -377,7 +298,7 @@ private float GetKeyboardHeight()
 
         public void LoadNextScene()
         {
-            CloseKeyboard();
+           
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(currentSceneIndex + 1);
         }
