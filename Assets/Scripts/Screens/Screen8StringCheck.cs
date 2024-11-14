@@ -110,7 +110,7 @@ namespace Screens
                         instantiatedObjects.Add(inputFieldGO);
                         TMP_InputField inputField = inputFieldGO.GetComponent<TMP_InputField>();
                         inputField.characterLimit = 1;
-                        //inputField.text = " ";
+                        inputField.text = " ";
                         inputField.onValueChanged.AddListener(delegate { OnFieldValueChanged(inputField); });
                         inputFields.Add(inputField);
                         correctChars.Add(c.ToString());
