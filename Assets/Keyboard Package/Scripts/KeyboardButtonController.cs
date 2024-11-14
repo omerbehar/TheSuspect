@@ -35,6 +35,7 @@ public class KeyboardButtonController : MonoBehaviour
     public void OnPress()
     {
         containerFillImage.color = pressedColor;
+       
     }
 
     public void OnRelease()

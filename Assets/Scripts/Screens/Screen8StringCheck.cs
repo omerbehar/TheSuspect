@@ -174,7 +174,7 @@ private void OnInputFieldDeSelect(string arg0)
             keyboardActive = true;
         }
 
- private void OnFieldValueChanged(TMP_InputField inputField)
+private void OnFieldValueChanged(TMP_InputField inputField)
 {
     int currentFieldIndex = inputFields.IndexOf(inputField);
     Debug.Log("Current field index: " + currentFieldIndex);
@@ -185,50 +185,31 @@ private void OnInputFieldDeSelect(string arg0)
         inputField.text = inputField.text.Substring(0, 1);
     }
 
-    // Ensure the current input field keeps its character
-    if (!string.IsNullOrEmpty(inputField.text.Trim()))
+    // Handle when the field becomes empty or contains " " after deletion
+    if (string.IsNullOrEmpty(inputField.text.Trim()) || inputField.text == " ")
     {
-        // Populate subsequent fields with " " if empty
-        for (int i = currentFieldIndex + 1; i < inputFields.Count; i++)
-        {
-            if (string.IsNullOrEmpty(inputFields[i].text.Trim()) || inputFields[i].text == " ")
-            {
-                inputFields[i].text = " ";
-            }
-        }
+        inputField.text = " "; // Ensure it always shows " " when empty
 
-        // Move focus to the next field if available
+        // Move to the previous field only if the field becomes " " due to deletion
+        if (currentFieldIndex > 0)
+        {
+            inputFields[currentFieldIndex - 1].ActivateInputField();
+            inputFields[currentFieldIndex - 1].caretPosition = inputFields[currentFieldIndex - 1].text.Length; // Set caret to end of the previous field
+        }
+    }
+    else
+    {
+        // Move focus to the next field if available and valid input exists
         if (currentFieldIndex < inputFields.Count - 1)
         {
             inputFields[currentFieldIndex + 1].ActivateInputField();
             inputFields[currentFieldIndex + 1].caretPosition = 0;
         }
-        else if (currentFieldIndex == inputFields.Count - 1)
-        {
-            // Stop moving focus when the last field is reached
-            inputField.ActivateInputField();
-            inputField.caretPosition = 0;
-        }
     }
-    else
-    {
-        // Handle deletion: move focus back to the previous field if empty
-        if (currentFieldIndex > 0)
-        {
-            inputFields[currentFieldIndex].text = " "; // Set the current field to placeholder
-            inputFields[currentFieldIndex - 1].ActivateInputField();
-            inputFields[currentFieldIndex - 1].caretPosition = 0;
-        }
-    }
- 
-  
-         // Keep the keyboard animators open
+
+    // Keep the keyboard animators open
     keyboardAnimator.SetBool(KeyboardIn, true);
     keyboardAnimator2.SetBool(KeyboardIn, true);
-    
-   
-
-    
 
     // Check if all fields are filled
     if (inputFields.All(field => field.text.Trim() != "" && field.text.Trim() != " "))
@@ -242,6 +223,8 @@ private void OnInputFieldDeSelect(string arg0)
         fakeNextButton.interactable = false;
     }
 }
+
+
 
 
 
