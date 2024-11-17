@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8736390598760612342}
   m_Layer: 0
   m_Name: LowerLine (1)
-  m_TagString: Untagged
+  m_TagString: KeyboardRelatedUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,9 +83,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 137628978959238366, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
+      propertyPath: m_TagString
+      value: KeyboardRelatedUI
+      objectReference: {fileID: 0}
     - target: {fileID: 831242863277245932, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597223531467309600, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
+      propertyPath: m_TagString
+      value: KeyboardRelatedUI
       objectReference: {fileID: 0}
     - target: {fileID: 5040708920726407149, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
       propertyPath: m_SizeDelta.x
@@ -114,6 +122,10 @@ PrefabInstance:
     - target: {fileID: 5403158150889798029, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.53040123
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592739108364908007, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
+      propertyPath: m_TagString
+      value: KeyboardRelatedUI
       objectReference: {fileID: 0}
     - target: {fileID: 6482386934332875963, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
       propertyPath: m_text
@@ -194,6 +206,10 @@ PrefabInstance:
     - target: {fileID: 8073884179633838766, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790970431261319345, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8811878703062838907, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
       propertyPath: m_Text
@@ -330,6 +346,10 @@ PrefabInstance:
     - target: {fileID: 9137634873214126344, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
       propertyPath: m_Name
       value: InputField (TMP) Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137634873214126344, guid: 30fe7bfac58ffe841b10aa55689af937, type: 3}
+      propertyPath: m_TagString
+      value: KeyboardRelatedUI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

@@ -10,8 +10,6 @@ namespace Screens
 {
     public class Screen7 : ScreenBaseWithTimer, ILoadData, ISaveData, IHint
     {
-        //[field: SerializeField] public int CorrectAnswerScore { get; set; }
-        //[field: SerializeField] public Button HintButton { get; set; }
         [field: SerializeField] public GameObject HintPopup { get; set; }
         [field: SerializeField] public Button HintPopupCloseButton { get; set; }
         [field: SerializeField] public GameObject CorrectAnswer { get; set; }
@@ -39,10 +37,10 @@ namespace Screens
                 Data.SelectedAnswersData[SceneManager.GetActiveScene().name] = new bool[answersCount];
             Data.LoadData();
             SelectedAnswers = Data.SelectedAnswersData[SceneManager.GetActiveScene().name];
-            for (int i = 0; i < toggles.Length; i++)
-            {
-                toggles[i].isOn = SelectedAnswers[i];
-            }
+            // for (int i = 0; i < toggles.Length; i++)
+            // {
+            //     toggles[i].isOn = SelectedAnswers[i];
+            // }
         }
         public async Task SaveData()
         {

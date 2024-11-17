@@ -10,7 +10,7 @@ public class EndGame : MonoBehaviour
     
     private async void Start()
     {
-        teamName.text = Data.TeamName;
+        teamName.text = AnswerCheck.Reverse(Data.TeamName);
         
         teamScore.text = Data.Score.ToString();
         Data.SaveData();

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4180020861461157369}
   m_Layer: 0
   m_Name: Text Area
-  m_TagString: IgnoreUI
+  m_TagString: KeyboardRelatedUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 6482386934332875963}
   m_Layer: 0
   m_Name: Text
-  m_TagString: IgnoreUI
+  m_TagString: KeyboardRelatedUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 3949376861437303021}
   m_Layer: 0
   m_Name: Placeholder
-  m_TagString: IgnoreUI
+  m_TagString: KeyboardRelatedUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 4987802909087400679}
   m_Layer: 0
   m_Name: redBorder
-  m_TagString: IgnoreUI
+  m_TagString: KeyboardRelatedUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 8790970431261319345}
   m_Layer: 0
   m_Name: InputField (TMP)
-  m_TagString: IgnoreUI
+  m_TagString: KeyboardRelatedUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

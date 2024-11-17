@@ -5,6 +5,7 @@ using System.Linq;
 using Screens.Bases;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -23,9 +24,8 @@ namespace Screens
 
     public class Screen8StringCheck : ScreenBase
     {
+        private static readonly int KeyboardIn = Animator.StringToHash("keyboardIn");
 
-         private static readonly int KeyboardIn = Animator.StringToHash("keyboardIn");
-        // [SerializeField] private GameObject inputFieldPrefab;
         [SerializeField] private GameObject tmproInputFieldPrefab;
         [SerializeField] private GameObject textPrefab;
         [SerializeField] private GameObject wordParentPrefab;
@@ -36,23 +36,26 @@ namespace Screens
         [SerializeField] private float charOffset = 10f;
         [SerializeField] private bool initializeOnStart = true;
         [SerializeField] private Button fakeNextButton;
-        // [SerializeField] private ScrollRect scrollView;
 
         [SerializeField] private Animator keyboardAnimator;
         [SerializeField] private Animator keyboardAnimator2;
 
 
-        private List<TMP_InputField> inputFields = new();
         private List<string> correctChars = new();
         private List<GameObject> instantiatedObjects = new();
         private int incorrectTries;
 
-          private bool keyboardActive;
+        private bool keyboardActive;
+        
+        private bool isKeyboardActive;
+        
+        private List<TMP_InputField> inputFields = new();
+        private int currentlySelectedInputFieldIndex = -1;
+        private TMP_InputField currentlySelectedInputField;
 
         protected override void Start()
         {
             base.Start();
-            
             if (initializeOnStart)
             {
                 Init();
@@ -60,7 +63,46 @@ namespace Screens
                 WebGLInput.mobileKeyboardSupport = true;
 #endif
             }
+            SetupNextButtons();
+        }
 
+        private void Update()
+        {
+            WasClickedToCloseKeyboard();
+        }
+
+        private void WasClickedToCloseKeyboard()
+        {
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                if (IsPointerOverKeyboardRelatedUI(Input.GetTouch(0).position)) return;
+                if (isKeyboardActive) ShowKeyboard(false);
+            }
+            else if (Input.GetMouseButtonDown(0))
+            {
+                if (IsPointerOverKeyboardRelatedUI(Input.mousePosition)) return;
+                if (isKeyboardActive) ShowKeyboard(false);
+            }
+        }
+        private static bool IsPointerOverKeyboardRelatedUI(Vector2 position)
+        {
+            PointerEventData pointerData = new PointerEventData(EventSystem.current)
+            {
+                position = position
+            };
+            List<RaycastResult> raycastResults = new();
+            EventSystem.current.RaycastAll(pointerData, raycastResults);
+            foreach (RaycastResult result in raycastResults)
+            {
+                if (result.gameObject.CompareTag("KeyboardRelatedUI"))
+                    return true;
+            }
+            return false;
+        }
+
+        private void SetupNextButtons()
+        {
+            NextButton.interactable = false;
             NextButton.onClick.AddListener(OnNextButtonClicked);
             fakeNextButton.onClick.AddListener(OnFakeNextButtonClicked);
             fakeNextButton.gameObject.SetActive(true);
@@ -69,14 +111,18 @@ namespace Screens
 
         public void Init()
         {
-            NextButton.interactable = false;
-            if ( !tmproInputFieldPrefab || !textPrefab || !wordParentPrefab) return;
-
+            if (!tmproInputFieldPrefab || !textPrefab || !wordParentPrefab) return;
             if (wordsWithMissingChars == null || wordsWithMissingChars.Count == 0) return;
 
-            keyboardAnimator.SetBool(KeyboardIn, false);
-            keyboardAnimator2.SetBool(KeyboardIn, false);
-            
+            ShowKeyboard(false);
+
+            CreateSentence();
+
+            StartCoroutine(AddListenersAfterPrefill());
+        }
+
+        private void CreateSentence()
+        {
             foreach (WordWithMissingChars wordWithMissingChars in wordsWithMissingChars)
             {
                 string word = wordWithMissingChars.word;
@@ -86,46 +132,60 @@ namespace Screens
                 if (string.IsNullOrEmpty(word) || missingChars == null || missingChars.Count == 0 ||
                     !inputFieldParent) continue;
 
-                GameObject wordParentGO = Instantiate(wordParentPrefab, inputFieldParent);
-                instantiatedObjects.Add(wordParentGO);
-
-                HorizontalLayoutGroup layoutGroup = wordParentGO.GetComponent<HorizontalLayoutGroup>() ??
-                                                    wordParentGO.AddComponent<HorizontalLayoutGroup>();
-                layoutGroup.childAlignment = TextAnchor.MiddleCenter;
-                layoutGroup.reverseArrangement = true;
-                float inputFieldWidth = tmproInputFieldPrefab.GetComponent<RectTransform>().rect.width;
-                
-                float totalWidth =
-                    word.Length * (inputFieldWidth + charOffset);
-                
-                layoutGroup.spacing = elementSpacing + charOffset;
-                layoutGroup.padding =
-                    new RectOffset((int)(totalWidth / 2), (int)(totalWidth / 2), 0, 0);
-
-                foreach (char c in word)
-                {
-                    if (missingChars.Contains(c))
-                    {
-                        GameObject inputFieldGO = Instantiate(tmproInputFieldPrefab , wordParentGO.transform);
-                        instantiatedObjects.Add(inputFieldGO);
-                        TMP_InputField inputField = inputFieldGO.GetComponent<TMP_InputField>();
-                        inputField.characterLimit = 1;
-                        inputField.text = " ";
-                        inputField.onValueChanged.AddListener(delegate { OnFieldValueChanged(inputField); });
-                        inputFields.Add(inputField);
-                        correctChars.Add(c.ToString());
-                    }
-                    else
-                    {
-                        GameObject textGO = Instantiate(textPrefab, wordParentGO.transform);
-                        instantiatedObjects.Add(textGO);
-                        TextMeshProUGUI textComponent = textGO.GetComponent<TextMeshProUGUI>();
-                        textComponent.text = c.ToString();
-                    }
-                }
+                CreateWord(inputFieldParent, word, missingChars);
             }
+        }
 
-             StartCoroutine(AddListenersAfterPrefill());
+        private void CreateWord(Transform inputFieldParent, string word, List<char> missingChars)
+        {
+            GameObject wordParentGO = CreateWordParent(inputFieldParent, word);
+            foreach (char c in word)
+            {
+                if (missingChars.Contains(c))
+                    CreateMissingChar(wordParentGO, c);
+                else
+                    CreateExistingChar(wordParentGO, c);
+            }
+        }
+
+        private void CreateExistingChar(GameObject wordParentGO, char c)
+        {
+            GameObject textGO = Instantiate(textPrefab, wordParentGO.transform);
+            instantiatedObjects.Add(textGO);
+            TextMeshProUGUI textComponent = textGO.GetComponent<TextMeshProUGUI>();
+            textComponent.text = c.ToString();
+        }
+
+        private void CreateMissingChar(GameObject wordParentGO, char c)
+        {
+            GameObject inputFieldGO = Instantiate(tmproInputFieldPrefab, wordParentGO.transform);
+            instantiatedObjects.Add(inputFieldGO);
+            TMP_InputField inputField = inputFieldGO.GetComponent<TMP_InputField>();
+            inputField.characterLimit = 1;
+            inputFields.Add(inputField);
+            correctChars.Add(c.ToString());
+        }
+
+        private GameObject CreateWordParent(Transform inputFieldParent, string word)
+        {
+            GameObject wordParentGO = Instantiate(wordParentPrefab, inputFieldParent);
+            instantiatedObjects.Add(wordParentGO);
+            HorizontalLayoutGroup layoutGroup = wordParentGO.GetComponent<HorizontalLayoutGroup>() ??
+                                                wordParentGO.AddComponent<HorizontalLayoutGroup>();
+            layoutGroup.childAlignment = TextAnchor.MiddleCenter;
+            layoutGroup.reverseArrangement = true;
+            float inputFieldWidth = tmproInputFieldPrefab.GetComponent<RectTransform>().rect.width;
+            float totalWidth = word.Length * (inputFieldWidth + charOffset);
+            layoutGroup.spacing = elementSpacing + charOffset;
+            layoutGroup.padding = new RectOffset((int)(totalWidth / 2), (int)(totalWidth / 2), 0, 0);
+            return wordParentGO;
+        }
+
+        private void ShowKeyboard(bool showKeyboard)
+        {
+            keyboardAnimator.SetBool(KeyboardIn, showKeyboard);
+            keyboardAnimator2.SetBool(KeyboardIn, showKeyboard);
+            isKeyboardActive = showKeyboard;
         }
 
         private IEnumerator AddListenersAfterPrefill()
@@ -138,100 +198,53 @@ namespace Screens
         {
             foreach (TMP_InputField inputField in inputFields)
             {
-               inputField.onSelect.AddListener((string arg) =>
+                inputField.onSelect.AddListener(_ =>
+                {
+                    OnInputFieldSelect(inputField);
+                    inputField.onDeselect.AddListener(OnInputFieldDeSelect);
+                });
+            }
+        }
+        
+        private void OnInputFieldSelect(TMP_InputField inputField)
+        {
+            currentlySelectedInputField = inputField;
+            currentlySelectedInputFieldIndex = inputFields.IndexOf(inputField);
+            GameManagerKB.Instance.textBox = inputField;
+            ShowKeyboard(true);
+        }
+
+        private void OnInputFieldDeSelect(string arg0)
+        {
+            foreach (TMP_InputField inputField in inputFields)
             {
-                
-                OnInputFieldSelect(arg, inputField);
-            });
-                inputField.onDeselect.AddListener(OnInputFieldDeSelect);
-                
+                if (inputField.IsActive()) return;
             }
         }
 
-       private int currentlySelectedInputFieldIndex = -1;
 
-private TMP_InputField currentlySelectedInputField;
-
-
-private void OnInputFieldSelect(string arg0, TMP_InputField inputField)
-{
-    currentlySelectedInputField = inputField;
-    currentlySelectedInputFieldIndex = inputFields.IndexOf(inputField);
-GameManagerKB.Instance.textBox = inputField;
-    // Keep the keyboard open
-    keyboardAnimator.SetBool(KeyboardIn, true);
-    keyboardAnimator2.SetBool(KeyboardIn, true);
-}
-
-private void OnInputFieldDeSelect(string arg0)
-{
-   
-}
-
-         public void OnKeyboardClick()
+        public void OnKeyboardClick()
         {
-            // Function to be called by buttons on the keyboard to keep it active
+            //  called by buttons on the keyboard to keep it active
             keyboardActive = true;
         }
-
-private void OnFieldValueChanged(TMP_InputField inputField)
-{
-    int currentFieldIndex = inputFields.IndexOf(inputField);
-    Debug.Log("Current field index: " + currentFieldIndex);
-
-    // Limit input to only 1 character
-    if (inputField.text.Length > 1)
-    {
-        inputField.text = inputField.text.Substring(0, 1);
-    }
-
-    // Handle deletion logic
-    if (string.IsNullOrEmpty(inputField.text.Trim()) || inputField.text == " ")
-    {
-        inputField.text = " "; // Ensure the field shows " " when empty
-
-        // Move to the previous field only if this is not the first field
-        if (currentFieldIndex > 0)
+        
+        private void CheckIfAllFieldsAreFilled()
         {
-            inputFields[currentFieldIndex - 1].ActivateInputField();
-            inputFields[currentFieldIndex - 1].caretPosition = inputFields[currentFieldIndex - 1].text.Length; // Set caret to the end
+            if (inputFields.All(field => field.text.Trim() != "" && field.text.Trim() != " "))
+            {
+                NextButton.interactable = true;
+                fakeNextButton.interactable = true;
+                if (currentlySelectedInputFieldIndex == inputFields.Count - 1)
+                    ShowKeyboard(false);
+            }
+            else
+            {
+                NextButton.interactable = false;
+                fakeNextButton.interactable = false;
+            }
         }
-    }
-    else
-    {
-        // Do not move forward if on the last field
-        if (currentFieldIndex < inputFields.Count - 1)
-        {
-            // Move focus to the next field if valid input exists
-            inputFields[currentFieldIndex + 1].ActivateInputField();
-            inputFields[currentFieldIndex + 1].caretPosition = 0;
-        }
-        else
-        {
-            // Stay in the last field
-            inputField.ActivateInputField();
-            inputField.caretPosition = inputField.text.Length;
-        }
-    }
-
-    // Keep the keyboard animators open
-    keyboardAnimator.SetBool(KeyboardIn, true);
-    keyboardAnimator2.SetBool(KeyboardIn, true);
-
-    // Check if all fields are filled
-    if (inputFields.All(field => field.text.Trim() != "" && field.text.Trim() != " "))
-    {
-        NextButton.interactable = true;
-        fakeNextButton.interactable = true;
-    }
-    else
-    {
-        NextButton.interactable = false;
-        fakeNextButton.interactable = false;
-    }
-}
-
-
+        
         private void OnNextButtonClicked()
         {
             IsSentenceCorrect();
@@ -248,24 +261,19 @@ private void OnFieldValueChanged(TMP_InputField inputField)
 
             for (int i = 0; i < inputFields.Count; i++)
             {
-                if (inputFields[i].text != correctChars[i])
-                {
-                    Debug.Log($"Character '{inputFields[i].text}' is incorrect. Expected '{correctChars[i]}'.");
-                    ActivateFailedMessage();
-                    isSentenceCorrect = false;
-                    break;
-                }
+                if (inputFields[i].text == correctChars[i]) continue;
+                ActivateFailedMessage();
+                isSentenceCorrect = false;
+                break;
             }
 
             if (isSentenceCorrect)
             {
-                Debug.Log("Sentence is correct!");
-                //CloseKeyboard();
                 EventManager.AssignmentCompleted.Invoke();
-                NextButton.interactable = true; // Make the next button interactable
-                NextButton.gameObject.SetActive(true); // Show the real next button
-                fakeNextButton.gameObject.SetActive(false); // Hide the fake next button
-                LoadNextScene(); // Move to the next scene
+                NextButton.interactable = true;
+                NextButton.gameObject.SetActive(true);
+                fakeNextButton.gameObject.SetActive(false);
+                LoadNextScene();
             }
             else
             {
@@ -274,31 +282,21 @@ private void OnFieldValueChanged(TMP_InputField inputField)
                 Init();
                 if (incorrectTries > 1)
                 {
-                    fakeNextButton.gameObject.SetActive(false); // Hide the fake next button
+                    fakeNextButton.gameObject.SetActive(false);
                     NextButton.gameObject.SetActive(true);
-                    //CloseKeyboard(); // Show the real next button
-                    NextButton.interactable = true; // Make the real next button non-interactable
+                    NextButton.interactable = true;
                 }
                 else
                 {
-                    fakeNextButton.gameObject.SetActive(true); // Show the fake next button
+                    fakeNextButton.gameObject.SetActive(true); 
                     fakeNextButton.interactable = false;
-                    //CloseKeyboard(); // Make the fake next button non-interactable
-                    NextButton.gameObject.SetActive(false); // Hide the real next button
-                    //StartCoroutine(EnableNextButtonAfterDelay(1f)); // Make the real next button interactable after 1 second
+                    NextButton.gameObject.SetActive(false);
                 }
             }
         }
-
-        private IEnumerator EnableNextButtonAfterDelay(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            NextButton.interactable = true;
-        }
-
+        
         public void LoadNextScene()
         {
-           
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(currentSceneIndex + 1);
         }
@@ -308,20 +306,19 @@ private void OnFieldValueChanged(TMP_InputField inputField)
             if (incorrectTries == 0) failedGO.SetActive(true);
             else
             {
-                //failedGO.SetActive(false);
                 failedAgainGO.SetActive(true);
             }
 
             foreach (TMP_InputField inputField in inputFields)
             {
-                bool parseSuccess = ColorUtility.TryParseHtmlString("#FF4050", out Color newCol);
+                ColorUtility.TryParseHtmlString("#FF4050", out Color newCol);
                 inputField.image.color = newCol;
             }
         }
 
         public void ClearFields()
         {
-            foreach (var obj in instantiatedObjects)
+            foreach (GameObject obj in instantiatedObjects)
             {
                 Destroy(obj);
             }
@@ -335,6 +332,33 @@ private void OnFieldValueChanged(TMP_InputField inputField)
         public void InitializeFromInspector()
         {
             Init();
+        }
+
+        public void DeletePreviousLetter()
+        {
+            if (currentlySelectedInputFieldIndex == 0) return;
+            currentlySelectedInputFieldIndex--;
+            currentlySelectedInputField = inputFields[currentlySelectedInputFieldIndex];
+            currentlySelectedInputField.text = "";
+            currentlySelectedInputField.ActivateInputField();
+        }
+
+        public void OnAddedLetter()
+        {
+            if (currentlySelectedInputField.text.Length > 1)
+            {
+                string s = currentlySelectedInputField.text.
+                    Substring(currentlySelectedInputField.text.Length - 1, 1);
+                currentlySelectedInputField.text = s;
+            }
+            if (currentlySelectedInputFieldIndex < inputFields.Count - 1)
+            {
+                currentlySelectedInputFieldIndex++;
+                currentlySelectedInputField = inputFields[currentlySelectedInputFieldIndex];
+                currentlySelectedInputField.ActivateInputField();
+            }
+            else ShowKeyboard(false);
+            CheckIfAllFieldsAreFilled();
         }
     }
 }

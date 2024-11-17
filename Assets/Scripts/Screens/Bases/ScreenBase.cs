@@ -18,9 +18,10 @@ namespace Screens.Bases
         protected int answersCount;
 
         private void Awake()
-        { 
+        {
             if (!Data.SelectedAnswersData.ContainsKey(SceneManager.GetActiveScene().name))
                 Data.SelectedAnswersData.Add(SceneManager.GetActiveScene().name, new bool[answersCount]);
+            answersCount = 0;
         }
 
         protected virtual void Start()
@@ -47,6 +48,7 @@ namespace Screens.Bases
             }   
             else
             {
+                NextButton.onClick.RemoveListener(OnNextButtonClicked);
                 NextButton.onClick.AddListener(OnNextButtonClicked);
                 NextButton.interactable = false;
             }

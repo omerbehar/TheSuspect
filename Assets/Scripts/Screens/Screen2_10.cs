@@ -39,11 +39,11 @@ namespace Screens
             if (Data.SelectedAnswersData[SceneManager.GetActiveScene().name].Length != answersCount)
                 Data.SelectedAnswersData[SceneManager.GetActiveScene().name] = new bool[answersCount];
             Data.LoadData();
-            SelectedAnswers = Data.SelectedAnswersData[SceneManager.GetActiveScene().name];
-            for (int i = 0; i < toggles.Length; i++)
-            {
-                toggles[i].isOn = SelectedAnswers[i];
-            }
+            // SelectedAnswers = Data.SelectedAnswersData[SceneManager.GetActiveScene().name];
+            // for (int i = 0; i < toggles.Length; i++)
+            // {
+            //     toggles[i].isOn = SelectedAnswers[i];
+            // }
         }
         public async Task SaveData()
         {

@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DataLayer;
 using Screens.Bases;
 using Screens.Interfaces;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Screens
@@ -23,6 +25,7 @@ namespace Screens
         [SerializeField] private Animator keyboardAnimator2;
         private TouchScreenKeyboard keyboard;
         private bool keyboardActive;
+        private bool isKeyboardActive;
 
 
         protected override async void Start()
@@ -38,56 +41,56 @@ namespace Screens
         {
             base.Start();
             await LoadData();
-               keyboardAnimator.SetBool(KeyboardIn, false);
-            keyboardAnimator2.SetBool(KeyboardIn, false);
+            ShowKeyboard(false);
             IsAssignmentCompleted();
             AddListeners();
         }
-        // private void Update()
-        // {
-        //     // Check for both touch and mouse input
-        //     if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        //     {
-        //         // Handle touch input
-        //         if (IsPointerOverUI(Input.GetTouch(0).position))
-        //         {
-        //             keyboardActive = false;  // Touch outside the keyboard and input field
-        //         }
-        //     }
-        //     else if (Input.GetMouseButtonDown(0))
-        //     {
-        //         // Handle mouse input
-        //         if (IsPointerOverUI(Input.mousePosition))
-        //         {
-        //             keyboardActive = false;  // Mouse click outside the keyboard and input field
-        //         }
-        //     }
-        // }
-        // private bool IsPointerOverUI(Vector2 position)
-        // {
-        //     PointerEventData pointerData = new PointerEventData(EventSystem.current)
-        //     {
-        //         position = position
-        //     };
-        //
-        //     List<RaycastResult> raycastResults = new();
-        //     EventSystem.current.RaycastAll(pointerData, raycastResults);
-        //
-        //     // Filter out any results with the "IgnoreUI" tag
-        //     foreach (var result in raycastResults)
-        //     {
-        //         if (result.gameObject.CompareTag("IgnoreUI"))
-        //         {
-        //             continue;  // Skip elements with the "IgnoreUI" tag
-        //         }
-        //
-        //         // If we find any other UI element, return true
-        //         return true;
-        //     }
-        //
-        //     // No relevant UI elements were found under the pointer
-        //     return false;
-        // }
+        private void Update()
+        {
+            WasClickedToCloseKeyboard();
+        }
+
+        private void WasClickedToCloseKeyboard()
+        {
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                if (IsPointerOverKeyboardRelatedUI(Input.GetTouch(0).position)) return;
+                if (isKeyboardActive) ShowKeyboard(false);
+            }
+            else if (Input.GetMouseButtonDown(0))
+            {
+                if (IsPointerOverKeyboardRelatedUI(Input.mousePosition)) return;
+                Debug.Log(isKeyboardActive);
+                if (isKeyboardActive) ShowKeyboard(false);
+            }
+        }
+
+        private void ShowKeyboard(bool showKeyboard)
+        {
+            keyboardAnimator.SetBool(KeyboardIn, showKeyboard);
+            keyboardAnimator2.SetBool(KeyboardIn, showKeyboard);
+            isKeyboardActive = showKeyboard;
+        }
+
+        private static bool IsPointerOverKeyboardRelatedUI(Vector2 position)
+        {
+            PointerEventData pointerData = new PointerEventData(EventSystem.current)
+            {
+                position = position
+            };
+            List<RaycastResult> raycastResults = new();
+            EventSystem.current.RaycastAll(pointerData, raycastResults);
+            foreach (RaycastResult result in raycastResults)
+            {
+                if (!result.gameObject.CompareTag("KeyboardRelatedUI"))
+                {
+                    continue;
+                }
+                return true;
+            }
+            return false;
+        }
+
         public void OnKeyboardClick()
         {
             // Function to be called by buttons on the keyboard to keep it active
@@ -122,10 +125,9 @@ namespace Screens
             playerCountDropdown.onValueChanged.AddListener(delegate { IsAssignmentCompleted(); });
             chooseFactoryDropdown.onValueChanged.AddListener(delegate { IsAssignmentCompleted(); });
             fakeNextButton.onClick.AddListener(OnFakeNextButtonClicked);
-            teamNameInputField.onSelect.AddListener((string arg) =>
+            teamNameInputField.onSelect.AddListener(_ =>
             {
-                
-                OnInputFieldSelect(arg, teamNameInputField);
+                OnInputFieldSelect();
             });
             teamNameInputField.onDeselect.AddListener(OnInputFieldDeSelect);
         }
@@ -134,17 +136,14 @@ namespace Screens
         {
             if (!keyboardActive)
             {
-                keyboardAnimator.SetBool(KeyboardIn, false);
-                keyboardAnimator2.SetBool(KeyboardIn, false);
+                ShowKeyboard(false);
             }
         }
 
-        private void OnInputFieldSelect(string arg0, TMP_InputField inputField)
+        private void OnInputFieldSelect()
         {
-            // GameManagerKB.Instance.textBox = inputField;
             keyboardActive = true;
-            keyboardAnimator.SetBool(KeyboardIn, true);
-            keyboardAnimator2.SetBool(KeyboardIn, true);
+            ShowKeyboard(true);
         }
 
         public override async void OnNextButtonClicked()
@@ -154,17 +153,19 @@ namespace Screens
             base.OnNextButtonClicked();
         }
         
-        public async Task SaveData()
+        public Task SaveData()
         {
             Data.playerCount = playerCountDropdown.value;
             Data.FactoryName = chooseFactoryDropdown.options[chooseFactoryDropdown.value].text;
             Data.TeamName = teamNameInputField.text;
             Data.SaveData();
+            return Task.CompletedTask;
         }
 
-        public async Task LoadData()
+        private static Task LoadData()
         {
             Data.LoadData();
+            return Task.CompletedTask;
         }
 
     }
